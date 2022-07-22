@@ -1,4 +1,4 @@
-package com.example.histudent.config;
+package com.example.config;
 
 import com.baomidou.mybatisplus.autoconfigure.ConfigurationCustomizer;
 import com.baomidou.mybatisplus.core.injector.ISqlInjector;
@@ -11,11 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-/**
- * @author mushan
- * @date 7/19/2022
- * @apiNote
- */
 @Configuration
 @MapperScan("com.example.histudent")
 @EnableTransactionManagement

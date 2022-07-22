@@ -1,5 +1,5 @@
-2022-07-19 11:48:32 [main]**************** INFO  com.example.histudent.HistudentApplication - Starting HistudentApplication using Java 17.0.3.1 on MuShan with PID 4220 (D:\Development\Programming\MyCode\IDEAProject\histudent\target\classes started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
-2022-07-19 11:48:32 [main]**************** INFO  com.example.histudent.HistudentApplication - The following 1 profile is active: "dev"
+2022-07-19 11:48:32 [main]**************** INFO  HistudentApplication - Starting HistudentApplication using Java 17.0.3.1 on MuShan with PID 4220 (D:\Development\Programming\MyCode\IDEAProject\histudent\target\classes started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-07-19 11:48:32 [main]**************** INFO  HistudentApplication - The following 1 profile is active: "dev"
 2022-07-19 11:48:33 [main]**************** WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.example.histudent]' package. Please check your configuration.
 2022-07-19 11:48:34 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.31] using APR version [1.7.0].
 2022-07-19 11:48:34 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
@@ -17,4 +17,4 @@
 2022-07-19 11:48:36 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
 2022-07-19 11:48:36 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
 2022-07-19 11:48:36 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
-2022-07-19 11:48:37 [main]**************** INFO  com.example.histudent.HistudentApplication - Started HistudentApplication in 6.735 seconds (JVM running for 9.104)
+2022-07-19 11:48:37 [main]**************** INFO  HistudentApplication - Started HistudentApplication in 6.735 seconds (JVM running for 9.104)

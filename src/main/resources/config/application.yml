@@ -2,40 +2,15 @@
 ---
 #默认配置
 server:
+  tomcat:
+    uri-encoding: UTF-8
   port: 8080
 #切换配置
 spring:
   profiles:
     active: dev
----
-#开发环境
-server:
-  port: 8081
-spring:
-  config:
-    activate:
-      on-profile: dev
----
-#测试环境
-server:
-  port: 8082
-spring:
-  config:
-    activate:
-      on-profile: test
----
-#生产环境
-server:
-  port: 8083
-spring:
-  config:
-    activate:
-      on-profile: prod
 
-#-----------------------------------------------#
-#-----------------Thymeleaf 配置-----------------#
----
-spring:
+#-Thymeleaf 配置
   thymeleaf:
     cache: false
     encoding: UTF-8
@@ -45,26 +20,17 @@ spring:
 
 #-----------------------------------------------#
 #-----------------国际化资源 配置-----------------#
-#---
-#spring:
 #  messages:
 #    basename: i18n.language
 
-#-----------------------------------------------#
-#-----------------数据源连接信息-------------------#
----
-spring:
+#-数据源相关配置
   datasource:
     username: root
     password: meiyoumima123
     url: jdbc:mysql://121.41.227.139:7004/hi_student
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-#-----------------------------------------------#
-#-------------Druid 数据源连接池配置---------------#
----
-spring:
-  datasource:
+#---Druid 数据源连接池配置
     druid:
       #初始化连接大小
       initial-size: 5
@@ -94,12 +60,8 @@ spring:
       filters: stat,wall
       #通过connectProperties属性来打开mergeSql功能;慢SQL记录
       connection-properties: 'druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000'
-#-----------------------------------------------#
-#---------------Druid 监控配置信息----------------#
----
-spring:
-  datasource:
-    druid:
+
+#-----Druid 监控配置信息
       #StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
       stat-view-servlet:
         #是否开启内置监控页面，默认值为 false
@@ -123,13 +85,9 @@ spring:
         #是否监控session
         session-stat-enable: true
       #Spring监控AOP切入点，如x.y.z.abc.*,配置多个英文逗号分隔
-      aop-patterns: xyz.mushan.www.*
-#-----------------------------------------------#
-#---------------Druid 监控配置信息----------------#
----
-spring:
-  datasource:
-    druid:
+      aop-patterns: com.example.*
+
+#-----Druid 监控配置信息
       # 对配置已开启的 filters 即 stat(sql 监控)  wall（防火墙）
       filter:
         #配置StatFilter (SQL监控配置)
@@ -156,7 +114,6 @@ spring:
             delete-allow: true
 #-----------------------------------------------#
 #------------------MyBatis配置-------------------#
----
 #mybatis:
 #  # 指定 mapper.xml 的位置
 #  mapper-locations: classpath:mapper/*.xml
@@ -167,9 +124,8 @@ spring:
 #    map-underscore-to-camel-case: true
 #-----------------------------------------------#
 
-#-----------------------------------------------#
+#----------------------------------------------------#
 #------------------MyBatis-plus配置-------------------#
----
 # 日志配置
 mybatis-plus:
   configuration:
@@ -178,4 +134,4 @@ mybatis-plus:
     db-config:
       logic-delete-value: 1
       logic-not-delete-value: 0
-#-----------------------------------------------#
+#----------------------------------------------------#

@@ -4,7 +4,7 @@
     <!-- 定义日志的根目录 -->
     <property name="LOG_HOME" value="./app/log"/>
     <!-- 定义日志文件名称 -->
-    <property name="appName" value="mushan"/>
+    <property name="appName" value="hi student"/>
     <!-- ch.qos.logback.core.ConsoleAppender 表示控制台输出 -->
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -20,10 +20,13 @@
     </appender>
 
     <appender name="appLogAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 指定日志文件的名称 -->
         <file>${LOG_HOME}/${appName}.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名-->
             <fileNamePattern>${LOG_HOME}/${appName}-%d{yyyy-MM-dd}-%i.log</fileNamePattern>
-            <MaxHistory>365</MaxHistory>
+            <!--日志文件保留天数-->
+            <MaxHistory>30</MaxHistory>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -34,7 +37,7 @@
         </layout>
     </appender>
 
-    <logger name="xyz.mushan.www" level="debug"/>
+    <logger name="com.example" level="debug"/>
     <logger name="org.springframework" level="debug" additivity="false"/>
 
     <root level="info">
