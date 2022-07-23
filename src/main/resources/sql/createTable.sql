@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `wall_post`(
     `user_id` BIGINT(20) UNSIGNED NOT NULL COMMENT '用户编号',
     `title` varchar(50) NOT NULL COMMENT '标题',
     `content` varchar(255) NOT NULL COMMENT '内容',
-    `like` INTEGER UNSIGNED NOT NULL DEFAULT 0 COMMENT '喜欢数量',
+    `like_count` INTEGER UNSIGNED NOT NULL DEFAULT 0 COMMENT '喜欢数量',
     `version` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '乐观锁',
     `gmt_create` TIMESTAMP NOT NULL COMMENT '创建时间',
     `gmt_modified` TIMESTAMP NOT NULL COMMENT '修改时间',
