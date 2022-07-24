@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS `user`(
-    `id` VARCHAR(32) DEFAULT NULL COMMENT '用户编号',
+    `id` VARCHAR(32) NOT NULL COMMENT '用户编号',
     `stu_info_id` VARCHAR(32) NOT NULL COMMENT '学生信息编号',
     `level` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '级别',  -- 0:普通用户 1-9:不同权限管理员
     `phone` CHAR(11) UNICODE NULL COMMENT '手机号',
@@ -12,14 +12,14 @@ CREATE TABLE IF NOT EXISTS `user`(
 )ENGINE=INNODB DEFAULT CHARSET=UTF8 COMMENT '用户表';
 
 CREATE TABLE IF NOT EXISTS `school`(
-    `id` VARCHAR(32) DEFAULT NULL COMMENT '学校编号',
+    `id` VARCHAR(32) NOT NULL COMMENT '学校编号',
     `name` varchar(30) NOT NULL COMMENT '学校名称',
     `version` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '乐观锁',
     PRIMARY KEY (`id`) -- 主键索引
 )ENGINE=INNODB DEFAULT CHARSET=UTF8 COMMENT '学校表';
 
 CREATE TABLE IF NOT EXISTS `departments`(
-    `id` VARCHAR(32) DEFAULT NULL COMMENT '院系编号',
+    `id` VARCHAR(32) NOT NULL COMMENT '院系编号',
     `sch_id` VARCHAR(32) NOT NULL COMMENT '学校编号',
     `name` VARCHAR(30) NOT NULL COMMENT '院系名称',
     `version` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '乐观锁',
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `departments`(
 )ENGINE=INNODB DEFAULT CHARSET=UTF8 COMMENT '院系表';
 
 CREATE TABLE IF NOT EXISTS `profession`(
-    `id` VARCHAR(32) DEFAULT NULL COMMENT '专业编号',
+    `id` VARCHAR(32) NOT NULL COMMENT '专业编号',
     `dep_id` VARCHAR(32) NOT NULL COMMENT '院系编号',
     `name` VARCHAR(30) NOT NULL COMMENT '专业名称',
     `version` TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '乐观锁',
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `profession`(
 )ENGINE=INNODB DEFAULT CHARSET=UTF8 COMMENT '专业表';
 
 CREATE TABLE IF NOT EXISTS `user_course_scheduling`(
-    `id` VARCHAR(32) DEFAULT NULL COMMENT '用户课程排班编号',
+    `id` VARCHAR(32) NOT NULL COMMENT '用户课程排班编号',
     `user_id` VARCHAR(32) NOT NULL COMMENT '用户编号',
     `course_id` VARCHAR(32) NOT NULL COMMENT '课程编号',
     `course_type` TINYINT(2) UNSIGNED DEFAULT 0 NOT NULL COMMENT '课程类别',  -- 0: 理论课, 1: 实验课, 默认为0
@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `user_course_scheduling`(
 )ENGINE=INNODB DEFAULT CHARSET=UTF8 COMMENT '用户课程排班表';
 
 CREATE TABLE IF NOT EXISTS `stu_info`(
-    `id` VARCHAR(32) DEFAULT NULL COMMENT '学生编号',
+    `id` VARCHAR(32) NOT NULL COMMENT '学生编号',
     `stu_num` varchar(20) NOT NULL COMMENT '学号',
     `stu_name` varchar(20) NOT NULL COMMENT '姓名',
     `sch_id` BIGINT(20) UNSIGNED NOT NULL COMMENT '学校编号',
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `stu_info`(
 
 -- 这里需要做一个设定, 如果用户没有绑定学校不能使用跳蚤市场功能
 CREATE TABLE IF NOT EXISTS `commodity`(
-    `id` VARCHAR(32) DEFAULT NULL COMMENT '商品编号',
+    `id` VARCHAR(32) NOT NULL COMMENT '商品编号',
     `user_id` VARCHAR(32) NOT NULL COMMENT '用户编号',
     `title` varchar(50) NOT NULL COMMENT '标题',
     `price` DECIMAL(5, 2) NOT NULL COMMENT '价格', -- 整数3位小数2位
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `commodity`(
 )ENGINE=INNODB DEFAULT CHARSET=UTF8 COMMENT '跳蚤市场商品表';
 
 CREATE TABLE IF NOT EXISTS `file`(
-    `id` VARCHAR(32) DEFAULT NULL COMMENT '文件编号',
+    `id` VARCHAR(32) NOT NULL COMMENT '文件编号',
     `model` TINYINT(1) UNSIGNED NOT NULL COMMENT '类别',
     `prefix` varchar(50) NOT NULL COMMENT '文件前缀',
     `suffix` varchar(10) NOT NULl COMMENT '文件后缀',
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `file`(
 
 -- 这里需要做一个设定, 如果用户没有绑定学校不能使用表白墙功能
 CREATE TABLE IF NOT EXISTS `wall_post`(
-    `id` VARCHAR(32) DEFAULT NULL COMMENT '帖子编号',
+    `id` VARCHAR(32) NOT NULL COMMENT '帖子编号',
     `user_id` VARCHAR(32) NOT NULL COMMENT '用户编号',
     `title` VARCHAR(50) NOT NULL COMMENT '标题',
     `content` varchar(255) NOT NULL COMMENT '内容',
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `wall_post_like`(
 )ENGINE=INNODB DEFAULT CHARSET=UTF8 COMMENT '表白墙帖子喜欢表';
 
 CREATE TABLE IF NOT EXISTS `wall_post_comments`(
-    `id` VARCHAR(32) DEFAULT NULL COMMENT '评论编号',
+    `id` VARCHAR(32) NOT NULL COMMENT '评论编号',
     `user_id` VARCHAR(32) NOT NULL COMMENT '用户编号',
     `wall_post_id` VARCHAR(32) NOT NULL COMMENT '帖子编号',
     `content` VARCHAR(50) NOT NULL COMMENT '内容',    -- 限制50字符以内
@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `wall_post_comments`(
 )ENGINE=INNODB DEFAULT CHARSET=UTF8 COMMENT '表白墙帖子评论表';
 
 CREATE TABLE IF NOT EXISTS `order`(
-    `id` VARCHAR(32) DEFAULT NULL COMMENT '订单编号',
+    `id` VARCHAR(32) NOT NULL COMMENT '订单编号',
     `sch_id` VARCHAR(32) NOT NULL COMMENT '学校编号',
     `user_id` VARCHAR(32) NOT NULL COMMENT '学生编号',  -- 购买者的编号(出售者编号在商品内有)
     `comm_id` VARCHAR(32) NOT NULL COMMENT '商品编号',
@@ -135,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `order`(
 
 # 通知表
 CREATE TABLE IF NOT EXISTS `notification`(
-    `id` VARCHAR(32) DEFAULT NULL COMMENT '通知编号',
+    `id` VARCHAR(32) NOT NULL COMMENT '通知编号',
     `level` TINYINT(2) UNSIGNED NOT NULL COMMENT '级别',  -- 0:班级 1:院级 2:校级 3:组织
     `sch_id` VARCHAR(32) NOT NULL COMMENT '学校编号',
     `dep_id` VARCHAR(32) NOT NULL COMMENT '院系编号',
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `notification`(
 )ENGINE=INNODB DEFAULT CHARSET=UTF8 COMMENT '通知表';
 
 CREATE TABLE IF NOT EXISTS `organization`(
-    `id` VARCHAR(32) DEFAULT NULL COMMENT '组织编号',
+    `id` VARCHAR(32) NOT NULL COMMENT '组织编号',
     `originator` BIGINT(20) UNSIGNED NOT NULL COMMENT '发起人',
     `password` CHAR(5) COMMENT '组织密码',
     `name` VARCHAR(50) NOT NULL DEFAULT '未命名' COMMENT '组织名称',
@@ -174,7 +174,7 @@ CREATE TABLE IF NOT EXISTS `notification_collect`(
 )ENGINE=INNODB DEFAULT CHARSET=UTF8 COMMENT '通知收藏表';
 
 CREATE TABLE IF NOT EXISTS `memo`(
-    `id` VARCHAR(32) DEFAULT NULL COMMENT '备忘录编号',
+    `id` VARCHAR(32) NOT NULL COMMENT '备忘录编号',
     `user_id` VARCHAR(32) NOT NULL COMMENT '用户编号',
     `memo` VARCHAR(255) NOT NULL COMMENT '备忘录内容',
     `gmt_create` TIMESTAMP NOT NULL COMMENT '创建时间',
