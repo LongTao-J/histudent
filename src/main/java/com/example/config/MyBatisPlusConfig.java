@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@MapperScan("com.example.histudent")
+@MapperScan("com.example.modules")
 @EnableTransactionManagement
 public class MyBatisPlusConfig {
     /*乐观锁*/

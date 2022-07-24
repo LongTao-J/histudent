@@ -17,7 +17,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class WallPost {
     @TableId(type = IdType.ASSIGN_UUID)
-    private Long id;
+    private String id;
     private Long userId;
     private String title;
     private String content;

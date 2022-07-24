@@ -1,12 +1,11 @@
-2022-07-23 22:58:25 [main]**************** INFO  com.example.modules.wall.wallTest - Starting wallTest using Java 17.0.3.1 on MuShan with PID 11892 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
-2022-07-23 22:58:25 [main]**************** DEBUG com.example.modules.wall.wallTest - Running with Spring Boot v2.7.1, Spring v5.3.21
-2022-07-23 22:58:25 [main]**************** INFO  com.example.modules.wall.wallTest - The following 1 profile is active: "dev"
-2022-07-23 22:58:28 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
-2022-07-23 22:58:30 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-07-23 22:58:30 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
-2022-07-23 22:58:30 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-07-23 22:58:31 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-07-23 22:58:31 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-07-23 22:58:34 [main]**************** INFO  com.example.modules.wall.wallTest - Started wallTest in 9.63 seconds (JVM running for 11.209)
-2022-07-23 22:58:34 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
-2022-07-23 22:58:34 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-07-24 11:58:41 [main]**************** INFO  com.example.modules.wall.wallTest - Starting wallTest using Java 17.0.3.1 on MuShan with PID 19276 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-07-24 11:58:41 [main]**************** DEBUG com.example.modules.wall.wallTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-07-24 11:58:41 [main]**************** INFO  com.example.modules.wall.wallTest - The following 1 profile is active: "dev"
+2022-07-24 11:58:44 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-07-24 11:58:46 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-24 11:58:46 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-24 11:58:46 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-24 11:58:47 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-07-24 11:58:47 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-24 11:58:47 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-07-24 11:58:47 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
