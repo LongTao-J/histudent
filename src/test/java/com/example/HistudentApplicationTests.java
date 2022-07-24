@@ -13,17 +13,4 @@ class HistudentApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-	@Autowired
-	SchoolMapper schoolMapper;
-
-	@Autowired
-	SchoolService schoolService;
-
-	@Test
-	void addSchool(){
-		School school = new School("name");
-		int insert = schoolMapper.insert(school);
-		schoolMapper.insert(school);
-	}
-
 }
