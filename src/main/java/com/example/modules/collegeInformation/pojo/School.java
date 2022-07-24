@@ -15,8 +15,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @TableName("school")
 public class School {
-    @TableId(value = "id",type = IdType.ASSIGN_UUID)
-    private UUID id;
+    @TableId(value="id",type = IdType.ASSIGN_UUID)
+    private String id;
 
     private String name;
 
@@ -24,6 +24,10 @@ public class School {
     private Integer version;
 
     public School(String name) {
+        this.name = name;
+    }
+    public School(String id,String name) {
+        this.id = id;
         this.name = name;
     }
 }
