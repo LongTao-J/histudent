@@ -89,4 +89,12 @@ public class CollTest {
         }
         schoolMapper.deleteById(id);
     }
+
+    @Test
+    void idAndName(){
+        Profession profession =  professionMapper.queryByIdAndName("f6375062255ca63b47e0cefb8c4913ef", "pro1");
+        System.out.println("==================");
+        System.out.println(profession);
+        System.out.println("==================");
+    }
 }

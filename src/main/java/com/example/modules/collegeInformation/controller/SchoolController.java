@@ -28,21 +28,24 @@ public class SchoolController {
     @Autowired
     private DepartmentsMapper departmentsMapper;
 
+    // 添加学校信息
     @PostMapping(value = "/add/{name}")
-    public School addSchool(@PathVariable("name") String name) {
+    public String addSchool(@PathVariable("name") String name) {
         School school = new School(name);
-        schoolMapper.insert(school);
-        return school;
+        int code = schoolMapper.insert(school);
+        return "{code:" + code + "}";
     }
-
+    // 修改
     @PutMapping(value = "/update/{id}/{name}")
-    public Integer updateSchool(@PathVariable("id") String id, @PathVariable("name") String name) {
+    public String updateSchool(@PathVariable("id") String id, @PathVariable("name") String name) {
         School school = new School(id, name);
-        return schoolMapper.updateById(school);
+        int code = schoolMapper.updateById(school);
+        return "{code:" + code + "}";
     }
 
+    // 删除
     @DeleteMapping(value = "/delete/{id}")
-    public Integer deleteSchool(@PathVariable("id") String id) {
+    public String deleteSchool(@PathVariable("id") String id) {
         QueryWrapper<Departments> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("sch_id", id);
         List<Departments> departments = departmentsMapper.selectList(queryWrapper);
@@ -55,14 +58,17 @@ public class SchoolController {
             }
             departmentsMapper.deleteById(departments1.getId());
         }
-        return schoolMapper.deleteById(id);
+        int code = schoolMapper.deleteById(id);
+        return "{code:" + code + "}";
     }
 
+    // 根据id获取信息
     @GetMapping(value = "/get/{id}")
     public String querySchoolById(@PathVariable("id") String id){
         return JSON.toJSONString(schoolMapper.selectById(id));
     }
 
+    // 获取所有学校信息
     @GetMapping(value = "/getAll")
     public String querySchoolAll(){
         return JSON.toJSONString(schoolMapper.selectList());

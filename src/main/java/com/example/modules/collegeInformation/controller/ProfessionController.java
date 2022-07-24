@@ -1,5 +1,6 @@
 package com.example.modules.collegeInformation.controller;
 
+import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.modules.collegeInformation.mapper.DepartmentsMapper;
 import com.example.modules.collegeInformation.mapper.ProfessionMapper;
@@ -33,57 +34,58 @@ public class ProfessionController {
             @PathVariable("school") String sch,
             @PathVariable("departments") String dep,
             @PathVariable("profession") String pro) {
-
+        int code = 0;
         QueryWrapper<School> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("name", sch);
         School school = schoolMapper.selectOne(queryWrapper);
-        QueryWrapper<Departments> queryWrapper2 = new QueryWrapper<>();
-        queryWrapper2.eq("name", dep);
-        Departments departments = departmentsMapper.selectOne(queryWrapper2);
-        QueryWrapper<Profession> queryWrapper3 = new QueryWrapper<>();
-        queryWrapper3.eq("name", pro);
-        Profession profession = professionMapper.selectOne(queryWrapper3);
 
         if(school == null){
             school = new School(sch);
             schoolMapper.insert(school);
         }
 
+        Departments departments = departmentsMapper.queryByIdAndName(school.getId(), dep);
         if(departments == null) {
             departments = new Departments(dep);
             departments.setSch_id(school.getId());
             departmentsMapper.insert(departments);
         }
 
+        Profession profession = professionMapper.queryByIdAndName(departments.getId(), pro);
         if(profession == null) {
             profession = new Profession(pro);
             profession.setDep_id(departments.getId());
-            professionMapper.insert(profession);
+            code = professionMapper.insert(profession);
         }else {
-            return "已存在";
+            code = 404;
         }
 
-        return "ok";
+        return "{code:" + code + "}";
     }
 
     @PutMapping(value = "/update/{id}/{name}")
-    public Integer updateProfession(@PathVariable("id") String id, @PathVariable("name") String name) {
+    public String updateProfession(@PathVariable("id") String id, @PathVariable("name") String name) {
         Profession profession = new Profession(id, name);
-        return professionMapper.updateById(profession);
+        int code = professionMapper.updateById(profession);
+        return "{code:" + code + "}";
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public Integer deleteProfession(@PathVariable("id") String id) {
-        return professionMapper.deleteById(id);
+    public String deleteProfession(@PathVariable("id") String id) {
+        int code = professionMapper.deleteById(id);
+        return "{code:" + code + "}";
     }
 
     @GetMapping(value = "/get/{id}")
-    public Profession queryProfessionById(@PathVariable("id") String id){
-        return professionMapper.selectById(id);
+    public String queryProfessionById(@PathVariable("id") String id){
+        return JSON.toJSONString(professionMapper.selectById(id));
     }
 
-    @GetMapping(value = "/getAll")
-    public List<Profession> queryProfessionAll(){
-        return professionMapper.selectList();
+    @GetMapping(value = "/getAll/{dep_id}")
+    public String queryProfessionAll(@PathVariable("dep_id") String id){
+        QueryWrapper<Profession> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("dep_id", id);
+        List<Profession> professions = professionMapper.selectList(queryWrapper);
+        return JSON.toJSONString(professions);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.modules.collegeInformation.pojo;
 
+import com.alibaba.fastjson2.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -16,10 +17,14 @@ import java.util.UUID;
 @TableName("profession")
 public class Profession {
     @TableId(value = "id",type = IdType.ASSIGN_UUID)
+    @JSONField(name = "id")
     private String id;
+    @JSONField(name = "dep_id")
     private String dep_id;
+    @JSONField(name = "name")
     private String name;
     @Version
+    @JSONField(serialize = false)
     private Integer version;
 
     public Profession(String name) {
