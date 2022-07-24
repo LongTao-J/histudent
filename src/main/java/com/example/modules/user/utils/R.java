@@ -1,4 +1,4 @@
-package com.example.histudent.utils;
+package com.example.modules.user.utils;
 
 import lombok.Data;
 

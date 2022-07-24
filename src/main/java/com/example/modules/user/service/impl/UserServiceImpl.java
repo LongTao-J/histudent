@@ -1,4 +1,4 @@
-package com.example.histudent.service.impl;
+package com.example.modules.user.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

@@ -1,4 +1,4 @@
-package com.example.histudent.pojo;
+package com.example.modules.user.pojo;
 
 import com.baomidou.mybatisplus.annotation.Version;
 import lombok.AllArgsConstructor;

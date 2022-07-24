@@ -1,4 +1,4 @@
-package com.example.histudent.mapper;
+package com.example.modules.user.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.histudent.pojo.User;

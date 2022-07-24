@@ -1,4 +1,4 @@
-package com.example.histudent.utils;
+package com.example.modules.user.utils;
 
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.mybatis.logging.Logger;

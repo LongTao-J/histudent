@@ -1,4 +1,4 @@
-package com.example.histudent.controller;
+package com.example.modules.user.controller;
 
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
