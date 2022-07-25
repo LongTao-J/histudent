@@ -7,6 +7,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @ServletComponentScan
 @SpringBootApplication
+
 public class HistudentApplication {
 
 	public static void main(String[] args) {

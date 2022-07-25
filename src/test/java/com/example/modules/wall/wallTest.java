@@ -1,11 +1,11 @@
 package com.example.modules.wall;
 
-import com.example.modules.wall.mapper.WallPostCommentsMapper;
-import com.example.modules.wall.mapper.WallPostLikeMapper;
-import com.example.modules.wall.mapper.WallPostMapper;
-import com.example.modules.wall.model.WallPost;
-import com.example.modules.wall.model.WallPostComments;
-import com.example.modules.wall.model.WallPostLike;
+import com.example.modules.walls.mapper.WallPostCommentsMapper;
+import com.example.modules.walls.mapper.WallPostLikeMapper;
+import com.example.modules.walls.mapper.WallPostMapper;
+import com.example.modules.walls.model.WallPost;
+import com.example.modules.walls.model.WallPostComments;
+import com.example.modules.walls.model.WallPostLike;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
