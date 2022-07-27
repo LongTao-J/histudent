@@ -1,5 +1,7 @@
 package com.example.modules.user.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.Version;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,8 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    private long id;//用户编号
-    private long stuInfoId;//学生信息编号
+    @TableId(value = "id", type = IdType.ASSIGN_UUID)
+    private String id;//用户编号
+    private String stuInfoId;//学生信息编号
     private int level;//级别
     private String phone;//手机号
     private String password;//密码

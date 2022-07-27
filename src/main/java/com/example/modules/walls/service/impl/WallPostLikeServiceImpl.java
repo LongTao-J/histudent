@@ -1,8 +1,5 @@
 package com.example.modules.walls.service.impl;
 
-import com.example.modules.user.pojo.User;
-import com.example.modules.walls.mapper.WallPostMapper;
-import com.example.modules.walls.model.WallPost;
 import com.example.modules.walls.model.WallPostLike;
 import com.example.modules.walls.mapper.WallPostLikeMapper;
 import com.example.modules.walls.service.WallPostLikeService;

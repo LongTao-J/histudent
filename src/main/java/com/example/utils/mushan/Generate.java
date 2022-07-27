@@ -49,7 +49,7 @@ public class Generate {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName("walls");
+        pc.setModuleName("user");
         pc.setParent("com.example.modules");
         pc.setEntity("model");
         pc.setMapper("mapper");
@@ -63,7 +63,7 @@ public class Generate {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
-        strategy.setInclude("wall_post_comments");
+        strategy.setInclude("user");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
 

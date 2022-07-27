@@ -1,8 +1,5 @@
 package com.example.modules.walls.service;
 
-import com.example.modules.user.pojo.User;
-import com.example.modules.walls.model.WallPost;
-import com.example.modules.walls.model.WallPostComments;
 import com.example.modules.walls.model.WallPostLike;
 import com.baomidou.mybatisplus.extension.service.IService;
 import java.util.*;

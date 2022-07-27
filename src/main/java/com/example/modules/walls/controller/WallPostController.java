@@ -2,14 +2,12 @@ package com.example.modules.walls.controller;
 
 
 import com.alibaba.fastjson.JSON;
-import com.example.modules.user.pojo.User;
-import com.example.modules.walls.mapper.WallPostMapper;
 import com.example.modules.walls.model.WallPost;
 import com.example.modules.walls.service.WallPostService;
+import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -27,9 +25,10 @@ public class WallPostController {
     private WallPostService wallPostServiceImpl;
 
     @DeleteMapping("/delete/{id}")
-    public String deleteWallPost(@PathVariable("id") String id){
+    public R<String> deleteWallPost(@PathVariable("id") String id){
         int code = wallPostServiceImpl.deleteWallPostById(id);
-        return "{\"code\":" + code + "}";
+        if(code != 0) return R.success("删除成功");
+        else return R.error("删除失败");
     }
 
     @GetMapping("/get/list/{title}")
@@ -44,7 +43,7 @@ public class WallPostController {
         return JSON.toJSONString(wallPosts);
     }
 
-    @PutMapping("/put/add_post")
+/*    @PutMapping("/put/add_post")
     public String addWallPost(User user, String title, String content){
         WallPost wallPost = new WallPost();
         wallPost.setUserId(user.getId());
@@ -52,5 +51,5 @@ public class WallPostController {
         wallPost.setContent(content);
         int code = wallPostServiceImpl.insertWallPost(wallPost);
         return "{\"code\":" + code + "}";
-    }
+    }*/
 }
