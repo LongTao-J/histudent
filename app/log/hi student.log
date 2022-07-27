@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2022-07-27 14:03:34 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 17.0.3.1 on MuShan with PID 1800 (D:\Development\Programming\MyCode\IDEAProject\histudent\target\classes started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
 2022-07-27 14:03:34 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
 2022-07-27 14:03:34 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
@@ -114,3 +115,115 @@
 2022-07-27 14:14:30 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
 2022-07-27 14:14:30 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 4.657 seconds (JVM running for 5.459)
 2022-07-27 14:14:41 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+=======
+2022-07-27 14:22:09 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_312 on obsidian with PID 16896 (D:\Document\Histudent\target\classes started by lw in D:\Document\Histudent)
+2022-07-27 14:22:09 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-07-27 14:22:09 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-07-27 14:22:10 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - An older version [1.2.26] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
+2022-07-27 14:22:10 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.26] using APR version [1.7.0].
+2022-07-27 14:22:10 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2022-07-27 14:22:10 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2022-07-27 14:22:10 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.1.1i  8 Dec 2020]
+2022-07-27 14:22:10 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-07-27 14:22:10 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-07-27 14:22:10 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-27 14:22:10 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-07-27 14:22:11 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-07-27 14:22:12 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-27 14:22:12 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-27 14:22:12 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-27 14:22:12 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-07-27 14:22:12 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-27 14:22:16 [main]**************** WARN  c.b.mybatisplus.core.injector.DefaultSqlInjector - class com.example.modules.wall.model.WallPostLike ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-07-27 14:22:16 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-07-27 14:22:16 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 8.238 seconds (JVM running for 10.241)
+2022-07-27 14:22:49 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-27 14:26:50 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_312 on obsidian with PID 26360 (D:\Document\Histudent\target\classes started by lw in D:\Document\Histudent)
+2022-07-27 14:26:50 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-07-27 14:26:50 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-07-27 14:26:51 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - An older version [1.2.26] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
+2022-07-27 14:26:51 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.26] using APR version [1.7.0].
+2022-07-27 14:26:51 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2022-07-27 14:26:51 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2022-07-27 14:26:51 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.1.1i  8 Dec 2020]
+2022-07-27 14:26:51 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-07-27 14:26:51 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-07-27 14:26:51 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-27 14:26:51 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-07-27 14:26:52 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-07-27 14:26:53 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-27 14:26:53 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-27 14:26:53 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-27 14:26:53 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-07-27 14:26:53 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-27 14:26:56 [main]**************** WARN  c.b.mybatisplus.core.injector.DefaultSqlInjector - class com.example.modules.wall.model.WallPostLike ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-07-27 14:26:56 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-07-27 14:26:56 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 7.063 seconds (JVM running for 9.049)
+2022-07-27 14:27:08 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-27 14:36:29 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_312 on obsidian with PID 24584 (D:\Document\Histudent\target\classes started by lw in D:\Document\Histudent)
+2022-07-27 14:36:29 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-07-27 14:36:29 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-07-27 14:36:30 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - An older version [1.2.26] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
+2022-07-27 14:36:30 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.26] using APR version [1.7.0].
+2022-07-27 14:36:30 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2022-07-27 14:36:30 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2022-07-27 14:36:30 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.1.1i  8 Dec 2020]
+2022-07-27 14:36:30 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-07-27 14:36:30 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-07-27 14:36:30 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-27 14:36:30 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-07-27 14:36:30 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-07-27 14:36:31 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-27 14:36:32 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-27 14:36:32 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-27 14:36:32 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-07-27 14:36:32 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-27 14:36:35 [main]**************** WARN  c.b.mybatisplus.core.injector.DefaultSqlInjector - class com.example.modules.wall.model.WallPostLike ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-07-27 14:36:35 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-07-27 14:36:35 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 6.557 seconds (JVM running for 8.439)
+2022-07-27 14:36:39 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-27 14:39:16 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_312 on obsidian with PID 21708 (D:\Document\Histudent\target\classes started by lw in D:\Document\Histudent)
+2022-07-27 14:39:16 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-07-27 14:39:16 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-07-27 14:39:17 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - An older version [1.2.26] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
+2022-07-27 14:39:17 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.26] using APR version [1.7.0].
+2022-07-27 14:39:17 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2022-07-27 14:39:17 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2022-07-27 14:39:17 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.1.1i  8 Dec 2020]
+2022-07-27 14:39:17 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-07-27 14:39:17 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-07-27 14:39:17 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-27 14:39:18 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-07-27 14:39:18 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-07-27 14:39:19 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-27 14:39:19 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-27 14:39:19 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-27 14:39:19 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-07-27 14:39:19 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-27 14:39:23 [main]**************** WARN  c.b.mybatisplus.core.injector.DefaultSqlInjector - class com.example.modules.wall.model.WallPostLike ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-07-27 14:39:23 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-07-27 14:39:23 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 6.597 seconds (JVM running for 8.54)
+2022-07-27 14:39:38 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-27 14:42:11 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_312 on obsidian with PID 29256 (D:\Document\Histudent\target\classes started by lw in D:\Document\Histudent)
+2022-07-27 14:42:11 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-07-27 14:42:11 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-07-27 14:42:12 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - An older version [1.2.26] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
+2022-07-27 14:42:12 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.26] using APR version [1.7.0].
+2022-07-27 14:42:12 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2022-07-27 14:42:12 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2022-07-27 14:42:12 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.1.1i  8 Dec 2020]
+2022-07-27 14:42:12 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-07-27 14:42:12 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-07-27 14:42:12 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-07-27 14:42:12 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-07-27 14:42:12 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-07-27 14:42:13 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-07-27 14:42:13 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-07-27 14:42:13 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-07-27 14:42:13 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-07-27 14:42:13 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-07-27 14:42:17 [main]**************** WARN  c.b.mybatisplus.core.injector.DefaultSqlInjector - class com.example.modules.wall.model.WallPostLike ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2022-07-27 14:42:17 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-07-27 14:42:17 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 6.701 seconds (JVM running for 8.589)
+2022-07-27 14:42:28 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+>>>>>>> origin/master
