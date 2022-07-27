@@ -1,5 +1,8 @@
 package com.example.utils;
 
+import lombok.Data;
+
+@Data
 public class R<T>{
 
     private Integer code;// 200表示成功，400表示失败
