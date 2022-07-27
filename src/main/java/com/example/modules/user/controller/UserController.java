@@ -8,14 +8,15 @@ import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.example.modules.user.pojo.Smss;
 import com.example.modules.user.pojo.TokenPj;
 import com.example.modules.user.pojo.User;
 import com.example.modules.user.pojo.UserSms;
 import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
-import com.example.modules.user.utils.R;
 import com.example.modules.user.utils.TokenUtil;
+import com.example.utils.R;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,11 +48,11 @@ public class UserController {
         queryWrapper.eq(User::getPhone,user.getPhone());
         User user1=userService.getOne(queryWrapper);//数据库user
         if (user1==null){
-            return R.error("登陆失败");
+            return R.error("用户不存在",400);
         }
 
         if (!user1.getPassword().equals(user.getPassword())){
-            return R.error("密码错误");
+            return R.error("密码错误",400);
         }
 
         request.getSession().setAttribute(Consts.SESSION_USER,user1.getId());
@@ -63,7 +64,7 @@ public class UserController {
         String token= TokenUtil.createJavaWebToken(m);
         TokenPj tokenPj=new TokenPj();
         tokenPj.setToken(token);
-        return R.success(tokenPj);
+        return R.success(tokenPj,"登陆成功",200);
     }
 
     @PostMapping("/register")//注册
@@ -74,13 +75,13 @@ public class UserController {
         String sms1=redis.get(userSms.getPhone());
         System.out.println("========session："+sms1+"  my"+userSms.getSms());
         if (!userSms.getSms().equals(sms1)){
-            return R.error("验证码错误");
+            return R.error("验证码错误",400);
         }
         User user=new User();
         user.setPhone(userSms.getPhone());
         user.setPassword(userSms.getPassword());
         userService.save(user);
-        return R.success("注册成功");
+        return R.success(null,"注册成功",400);
     }
 
     //短信发送
@@ -113,7 +114,7 @@ public class UserController {
 //        requests.getSession().setAttribute(Consts.SESSION_SMS,smss.getSms());
         ValueOperations<String,String> redis=redisTemplate.opsForValue();
         redis.set(phone,smss.getSms());
-        return R.success(smss);
+        return R.success(smss,"短信发送成功",200);
     }
 
     @PostMapping("/logout")
@@ -121,7 +122,7 @@ public class UserController {
     public R<String> logout(HttpServletRequest request){
         //清理Session中保存的当前登录员工的id
         request.getSession().removeAttribute(Consts.SESSION_USER);
-        return R.success("退出成功");
+        return R.success(null,"退出成功",200);
     }
 
     @GetMapping("/getUserInfo")//获取用户信息
@@ -129,10 +130,26 @@ public class UserController {
     public R<User> UserInfo(HttpServletRequest request){
         Long userid= (Long) request.getSession().getAttribute(Consts.SESSION_USER);
         if(userid==null){
-            return R.error("请先登录");
+            return R.error("请先登录",200);
         }
         User user = userService.getById(userid);
-        return R.success(user);
+        return R.success(user,"获取成功",200);
     }
 
+    //忘记密码，获取验证码后，然后修改密码
+    @PostMapping("/setpas")
+    @CrossOrigin
+    public R<String> updateUserPassword(@RequestBody UserSms userSms){
+        ValueOperations<String,String> redis=redisTemplate.opsForValue();
+        String sqlsms=redis.get(userSms.getPhone());
+        if (!sqlsms.equals(userSms.getSms())){
+            return R.error("验证码错误",400);
+        }
+
+        LambdaUpdateWrapper<User> wrapper=new LambdaUpdateWrapper();
+        wrapper.eq(User::getPhone,userSms.getPhone()).set(User::getPassword,userSms.getPassword());
+        userService.update(wrapper);
+
+        return R.success(null,"修改密码成功",200);
+    }
 }

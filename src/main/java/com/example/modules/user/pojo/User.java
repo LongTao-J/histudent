@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    private long id;//用户编号
+    private String id;//用户编号
     private long stuInfoId;//学生信息编号
     private int level;//级别
     private String phone;//手机号
@@ -20,13 +20,4 @@ public class User {
     private String headAddress;//头像
     @Version
     private Integer version;//乐观锁
-
-//    private String sms;
-
-//    private int uid;
-//    private String username;
-//    private String password;
-//    private String phone;
-//    private String sms;//验证码
-//    private int status;
 }
