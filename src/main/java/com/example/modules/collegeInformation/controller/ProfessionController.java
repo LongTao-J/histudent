@@ -60,20 +60,20 @@ public class ProfessionController {
             code = 404;
         }
 
-        return "{code:" + code + "}";
+        return "{\"code\":" + code + "}";
     }
 
     @PutMapping(value = "/update/{id}/{name}")
     public String updateProfession(@PathVariable("id") String id, @PathVariable("name") String name) {
         Profession profession = new Profession(id, name);
         int code = professionMapper.updateById(profession);
-        return "{code:" + code + "}";
+        return "{\"code\":" + code + "}";
     }
 
     @DeleteMapping(value = "/delete/{id}")
     public String deleteProfession(@PathVariable("id") String id) {
         int code = professionMapper.deleteById(id);
-        return "{code:" + code + "}";
+        return "{\"code\":" + code + "}";
     }
 
     @GetMapping(value = "/get/{id}")

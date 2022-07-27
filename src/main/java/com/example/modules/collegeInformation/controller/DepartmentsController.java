@@ -32,7 +32,7 @@ public class DepartmentsController {
     public String updateDepartments(@PathVariable("id") String id, @PathVariable("name") String name) {
         Departments departments = new Departments(id, name);
         int code = departmentsMapper.updateById(departments);
-        return "{code:" + code + "}";
+        return "{\"code\":" + code + "}";
     }
 
     @DeleteMapping(value = "/delete/{id}")
@@ -44,7 +44,7 @@ public class DepartmentsController {
             professionMapper.deleteById(profession1.getId());
         }
         int code = departmentsMapper.deleteById(id);
-        return "{code:" + code + "}";
+        return "{\"code\":" + code + "}";
     }
 
     @GetMapping(value = "/get/{id}")

@@ -33,14 +33,14 @@ public class SchoolController {
     public String addSchool(@PathVariable("name") String name) {
         School school = new School(name);
         int code = schoolMapper.insert(school);
-        return "{code:" + code + "}";
+        return "{\"code\":" + code + "}";
     }
     // 修改
     @PutMapping(value = "/update/{id}/{name}")
     public String updateSchool(@PathVariable("id") String id, @PathVariable("name") String name) {
         School school = new School(id, name);
         int code = schoolMapper.updateById(school);
-        return "{code:" + code + "}";
+        return "{\"code\":" + code + "}";
     }
 
     // 删除
@@ -59,7 +59,7 @@ public class SchoolController {
             departmentsMapper.deleteById(departments1.getId());
         }
         int code = schoolMapper.deleteById(id);
-        return "{code:" + code + "}";
+        return "{\"code\":" + code + "}";
     }
 
     // 根据id获取信息
