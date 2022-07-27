@@ -8,6 +8,7 @@ import com.example.modules.collegeInformation.mapper.SchoolMapper;
 import com.example.modules.collegeInformation.pojo.Departments;
 import com.example.modules.collegeInformation.pojo.Profession;
 import com.example.modules.collegeInformation.pojo.School;
+import com.example.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,22 +31,28 @@ public class SchoolController {
 
     // 添加学校信息
     @PostMapping(value = "/add/{name}")
-    public String addSchool(@PathVariable("name") String name) {
+    public R<String> addSchool(@PathVariable("name") String name) {
         School school = new School(name);
         int code = schoolMapper.insert(school);
-        return "{\"code\":" + code + "}";
+        if(code == 1)
+            return R.success(null);
+        else
+            return R.error();
     }
     // 修改
     @PutMapping(value = "/update/{id}/{name}")
-    public String updateSchool(@PathVariable("id") String id, @PathVariable("name") String name) {
+    public R<String> updateSchool(@PathVariable("id") String id, @PathVariable("name") String name) {
         School school = new School(id, name);
         int code = schoolMapper.updateById(school);
-        return "{\"code\":" + code + "}";
+        if(code == 1)
+            return R.success(null);
+        else
+            return R.error();
     }
 
     // 删除
     @DeleteMapping(value = "/delete/{id}")
-    public String deleteSchool(@PathVariable("id") String id) {
+    public R<String> deleteSchool(@PathVariable("id") String id) {
         QueryWrapper<Departments> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("sch_id", id);
         List<Departments> departments = departmentsMapper.selectList(queryWrapper);
@@ -59,19 +66,22 @@ public class SchoolController {
             departmentsMapper.deleteById(departments1.getId());
         }
         int code = schoolMapper.deleteById(id);
-        return "{\"code\":" + code + "}";
+        if(code == 1)
+            return R.success(null);
+        else
+            return R.error();
     }
 
     // 根据id获取信息
     @GetMapping(value = "/get/{id}")
-    public String querySchoolById(@PathVariable("id") String id){
-        return JSON.toJSONString(schoolMapper.selectById(id));
+    public R<School> querySchoolById(@PathVariable("id") String id){
+        return R.success(schoolMapper.selectById(id));
     }
 
     // 获取所有学校信息
     @GetMapping(value = "/getAll")
-    public String querySchoolAll(){
-        return JSON.toJSONString(schoolMapper.selectList());
+    public R<List<School>> querySchoolAll(){
+        return R.success(schoolMapper.selectList());
     }
 
 

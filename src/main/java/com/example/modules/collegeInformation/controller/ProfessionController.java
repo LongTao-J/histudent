@@ -8,6 +8,7 @@ import com.example.modules.collegeInformation.mapper.SchoolMapper;
 import com.example.modules.collegeInformation.pojo.Departments;
 import com.example.modules.collegeInformation.pojo.Profession;
 import com.example.modules.collegeInformation.pojo.School;
+import com.example.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class ProfessionController {
 
     // 整体加入
     @PostMapping(value = "/add/{school}/{departments}/{profession}")
-    public String addProfession(
+    public R<String> addProfession(
             @PathVariable("school") String sch,
             @PathVariable("departments") String dep,
             @PathVariable("profession") String pro) {
@@ -60,32 +61,41 @@ public class ProfessionController {
             code = 404;
         }
 
-        return "{\"code\":" + code + "}";
+        if(code == 1)
+            return R.success(null);
+        else
+            return R.error();
     }
 
     @PutMapping(value = "/update/{id}/{name}")
-    public String updateProfession(@PathVariable("id") String id, @PathVariable("name") String name) {
+    public R<String> updateProfession(@PathVariable("id") String id, @PathVariable("name") String name) {
         Profession profession = new Profession(id, name);
         int code = professionMapper.updateById(profession);
-        return "{\"code\":" + code + "}";
+        if(code == 1)
+            return R.success(null);
+        else
+            return R.error();
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public String deleteProfession(@PathVariable("id") String id) {
+    public R<String> deleteProfession(@PathVariable("id") String id) {
         int code = professionMapper.deleteById(id);
-        return "{\"code\":" + code + "}";
+        if(code == 1)
+            return R.success(null);
+        else
+            return R.error();
     }
 
     @GetMapping(value = "/get/{id}")
-    public String queryProfessionById(@PathVariable("id") String id){
-        return JSON.toJSONString(professionMapper.selectById(id));
+    public R<Profession> queryProfessionById(@PathVariable("id") String id){
+        return R.success(professionMapper.selectById(id));
     }
 
     @GetMapping(value = "/getAll/{dep_id}")
-    public String queryProfessionAll(@PathVariable("dep_id") String id){
+    public R<List<Profession>> queryProfessionAll(@PathVariable("dep_id") String id){
         QueryWrapper<Profession> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("dep_id", id);
         List<Profession> professions = professionMapper.selectList(queryWrapper);
-        return JSON.toJSONString(professions);
+        return R.success(professions);
     }
 }
