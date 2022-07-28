@@ -114,7 +114,11 @@ public class CollTest {
 
        还有就是可以看出，此方法可以满足我们python代码中调用第三方库的情况，简单实用。
 			*/
-            String[] args1=new String[]{"D:\\install\\conda_data\\envs\\py36\\python.exe","D:\\pycode\\方正教育课表.py"};
+            // 课表时间设置year: 学年 例:2019 cnt: 学期号 1或2或3：第一学期 4或8或12：第二学期
+            String userid = "2332";
+            String year = "2019";
+            String cnt = "1";
+            String[] args1=new String[]{"D:\\install\\conda_data\\envs\\py36\\python.exe","D:\\pycode\\sql_cource_avg.py", userid, year, cnt};
             Process pr=Runtime.getRuntime().exec(args1);
 //            proc = Runtime.getRuntime().exec("python ./plus.py");
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
