@@ -47,7 +47,7 @@ public class CourseTest {
         String username = "201902505223";
         String password = "MEIyoumima12";
         try {
-            String[] args1=new String[]{"D:\\install\\conda_data\\envs\\py36\\python.exe","D:\\bin\\CourseAutoImport\\sql_cource_avg.py", userId, year, cnt, username, password};
+            String[] args1=new String[]{"D:\\install\\conda_data\\envs\\py36\\python.exe","/CourseAutoImport/sql_cource_avg.py", userId, year, cnt, username, password};
 //            String[] evn = new String[] {userId, year, cnt, username, password};
 //            String cmd = "D:\\install\\conda_data\\envs\\py36\\python.exe D:\\bin\\sql_cource_avg.py";
             Process pr=Runtime.getRuntime().exec(args1);

@@ -42,8 +42,8 @@ public class Course {
     @JsonProperty(value = "period")
     private String period;
 
-    @TableField("week_num")
     @JsonProperty(value = "weekNum")
+    @TableField("week_num")
     private String weekNum;
 
     public Course(String userId, String name, String courseType, String isExam, String classroom, String weekly, String period, String weekNum) {

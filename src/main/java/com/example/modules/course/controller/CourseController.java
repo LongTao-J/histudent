@@ -46,8 +46,11 @@ public class CourseController {
         Integer integer = mapper.selectCount(condition);
         if(integer > 0) mapper.deleteByUserId(userId);
 
+        if( cnt.equals("2") ) cnt = "4";
+        String pyTextPath = "/root/CourseAutoImport/sql_cource_avg.py";
+        String evn = "/usr/bin/python3";
         try {
-            String[] args1=new String[]{"D:\\install\\conda_data\\envs\\py36\\python.exe","D:\\bin\\CourseAutoImport\\sql_cource_avg.py", userId, year, cnt, username, password};
+            String[] args1=new String[]{evn, pyTextPath, userId, year, cnt, username, password};
             Process pr=Runtime.getRuntime().exec(args1);
             BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
             in.close();
@@ -99,4 +102,5 @@ public class CourseController {
         else
             return R.error();
     }
+
 }
