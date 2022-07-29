@@ -75,18 +75,12 @@ class TimeTable():
         table_info = session.post(table_url,data = data).json()
         cur = connect.cursor()
         for each in table_info["kbList"]:
-            # plt = r'{} | {:<8s} | {:<13s} | {:<15s} | {:<22s}'
-            # print(plt.format(each["xqjmc"], each["jc"], each["cdmc"], each["zcd"], each["kcmc"])) 
             tmp = "\'" + str(each["kch_id"] + str(user_id)) + str(each["khfsmc"]) + str(each["jcs"]) + str(each["xqj"]) + "\'" + "," + "\'" + str(user_id) + "\'" +  "," + "\'" +  str(each["kcmc"]) + "\'" +  "," + "\'" +  \
                   str(each["kclb"]) + "\'" +  "," + "\'" +  str(each["khfsmc"]) + "\'" +  "," + "\'" +  str(each["cdmc"]) + "\'" +  "," + "\'" +  \
                   str(each["zcd"]) + "\'" +  "," + "\'" +  str(each["jcs"]) + "\'" +  "," + "\'" +  str(each["xqj"])+ "\'" 
             try:
                 insert_sqli = "insert into user_course_scheduling values("+ tmp +");"
                 cur.execute(insert_sqli)
-                # for obj in zip(each["kch_id"]+user_id, user_id,\
-                #     each["kcmc"], each["kclb"], each["khfsmc"],\
-                #     each["cdmc"], each["zcd"], each["jcs"], each["xqj"]):
-                #   cur.execute(cur.mogrify(insert_sqli, obj))
             except Exception as e:
                 print("插入数据失败:", e)
             else:
