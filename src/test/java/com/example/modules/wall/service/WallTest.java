@@ -13,15 +13,15 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 public class WallTest {
-    @Autowired
-    WallPostService wallPostServiceImpl;
-
-    @Test
-    public void addPostTest(){
-        WallPost wallPost = new WallPost();
-        wallPost.setUserId("1");
-        wallPost.setTitle("title");
-        wallPost.setContent("content");
-        wallPostServiceImpl.insertWallPost(wallPost);
-    }
+//    @Autowired
+//    WallPostService wallPostServiceImpl;
+//
+//    @Test
+//    public void addPostTest(){
+//        WallPost wallPost = new WallPost();
+//        wallPost.setUserId("1");
+//        wallPost.setTitle("title");
+//        wallPost.setContent("content");
+//        wallPostServiceImpl.insertWallPost(wallPost);
+//    }
 }

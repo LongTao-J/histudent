@@ -85,5 +85,22 @@ public class SchoolController {
     }
 
 
+    ////龙涛临时加的
+    //获取学校名字
+    @GetMapping("/getschoolname")
+    @CrossOrigin
+    public R<List<String>> getAllSchooll(){
+        List<String> schools = schoolMapper.getSchoolname();
+        return R.success(schools,"查询学校信息成功",200);
+    }
+    ////龙涛临时加的
+    //搜素学校名字
+    @GetMapping("/selectSchool/{shuzhi}")
+    @CrossOrigin
+    public R<List<String>> selectSchool(@PathVariable("shuzhi") String shuzhi){
+        List<String> schools=schoolMapper.selectSchoolname("%"+shuzhi+"%");
+        return R.success(schools,"查询成功",200);
+    }
+
 
 }
