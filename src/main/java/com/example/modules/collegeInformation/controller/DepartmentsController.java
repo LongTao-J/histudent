@@ -7,6 +7,7 @@ import com.example.modules.collegeInformation.mapper.ProfessionMapper;
 import com.example.modules.collegeInformation.mapper.SchoolMapper;
 import com.example.modules.collegeInformation.pojo.Departments;
 import com.example.modules.collegeInformation.pojo.Profession;
+import com.example.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,14 +30,17 @@ public class DepartmentsController {
 
 
     @PutMapping(value = "/update/{id}/{name}")
-    public String updateDepartments(@PathVariable("id") String id, @PathVariable("name") String name) {
+    public R<String> updateDepartments(@PathVariable("id") String id, @PathVariable("name") String name) {
         Departments departments = new Departments(id, name);
         int code = departmentsMapper.updateById(departments);
-        return "{\"code\":" + code + "}";
+        if(code == 1)
+            return R.success(null);
+        else
+            return R.error();
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public String deleteDepartments(@PathVariable("id") String id) {
+    public R<String> deleteDepartments(@PathVariable("id") String id) {
         QueryWrapper<Profession> queryWrapper2 = new QueryWrapper<>();
         queryWrapper2.eq("dep_id", id);
         List<Profession> professions = professionMapper.selectList(queryWrapper2);
@@ -44,19 +48,22 @@ public class DepartmentsController {
             professionMapper.deleteById(profession1.getId());
         }
         int code = departmentsMapper.deleteById(id);
-        return "{\"code\":" + code + "}";
+        if(code == 1)
+            return R.success(null);
+        else
+            return R.error();
     }
 
     @GetMapping(value = "/get/{id}")
-    public String queryDepartmentsById(@PathVariable("id") String id){
-        return JSON.toJSONString(departmentsMapper.selectById(id));
+    public R<Departments> queryDepartmentsById(@PathVariable("id") String id){
+        return R.success(departmentsMapper.selectById(id));
     }
 
     @GetMapping(value = "/getAll/{sch_id}")
-    public String queryDepartmentsAll(@PathVariable("sch_id") String id){
+    public R<List<Departments>> queryDepartmentsAll(@PathVariable("sch_id") String id){
         QueryWrapper<Departments> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("sch_id", id);
         List<Departments> departmentsList = departmentsMapper.selectList(queryWrapper);
-        return JSON.toJSONString(departmentsList);
+        return R.success(departmentsList);
     }
 }

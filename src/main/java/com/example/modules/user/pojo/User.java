@@ -20,7 +20,9 @@ public class User {
     private String nickname;//昵称
     private int age;//年龄
     private int sex;//性别(0:secret 1:man 2:woman)
-    private String headAddress;//头像
+    private String headaddress;//头像
+    private String introduction;
+    private String schoolTime;
     @Version
     private Integer version;//乐观锁
 

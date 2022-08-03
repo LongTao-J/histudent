@@ -38,6 +38,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
@@ -126,11 +128,28 @@
 			<version>2.0.7</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.python/jython -->
+		<!-- python执行插件 -->
+		<dependency>
+			<groupId>org.python</groupId>
+			<artifactId>jython-standalone</artifactId>
+			<!--python版本是2.x还是3.x在这里指定-->
+			<version>2.7.0</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
+
+<!--		minio-->
+		<dependency>
+			<groupId>io.minio</groupId>
+			<artifactId>minio</artifactId>
+			<version>8.0.3</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
