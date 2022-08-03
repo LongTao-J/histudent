@@ -16,7 +16,6 @@ import com.example.modules.collegeInformation.pojo.School;
 import com.example.modules.user.mapper.StuInfoMapper;
 import com.example.modules.user.mapper.UserMapper;
 import com.example.modules.user.pojo.*;
-import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
 import com.example.modules.user.utils.TokenUtil;
 import com.example.utils.R;
