@@ -9,11 +9,19 @@ public class R<T>{
     private String msg;// 成功或失败的提示信息
     private T data;//传递的数值
 
-    public static <T> R<T> success(T object,String msg,Integer codex){
+    public static <T> R<T> success(T object,String msgx,Integer codex){
         R<T> r=new R<T>();
         r.data=object;
         r.code=codex;
-        r.msg=msg;
+        r.msg=msgx;
+        return r;
+    }
+
+    public static <T> R<T> success(T object){
+        R<T> r=new R<T>();
+        r.data=object;
+        r.code=200;
+        r.msg="成功";
         return r;
     }
 
@@ -21,6 +29,13 @@ public class R<T>{
         R<T> r=new R<T>();
         r.msg=msg;
         r.code=codex;
+        return r;
+    }
+
+    public static <T> R<T> error(){
+        R<T> r=new R<T>();
+        r.msg="失败";
+        r.code=400;
         return r;
     }
 }

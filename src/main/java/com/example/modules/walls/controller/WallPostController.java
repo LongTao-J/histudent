@@ -2,6 +2,7 @@ package com.example.modules.walls.controller;
 
 
 import com.alibaba.fastjson.JSON;
+import com.example.modules.user.pojo.User;
 import com.example.modules.walls.model.WallPost;
 import com.example.modules.walls.service.WallPostService;
 import com.example.utils.R;
@@ -19,37 +20,37 @@ import java.util.List;
  * @since 2022-07-25
  */
 @RestController
-@RequestMapping("/walls/wall-post")
+@RequestMapping("/api/walls/wall-post")
 public class WallPostController {
     @Autowired
     private WallPostService wallPostServiceImpl;
 
     @DeleteMapping("/delete/{id}")
-    public R<String> deleteWallPost(@PathVariable("id") String id){
+    public R<Object> deleteWallPost(@PathVariable("id") String id){
         int code = wallPostServiceImpl.deleteWallPostById(id);
-        if(code != 0) return R.success("删除成功");
-        else return R.error("删除失败");
+        if(code != 0) return R.success(null);
+        else return R.error();
     }
 
     @GetMapping("/get/list/{title}")
-    public String queryWallPostListByTitle(@PathVariable("title") String title){
+    public R<Object> queryWallPostListByTitle(@PathVariable("title") String title){
         List<WallPost> wallPosts = wallPostServiceImpl.selectWallPostListByTitle(title);
-        return JSON.toJSONString(wallPosts);
+        return R.success(wallPosts);
     }
 
     @GetMapping("/get/list/{user_id}")
-    public String queryWallPostListByUserId(@PathVariable("user_id") String userId){
+    public R<Object> queryWallPostListByUserId(@PathVariable("user_id") String userId){
         List<WallPost> wallPosts = wallPostServiceImpl.selectWallPostListByUserId(userId);
-        return JSON.toJSONString(wallPosts);
+        return R.success(wallPosts);
     }
 
-/*    @PutMapping("/put/add_post")
-    public String addWallPost(User user, String title, String content){
+    @PutMapping("/put/add_post")
+    public R<Object> addWallPost(@RequestBody User user, @RequestBody String title,@RequestBody String content){
         WallPost wallPost = new WallPost();
         wallPost.setUserId(user.getId());
         wallPost.setTitle(title);
         wallPost.setContent(content);
         int code = wallPostServiceImpl.insertWallPost(wallPost);
-        return "{\"code\":" + code + "}";
-    }*/
+        return R.success(null);
+    }
 }
