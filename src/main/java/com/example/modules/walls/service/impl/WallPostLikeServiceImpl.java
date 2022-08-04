@@ -38,20 +38,18 @@ public class WallPostLikeServiceImpl extends ServiceImpl<WallPostLikeMapper, Wal
     }
 
     @Override
-    public int insertWallPostLike(WallPostLike wallPostLike) {
+    public int insertWallPostLike(String userId, String wallPostId) {
+        WallPostLike wallPostLike = new WallPostLike();
+        wallPostLike.setWallPostId(wallPostId);
+        wallPostLike.setUserId(userId);
         return wallPostLikeMapper.insert(wallPostLike);
     }
 
     @Override
-    public int deleteWallPostLikeById(WallPostLike wallPostLike) {
-        return wallPostLikeMapper.deleteById(wallPostLike.getId());
-    }
-
-    @Override
-    public int deleteWallPostLikeByUserIdAndWallPostId(WallPostLike wallPostLike) {
+    public int deleteWallPostLike(String userId, String wallPostId) {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("userId", wallPostLike.getUserId());
-        map.put("wallPostId", wallPostLike.getWallPostId());
+        map.put("user_id", userId);
+        map.put("wall_post_id", wallPostId);
         return wallPostLikeMapper.deleteByMap(map);
     }
 

@@ -29,14 +29,10 @@ public class WallPostLikeController {
 
     @PutMapping("/put/{wall_post_id}/{user_id}")
     @CrossOrigin
-    public R<Object> addSWallPostLike(@PathVariable("wall_post_id") String wallPostId, @PathVariable("user_id") String userId){
-        WallPostLike wallPostLike = new WallPostLike();
-        wallPostLike.setWallPostId(wallPostId);
-        wallPostLike.setUserId(userId);
-        int code = wallPostLikeServiceImpl.insertWallPostLike(wallPostLike);
+    public R<Object> addWallPostLike(@PathVariable("user_id") String userId, @PathVariable("wall_post_id") String wallPostId){
+        int code = wallPostLikeServiceImpl.insertWallPostLike(userId, wallPostId);
         if(code != 0) {
-            WallPost wallPost = new WallPost();
-            wallPost.setId(wallPostId);
+            WallPost wallPost = wallPostServiceImpl.selectWallPostById(wallPostId);
             wallPost.setLikeCount(wallPost.getLikeCount() + 1);
             wallPostServiceImpl.updateById(wallPost);
             return R.success(null);
@@ -46,14 +42,10 @@ public class WallPostLikeController {
 
     @DeleteMapping("/delete/{wall_post_id}/{user_id}")
     @CrossOrigin
-    public R<Object> deleteWallPostLike(@PathVariable("wall_post_id") String wallPostId, @PathVariable("user_id") String userId){
-        WallPostLike wallPostLike = new WallPostLike();
-        wallPostLike.setWallPostId(wallPostId);
-        wallPostLike.setUserId(userId);
-        int code = wallPostLikeServiceImpl.deleteWallPostLikeByUserIdAndWallPostId(wallPostLike);
+    public R<Object> deleteWallPostLike(@PathVariable("user_id") String userId, @PathVariable("wall_post_id") String wallPostId){
+        int code = wallPostLikeServiceImpl.deleteWallPostLike(userId, wallPostId);
         if(code != 0) {
-            WallPost wallPost = new WallPost();
-            wallPost.setId(wallPostId);
+            WallPost wallPost = wallPostServiceImpl.selectWallPostById(wallPostId);
             wallPost.setLikeCount(wallPost.getLikeCount() - 1);
             wallPostServiceImpl.updateById(wallPost);
             return R.success(null);
