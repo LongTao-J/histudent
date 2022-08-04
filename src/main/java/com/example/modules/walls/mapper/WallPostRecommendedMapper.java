@@ -2,6 +2,7 @@ package com.example.modules.walls.mapper;
 
 import com.example.modules.walls.model.WallPostRecommended;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author mushan
  * @since 2022-08-03
  */
+@Mapper
 public interface WallPostRecommendedMapper extends BaseMapper<WallPostRecommended> {
 
 }

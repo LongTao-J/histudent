@@ -34,6 +34,7 @@ public class WallPostCommentsController {
      * @return
      */
     @PutMapping("/put")
+    @CrossOrigin
     public R<Object> addWallPostComments(@RequestBody User user, @RequestBody WallPost wallPost, @RequestBody String context){
         int code = wallPostCommentsServiceImpl.insertWallPostComments(user.getId(), wallPost.getId(), context);
         if(code != 0) return R.success(null);
@@ -41,6 +42,7 @@ public class WallPostCommentsController {
     }
 
     @DeleteMapping("/delete/{wall_post_comments_id}")
+    @CrossOrigin
     public R<Object> deleteWallPostComments(@PathVariable String wall_post_comments_id){
         int code = wallPostCommentsServiceImpl.deleteWallPostComment(wall_post_comments_id);
         if(code != 0) return R.success(null);
@@ -53,6 +55,7 @@ public class WallPostCommentsController {
      * @return
      */
     @GetMapping("/get/all_comments/{wall_post_id}")
+    @CrossOrigin
     public R<Object> getWallPostAllComments(@PathVariable String wall_post_id){
         List<WallPostComments> wallPostComments = wallPostCommentsServiceImpl.selectWallPostCommentsAllByWallPostId(wall_post_id);
         if(wallPostComments.isEmpty()) return R.error();
