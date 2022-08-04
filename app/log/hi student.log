@@ -40,3 +40,183 @@
 2022-08-04 10:16:35 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 9.174 seconds (JVM running for 10.677)
 2022-08-04 10:16:39 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
 2022-08-04 10:16:39 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 11:55:28 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 14448 (F:\git-histudent\histudent\target\classes started by é¾™æ¶›05664416459 in F:\git-histudent\histudent)
+2022-08-04 11:55:28 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 11:55:28 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 11:55:30 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 11:55:30 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 11:55:30 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 11:55:30 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 11:55:31 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 11:55:34 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 11:55:34 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 11:55:34 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 11:55:34 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 11:55:34 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 11:55:36 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 11:55:36 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 9.286 seconds (JVM running for 10.931)
+2022-08-04 11:57:02 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 11:59:18 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 11:59:18 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 11:59:25 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 14692 (F:\git-histudent\histudent\target\classes started by é¾™æ¶›05664416459 in F:\git-histudent\histudent)
+2022-08-04 11:59:25 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 11:59:25 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 11:59:27 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 11:59:27 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 11:59:27 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 11:59:27 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 11:59:27 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 11:59:29 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 11:59:29 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 11:59:29 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 11:59:29 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 11:59:30 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 11:59:31 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 11:59:31 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 7.074 seconds (JVM running for 8.534)
+2022-08-04 11:59:34 [http-nio-8081-exec-2]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 12:00:47 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:00:47 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:00:55 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 816 (F:\git-histudent\histudent\target\classes started by é¾™æ¶›05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:00:55 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:00:55 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 12:00:56 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:00:56 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 12:00:56 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 12:00:56 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 12:00:57 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:00:58 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:00:58 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:00:58 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:00:59 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:00:59 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:01:00 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:01:00 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 6.059 seconds (JVM running for 7.199)
+2022-08-04 12:01:07 [http-nio-8081-exec-3]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 12:01:37 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:01:37 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:01:43 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 19612 (F:\git-histudent\histudent\target\classes started by é¾™æ¶›05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:01:43 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:01:43 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 12:01:44 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:01:44 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 12:01:44 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 12:01:44 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 12:01:45 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:01:47 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:01:47 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:01:47 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:01:47 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:01:47 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:01:49 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:01:49 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 6.325 seconds (JVM running for 7.388)
+2022-08-04 12:02:02 [http-nio-8081-exec-7]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 12:02:35 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:02:35 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:02:41 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 11968 (F:\git-histudent\histudent\target\classes started by é¾™æ¶›05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:02:41 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:02:41 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 12:02:42 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:02:42 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 12:02:42 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 12:02:43 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 12:02:43 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:02:45 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:02:45 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:02:45 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:02:45 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:02:45 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:02:47 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:02:47 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 6.087 seconds (JVM running for 7.343)
+2022-08-04 12:02:56 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 12:03:17 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:03:17 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:03:23 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 12360 (F:\git-histudent\histudent\target\classes started by é¾™æ¶›05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:03:23 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:03:23 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 12:03:24 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:03:24 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 12:03:24 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 12:03:24 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 12:03:25 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:03:27 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:03:27 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:03:27 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:03:27 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:03:27 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:03:29 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:03:29 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 6.554 seconds (JVM running for 8.007)
+2022-08-04 12:03:35 [http-nio-8081-exec-2]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 12:03:55 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:03:55 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:04:01 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 15304 (F:\git-histudent\histudent\target\classes started by é¾™æ¶›05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:04:01 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:04:01 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 12:04:02 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:04:02 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 12:04:02 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 12:04:02 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 12:04:03 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:04:05 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:04:05 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:04:05 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:04:05 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:04:05 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:04:07 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:04:07 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 5.876 seconds (JVM running for 7.051)
+2022-08-04 12:04:11 [http-nio-8081-exec-4]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 12:05:14 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:05:14 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:05:20 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 1328 (F:\git-histudent\histudent\target\classes started by é¾™æ¶›05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:05:20 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:05:20 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 12:05:21 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:05:21 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 12:05:21 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 12:05:21 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 12:05:21 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:05:23 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:05:23 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:05:23 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:05:23 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:05:23 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:05:25 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:05:25 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 5.811 seconds (JVM running for 6.914)
+2022-08-04 12:05:29 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 12:06:55 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:06:55 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:07:19 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 1856 (started by ÁúÌÎ05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:07:19 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:07:19 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-04 12:07:21 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:07:24 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:07:24 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:07:25 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:07:25 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:07:25 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:07:28 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 9.81 seconds (JVM running for 10.802)
+2022-08-04 12:07:35 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:07:35 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:07:46 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 15200 (started by ÁúÌÎ05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:07:46 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:07:46 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-04 12:07:49 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:07:51 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:07:51 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:07:51 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:07:52 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:07:52 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:07:56 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 10.627 seconds (JVM running for 11.582)
+2022-08-04 12:08:02 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:08:02 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 14:19:13 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 10408 (started by ÁúÌÎ05664416459 in F:\git-histudent\histudent)
+2022-08-04 14:19:13 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 14:19:13 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-04 14:19:16 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 14:19:21 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 14:19:21 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 14:19:21 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 14:19:21 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 14:19:21 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 14:19:25 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 11.716 seconds (JVM running for 12.669)
+2022-08-04 14:19:30 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 14:19:30 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
