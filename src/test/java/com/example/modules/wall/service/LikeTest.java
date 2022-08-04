@@ -32,11 +32,11 @@ public class LikeTest {
 
     @Test
     void addTestC(){
-        wallPostLikeController.addWallPostLike("1", "05743b445e949915546b1a153ca4d065");
+        wallPostLikeController.addWallPostLike("05743b445e949915546b1a153ca4d065");
     }
 
     @Test
     void deleteTestC(){
-        wallPostLikeController.deleteWallPostLike("1", "05743b445e949915546b1a153ca4d065");
+        wallPostLikeController.deleteWallPostLike("05743b445e949915546b1a153ca4d065");
     }
 }

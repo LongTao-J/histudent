@@ -1,12 +1,15 @@
 package com.example.modules.walls.controller;
 
 
+import com.example.modules.user.utils.Consts;
 import com.example.modules.walls.model.WallPost;
 import com.example.modules.walls.model.WallPostLike;
 import com.example.modules.walls.service.WallPostLikeService;
 import com.example.modules.walls.service.WallPostService;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,37 +29,36 @@ public class WallPostLikeController {
     private WallPostLikeService wallPostLikeServiceImpl;
     @Autowired
     private WallPostService wallPostServiceImpl;
+    //redis
+    @Autowired
+    private RedisTemplate redisTemplate;
 
-    @PutMapping("/put/{wall_post_id}/{user_id}")
+
+
+    @PutMapping("/put/{wall_post_id}")
     @CrossOrigin
-    public R<Object> addWallPostLike(@PathVariable("user_id") String userId, @PathVariable("wall_post_id") String wallPostId){
+    public R<Object> addWallPostLike(@PathVariable("wall_post_id") String wallPostId){
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userId=redis.get(Consts.REDIS_USER);
         int code = wallPostLikeServiceImpl.insertWallPostLike(userId, wallPostId);
-        if(code != 0) {
-            WallPost wallPost = wallPostServiceImpl.selectWallPostById(wallPostId);
-            wallPost.setLikeCount(wallPost.getLikeCount() + 1);
-            wallPostServiceImpl.updateById(wallPost);
-            return R.success(null);
-        }
+        if(code != 0) return R.success(null);
         else return R.error();
     }
 
-    @DeleteMapping("/delete/{wall_post_id}/{user_id}")
+    @DeleteMapping("/delete/{wall_post_id}")
     @CrossOrigin
-    public R<Object> deleteWallPostLike(@PathVariable("user_id") String userId, @PathVariable("wall_post_id") String wallPostId){
+    public R<Object> deleteWallPostLike(@PathVariable("wall_post_id") String wallPostId){
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userId=redis.get(Consts.REDIS_USER);
         int code = wallPostLikeServiceImpl.deleteWallPostLike(userId, wallPostId);
-        if(code != 0) {
-            WallPost wallPost = wallPostServiceImpl.selectWallPostById(wallPostId);
-            wallPost.setLikeCount(wallPost.getLikeCount() - 1);
-            wallPostServiceImpl.updateById(wallPost);
-            return R.success(null);
-        }
+        if(code != 0) return R.success(null);
         else return R.error();
     }
 
     /**
-     * 获取点赞列表
+     * 获取用户点赞的所有帖子
      */
-    @GetMapping("/get/{user_id}")
+    @GetMapping("/get/list/user/{user_id}")
     @CrossOrigin
     public R<Object> getWallPostListForUserLike(@PathVariable("user_id") String userId){
         List<WallPostLike> wallPostLikes = wallPostLikeServiceImpl.selectWallPostLikeByUserId(userId);
@@ -64,5 +66,12 @@ public class WallPostLikeController {
         else return R.success(wallPostLikes);
     }
 
+    @GetMapping("/get/list/post/{wall_post_id}")
+    @CrossOrigin
+    public R<Object> getWallPostListForPost(@PathVariable("wall_post_id") String wallPostId){
+        List<WallPostLike> wallPostLikes = wallPostLikeServiceImpl.selectWallPostLikeByWallPostId(wallPostId);
+        if(wallPostLikes.isEmpty()) return R.error();
+        else return R.success(wallPostLikes);
+    }
 }
 
