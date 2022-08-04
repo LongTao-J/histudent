@@ -26,7 +26,6 @@ public class WallPostController {
     private WallPostService wallPostServiceImpl;
 
     @DeleteMapping("/delete/{id}")
-    @CrossOrigin
     public R<Object> deleteWallPost(@PathVariable("id") String id){
         int code = wallPostServiceImpl.deleteWallPostById(id);
         if(code != 0) return R.success(null);
@@ -34,21 +33,18 @@ public class WallPostController {
     }
 
     @GetMapping("/get/list/{title}")
-    @CrossOrigin
     public R<Object> queryWallPostListByTitle(@PathVariable("title") String title){
         List<WallPost> wallPosts = wallPostServiceImpl.selectWallPostListByTitle(title);
         return R.success(wallPosts);
     }
 
     @GetMapping("/get/list/{user_id}")
-    @CrossOrigin
     public R<Object> queryWallPostListByUserId(@PathVariable("user_id") String userId){
         List<WallPost> wallPosts = wallPostServiceImpl.selectWallPostListByUserId(userId);
         return R.success(wallPosts);
     }
 
     @PutMapping("/put/add_post")
-    @CrossOrigin
     public R<Object> addWallPost(@RequestBody User user, @RequestBody String title,@RequestBody String content){
         WallPost wallPost = new WallPost();
         wallPost.setUserId(user.getId());

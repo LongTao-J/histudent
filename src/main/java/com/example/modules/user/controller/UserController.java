@@ -161,7 +161,7 @@ public class UserController {
     }
 
     //根据id差用户
-    @GetMapping("/getUserById/{userid}")
+    @GetMapping("/getUserById/{userId}")
     @CrossOrigin
     public R<User> getUserById(@PathVariable("userid") String userid){
         User user = userMapper.selectById(userid);

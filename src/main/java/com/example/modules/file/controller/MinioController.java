@@ -1,4 +1,4 @@
-package com.example.modules.user.controller;
+package com.example.modules.file.controller;
 
 import com.example.modules.user.mapper.UserMapper;
 import com.example.modules.user.pojo.FileUploadResponse;

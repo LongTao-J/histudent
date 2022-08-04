@@ -6,8 +6,10 @@ import com.example.modules.user.pojo.User;
 import com.example.modules.walls.model.WallPost;
 import com.example.modules.walls.model.WallPostComments;
 import com.example.modules.walls.model.WallPostRecommended;
+import com.example.modules.walls.model.WallPostWithUser;
 import com.example.modules.walls.service.WallPostRecommendedService;
 import com.example.modules.walls.service.WallPostService;
+import com.example.modules.walls.service.WallPostWithUserService;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +31,10 @@ import java.util.List;
 public class WallPostRecommendedController {
     @Autowired
     private WallPostRecommendedService wallPostRecommendedServiceImpl;
+    @Autowired
+    private WallPostWithUserService wallPostWithUserServiceImpl;
 
     @DeleteMapping("/delete/{id}")
-    @CrossOrigin
     public R<Object> deleteRecommended(@PathVariable("id") String id){
         int code = wallPostRecommendedServiceImpl.deleteRecommendedById(id);
         if(code != 0) return R.success(null);
@@ -39,14 +42,12 @@ public class WallPostRecommendedController {
     }
 
     @GetMapping("/get/post_list")
-    @CrossOrigin
     public R<Object> queryAllRecommended(){
-        List<WallPost> wallPosts = wallPostRecommendedServiceImpl.getAllRecommendedPost();
-        return R.success(wallPosts);
+        List<WallPostWithUser> wallPostWithUsers = wallPostWithUserServiceImpl.selectWallPostWithUsersByRecommended();
+        return R.success(wallPostWithUsers);
     }
 
     @PutMapping("/put/add/{wall_post_id}")
-    @CrossOrigin
     public R<Object> addRecommended(@PathVariable("wall_post_id") String wallPostId){
         WallPostRecommended wallPostRecommended = new WallPostRecommended();
         wallPostRecommended.setWallPostId(wallPostId);
