@@ -15,21 +15,21 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 public class RecommendedTest {
-    @Autowired
-    WallPostRecommendedController wallPostRecommendedController;
-
-    @Test
-    void insert(){
-        wallPostRecommendedController.addRecommended("e4559b0ed9d34c87a20b558bce304f9b");
-    }
-
-    @Test
-    void query(){
-        System.out.println(wallPostRecommendedController.queryAllRecommended());
-    }
-
-    @Test
-    void delete(){
-        wallPostRecommendedController.deleteRecommended("890702654905434bc8dad81c76354bd7");
-    }
+//    @Autowired
+//    WallPostRecommendedController wallPostRecommendedController;
+//
+//    @Test
+//    void insert(){
+//        wallPostRecommendedController.addRecommended("e4559b0ed9d34c87a20b558bce304f9b");
+//    }
+//
+//    @Test
+//    void query(){
+//        System.out.println(wallPostRecommendedController.queryAllRecommended());
+//    }
+//
+//    @Test
+//    void delete(){
+//        wallPostRecommendedController.deleteRecommended("890702654905434bc8dad81c76354bd7");
+//    }
 }
