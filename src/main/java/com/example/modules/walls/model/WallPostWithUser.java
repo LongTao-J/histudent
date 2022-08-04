@@ -2,6 +2,8 @@ package com.example.modules.walls.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
@@ -10,6 +12,8 @@ import java.util.Date;
  * @date 8/4/2022
  * @apiNote
  */
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class WallPostWithUser {
     private static final long serialVersionUID = 1L;
 
