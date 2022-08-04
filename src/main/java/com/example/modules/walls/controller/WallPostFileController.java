@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022-08-03
  */
 
-/**
- * 暂不需要
- */
 @RestController
 @RequestMapping("/api/walls/wall-post-file")
 public class WallPostFileController {
