@@ -1,6 +1,7 @@
 package com.example.modules.walls.controller;
 
 
+import com.example.modules.walls.model.WallPost;
 import com.example.modules.walls.model.WallPostLike;
 import com.example.modules.walls.service.WallPostLikeService;
 import com.example.modules.walls.service.WallPostService;
@@ -23,6 +24,8 @@ import java.util.List;
 public class WallPostLikeController {
     @Autowired
     private WallPostLikeService wallPostLikeServiceImpl;
+    @Autowired
+    private WallPostService wallPostServiceImpl;
 
     @PutMapping("/put/{wall_post_id}/{user_id}")
     public R<Object> addSWallPostLike(@PathVariable("wall_post_id") String wallPostId, @PathVariable("user_id") String userId){
@@ -30,7 +33,13 @@ public class WallPostLikeController {
         wallPostLike.setWallPostId(wallPostId);
         wallPostLike.setUserId(userId);
         int code = wallPostLikeServiceImpl.insertWallPostLike(wallPostLike);
-        if(code != 0) return R.success(null);
+        if(code != 0) {
+            WallPost wallPost = new WallPost();
+            wallPost.setId(wallPostId);
+            wallPost.setLikeCount(wallPost.getLikeCount() + 1);
+            wallPostServiceImpl.updateById(wallPost);
+            return R.success(null);
+        }
         else return R.error();
     }
 
@@ -40,7 +49,13 @@ public class WallPostLikeController {
         wallPostLike.setWallPostId(wallPostId);
         wallPostLike.setUserId(userId);
         int code = wallPostLikeServiceImpl.deleteWallPostLikeByUserIdAndWallPostId(wallPostLike);
-        if(code != 0) return R.success(null);
+        if(code != 0) {
+            WallPost wallPost = new WallPost();
+            wallPost.setId(wallPostId);
+            wallPost.setLikeCount(wallPost.getLikeCount() - 1);
+            wallPostServiceImpl.updateById(wallPost);
+            return R.success(null);
+        }
         else return R.error();
     }
 

@@ -20,7 +20,7 @@ public class RecommendedTest {
 
     @Test
     void insert(){
-        wallPostRecommendedController.addRecommended("05743b445e949915546b1a153ca4d065");
+        wallPostRecommendedController.addRecommended("e4559b0ed9d34c87a20b558bce304f9b");
     }
 
     @Test
