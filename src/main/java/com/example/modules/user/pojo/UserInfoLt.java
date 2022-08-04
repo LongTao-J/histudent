@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserInfoLt {
+    private String id;
     private String headaddress;
     private String nickname;
     private int sex;

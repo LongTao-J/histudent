@@ -160,6 +160,14 @@ public class UserController {
         return R.success(userInfoLt,"获取成功",200);
     }
 
+    //根据id差用户
+    @GetMapping("/getUserById/{userId}")
+    @CrossOrigin
+    public R<User> getUserById(@PathVariable("userid") String userid){
+        User user = userMapper.selectById(userid);
+        return R.success(user,"获取信息成功",200);
+    }
+
 
     //忘记密码，获取验证码后，然后修改密码
     @PostMapping("/setpas")

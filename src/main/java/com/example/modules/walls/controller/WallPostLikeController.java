@@ -25,6 +25,7 @@ public class WallPostLikeController {
     private WallPostLikeService wallPostLikeServiceImpl;
 
     @PutMapping("/put/{wall_post_id}/{user_id}")
+    @CrossOrigin
     public R<Object> addSWallPostLike(@PathVariable("wall_post_id") String wallPostId, @PathVariable("user_id") String userId){
         WallPostLike wallPostLike = new WallPostLike();
         wallPostLike.setWallPostId(wallPostId);
@@ -35,6 +36,7 @@ public class WallPostLikeController {
     }
 
     @DeleteMapping("/delete/{wall_post_id}/{user_id}")
+    @CrossOrigin
     public R<Object> deleteWallPostLike(@PathVariable("wall_post_id") String wallPostId, @PathVariable("user_id") String userId){
         WallPostLike wallPostLike = new WallPostLike();
         wallPostLike.setWallPostId(wallPostId);
@@ -48,6 +50,7 @@ public class WallPostLikeController {
      * 获取点赞列表
      */
     @GetMapping("/get/{user_id}")
+    @CrossOrigin
     public R<Object> getWallPostListForUserLike(@PathVariable("user_id") String userId){
         List<WallPostLike> wallPostLikes = wallPostLikeServiceImpl.selectWallPostLikeByUserId(userId);
         if(wallPostLikes.isEmpty()) return R.error();

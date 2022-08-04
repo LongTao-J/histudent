@@ -31,6 +31,7 @@ public class WallPostRecommendedController {
     private WallPostRecommendedService wallPostRecommendedServiceImpl;
 
     @DeleteMapping("/delete/{id}")
+    @CrossOrigin
     public R<Object> deleteRecommended(@PathVariable("id") String id){
         int code = wallPostRecommendedServiceImpl.deleteRecommendedById(id);
         if(code != 0) return R.success(null);
@@ -38,12 +39,14 @@ public class WallPostRecommendedController {
     }
 
     @GetMapping("/get/post_list")
+    @CrossOrigin
     public R<Object> queryAllRecommended(){
         List<WallPost> wallPosts = wallPostRecommendedServiceImpl.getAllRecommendedPost();
         return R.success(wallPosts);
     }
 
     @PutMapping("/put/add/{wall_post_id}")
+    @CrossOrigin
     public R<Object> addRecommended(@PathVariable("wall_post_id") String wallPostId){
         WallPostRecommended wallPostRecommended = new WallPostRecommended();
         wallPostRecommended.setWallPostId(wallPostId);
