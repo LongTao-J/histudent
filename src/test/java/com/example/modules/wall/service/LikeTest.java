@@ -1,0 +1,42 @@
+package com.example.modules.wall.service;
+
+import com.example.modules.walls.controller.WallPostLikeController;
+import com.example.modules.walls.model.WallPostLike;
+import com.example.modules.walls.service.WallPostLikeService;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+/**
+ * @author mushan
+ * @date 8/4/2022
+ * @apiNote
+ */
+@SpringBootTest
+public class LikeTest {
+    @Autowired
+    WallPostLikeService wallPostLikeServiceImpl;
+    @Autowired
+    WallPostLikeController wallPostLikeController;
+
+    @Test
+    void addTest(){
+        WallPostLike wallPostLike = new WallPostLike();
+        wallPostLikeServiceImpl.insertWallPostLike("1", "05743b445e949915546b1a153ca4d065");
+    }
+
+    @Test
+    void deleteTest(){
+        wallPostLikeServiceImpl.deleteWallPostLike("1", "05743b445e949915546b1a153ca4d065");
+    }
+
+    @Test
+    void addTestC(){
+        wallPostLikeController.addWallPostLike("1", "05743b445e949915546b1a153ca4d065");
+    }
+
+    @Test
+    void deleteTestC(){
+        wallPostLikeController.deleteWallPostLike("1", "05743b445e949915546b1a153ca4d065");
+    }
+}
