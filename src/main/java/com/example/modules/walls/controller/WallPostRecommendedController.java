@@ -42,7 +42,7 @@ public class WallPostRecommendedController {
         else return R.error();
     }
 
-    @GetMapping("/get/all")
+    @GetMapping("/get/post_list")
     @CrossOrigin
     public R<Object> queryAllRecommended(){
         List<WallPostWithUser> wallPostWithUsers = wallPostWithUserServiceImpl.selectWallPostWithUsersByRecommended();

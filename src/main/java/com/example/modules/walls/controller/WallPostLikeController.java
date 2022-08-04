@@ -1,12 +1,15 @@
 package com.example.modules.walls.controller;
 
 
+import com.example.modules.user.utils.Consts;
 import com.example.modules.walls.model.WallPost;
 import com.example.modules.walls.model.WallPostLike;
 import com.example.modules.walls.service.WallPostLikeService;
 import com.example.modules.walls.service.WallPostService;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,9 +30,28 @@ public class WallPostLikeController {
     @Autowired
     private WallPostService wallPostServiceImpl;
 
-    @PutMapping("/put/{wall_post_id}/{user_id}")
+    //redis
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+//    @PutMapping("/put/{wall_post_id}/{user_id}")
+//    @CrossOrigin
+//    public R<Object> addWallPostLike(@PathVariable("user_id") String userId, @PathVariable("wall_post_id") String wallPostId){
+//        int code = wallPostLikeServiceImpl.insertWallPostLike(userId, wallPostId);
+//        if(code != 0) {
+//            WallPost wallPost = wallPostServiceImpl.selectWallPostById(wallPostId);
+//            wallPost.setLikeCount(wallPost.getLikeCount() + 1);
+//            wallPostServiceImpl.updateById(wallPost);
+//            return R.success(null);
+//        }
+//        else return R.error();
+//    }
+
+    @PutMapping("/put/{wall_post_id}")
     @CrossOrigin
-    public R<Object> addWallPostLike(@PathVariable("user_id") String userId, @PathVariable("wall_post_id") String wallPostId){
+    public R<Object> addWallPostLike(@PathVariable("wall_post_id") String wallPostId){
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userId=redis.get(Consts.REDIS_USER);
         int code = wallPostLikeServiceImpl.insertWallPostLike(userId, wallPostId);
         if(code != 0) {
             WallPost wallPost = wallPostServiceImpl.selectWallPostById(wallPostId);

@@ -14,29 +14,29 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @SpringBootTest
 public class LikeTest {
-    @Autowired
-    WallPostLikeService wallPostLikeServiceImpl;
-    @Autowired
-    WallPostLikeController wallPostLikeController;
-
-    @Test
-    void addTest(){
-        WallPostLike wallPostLike = new WallPostLike();
-        wallPostLikeServiceImpl.insertWallPostLike("1", "05743b445e949915546b1a153ca4d065");
-    }
-
-    @Test
-    void deleteTest(){
-        wallPostLikeServiceImpl.deleteWallPostLike("1", "05743b445e949915546b1a153ca4d065");
-    }
-
-    @Test
-    void addTestC(){
-        wallPostLikeController.addWallPostLike("1", "05743b445e949915546b1a153ca4d065");
-    }
-
-    @Test
-    void deleteTestC(){
-        wallPostLikeController.deleteWallPostLike("1", "05743b445e949915546b1a153ca4d065");
-    }
+//    @Autowired
+//    WallPostLikeService wallPostLikeServiceImpl;
+//    @Autowired
+//    WallPostLikeController wallPostLikeController;
+//
+//    @Test
+//    void addTest(){
+//        WallPostLike wallPostLike = new WallPostLike();
+//        wallPostLikeServiceImpl.insertWallPostLike("1", "05743b445e949915546b1a153ca4d065");
+//    }
+//
+//    @Test
+//    void deleteTest(){
+//        wallPostLikeServiceImpl.deleteWallPostLike("1", "05743b445e949915546b1a153ca4d065");
+//    }
+//
+//    @Test
+//    void addTestC(){
+////        wallPostLikeController.addWallPostLike("1", "05743b445e949915546b1a153ca4d065");
+//    }
+//
+//    @Test
+//    void deleteTestC(){
+//        wallPostLikeController.deleteWallPostLike("1", "05743b445e949915546b1a153ca4d065");
+//    }
 }
