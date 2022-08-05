@@ -2,7 +2,7 @@ package com.example.modules.walls.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.*;
-import com.sun.tools.javac.util.List;
+import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
