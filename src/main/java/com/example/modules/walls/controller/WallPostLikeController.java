@@ -73,5 +73,15 @@ public class WallPostLikeController {
         if(wallPostLikes.isEmpty()) return R.error();
         else return R.success(wallPostLikes);
     }
+
+    @GetMapping("/get/islike/{wall_post_id}")
+    @CrossOrigin
+    public R<Object> getIsLike(@PathVariable("wall_post_id") String wallPostId){
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userId=redis.get(Consts.REDIS_USER);
+        Boolean code = wallPostLikeServiceImpl.selectIsLike(userId, wallPostId);
+        if(code) return R.success(true);
+        else return R.success(false);
+    }
 }
 

@@ -1,5 +1,6 @@
 package com.example.modules.walls.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.modules.walls.mapper.WallPostMapper;
 import com.example.modules.walls.model.WallPost;
 import com.example.modules.walls.model.WallPostLike;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Wrapper;
 import java.util.HashMap;
 import java.util.List;
 
@@ -72,6 +74,16 @@ public class WallPostLikeServiceImpl extends ServiceImpl<WallPostLikeMapper, Wal
             wallPost.setLikeCount(wallPost.getLikeCount() - 1);
             return wallPostMapper.updateById(wallPost);
         }
+    }
+
+    @Override
+    public Boolean selectIsLike(String userId, String wallPostId) {
+        QueryWrapper<WallPostLike> wrapper = new QueryWrapper<>();
+        wrapper.eq("user_id", userId);
+        wrapper.eq("wall_post_id", wallPostId);
+        Integer count = wallPostLikeMapper.selectCount(wrapper);
+        if(count != 0) return true;
+        else return false;
     }
 
 

@@ -44,4 +44,6 @@ public interface WallPostLikeService extends IService<WallPostLike> {
      * @return
      */
     public int deleteWallPostLike(String userId, String wallPostId);
+
+    Boolean selectIsLike(String userId, String wallPostId);
 }

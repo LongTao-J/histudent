@@ -39,4 +39,9 @@ public class LikeTest {
     void deleteTestC(){
         wallPostLikeController.deleteWallPostLike("05743b445e949915546b1a153ca4d065");
     }
+
+    @Test
+    void isLikeTest(){
+        wallPostLikeServiceImpl.selectIsLike("1", "05743b445e949915546b1a153ca4d065");
+    }
 }
