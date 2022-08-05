@@ -2,14 +2,22 @@ package com.example.modules.walls.controller;
 
 
 import com.alibaba.fastjson.JSON;
+import com.example.modules.user.pojo.FileUploadResponse;
 import com.example.modules.user.pojo.User;
+import com.example.modules.user.utils.Consts;
 import com.example.modules.walls.model.WallPost;
+import com.example.modules.walls.service.WallPostFileService;
 import com.example.modules.walls.service.WallPostService;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -24,37 +32,63 @@ import java.util.List;
 public class WallPostController {
     @Autowired
     private WallPostService wallPostServiceImpl;
+    @Autowired
+    private WallPostFileService wallPostFileServiceImpl;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
-    @DeleteMapping("/delete/{id}")
+    private List<String> images = new ArrayList<>();
+
+    @DeleteMapping("/delete/by-id/{id}")
     @CrossOrigin
     public R<Object> deleteWallPost(@PathVariable("id") String id){
-        int code = wallPostServiceImpl.deleteWallPostById(id);
-        if(code != 0) return R.success(null);
-        else return R.error();
+        try {
+            wallPostServiceImpl.deleteWallPostById(id);
+            wallPostFileServiceImpl.deleteFilesByPostId(id);
+            return R.success(null);
+        }catch (Exception e){
+            e.printStackTrace();
+            return R.error();
+        }
     }
 
-    @GetMapping("/get/list/{title}")
+    @GetMapping("/get/list/by-title/{title}")
     @CrossOrigin
     public R<Object> queryWallPostListByTitle(@PathVariable("title") String title){
         List<WallPost> wallPosts = wallPostServiceImpl.selectWallPostListByTitle(title);
         return R.success(wallPosts);
     }
 
-    @GetMapping("/get/list/{user_id}")
+    @GetMapping("/get/list/by-user/")
     @CrossOrigin
-    public R<Object> queryWallPostListByUserId(@PathVariable("user_id") String userId){
+    public R<Object> queryWallPostListByUserId(){
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userId=redis.get(Consts.REDIS_USER);
         List<WallPost> wallPosts = wallPostServiceImpl.selectWallPostListByUserId(userId);
         return R.success(wallPosts);
     }
 
-    @PutMapping("/put/add_post")
+    @PutMapping("/put/upload/file")
     @CrossOrigin
-    public R<Object> addWallPost(@RequestBody User user, @RequestBody String title,@RequestBody String content){
+    public R<Object> uploadFile(@RequestBody FileUploadResponse response){
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userId=redis.get(Consts.REDIS_USER);
+        images.add(response.getUrlHttp());
+        return R.success(images,"图像上传成功",200);
+    }
+
+    @PutMapping("/put/add_post/{title}/{content}")
+    @CrossOrigin
+    public R<Object> addWallPost(@PathVariable("title") String title,@PathVariable("content") String content){
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userId=redis.get(Consts.REDIS_USER);
         WallPost wallPost = new WallPost();
-        wallPost.setUserId(user.getId());
+        wallPost.setUserId(userId);
         wallPost.setTitle(title);
         wallPost.setContent(content);
-        int code = wallPostServiceImpl.insertWallPost(wallPost);
+        wallPostServiceImpl.insertWallPost(wallPost);
+        String wallPostId = wallPost.getId();
+        wallPostFileServiceImpl.insertImgList(wallPostId, images);
         return R.success(null);
     }
 }
