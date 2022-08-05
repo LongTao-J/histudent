@@ -52,11 +52,6 @@ public class MinioController {
         } catch (Exception e) {
             log.error("上传失败 : [{}]", Arrays.asList(e.getStackTrace()));
         }
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId=redis.get(Consts.REDIS_USER);
-        User user = userMapper.selectById(userId);
-        user.setHeadaddress(response.getUrlHttp());
-        userMapper.updateById(user);
 
         return R.success(response,"图片上传成功",200);
     }

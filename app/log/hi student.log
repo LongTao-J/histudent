@@ -1,47 +1,813 @@
-2022-08-05 11:29:24 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 17.0.3.1 on MuShan with PID 16664 (D:\Development\Programming\MyCode\IDEAProject\histudent\target\classes started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
-2022-08-05 11:29:24 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
-2022-08-05 11:29:24 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
-2022-08-05 11:29:25 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.31] using APR version [1.7.0].
-2022-08-05 11:29:25 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
-2022-08-05 11:29:25 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-2022-08-05 11:29:25 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.1.1l  24 Aug 2021]
-2022-08-05 11:29:25 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
-2022-08-05 11:29:25 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2022-08-05 11:29:25 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
-2022-08-05 11:29:25 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2022-08-05 11:29:26 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
-2022-08-05 11:29:27 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-08-05 11:29:27 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
-2022-08-05 11:29:28 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-08-05 11:29:28 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-08-05 11:29:28 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-08-05 11:29:30 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
-2022-08-05 11:29:30 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 6.385 seconds (JVM running for 7.181)
-2022-08-05 11:29:51 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2022-08-05 11:29:51 [http-nio-8081-exec-1]**************** ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.data.redis.RedisConnectionFailureException: Unable to connect to Redis; nested exception is io.lettuce.core.RedisConnectionException: Unable to connect to 127.0.0.1/<unresolved>:6379] with root cause
-java.net.ConnectException: Connection refused: no further information
-	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
-	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
-	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:946)
-	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:337)
-	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:334)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:710)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:658)
-	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:584)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:496)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+2022-08-04 10:14:18 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 2192 (F:\git-histudent\histudent\target\classes started by 龙涛05664416459 in F:\git-histudent\histudent)
+2022-08-04 10:14:18 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 10:14:18 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 10:14:19 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 10:14:19 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 10:14:19 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 10:14:20 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 10:14:20 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 10:14:21 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 10:14:22 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 10:14:22 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 10:14:22 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 10:14:22 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 10:14:24 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 10:14:24 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 6.607 seconds (JVM running for 7.652)
+2022-08-04 10:14:27 [http-nio-8081-exec-2]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 10:15:05 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 10:15:05 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 10:15:30 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 1148 (started by ����05664416459 in F:\git-histudent\histudent)
+2022-08-04 10:15:30 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 10:15:30 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-04 10:15:33 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 10:15:35 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 10:15:35 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 10:15:35 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 10:15:35 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 10:15:36 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 10:15:42 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 13.174 seconds (JVM running for 14.406)
+2022-08-04 10:15:46 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 10:15:46 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 10:16:27 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 8176 (started by ����05664416459 in F:\git-histudent\histudent)
+2022-08-04 10:16:27 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 10:16:27 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-04 10:16:29 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 10:16:31 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 10:16:31 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 10:16:31 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 10:16:31 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 10:16:32 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 10:16:35 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 9.174 seconds (JVM running for 10.677)
+2022-08-04 10:16:39 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 10:16:39 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 11:55:28 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 14448 (F:\git-histudent\histudent\target\classes started by 龙涛05664416459 in F:\git-histudent\histudent)
+2022-08-04 11:55:28 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 11:55:28 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 11:55:30 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 11:55:30 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 11:55:30 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 11:55:30 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 11:55:31 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 11:55:34 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 11:55:34 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 11:55:34 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 11:55:34 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 11:55:34 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 11:55:36 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 11:55:36 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 9.286 seconds (JVM running for 10.931)
+2022-08-04 11:57:02 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 11:59:18 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 11:59:18 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 11:59:25 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 14692 (F:\git-histudent\histudent\target\classes started by 龙涛05664416459 in F:\git-histudent\histudent)
+2022-08-04 11:59:25 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 11:59:25 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 11:59:27 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 11:59:27 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 11:59:27 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 11:59:27 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 11:59:27 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 11:59:29 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 11:59:29 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 11:59:29 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 11:59:29 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 11:59:30 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 11:59:31 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 11:59:31 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 7.074 seconds (JVM running for 8.534)
+2022-08-04 11:59:34 [http-nio-8081-exec-2]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 12:00:47 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:00:47 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:00:55 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 816 (F:\git-histudent\histudent\target\classes started by 龙涛05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:00:55 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:00:55 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 12:00:56 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:00:56 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 12:00:56 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 12:00:56 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 12:00:57 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:00:58 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:00:58 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:00:58 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:00:59 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:00:59 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:01:00 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:01:00 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 6.059 seconds (JVM running for 7.199)
+2022-08-04 12:01:07 [http-nio-8081-exec-3]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 12:01:37 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:01:37 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:01:43 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 19612 (F:\git-histudent\histudent\target\classes started by 龙涛05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:01:43 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:01:43 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 12:01:44 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:01:44 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 12:01:44 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 12:01:44 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 12:01:45 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:01:47 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:01:47 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:01:47 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:01:47 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:01:47 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:01:49 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:01:49 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 6.325 seconds (JVM running for 7.388)
+2022-08-04 12:02:02 [http-nio-8081-exec-7]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 12:02:35 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:02:35 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:02:41 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 11968 (F:\git-histudent\histudent\target\classes started by 龙涛05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:02:41 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:02:41 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 12:02:42 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:02:42 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 12:02:42 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 12:02:43 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 12:02:43 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:02:45 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:02:45 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:02:45 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:02:45 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:02:45 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:02:47 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:02:47 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 6.087 seconds (JVM running for 7.343)
+2022-08-04 12:02:56 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 12:03:17 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:03:17 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:03:23 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 12360 (F:\git-histudent\histudent\target\classes started by 龙涛05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:03:23 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:03:23 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 12:03:24 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:03:24 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 12:03:24 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 12:03:24 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 12:03:25 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:03:27 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:03:27 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:03:27 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:03:27 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:03:27 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:03:29 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:03:29 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 6.554 seconds (JVM running for 8.007)
+2022-08-04 12:03:35 [http-nio-8081-exec-2]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 12:03:55 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:03:55 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:04:01 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 15304 (F:\git-histudent\histudent\target\classes started by 龙涛05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:04:01 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:04:01 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 12:04:02 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:04:02 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 12:04:02 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 12:04:02 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 12:04:03 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:04:05 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:04:05 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:04:05 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:04:05 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:04:05 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:04:07 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:04:07 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 5.876 seconds (JVM running for 7.051)
+2022-08-04 12:04:11 [http-nio-8081-exec-4]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 12:05:14 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:05:14 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:05:20 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 1328 (F:\git-histudent\histudent\target\classes started by 龙涛05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:05:20 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:05:20 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 12:05:21 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:05:21 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 12:05:21 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 12:05:21 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 12:05:21 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:05:23 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:05:23 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:05:23 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:05:23 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:05:23 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:05:25 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 12:05:25 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 5.811 seconds (JVM running for 6.914)
+2022-08-04 12:05:29 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 12:06:55 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:06:55 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:07:19 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 1856 (started by ����05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:07:19 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:07:19 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-04 12:07:21 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:07:24 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:07:24 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:07:25 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:07:25 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:07:25 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:07:28 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 9.81 seconds (JVM running for 10.802)
+2022-08-04 12:07:35 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:07:35 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 12:07:46 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 15200 (started by ����05664416459 in F:\git-histudent\histudent)
+2022-08-04 12:07:46 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 12:07:46 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-04 12:07:49 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 12:07:51 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 12:07:51 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 12:07:51 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 12:07:52 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 12:07:52 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 12:07:56 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 10.627 seconds (JVM running for 11.582)
+2022-08-04 12:08:02 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 12:08:02 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 14:19:13 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 10408 (started by ����05664416459 in F:\git-histudent\histudent)
+2022-08-04 14:19:13 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 14:19:13 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-04 14:19:16 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 14:19:21 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 14:19:21 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 14:19:21 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 14:19:21 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 14:19:21 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 14:19:25 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 11.716 seconds (JVM running for 12.669)
+2022-08-04 14:19:30 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 14:19:30 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 20:52:28 [main]**************** INFO  c.example.modules.wall.Controller.RecommendedTest - Starting RecommendedTest using Java 17.0.3.1 on MuShan with PID 18248 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 20:52:28 [main]**************** DEBUG c.example.modules.wall.Controller.RecommendedTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 20:52:28 [main]**************** INFO  c.example.modules.wall.Controller.RecommendedTest - The following 1 profile is active: "dev"
+2022-08-04 20:52:34 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 20:52:36 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 20:52:36 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 20:52:37 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 20:52:37 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 20:52:37 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 20:52:44 [main]**************** INFO  c.example.modules.wall.Controller.RecommendedTest - Started RecommendedTest in 17.455 seconds (JVM running for 21.94)
+2022-08-04 20:52:45 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 20:52:45 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 20:53:18 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 17.0.3.1 on MuShan with PID 4780 (D:\Development\Programming\MyCode\IDEAProject\histudent\target\classes started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 20:53:18 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 20:53:18 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 20:53:20 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.31] using APR version [1.7.0].
+2022-08-04 20:53:20 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2022-08-04 20:53:20 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2022-08-04 20:53:20 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.1.1l  24 Aug 2021]
+2022-08-04 20:53:20 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 20:53:20 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 20:53:20 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 20:53:20 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 20:53:20 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 20:53:22 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 20:53:22 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 20:53:22 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 20:53:22 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 20:53:22 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 20:53:24 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 20:53:24 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 7.935 seconds (JVM running for 9.857)
+2022-08-04 20:53:58 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 20:53:58 [http-nio-8081-exec-1]**************** ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class com.example.modules.walls.model.WallPostWithUser]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class com.example.modules.walls.model.WallPostWithUser and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.example.utils.R["data"]->java.util.ArrayList[0])] with root cause
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class com.example.modules.walls.model.WallPostWithUser and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.example.utils.R["data"]->java.util.ArrayList[0])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77)
+	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1300)
+	at com.fasterxml.jackson.databind.DatabindContext.reportBadDefinition(DatabindContext.java:400)
+	at com.fasterxml.jackson.databind.ser.impl.UnknownSerializer.failForEmpty(UnknownSerializer.java:46)
+	at com.fasterxml.jackson.databind.ser.impl.UnknownSerializer.serialize(UnknownSerializer.java:29)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:728)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:774)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+	at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1518)
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1007)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:456)
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:290)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:183)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:135)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:114)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1787)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-2022-08-05 11:31:25 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 8124 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
-2022-08-05 11:31:25 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
-2022-08-05 11:31:25 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
-2022-08-05 11:31:28 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
-2022-08-05 11:31:29 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2022-08-05 11:31:29 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
-2022-08-05 11:31:29 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2022-08-05 11:31:30 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2022-08-05 11:31:30 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2022-08-05 11:31:33 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 7.879 seconds (JVM running for 9.26)
-2022-08-05 11:31:33 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
-2022-08-05 11:31:33 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 20:55:56 [http-nio-8081-exec-2]**************** ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class com.example.modules.walls.model.WallPostWithUser]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class com.example.modules.walls.model.WallPostWithUser and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.example.utils.R["data"]->java.util.ArrayList[0])] with root cause
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class com.example.modules.walls.model.WallPostWithUser and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.example.utils.R["data"]->java.util.ArrayList[0])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77)
+	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1300)
+	at com.fasterxml.jackson.databind.DatabindContext.reportBadDefinition(DatabindContext.java:400)
+	at com.fasterxml.jackson.databind.ser.impl.UnknownSerializer.failForEmpty(UnknownSerializer.java:46)
+	at com.fasterxml.jackson.databind.ser.impl.UnknownSerializer.serialize(UnknownSerializer.java:29)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:728)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:774)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+	at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1518)
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1007)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:456)
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:290)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:183)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:135)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:114)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1787)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-08-04 20:56:13 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 17.0.3.1 on MuShan with PID 6972 (D:\Development\Programming\MyCode\IDEAProject\histudent\target\classes started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 20:56:13 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 20:56:13 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 20:56:16 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.31] using APR version [1.7.0].
+2022-08-04 20:56:16 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2022-08-04 20:56:16 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2022-08-04 20:56:16 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.1.1l  24 Aug 2021]
+2022-08-04 20:56:16 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 20:56:16 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 20:56:16 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 20:56:16 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 20:56:17 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 20:56:18 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 20:56:18 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 20:56:18 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 20:56:19 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 20:56:19 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 20:56:22 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 20:56:23 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 10.238 seconds (JVM running for 12.014)
+2022-08-04 20:56:35 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 20:56:36 [http-nio-8081-exec-1]**************** ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class com.example.modules.walls.model.WallPostWithUser]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class com.example.modules.walls.model.WallPostWithUser and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.example.utils.R["data"]->java.util.ArrayList[0])] with root cause
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class com.example.modules.walls.model.WallPostWithUser and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.example.utils.R["data"]->java.util.ArrayList[0])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77)
+	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1300)
+	at com.fasterxml.jackson.databind.DatabindContext.reportBadDefinition(DatabindContext.java:400)
+	at com.fasterxml.jackson.databind.ser.impl.UnknownSerializer.failForEmpty(UnknownSerializer.java:46)
+	at com.fasterxml.jackson.databind.ser.impl.UnknownSerializer.serialize(UnknownSerializer.java:29)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:728)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:774)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+	at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1518)
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1007)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:456)
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:290)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:183)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:135)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:114)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1787)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-08-04 20:58:14 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 17.0.3.1 on MuShan with PID 7104 (D:\Development\Programming\MyCode\IDEAProject\histudent\target\classes started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 20:58:14 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 20:58:14 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 20:58:15 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.31] using APR version [1.7.0].
+2022-08-04 20:58:15 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2022-08-04 20:58:15 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2022-08-04 20:58:15 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.1.1l  24 Aug 2021]
+2022-08-04 20:58:15 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 20:58:15 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 20:58:15 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 20:58:15 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 20:58:16 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 20:58:17 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 20:58:17 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 20:58:17 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 20:58:17 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 20:58:17 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 20:58:18 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 20:58:19 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 5.671 seconds (JVM running for 7.19)
+2022-08-04 20:58:37 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 17.0.3.1 on MuShan with PID 6900 (D:\Development\Programming\MyCode\IDEAProject\histudent\target\classes started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 20:58:37 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 20:58:37 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 20:58:40 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.31] using APR version [1.7.0].
+2022-08-04 20:58:40 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2022-08-04 20:58:40 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2022-08-04 20:58:40 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.1.1l  24 Aug 2021]
+2022-08-04 20:58:40 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 20:58:40 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 20:58:40 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 20:58:40 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 20:58:40 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 20:58:42 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 20:58:42 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 20:58:42 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 20:58:42 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 20:58:42 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 20:58:44 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 20:58:44 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 7.59 seconds (JVM running for 9.202)
+2022-08-04 20:59:27 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 20:59:27 [http-nio-8081-exec-1]**************** ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.http.converter.HttpMessageConversionException: Type definition error: [simple type, class com.example.modules.walls.model.WallPostWithUser]; nested exception is com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class com.example.modules.walls.model.WallPostWithUser and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.example.utils.R["data"]->java.util.ArrayList[0])] with root cause
+com.fasterxml.jackson.databind.exc.InvalidDefinitionException: No serializer found for class com.example.modules.walls.model.WallPostWithUser and no properties discovered to create BeanSerializer (to avoid exception, disable SerializationFeature.FAIL_ON_EMPTY_BEANS) (through reference chain: com.example.utils.R["data"]->java.util.ArrayList[0])
+	at com.fasterxml.jackson.databind.exc.InvalidDefinitionException.from(InvalidDefinitionException.java:77)
+	at com.fasterxml.jackson.databind.SerializerProvider.reportBadDefinition(SerializerProvider.java:1300)
+	at com.fasterxml.jackson.databind.DatabindContext.reportBadDefinition(DatabindContext.java:400)
+	at com.fasterxml.jackson.databind.ser.impl.UnknownSerializer.failForEmpty(UnknownSerializer.java:46)
+	at com.fasterxml.jackson.databind.ser.impl.UnknownSerializer.serialize(UnknownSerializer.java:29)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serializeContents(IndexedListSerializer.java:119)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:79)
+	at com.fasterxml.jackson.databind.ser.impl.IndexedListSerializer.serialize(IndexedListSerializer.java:18)
+	at com.fasterxml.jackson.databind.ser.BeanPropertyWriter.serializeAsField(BeanPropertyWriter.java:728)
+	at com.fasterxml.jackson.databind.ser.std.BeanSerializerBase.serializeFields(BeanSerializerBase.java:774)
+	at com.fasterxml.jackson.databind.ser.BeanSerializer.serialize(BeanSerializer.java:178)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider._serialize(DefaultSerializerProvider.java:480)
+	at com.fasterxml.jackson.databind.ser.DefaultSerializerProvider.serializeValue(DefaultSerializerProvider.java:319)
+	at com.fasterxml.jackson.databind.ObjectWriter$Prefetch.serialize(ObjectWriter.java:1518)
+	at com.fasterxml.jackson.databind.ObjectWriter.writeValue(ObjectWriter.java:1007)
+	at org.springframework.http.converter.json.AbstractJackson2HttpMessageConverter.writeInternal(AbstractJackson2HttpMessageConverter.java:456)
+	at org.springframework.http.converter.AbstractGenericHttpMessageConverter.write(AbstractGenericHttpMessageConverter.java:104)
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:290)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.handleReturnValue(RequestResponseBodyMethodProcessor.java:183)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:135)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:114)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1787)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2022-08-04 21:02:58 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 17.0.3.1 on MuShan with PID 10488 (D:\Development\Programming\MyCode\IDEAProject\histudent\target\classes started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 21:02:58 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 21:02:58 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-04 21:02:59 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.31] using APR version [1.7.0].
+2022-08-04 21:02:59 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2022-08-04 21:02:59 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2022-08-04 21:02:59 [main]**************** INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.1.1l  24 Aug 2021]
+2022-08-04 21:02:59 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-04 21:02:59 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-04 21:02:59 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-04 21:02:59 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-04 21:03:00 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 21:03:01 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 21:03:01 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 21:03:02 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 21:03:02 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 21:03:02 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 21:03:03 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-04 21:03:03 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 6.553 seconds (JVM running for 8.572)
+2022-08-04 21:03:12 [http-nio-8081-exec-1]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-04 21:54:21 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 16080 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 21:54:21 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 21:54:21 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 21:54:24 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 21:54:25 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 21:54:25 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 21:54:25 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 21:54:26 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 21:54:26 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 21:54:29 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 8.621 seconds (JVM running for 10.036)
+2022-08-04 21:54:30 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 21:54:30 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:06:34 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 3864 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:06:34 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:06:34 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:06:37 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:06:38 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:06:39 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:06:39 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:06:39 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:06:39 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:06:42 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 8.356 seconds (JVM running for 9.854)
+2022-08-04 22:06:43 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:06:43 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:13:19 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 720 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:13:19 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:13:19 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:13:21 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:13:23 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:13:23 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:13:23 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:13:23 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:13:23 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:13:26 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 7.87 seconds (JVM running for 9.496)
+2022-08-04 22:13:27 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:13:27 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:13:47 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 14396 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:13:47 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:13:47 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:13:49 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:13:51 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:13:51 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:13:51 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:13:51 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:13:52 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:13:55 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 8.175 seconds (JVM running for 9.569)
+2022-08-04 22:13:56 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:13:56 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:14:45 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 17420 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:14:45 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:14:45 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:14:47 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:14:49 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:14:49 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:14:49 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:14:49 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:14:50 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:14:53 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 8.21 seconds (JVM running for 9.635)
+2022-08-04 22:14:54 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:14:54 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:16:21 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 18324 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:16:21 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:16:21 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:16:23 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:16:25 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:16:25 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:16:25 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:16:26 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:16:26 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:16:29 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 8.3 seconds (JVM running for 9.554)
+2022-08-04 22:16:30 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:16:30 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:22:30 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 8952 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:22:30 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:22:30 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:22:33 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:22:35 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:22:35 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:22:35 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:22:35 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:22:35 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:22:39 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 8.97 seconds (JVM running for 10.208)
+2022-08-04 22:22:40 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:22:40 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:27:33 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 18564 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:27:33 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:27:33 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:27:35 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:27:37 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:27:37 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:27:37 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:27:37 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:27:37 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:27:40 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 7.174 seconds (JVM running for 8.405)
+2022-08-04 22:27:41 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:27:41 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:33:33 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 12404 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:33:33 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:33:33 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:33:35 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:33:37 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:33:37 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:33:37 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:33:37 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:33:37 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:33:40 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 7.596 seconds (JVM running for 9.224)
+2022-08-04 22:33:41 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:33:41 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:34:17 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 13132 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:34:17 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:34:17 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:34:19 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:34:21 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:34:21 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:34:21 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:34:21 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:34:21 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:34:24 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 7.684 seconds (JVM running for 8.885)
+2022-08-04 22:34:25 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:34:25 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:35:07 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 9208 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:35:07 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:35:07 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:35:09 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:35:11 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:35:11 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:35:11 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:35:11 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:35:11 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:35:14 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 7.244 seconds (JVM running for 8.473)
+2022-08-04 22:35:15 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:35:15 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:39:53 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 16740 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:39:53 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:39:53 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:39:56 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:39:57 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:39:57 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:39:57 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:39:58 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:39:58 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:40:01 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 7.905 seconds (JVM running for 9.38)
+2022-08-04 22:40:01 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:40:01 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:40:27 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 18708 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:40:27 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:40:27 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:40:30 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:40:32 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:40:32 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:40:32 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:40:32 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:40:32 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:40:35 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 8.424 seconds (JVM running for 9.618)
+2022-08-04 22:40:36 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:40:36 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:41:07 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 12792 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:41:07 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:41:07 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:41:09 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:41:11 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:41:11 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:41:11 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:41:11 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:41:11 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:41:14 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 7.824 seconds (JVM running for 9.016)
+2022-08-04 22:41:15 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:41:15 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:44:11 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 2792 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:44:11 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:44:11 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:44:13 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:44:15 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:44:15 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:44:15 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:44:15 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:44:15 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:44:18 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 7.883 seconds (JVM running for 9.136)
+2022-08-04 22:44:19 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:44:19 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:49:35 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 18800 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:49:35 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:49:35 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:49:38 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:49:40 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:49:40 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:49:40 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:49:40 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:49:40 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:49:44 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 8.897 seconds (JVM running for 10.19)
+2022-08-04 22:49:45 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:49:45 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-04 22:50:40 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Starting LikeTest using Java 17.0.3.1 on MuShan with PID 11556 (started by MuShan in D:\Development\Programming\MyCode\IDEAProject\histudent)
+2022-08-04 22:50:40 [main]**************** DEBUG com.example.modules.wall.service.LikeTest - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-04 22:50:40 [main]**************** INFO  com.example.modules.wall.service.LikeTest - The following 1 profile is active: "dev"
+2022-08-04 22:50:42 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-04 22:50:43 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-04 22:50:43 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-04 22:50:44 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-04 22:50:44 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-04 22:50:44 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-04 22:50:46 [main]**************** INFO  com.example.modules.wall.service.LikeTest - Started LikeTest in 7.383 seconds (JVM running for 8.803)
+2022-08-04 22:50:48 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-04 22:50:48 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed

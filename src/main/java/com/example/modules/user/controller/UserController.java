@@ -313,4 +313,15 @@ public class UserController {
         return R.success(null,"删除学校信息成功",200);
     }
 
+    //上传头像
+    @PutMapping("/upHeadAddress/{headAddress}")
+    @CrossOrigin
+    public R<String> upHeadAddress(String headAddress){
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userId=redis.get(Consts.REDIS_USER);
+        User user = userMapper.selectById(userId);
+        user.setHeadaddress(headAddress);
+        userMapper.updateById(user);
+        return R.success(null,"头像上传成功",200);
+    }
 }
