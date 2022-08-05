@@ -60,6 +60,11 @@ public class WallPost implements Serializable {
     private Integer commentsCount;
 
     /**
+     * HeadImg
+     */
+    private String headImg;
+
+    /**
      * 乐观锁
      */
     @Version

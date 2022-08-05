@@ -89,6 +89,10 @@ public class WallPostController {
         wallPostServiceImpl.insertWallPost(wallPost);
         String wallPostId = wallPost.getId();
         wallPostFileServiceImpl.insertImgList(wallPostId, images);
+        if(!images.isEmpty()){
+            wallPost.setHeadImg(images.get(0));
+            wallPostServiceImpl.updateById(wallPost);
+        }
         return R.success(null);
     }
 }
