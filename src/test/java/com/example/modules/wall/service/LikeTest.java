@@ -42,6 +42,6 @@ public class LikeTest {
 
     @Test
     void isLikeTest(){
-        wallPostLikeServiceImpl.selectIsLike("1", "05743b445e949915546b1a153ca4d065");
+        System.out.println(wallPostLikeServiceImpl.selectIsLike("1552570983563436034", "15e759f5e9ad7070ab5998338a1fe218"));
     }
 }

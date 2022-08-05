@@ -27,10 +27,6 @@ public class WallPostFile implements Serializable {
     @TableId(value = "id", type = IdType.ASSIGN_UUID)
     private String id;
 
-    /**
-     * 文件类型
-     */
-    private String type;
 
     /**
      * 表白墙编号

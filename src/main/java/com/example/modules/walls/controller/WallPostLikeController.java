@@ -80,8 +80,7 @@ public class WallPostLikeController {
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String userId=redis.get(Consts.REDIS_USER);
         Boolean code = wallPostLikeServiceImpl.selectIsLike(userId, wallPostId);
-        if(code) return R.success(true);
-        else return R.success(false);
+        return R.success(code);
     }
 }
 
