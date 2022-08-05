@@ -2,7 +2,6 @@ package com.example.modules.walls.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.*;
-import java.util.List;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -10,13 +9,12 @@ import java.util.Date;
 
 /**
  * @author mushan
- * @date 8/5/2022
+ * @date 8/4/2022
  * @apiNote
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class WallPostWithImg {
-
+public class WallPostWithUserAndImg {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -32,6 +30,10 @@ public class WallPostWithImg {
     @JSONField(name = "user_id")
     private String userId;
 
+    private String headaddress;
+
+    private String nickname;
+
     /**
      * 标题
      */
@@ -43,6 +45,11 @@ public class WallPostWithImg {
      */
     @JSONField(name = "content")
     private String content;
+
+    /**
+     * HeadImg
+     */
+    private String headImg;
 
     /**
      * 喜欢数量
@@ -76,6 +83,4 @@ public class WallPostWithImg {
     @JSONField(name = "gmt_modified")
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date gmtModified;
-
-    private List<String> images;
 }

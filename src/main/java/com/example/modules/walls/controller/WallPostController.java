@@ -68,7 +68,7 @@ public class WallPostController {
         return R.success(wallPosts);
     }
 
-    @PutMapping("/put/upload/file")
+    @PutMapping("/post/upload/file")
     @CrossOrigin
     public R<Object> uploadFile(@RequestBody FileUploadResponse response){
         ValueOperations<String,String> redis = redisTemplate.opsForValue();

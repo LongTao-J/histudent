@@ -1,21 +1,14 @@
 package com.example.modules.walls.controller;
 
 
-import com.alibaba.fastjson.JSON;
-import com.example.modules.user.pojo.User;
-import com.example.modules.walls.model.WallPost;
-import com.example.modules.walls.model.WallPostComments;
 import com.example.modules.walls.model.WallPostRecommended;
-import com.example.modules.walls.model.WallPostWithUser;
+import com.example.modules.walls.model.WallPostWithUserAndImg;
 import com.example.modules.walls.service.WallPostRecommendedService;
-import com.example.modules.walls.service.WallPostService;
-import com.example.modules.walls.service.WallPostWithUserService;
+import com.example.modules.walls.service.WallPostWithUserAndImgService;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.management.loading.PrivateClassLoader;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,7 +25,7 @@ public class WallPostRecommendedController {
     @Autowired
     private WallPostRecommendedService wallPostRecommendedServiceImpl;
     @Autowired
-    private WallPostWithUserService wallPostWithUserServiceImpl;
+    private WallPostWithUserAndImgService wallPostWithUserAndImgServiceImpl;
 
     @DeleteMapping("/delete/{id}")
     @CrossOrigin
@@ -45,8 +38,8 @@ public class WallPostRecommendedController {
     @GetMapping("/get/post_list")
     @CrossOrigin
     public R<Object> queryAllRecommended(){
-        List<WallPostWithUser> wallPostWithUsers = wallPostWithUserServiceImpl.selectWallPostWithUsersByRecommended();
-        return R.success(wallPostWithUsers);
+        List<WallPostWithUserAndImg> wallPostWithUserAndImgs = wallPostWithUserAndImgServiceImpl.selectWallPostWithUsersByRecommended();
+        return R.success(wallPostWithUserAndImgs);
     }
 
     @PutMapping("/put/add/{wall_post_id}")
