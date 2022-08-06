@@ -68,13 +68,15 @@ public class WallPostController {
         return R.success(wallPosts);
     }
 
-    @PutMapping("/post/upload/file")
+    @PostMapping("/post/upload/file/{url}")
     @CrossOrigin
-    public R<Object> uploadFile(@RequestBody FileUploadResponse response){
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId=redis.get(Consts.REDIS_USER);
-        images.add(response.getUrlHttp());
-        return R.success(images,"图像上传成功",200);
+    public R<Object> uploadFile(@PathVariable("url") String url){
+        try{
+            images.add(url);
+            return R.success(images,"图像上传成功",200);
+        }catch (Exception e){
+            return R.error();
+        }
     }
 
     @PutMapping("/put/add_post/{title}/{content}")
