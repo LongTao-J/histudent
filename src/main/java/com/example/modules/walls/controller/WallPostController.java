@@ -68,7 +68,7 @@ public class WallPostController {
         return R.success(wallPosts);
     }
 
-    @PostMapping("/post/upload/file/{url}")
+    @PostMapping("/put/upload/file/{url}")
     @CrossOrigin
     public R<Object> uploadFile(@PathVariable("url") String url){
         try{
