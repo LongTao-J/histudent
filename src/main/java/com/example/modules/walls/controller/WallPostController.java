@@ -72,7 +72,7 @@ public class WallPostController {
     @CrossOrigin
     public R<Object> uploadFile(@PathVariable("url") String url){
         try{
-            images.add(url);
+            //images.add(url);
             return R.success(images,"图像上传成功",200);
         }catch (Exception e){
             return R.error();
