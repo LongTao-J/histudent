@@ -60,6 +60,7 @@ public class MinioController {
      * 删除文件
      */
     @DeleteMapping("/delete/{objectName}")
+    @CrossOrigin
     public void delete(@PathVariable("objectName") String objectName, @RequestParam(required = false, defaultValue = "test") String bucketName) throws Exception {
         minioUtil.removeObject(bucketName, objectName);
         log.error("删除成功");
@@ -69,6 +70,7 @@ public class MinioController {
      * 下载文件到本地
      */
     @GetMapping("/download/{objectName}")
+    @CrossOrigin
     public ResponseEntity<byte[]> downloadToLocal(@PathVariable("objectName") String objectName, HttpServletResponse response) throws Exception {
         ResponseEntity<byte[]> responseEntity = null;
         InputStream stream = null;
@@ -117,6 +119,7 @@ public class MinioController {
      * 在浏览器预览图片
      */
     @GetMapping("/preViewPicture/{objectName}")
+    @CrossOrigin
     public void preViewPicture(@PathVariable("objectName") String objectName, HttpServletResponse response) throws Exception {
         response.setContentType("image/jpeg");
         try (ServletOutputStream out = response.getOutputStream()) {
@@ -134,6 +137,7 @@ public class MinioController {
     }
 
     @GetMapping("/getBucket")
+    @CrossOrigin
     public String getBucket() {
         List<Bucket> bucketList = null;
 //        ArrayList<String> str = null;

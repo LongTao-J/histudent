@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import com.example.modules.user.pojo.FileUploadResponse;
 import com.example.modules.user.pojo.User;
 import com.example.modules.user.utils.Consts;
+import com.example.modules.walls.model.ImgUrl;
 import com.example.modules.walls.model.WallPost;
 import com.example.modules.walls.service.WallPostFileService;
 import com.example.modules.walls.service.WallPostService;
@@ -68,11 +69,12 @@ public class WallPostController {
         return R.success(wallPosts);
     }
 
-    @PostMapping("/put/upload/file/{url}")
+
+    @PostMapping("/put/upload/file")
     @CrossOrigin
-    public R<Object> uploadFile(@PathVariable("url") String url){
+    public R<Object> uploadFile(@RequestBody ImgUrl imgUrl){
         try{
-            //images.add(url);
+            images.add(imgUrl.getImgUrl());
             return R.success(images,"图像上传成功",200);
         }catch (Exception e){
             return R.error();
