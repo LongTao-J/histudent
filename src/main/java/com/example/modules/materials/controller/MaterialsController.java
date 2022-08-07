@@ -2,9 +2,12 @@ package com.example.modules.materials.controller;
 
 import com.example.modules.materials.mapper.MaterialsMapper;
 import com.example.modules.materials.pojo.Materials;
+import com.example.modules.user.utils.Consts;
 import com.example.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -19,6 +22,9 @@ public class MaterialsController {
 
     @Autowired
     MaterialsMapper mapper;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     // 按标签查找资料
     @GetMapping("/get/{tag}")
@@ -45,6 +51,9 @@ public class MaterialsController {
     // 添加资料
     @PostMapping("/add")
     public R<Materials> addMaterial(@RequestBody Materials material) {
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userId=redis.get(Consts.REDIS_USER);
+        material.setUserId(userId);
         material.setCreateTime(new Date());
         int code = mapper.insert(material);
         if(code == 1)
