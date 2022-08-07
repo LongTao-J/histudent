@@ -48,6 +48,16 @@ public class MaterialsController {
             return R.error();
     }
 
+    // 按id查找资料
+    @GetMapping("/getId/{id}")
+    public R<Materials> getById(@PathVariable("id") String id) {
+        Materials materials = mapper.selectById(id);
+        if(materials != null)
+            return R.success(materials);
+        else
+            return R.error();
+    }
+
     // 添加资料
     @PostMapping("/add")
     public R<Materials> addMaterial(@RequestBody Materials material) {
