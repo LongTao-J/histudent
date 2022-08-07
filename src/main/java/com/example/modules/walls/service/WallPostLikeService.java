@@ -1,8 +1,5 @@
 package com.example.modules.walls.service;
 
-import com.example.modules.user.pojo.User;
-import com.example.modules.walls.model.WallPost;
-import com.example.modules.walls.model.WallPostComments;
 import com.example.modules.walls.model.WallPostLike;
 import com.baomidou.mybatisplus.extension.service.IService;
 import java.util.*;
@@ -25,27 +22,28 @@ public interface WallPostLikeService extends IService<WallPostLike> {
     public List<WallPostLike> selectWallPostLikeByUserId(String userId);
 
     /**
-     * 根据帖子编号获取喜欢列表
+     *
      * @param wallPostId
      * @return
      */
     public List<WallPostLike> selectWallPostLikeByWallPostId(String wallPostId);
 
     /**
-     * 插入新的喜欢
-     * @param wallPostLike
+     *
+     * @param userId
+     * @param wallPostId
+     * @return
      */
-    public int insertWallPostLike(WallPostLike wallPostLike);
+    public int insertWallPostLike(String userId, String wallPostId);
+
 
     /**
-     * 取消喜欢通过编号
-     * @param wallPostLike
+     *
+     * @param userId
+     * @param wallPostId
+     * @return
      */
-    public int deleteWallPostLikeById(WallPostLike wallPostLike);
+    public int deleteWallPostLike(String userId, String wallPostId);
 
-    /**
-     * 取消喜欢通过用户编号和帖子编号
-     * @param wallPostLike
-     */
-    public int deleteWallPostLikeByUserIdAndWallPostId(WallPostLike wallPostLike);
+    Boolean selectIsLike(String userId, String wallPostId);
 }

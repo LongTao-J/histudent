@@ -9,11 +9,13 @@ import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.example.modules.user.pojo.Smss;
-import com.example.modules.user.pojo.TokenPj;
-import com.example.modules.user.pojo.User;
-import com.example.modules.user.pojo.UserSms;
-import com.example.modules.user.service.UserService;
+import com.example.modules.collegeInformation.mapper.ProfessionMapper;
+import com.example.modules.collegeInformation.mapper.SchoolMapper;
+import com.example.modules.collegeInformation.pojo.Profession;
+import com.example.modules.collegeInformation.pojo.School;
+import com.example.modules.user.mapper.StuInfoMapper;
+import com.example.modules.user.mapper.UserMapper;
+import com.example.modules.user.pojo.*;
 import com.example.modules.user.utils.Consts;
 import com.example.modules.user.utils.TokenUtil;
 import com.example.utils.R;
@@ -31,14 +33,26 @@ import java.util.Random;
 
 @Slf4j
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+//    @Autowired
+//    private UserService userService;
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
+    private StuInfoMapper stuInfoMapper;
+
+    @Autowired
+    private SchoolMapper schoolMapper;
+
+    @Autowired
+    private ProfessionMapper professionMapper;
 
     @PostMapping("/login")
     @CrossOrigin
@@ -46,7 +60,7 @@ public class UserController {
 
         LambdaQueryWrapper<User> queryWrapper=new LambdaQueryWrapper<>();
         queryWrapper.eq(User::getPhone,user.getPhone());
-        User user1=userService.getOne(queryWrapper);//数据库user
+         User user1=userMapper.selectOne(queryWrapper);
         if (user1==null){
             return R.error("用户不存在",400);
         }
@@ -55,7 +69,9 @@ public class UserController {
             return R.error("密码错误",400);
         }
 
-        request.getSession().setAttribute(Consts.SESSION_USER,user1.getId());
+        ValueOperations<String,String> redis=redisTemplate.opsForValue();
+        redis.set(Consts.REDIS_USER,user1.getId());
+//        request.getSession().setAttribute(Consts.SESSION_USER,user1.getId());
         System.out.println("登陆成功");
 
         //token
@@ -80,14 +96,15 @@ public class UserController {
         User user=new User();
         user.setPhone(userSms.getPhone());
         user.setPassword(userSms.getPassword());
-        userService.save(user);
+//        userService.save(user);
+        userMapper.updateById(user);
         return R.success(null,"注册成功",400);
     }
 
     //短信发送
     @GetMapping("/sendCode/{phone}")
     @CrossOrigin
-    public R<Smss> duanxin(HttpServletRequest requests, @PathVariable String phone){
+    public R<Smss> duanxin(HttpServletRequest requests,@PathVariable String phone){
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI5tSKh58f7gFHg2qpfw7k", "FgCcfuYtsoTAEgrzg2LfJhbP1ReDy0");
         IAcsClient client = new DefaultAcsClient(profile);
         Random random=new Random();
@@ -117,24 +134,40 @@ public class UserController {
         return R.success(smss,"短信发送成功",200);
     }
 
+    //退出
     @PostMapping("/logout")
     @CrossOrigin
     public R<String> logout(HttpServletRequest request){
         //清理Session中保存的当前登录员工的id
-        request.getSession().removeAttribute(Consts.SESSION_USER);
+//        request.getSession().removeAttribute(Consts.SESSION_USER);
+        ValueOperations<String,String> redis=redisTemplate.opsForValue();
+        redis.set(Consts.REDIS_USER,"dont");
         return R.success(null,"退出成功",200);
     }
 
     @GetMapping("/getUserInfo")//获取用户信息
     @CrossOrigin
-    public R<User> UserInfo(HttpServletRequest request){
-        Long userid= (Long) request.getSession().getAttribute(Consts.SESSION_USER);
-        if(userid==null){
+    public R<UserInfoLt> UserInfo(HttpServletRequest request){
+//        Long userid= (Long) request.getSession().getAttribute(Consts.SESSION_USER);
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userid=redis.get(Consts.REDIS_USER);
+        System.out.println("==========="+userid);
+        if(userid.equals("dont")){
             return R.error("请先登录",200);
         }
-        User user = userService.getById(userid);
-        return R.success(user,"获取成功",200);
+        UserInfoLt userInfoLt = userMapper.userinfo(userid);
+
+        return R.success(userInfoLt,"获取成功",200);
     }
+
+    //根据id差用户
+    @GetMapping("/getUserById/{userId}")
+    @CrossOrigin
+    public R<User> getUserById(@PathVariable("userid") String userid){
+        User user = userMapper.selectById(userid);
+        return R.success(user,"获取信息成功",200);
+    }
+
 
     //忘记密码，获取验证码后，然后修改密码
     @PostMapping("/setpas")
@@ -147,9 +180,148 @@ public class UserController {
         }
 
         LambdaUpdateWrapper<User> wrapper=new LambdaUpdateWrapper();
-        wrapper.eq(User::getPhone,userSms.getPhone()).set(User::getPassword,userSms.getPassword());
-        userService.update(wrapper);
+//        wrapper.eq(User::getPhone,userSms.getPhone()).set(User::getPassword,userSms.getPassword());
+//        userService.update(wrapper);
+        wrapper.eq(User::getPhone,userSms.getPhone());
+        User user = userMapper.selectOne(wrapper);
+        user.setPassword(userSms.getPassword());
+        userMapper.updateById(user);
 
         return R.success(null,"修改密码成功",200);
+    }
+
+
+    //修改性别
+    @PutMapping("/upsex/{sex}")
+    @CrossOrigin
+    public R<String> upSex(@PathVariable("sex") int sex){
+        ValueOperations<String,String> redis=redisTemplate.opsForValue();
+        String userid=redis.get(Consts.REDIS_USER);
+        User user=userMapper.selectById(userid);
+        System.out.println("++++++++++++++++++++++");
+        System.out.println(user);
+        user.setSex(sex);
+        userMapper.updateById(user);
+        return R.success(null,"修改性别成功",200);
+    }
+
+    //修改性别
+    @PutMapping("/upage/{age}")
+    @CrossOrigin
+    public R<String> upAge(@PathVariable("age") int age){
+        ValueOperations<String,String> redis=redisTemplate.opsForValue();
+        String userid=redis.get(Consts.REDIS_USER);
+        User user=userMapper.selectById(userid);
+        user.setAge(age);
+        userMapper.updateById(user);
+        return R.success(null,"修改年龄成功",200);
+    }
+
+    //修改自我介绍
+    @PutMapping("/upintroduction/{introduction}")
+    @CrossOrigin
+    public R<String> upintroduction(@PathVariable("introduction") String introduction){
+        ValueOperations<String,String> redis=redisTemplate.opsForValue();
+        String userid=redis.get(Consts.REDIS_USER);
+        User user=userMapper.selectById(userid);
+        System.out.println("++++++++++++++++++++++");
+        System.out.println(user);
+        user.setIntroduction(introduction);
+        userMapper.updateById(user);
+        return R.success(null,"修改自我介绍成功",200);
+    }
+
+    //修改我的学校
+    @PutMapping("/upschool/{schoolname}")
+    @CrossOrigin
+    public R<String> upAge(@PathVariable("schoolname") String schoolname){
+        ValueOperations<String,String> redis=redisTemplate.opsForValue();
+        String userid=redis.get(Consts.REDIS_USER);
+
+        User user = userMapper.selectById(userid);
+
+        LambdaQueryWrapper<School> wrapper=new LambdaQueryWrapper<>();
+        wrapper.eq(School::getName,schoolname);
+        School school = schoolMapper.selectOne(wrapper);
+        String scId=school.getId();
+
+        LambdaQueryWrapper<StuInfo> swrapper=new LambdaQueryWrapper<>();
+        swrapper.eq(StuInfo::getStuNum,user.getStuInfoId());
+        StuInfo stuInfo=stuInfoMapper.selectOne(swrapper);
+        stuInfo.setSchId(scId);
+        stuInfoMapper.updateById(stuInfo);
+
+        return R.success(null,"修改学校成功",200);
+    }
+
+    //修改专业
+    @PutMapping("/upprofession/{professionname}")
+    @CrossOrigin
+    public R<String> upProfession(@PathVariable("professionname") String professionname){
+        ValueOperations<String,String> redis=redisTemplate.opsForValue();
+        String userid=redis.get(Consts.REDIS_USER);
+
+        User user = userMapper.selectById(userid);
+
+        LambdaQueryWrapper<Profession> wrapper=new LambdaQueryWrapper<>();
+        wrapper.eq(Profession::getName,professionname);
+        Profession profession = professionMapper.selectOne(wrapper);
+        String prId=profession.getId();
+
+        LambdaQueryWrapper<StuInfo> swrapper=new LambdaQueryWrapper<>();
+        swrapper.eq(StuInfo::getStuNum,user.getStuInfoId());
+        StuInfo stuInfo=stuInfoMapper.selectOne(swrapper);
+        stuInfo.setProfId(prId);
+        stuInfoMapper.updateById(stuInfo);
+
+        return R.success(null,"修改专业成功",200);
+    }
+
+    //修改入学日期
+    @PutMapping("/upTime/{scTime}")
+    @CrossOrigin
+    public R<String> upTime(@PathVariable("scTime") String scTime){
+        ValueOperations<String,String> redis=redisTemplate.opsForValue();
+        String userid=redis.get(Consts.REDIS_USER);
+
+        User user = userMapper.selectById(userid);
+        user.setSchoolTime(scTime);
+        userMapper.updateById(user);
+
+        return R.success(null,"更新时间成功",200);
+    }
+
+    //删除学校，和入学时间
+    @DeleteMapping("/deletSchoolTime")
+    @CrossOrigin
+    public R<String> deletSchoolTime(){
+        ValueOperations<String,String> redis=redisTemplate.opsForValue();
+        String userid=redis.get(Consts.REDIS_USER);
+
+        User user = userMapper.selectById(userid);
+        String stuId=user.getStuInfoId();
+
+        user.setSchoolTime("");
+        userMapper.updateById(user);
+
+        LambdaQueryWrapper<StuInfo> wrapper=new LambdaQueryWrapper<>();
+        wrapper.eq(StuInfo::getStuNum,stuId);
+        StuInfo stuInfo = stuInfoMapper.selectOne(wrapper);
+        stuInfo.setSchId("100");
+        stuInfoMapper.updateById(stuInfo);
+
+        return R.success(null,"删除学校信息成功",200);
+    }
+
+    //上传头像
+    @PutMapping("/upHeadAddress/{headAddress}")
+    @CrossOrigin
+    public R<String> upHeadAddress(String headAddress){
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userId=redis.get(Consts.REDIS_USER);
+        User user = userMapper.selectById(userId);
+        user.setHeadaddress(headAddress);
+        userMapper.updateById(user);
+        return R.success(null,"头像上传成功",200);
     }
 }

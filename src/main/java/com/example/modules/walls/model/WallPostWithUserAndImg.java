@@ -2,24 +2,19 @@ package com.example.modules.walls.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.*;
-
-import java.util.Date;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Date;
+
 /**
- * <p>
- * 表白墙帖子表
- * </p>
- *
  * @author mushan
- * @since 2022-07-25
+ * @date 8/4/2022
+ * @apiNote
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class WallPost implements Serializable {
-
+public class WallPostWithUserAndImg {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -35,6 +30,10 @@ public class WallPost implements Serializable {
     @JSONField(name = "user_id")
     private String userId;
 
+    private String headaddress;
+
+    private String nickname;
+
     /**
      * 标题
      */
@@ -48,6 +47,11 @@ public class WallPost implements Serializable {
     private String content;
 
     /**
+     * HeadImg
+     */
+    private String headImg;
+
+    /**
      * 喜欢数量
      */
     @JSONField(name = "like_count")
@@ -58,11 +62,6 @@ public class WallPost implements Serializable {
      */
     @JSONField(name = "comments_count")
     private Integer commentsCount;
-
-    /**
-     * HeadImg
-     */
-    private String headImg;
 
     /**
      * 乐观锁
