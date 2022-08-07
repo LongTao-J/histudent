@@ -1031,3 +1031,678 @@ Caused by: java.net.NoRouteToHostException: No route to host: connect
 2022-08-06 14:41:38 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 8.574 seconds (JVM running for 9.594)
 2022-08-06 14:41:41 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
 2022-08-06 14:41:41 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-06 15:14:58 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 20184 (started by ÁúÌÎ05664416459 in F:\git-histudent\histudent)
+2022-08-06 15:14:58 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-06 15:14:58 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-06 15:15:01 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-06 15:15:02 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-06 15:15:02 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-06 15:15:03 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-06 15:15:03 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-06 15:15:03 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-06 15:15:06 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 8.659 seconds (JVM running for 9.719)
+2022-08-06 15:15:09 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-06 15:15:09 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-06 15:15:18 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 21300 (started by ÁúÌÎ05664416459 in F:\git-histudent\histudent)
+2022-08-06 15:15:18 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-06 15:15:18 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-06 15:15:21 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-06 15:15:22 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-06 15:15:22 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-06 15:15:23 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-06 15:15:23 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-06 15:15:23 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-06 15:15:26 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 8.584 seconds (JVM running for 9.506)
+2022-08-06 15:15:28 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-06 15:15:28 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-06 15:32:46 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 17212 (started by ÁúÌÎ05664416459 in F:\git-histudent\histudent)
+2022-08-06 15:32:46 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-06 15:32:46 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-06 15:32:49 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-06 15:32:51 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-06 15:32:51 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-06 15:32:51 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-06 15:32:51 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-06 15:32:51 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-06 15:32:55 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 8.701 seconds (JVM running for 9.845)
+2022-08-06 15:32:58 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-06 15:32:58 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-06 15:33:07 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 19260 (started by ÁúÌÎ05664416459 in F:\git-histudent\histudent)
+2022-08-06 15:33:07 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-06 15:33:07 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-06 15:33:10 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-06 15:33:12 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-06 15:33:12 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-06 15:33:12 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-06 15:33:12 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-06 15:33:12 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-06 15:33:16 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 8.933 seconds (JVM running for 9.86)
+2022-08-06 15:33:18 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-06 15:33:18 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-06 15:46:47 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 1384 (started by ÁúÌÎ05664416459 in F:\git-histudent\histudent)
+2022-08-06 15:46:47 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-06 15:46:47 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-06 15:46:50 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-06 15:46:52 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-06 15:46:52 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-06 15:46:53 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-06 15:46:53 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-06 15:46:54 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-06 15:46:58 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 11.666 seconds (JVM running for 13.288)
+2022-08-06 15:47:01 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-06 15:47:01 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-06 15:47:20 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 20816 (started by ÁúÌÎ05664416459 in F:\git-histudent\histudent)
+2022-08-06 15:47:20 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-06 15:47:20 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-06 15:47:22 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-06 15:47:26 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-06 15:47:26 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-06 15:47:26 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-06 15:47:26 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-06 15:47:27 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-06 15:47:30 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 10.429 seconds (JVM running for 11.387)
+2022-08-06 15:47:33 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-06 15:47:33 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-06 15:58:36 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-06 15:58:36 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-06 15:58:48 [main]**************** INFO  com.example.HistudentApplication - Starting HistudentApplication using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 16520 (F:\git-histudent\histudent\target\classes started by é¾™æ¶›05664416459 in F:\git-histudent\histudent)
+2022-08-06 15:58:48 [main]**************** DEBUG com.example.HistudentApplication - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-06 15:58:48 [main]**************** INFO  com.example.HistudentApplication - The following 1 profile is active: "dev"
+2022-08-06 15:58:51 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2022-08-06 15:58:51 [main]**************** INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-08-06 15:58:51 [main]**************** INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.64]
+2022-08-06 15:58:51 [main]**************** INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-08-06 15:58:52 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-06 15:58:55 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-06 15:58:55 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-06 15:58:55 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-06 15:58:56 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-06 15:58:56 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-06 15:59:00 [main]**************** INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2022-08-06 15:59:00 [main]**************** INFO  com.example.HistudentApplication - Started HistudentApplication in 12.629 seconds (JVM running for 13.826)
+2022-08-06 15:59:40 [RMI TCP Accept-0]**************** WARN  sun.rmi.transport.tcp - RMI TCP Accept-0: accept loop for ServerSocket[addr=0.0.0.0/0.0.0.0,localport=54623] throws
+java.io.IOException: The server sockets created using the LocalRMIServerSocketFactory only accept connections from clients running on the host where the RMI remote objects have been exported.
+	at sun.management.jmxremote.LocalRMIServerSocketFactory$1.accept(LocalRMIServerSocketFactory.java:114)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:405)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:377)
+	at java.lang.Thread.run(Thread.java:748)
+2022-08-06 16:00:15 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 18108 (started by ÁúÌÎ05664416459 in F:\git-histudent\histudent)
+2022-08-06 16:00:15 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-06 16:00:15 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-06 16:00:19 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-06 16:00:19 [Druid-ConnectionPool-Create-1165023158]**************** ERROR com.alibaba.druid.pool.DruidDataSource - create connection SQLException, url: jdbc:mysql://121.41.227.139:7004/hi_student, errorCode 0, state 08S01
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:118)
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:764)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:232)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1645)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1709)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2813)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 11 common frames omitted
+Caused by: java.net.NoRouteToHostException: No route to host: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:75)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 14 common frames omitted
+2022-08-06 16:00:19 [Druid-ConnectionPool-Create-1165023158]**************** ERROR com.alibaba.druid.pool.DruidDataSource - create connection SQLException, url: jdbc:mysql://121.41.227.139:7004/hi_student, errorCode 0, state 08S01
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:118)
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:764)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:232)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1645)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1709)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2813)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 11 common frames omitted
+Caused by: java.net.NoRouteToHostException: No route to host: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:75)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 14 common frames omitted
+2022-08-06 16:00:19 [Druid-ConnectionPool-Create-1165023158]**************** INFO  com.alibaba.druid.pool.DruidAbstractDataSource - {dataSource-1} failContinuous is true
+2022-08-06 16:00:20 [Druid-ConnectionPool-Create-1165023158]**************** ERROR com.alibaba.druid.pool.DruidDataSource - create connection SQLException, url: jdbc:mysql://121.41.227.139:7004/hi_student, errorCode 0, state 08S01
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:118)
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:764)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:232)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1645)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1709)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2813)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 11 common frames omitted
+Caused by: java.net.NoRouteToHostException: No route to host: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:75)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 14 common frames omitted
+2022-08-06 16:00:20 [Druid-ConnectionPool-Create-1165023158]**************** ERROR com.alibaba.druid.pool.DruidDataSource - create connection SQLException, url: jdbc:mysql://121.41.227.139:7004/hi_student, errorCode 0, state 08S01
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:118)
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:764)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:232)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1645)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1709)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2813)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 11 common frames omitted
+Caused by: java.net.NoRouteToHostException: No route to host: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:75)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 14 common frames omitted
+2022-08-06 16:00:21 [Druid-ConnectionPool-Create-1165023158]**************** ERROR com.alibaba.druid.pool.DruidDataSource - create connection SQLException, url: jdbc:mysql://121.41.227.139:7004/hi_student, errorCode 0, state 08S01
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:118)
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:764)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:232)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1645)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1709)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2813)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 11 common frames omitted
+Caused by: java.net.NoRouteToHostException: No route to host: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:75)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 14 common frames omitted
+2022-08-06 16:00:21 [Druid-ConnectionPool-Create-1165023158]**************** ERROR com.alibaba.druid.pool.DruidDataSource - create connection SQLException, url: jdbc:mysql://121.41.227.139:7004/hi_student, errorCode 0, state 08S01
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:118)
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:764)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:232)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1645)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1709)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2813)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 11 common frames omitted
+Caused by: java.net.NoRouteToHostException: No route to host: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:75)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 14 common frames omitted
+2022-08-06 16:00:22 [Druid-ConnectionPool-Create-1165023158]**************** ERROR com.alibaba.druid.pool.DruidDataSource - create connection SQLException, url: jdbc:mysql://121.41.227.139:7004/hi_student, errorCode 0, state 08S01
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:118)
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:764)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:232)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1645)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1709)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2813)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 11 common frames omitted
+Caused by: java.net.NoRouteToHostException: No route to host: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:75)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 14 common frames omitted
+2022-08-06 16:00:22 [Druid-ConnectionPool-Create-1165023158]**************** ERROR com.alibaba.druid.pool.DruidDataSource - create connection SQLException, url: jdbc:mysql://121.41.227.139:7004/hi_student, errorCode 0, state 08S01
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:118)
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:764)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:232)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1645)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1709)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2813)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 11 common frames omitted
+Caused by: java.net.NoRouteToHostException: No route to host: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:75)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 14 common frames omitted
+2022-08-06 16:00:23 [Druid-ConnectionPool-Create-1165023158]**************** ERROR com.alibaba.druid.pool.DruidDataSource - create connection SQLException, url: jdbc:mysql://121.41.227.139:7004/hi_student, errorCode 0, state 08S01
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:118)
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:764)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:232)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1645)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1709)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2813)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 11 common frames omitted
+Caused by: java.net.NoRouteToHostException: No route to host: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:75)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 14 common frames omitted
+2022-08-06 16:00:23 [Druid-ConnectionPool-Create-1165023158]**************** ERROR com.alibaba.druid.pool.DruidDataSource - create connection SQLException, url: jdbc:mysql://121.41.227.139:7004/hi_student, errorCode 0, state 08S01
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:118)
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:764)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:232)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1645)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1709)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2813)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 11 common frames omitted
+Caused by: java.net.NoRouteToHostException: No route to host: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:75)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 14 common frames omitted
+2022-08-06 16:00:24 [Druid-ConnectionPool-Create-1165023158]**************** ERROR com.alibaba.druid.pool.DruidDataSource - create connection SQLException, url: jdbc:mysql://121.41.227.139:7004/hi_student, errorCode 0, state 08S01
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:118)
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:764)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:232)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1645)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1709)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2813)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 11 common frames omitted
+Caused by: java.net.NoRouteToHostException: No route to host: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:75)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 14 common frames omitted
+2022-08-06 16:00:24 [Druid-ConnectionPool-Create-1165023158]**************** ERROR com.alibaba.druid.pool.DruidDataSource - create connection SQLException, url: jdbc:mysql://121.41.227.139:7004/hi_student, errorCode 0, state 08S01
+com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828)
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:448)
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:198)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:118)
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:764)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:232)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:112)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1645)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1709)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2813)
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:105)
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:151)
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:167)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:89)
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:120)
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:948)
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:818)
+	... 11 common frames omitted
+Caused by: java.net.NoRouteToHostException: No route to host: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:75)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:476)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:218)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:200)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:162)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:394)
+	at java.net.Socket.connect(Socket.java:606)
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:153)
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:63)
+	... 14 common frames omitted
+2022-08-06 16:00:32 [Druid-ConnectionPool-Create-1165023158]**************** INFO  com.alibaba.druid.pool.DruidAbstractDataSource - {dataSource-1} failContinuous is false
+2022-08-06 16:00:32 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-06 16:00:32 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-06 16:00:33 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-06 16:00:33 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-06 16:00:34 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-06 16:00:38 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 23.428 seconds (JVM running for 25.045)
+2022-08-06 16:00:45 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-06 16:00:45 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-06 16:00:59 [main]**************** INFO  com.example.HistudentApplicationTests - Starting HistudentApplicationTests using Java 1.8.0_301 on LAPTOP-NM7AET7F with PID 22688 (started by ÁúÌÎ05664416459 in F:\git-histudent\histudent)
+2022-08-06 16:00:59 [main]**************** DEBUG com.example.HistudentApplicationTests - Running with Spring Boot v2.7.1, Spring v5.3.21
+2022-08-06 16:00:59 [main]**************** INFO  com.example.HistudentApplicationTests - The following 1 profile is active: "dev"
+2022-08-06 16:01:02 [main]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2022-08-06 16:01:05 [main]**************** INFO  org.hibernate.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-08-06 16:01:06 [main]**************** INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-08-06 16:01:06 [main]**************** INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-08-06 16:01:06 [main]**************** INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-08-06 16:01:07 [main]**************** INFO  o.h.e.t.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-08-06 16:01:11 [main]**************** INFO  com.example.HistudentApplicationTests - Started HistudentApplicationTests in 12.947 seconds (JVM running for 14.565)
+2022-08-06 16:01:20 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-06 16:01:20 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
+2022-08-06 18:48:03 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2022-08-06 18:48:03 [SpringApplicationShutdownHook]**************** INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
