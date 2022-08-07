@@ -75,6 +75,10 @@ public class WallPostController {
     public R<Object> uploadFile(@RequestBody ImgUrl imgUrl){
         try{
             images.add(imgUrl.getImgUrl());
+            System.out.println("///////////////////////////////////"+imgUrl.getImgUrl()+"////////////////////////");
+            for (String s:images){
+                System.out.println("99999999==========++++++++:"+s);
+            }
             return R.success(images,"图像上传成功",200);
         }catch (Exception e){
             return R.error();
@@ -94,6 +98,7 @@ public class WallPostController {
         String wallPostId = wallPost.getId();
         wallPostFileServiceImpl.insertImgList(wallPostId, images);
         if(!images.isEmpty()){
+            System.out.println("=============== "+images.get(0));
             wallPost.setHeadImg(images.get(0));
             wallPostServiceImpl.updateById(wallPost);
         }
