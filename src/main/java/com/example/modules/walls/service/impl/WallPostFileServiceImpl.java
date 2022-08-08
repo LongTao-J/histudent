@@ -31,8 +31,9 @@ public class WallPostFileServiceImpl extends ServiceImpl<WallPostFileMapper, Wal
     @Transactional
     public void insertImgList(String wallPostId, List<String> images) {
         try {
-            WallPostFile wallPostFile = new WallPostFile();
             for(String it : images){
+                WallPostFile wallPostFile = new WallPostFile();
+                System.out.println("++++++++++++"+wallPostFile.getId()+"+++++++++++++");
                 wallPostFile.setWallPostId(wallPostId);
                 wallPostFile.setUrl(it);
                 wallPostFileMapper.insert(wallPostFile);
