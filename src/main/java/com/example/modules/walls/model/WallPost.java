@@ -77,7 +77,6 @@ public class WallPost implements Serializable {
      * 创建时间
      */
     @JSONField(name = "gmt_create")
-    @JsonFormat(timezone = "GMT+8")
     @TableField(fill = FieldFill.INSERT)
     private Date gmtCreate;
 
@@ -85,7 +84,6 @@ public class WallPost implements Serializable {
      * 修改时间
      */
     @JSONField(name = "gmt_modified")
-    @JsonFormat(timezone = "GMT+8")
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date gmtModified;
 }
