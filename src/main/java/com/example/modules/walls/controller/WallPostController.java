@@ -60,6 +60,17 @@ public class WallPostController {
         return R.success(wallPosts);
     }
 
+    @PutMapping("/put/delete/img-cache}")
+    @CrossOrigin
+    public R<Object> queryWallPostListByTitle(){
+        try{
+            images.clear();
+            return R.success(null);
+        }catch (Exception e){
+            return R.error();
+        }
+    }
+
     @GetMapping("/get/list/by-user/")
     @CrossOrigin
     public R<Object> queryWallPostListByUserId(){
