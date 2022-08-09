@@ -60,7 +60,7 @@ public class WallPostController {
         return R.success(wallPosts);
     }
 
-    @PutMapping("/put/delete/img-cache}")
+    @PutMapping("/put/delete/img-cache")
     @CrossOrigin
     public R<Object> queryWallPostListByTitle(){
         try{
