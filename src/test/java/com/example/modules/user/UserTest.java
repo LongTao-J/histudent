@@ -1,21 +1,11 @@
 package com.example.modules.user;
 
-import com.aliyuncs.DefaultAcsClient;
-import com.aliyuncs.IAcsClient;
-import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
-import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
-import com.aliyuncs.exceptions.ClientException;
-import com.aliyuncs.exceptions.ServerException;
-import com.aliyuncs.profile.DefaultProfile;
+import com.example.modules.user.mapper.ToDoListMapper;
+import com.example.modules.user.pojo.Todolist;
 import com.example.modules.walls.mapper.WallPostFileMapper;
-import com.example.modules.walls.model.WallPostFile;
-import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootTest
 public class UserTest {
@@ -58,5 +48,16 @@ public class UserTest {
 //        wallPostFile.setUrl("12312xexx");
 //        wallPostFileMapper.insert(wallPostFile);
 
+    }
+
+    @Autowired
+    ToDoListMapper toDoListMapper;
+
+    @Test
+    void test03(){
+//        Todolist toDoList = new Todolist();
+//        toDoList.setUserId("12");
+//        toDoList.setTitle("qwert");
+//        toDoListMapper.insert(toDoList);
     }
 }
