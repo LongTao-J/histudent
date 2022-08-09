@@ -30,6 +30,7 @@ public class DepartmentsController {
 
 
     @PutMapping(value = "/update/{id}/{name}")
+    @CrossOrigin
     public R<String> updateDepartments(@PathVariable("id") String id, @PathVariable("name") String name) {
         Departments departments = new Departments(id, name);
         int code = departmentsMapper.updateById(departments);
@@ -40,6 +41,7 @@ public class DepartmentsController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
+    @CrossOrigin
     public R<String> deleteDepartments(@PathVariable("id") String id) {
         QueryWrapper<Profession> queryWrapper2 = new QueryWrapper<>();
         queryWrapper2.eq("dep_id", id);
@@ -55,11 +57,13 @@ public class DepartmentsController {
     }
 
     @GetMapping(value = "/get/{id}")
+    @CrossOrigin
     public R<Departments> queryDepartmentsById(@PathVariable("id") String id){
         return R.success(departmentsMapper.selectById(id));
     }
 
     @GetMapping(value = "/getAll/{sch_id}")
+    @CrossOrigin
     public R<List<Departments>> queryDepartmentsAll(@PathVariable("sch_id") String id){
         QueryWrapper<Departments> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("sch_id", id);

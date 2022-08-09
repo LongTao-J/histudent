@@ -30,6 +30,7 @@ public class CourseController {
 
     // 查找课表
     @GetMapping("/get")
+    @CrossOrigin
     public R<List<Course>> autoAddCourse() {
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String userId = redis.get(Consts.REDIS_USER);
@@ -43,6 +44,7 @@ public class CourseController {
 
     // 自动导入课表
     @PostMapping("/autoadd/{year}/{cnt}/{username}/{password}")
+    @CrossOrigin
     public R<List<Course>> autoAddCourse(
                                    @PathVariable("year") String year,
                                    @PathVariable("cnt") String cnt,
@@ -79,6 +81,7 @@ public class CourseController {
 
     // 手动导入课表
     @PostMapping("/add")
+    @CrossOrigin
     public R<Course> addCourse(@RequestBody Course course) {
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String userId=redis.get(Consts.REDIS_USER);
@@ -92,6 +95,7 @@ public class CourseController {
 
     // 更新课表
     @PutMapping("/update")
+    @CrossOrigin
     public R<Course> updateCourse(@RequestBody Course course) {
         int code = mapper.updateById(course);
         if(code == 1)
@@ -102,6 +106,7 @@ public class CourseController {
 
     // 删除所有课程
     @DeleteMapping("/deleteList")
+    @CrossOrigin
     public R<String> deleteListCourse() {
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String userId=redis.get(Consts.REDIS_USER);
@@ -111,6 +116,7 @@ public class CourseController {
 
     // 删除课程
     @DeleteMapping("/delete/{id}")
+    @CrossOrigin
     public R<String> deleteCourse(@PathVariable("id") String id) {
         int code = mapper.deleteById(id);
         if(code == 1)

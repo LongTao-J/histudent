@@ -1,6 +1,7 @@
 package com.example.modules.materials.pojo;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class Materials {
     private String userId;
 
     @TableField(value = "createTime",fill = FieldFill.INSERT_UPDATE)
+    @JsonFormat(timezone = "GMT+8")
     private Date createTime;
 
     public Materials(String title, String tag, String name, String url, String icon, String userId) {

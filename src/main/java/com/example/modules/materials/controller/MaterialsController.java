@@ -28,6 +28,7 @@ public class MaterialsController {
 
     // 按标签查找资料
     @GetMapping("/get/{tag}")
+    @CrossOrigin
     public R<List<Materials>> getByTag(@PathVariable("tag") String tag) {
         Map<String, Object> columnMap = new HashMap<>();
         columnMap.put("tag", tag);
@@ -40,6 +41,7 @@ public class MaterialsController {
 
     // 按name(资料名称)模糊查找资料
     @GetMapping("/like/{name}")
+    @CrossOrigin
     public R<List<Materials>> getByNameLikeList(@PathVariable("name") String name) {
         List<Materials> list = mapper.queryByNameLikeList(name);
         if(list != null)
@@ -50,6 +52,7 @@ public class MaterialsController {
 
     // 按id查找资料
     @GetMapping("/getId/{id}")
+    @CrossOrigin
     public R<Materials> getById(@PathVariable("id") String id) {
         Materials materials = mapper.selectById(id);
         if(materials != null)
@@ -60,6 +63,7 @@ public class MaterialsController {
 
     // 添加资料
     @PostMapping("/add")
+    @CrossOrigin
     public R<Materials> addMaterial(@RequestBody Materials material) {
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String userId=redis.get(Consts.REDIS_USER);
@@ -74,6 +78,7 @@ public class MaterialsController {
 
     // 更新资料
     @PutMapping("/update")
+    @CrossOrigin
     public R<Materials> updateMaterial(@RequestBody Materials material) {
         material.setCreateTime(new Date());
         int code = mapper.updateById(material);
@@ -85,6 +90,7 @@ public class MaterialsController {
 
     // 删除资料
     @DeleteMapping("/delete/{id}")
+    @CrossOrigin
     public R<String> deleteMaterial(@PathVariable("id") String id) {
         int code = mapper.deleteById(id);
         if(code == 1)

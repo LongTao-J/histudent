@@ -31,6 +31,7 @@ public class ProfessionController {
 
     // 整体加入
     @PostMapping(value = "/add/{school}/{departments}/{profession}")
+    @CrossOrigin
     public R<String> addProfession(
             @PathVariable("school") String sch,
             @PathVariable("departments") String dep,
@@ -68,6 +69,7 @@ public class ProfessionController {
     }
 
     @PutMapping(value = "/update/{id}/{name}")
+    @CrossOrigin
     public R<String> updateProfession(@PathVariable("id") String id, @PathVariable("name") String name) {
         Profession profession = new Profession(id, name);
         int code = professionMapper.updateById(profession);
@@ -78,6 +80,7 @@ public class ProfessionController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
+    @CrossOrigin
     public R<String> deleteProfession(@PathVariable("id") String id) {
         int code = professionMapper.deleteById(id);
         if(code == 1)
@@ -87,11 +90,13 @@ public class ProfessionController {
     }
 
     @GetMapping(value = "/get/{id}")
+    @CrossOrigin
     public R<Profession> queryProfessionById(@PathVariable("id") String id){
         return R.success(professionMapper.selectById(id));
     }
 
     @GetMapping(value = "/getAll/{dep_id}")
+    @CrossOrigin
     public R<List<Profession>> queryProfessionAll(@PathVariable("dep_id") String id){
         QueryWrapper<Profession> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("dep_id", id);

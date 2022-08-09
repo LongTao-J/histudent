@@ -31,6 +31,7 @@ public class SchoolController {
 
     // 添加学校信息
     @PostMapping(value = "/add/{name}")
+    @CrossOrigin
     public R<String> addSchool(@PathVariable("name") String name) {
         School school = new School(name);
         int code = schoolMapper.insert(school);
@@ -41,6 +42,7 @@ public class SchoolController {
     }
     // 修改
     @PutMapping(value = "/update/{id}/{name}")
+    @CrossOrigin
     public R<String> updateSchool(@PathVariable("id") String id, @PathVariable("name") String name) {
         School school = new School(id, name);
         int code = schoolMapper.updateById(school);
@@ -52,6 +54,7 @@ public class SchoolController {
 
     // 删除
     @DeleteMapping(value = "/delete/{id}")
+    @CrossOrigin
     public R<String> deleteSchool(@PathVariable("id") String id) {
         QueryWrapper<Departments> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("sch_id", id);
@@ -74,12 +77,14 @@ public class SchoolController {
 
     // 根据id获取信息
     @GetMapping(value = "/get/{id}")
+    @CrossOrigin
     public R<School> querySchoolById(@PathVariable("id") String id){
         return R.success(schoolMapper.selectById(id));
     }
 
     // 获取所有学校信息
     @GetMapping(value = "/getAll")
+    @CrossOrigin
     public R<List<School>> querySchoolAll(){
         return R.success(schoolMapper.selectList());
     }
