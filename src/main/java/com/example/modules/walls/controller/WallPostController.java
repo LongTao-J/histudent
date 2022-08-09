@@ -60,6 +60,17 @@ public class WallPostController {
         return R.success(wallPosts);
     }
 
+    @PutMapping("/put/delete/img-cache")
+    @CrossOrigin
+    public R<Object> queryWallPostListByTitle(){
+        try{
+            images.clear();
+            return R.success(null);
+        }catch (Exception e){
+            return R.error();
+        }
+    }
+
     @GetMapping("/get/list/by-user/")
     @CrossOrigin
     public R<Object> queryWallPostListByUserId(){
@@ -74,11 +85,7 @@ public class WallPostController {
     @CrossOrigin
     public R<Object> uploadFile(@RequestBody ImgUrl imgUrl){
         try{
-            images.add(imgUrl.getImgUrl());
-            System.out.println("///////////////////////////////////"+imgUrl.getImgUrl()+"////////////////////////");
-            for (String s:images){
-                System.out.println("99999999==========++++++++:"+s);
-            }
+            images.add(imgUrl.getImageUrl());
             return R.success(images,"图像上传成功",200);
         }catch (Exception e){
             return R.error();
@@ -102,6 +109,7 @@ public class WallPostController {
             wallPost.setHeadImg(images.get(0));
             wallPostServiceImpl.updateById(wallPost);
         }
+        images.clear();
         return R.success(null);
     }
 }

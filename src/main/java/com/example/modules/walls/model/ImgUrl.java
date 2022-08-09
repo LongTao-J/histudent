@@ -8,5 +8,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ImgUrl {
-    private String ImgUrl;
+    private String imageUrl;
 }
