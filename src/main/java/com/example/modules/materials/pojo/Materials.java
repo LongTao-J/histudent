@@ -23,7 +23,6 @@ public class Materials {
     private String userId;
 
     @TableField(value = "createTime",fill = FieldFill.INSERT_UPDATE)
-    @JsonFormat(timezone = "GMT+8")
     private Date createTime;
 
     public Materials(String title, String tag, String name, String url, String icon, String userId) {
