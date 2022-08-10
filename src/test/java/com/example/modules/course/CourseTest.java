@@ -39,7 +39,7 @@ public class CourseTest {
         System.out.println(integer + "------------------");
     }
 
-    @Test
+
     void autoInsert(){
         String userId = "2332";
         String cnt = "1";

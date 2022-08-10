@@ -1,5 +1,6 @@
 package com.example.modules.user;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.modules.user.mapper.ToDoListMapper;
 import com.example.modules.user.pojo.Todolist;
 import com.example.modules.user.pojo.User;
@@ -75,15 +76,37 @@ public class UserTest {
 //        System.out.println(byId);
     }
 
-//    @Autowired
-//    ToDoListMapper toDoListMapper;
+
+    @Test
+    void test06(){
+//        toDoListMapper.delete(null);
+    }
 
     @Test
     void test05(){
-//        Todolist todolist=new Todolist();
-//        todolist.setUserId("111111");
-//        todolist.setTitle("1231");
-//       toDoListMapper.insert(todolist);
-//        System.out.println(todolist.isCompleted());
+        for (int i=0;i<10;i++){
+            String x= String.valueOf(i*99);
+            Todolist todolist=new Todolist();
+            todolist.setUserId("1552570983563436034");
+            todolist.setTitle(x);
+            toDoListMapper.insert(todolist);
+        }
+
+    }
+
+    @Test
+    void Test06(){
+//        QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
+//        queryWrapper.eq("completed",true).eq("user_id","123");
+//        toDoListMapper.delete(queryWrapper);
+    }
+
+    @Test
+    void Test07(){
+//        QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
+//        queryWrapper.eq("user_id","1552570983563436034");
+//        List<Todolist> todolists = toDoListMapper.selectList(queryWrapper);
+//        int len=todolists.size()-1;
+//        System.out.println(todolists.get(len-0));
     }
 }

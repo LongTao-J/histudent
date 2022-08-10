@@ -51,10 +51,20 @@ public class ToDoListController {
     }
 
     //修改todo
-    @PutMapping("/update/{id}/{title}")
+    @PutMapping("/update/{index}/{title}")
     @CrossOrigin
-    public R<Todolist> upToDa(@PathVariable("id") String id, @PathVariable("title") String title){
-        Todolist toDoList = toDoListMapper.selectById(id);
+    public R<Todolist> upToDa(@PathVariable("index") int index, @PathVariable("title") String title){
+
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userid = redis.get(Consts.REDIS_USER);
+
+        QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("user_id",userid);
+        List<Todolist> todolists = toDoListMapper.selectList(queryWrapper);
+
+        String todoID=todolists.get(index).getId();
+
+        Todolist toDoList = toDoListMapper.selectById(todoID);
         toDoList.setTitle(title);
         toDoListMapper.updateById(toDoList);
 
@@ -62,22 +72,80 @@ public class ToDoListController {
     }
 
     //删除todo
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/{index}")
     @CrossOrigin
-    public R<Todolist> deleteTodo(@PathVariable("id") String id){
-        toDoListMapper.deleteById(id);
+    public R<Todolist> deleteTodo(@PathVariable("index") int index){
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userid = redis.get(Consts.REDIS_USER);
 
-        return R.success(null,"删除成功",200);
+        QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("user_id",userid);
+        List<Todolist> todolists = toDoListMapper.selectList(queryWrapper);
+        String todoID=todolists.get(index).getId();
+        //
+        Todolist todolist = toDoListMapper.selectById(todoID);
+        toDoListMapper.deleteById(todoID);
+
+        //
+        String ts= String.valueOf(index);
+
+        return R.success(todolist,ts,200);
     }
 
     //大卡todo
-    @PutMapping("/daka/{id}")
+    @PutMapping("/daka/{index}")
     @CrossOrigin
-    public R<Todolist> Daka(@PathVariable("id") String id){
-        Todolist toDoList = toDoListMapper.selectById(id);
+    public R<Todolist> Daka(@PathVariable("index") int index){
+
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userid = redis.get(Consts.REDIS_USER);
+
+        QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("user_id",userid);
+        List<Todolist> todolists = toDoListMapper.selectList(queryWrapper);
+        String todoID=todolists.get(index).getId();
+
+        Todolist toDoList = toDoListMapper.selectById(todoID);
         toDoList.setCompleted(true);
         toDoListMapper.updateById(toDoList);
 
         return R.success(toDoList,"打卡成功",200);
+    }
+    //删除所有todo
+    @DeleteMapping("/deleteAll")
+    @CrossOrigin
+    public R<String> DeleteAll(){
+        toDoListMapper.delete(null);
+        return R.success(null,"清空全部完成",200);
+    }
+
+    //删除已完成
+    @DeleteMapping("/deleteTrue")
+    @CrossOrigin
+    public R<String> DeleteTrue(){
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userid = redis.get(Consts.REDIS_USER);
+        QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("completed",true).eq("user_id",userid);
+
+        return R.success(null,"清空已完成完成",200);
+    }
+
+    //取消已完成的
+    @PutMapping("/cancelTd/{index}")
+    @CrossOrigin
+    public R<String> CancelTode(@PathVariable("index") int index){
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userid = redis.get(Consts.REDIS_USER);
+
+        QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("user_id",userid);
+        List<Todolist> todolists = toDoListMapper.selectList(queryWrapper);
+        String todoID=todolists.get(index).getId();
+        Todolist todolist = toDoListMapper.selectById(todoID);
+        todolist.setCompleted(false);
+        toDoListMapper.updateById(todolist);
+
+        return R.success(null,"取消成功",200);
     }
 }
