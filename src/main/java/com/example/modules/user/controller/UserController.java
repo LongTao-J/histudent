@@ -314,14 +314,14 @@ public class UserController {
     }
 
     //上传头像
-    @PutMapping("/upHeadAddress/{headAddress}")
+    @PostMapping("/upHeadAddress")
     @CrossOrigin
-    public R<String> upHeadAddress(String headAddress){
+    public R<String> upHeadAddress(@RequestBody HeadImage headAddress){
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String userId=redis.get(Consts.REDIS_USER);
         User user = userMapper.selectById(userId);
-        user.setHeadaddress(headAddress);
+        user.setHeadaddress(headAddress.getImgurl());
         userMapper.updateById(user);
-        return R.success(null,"头像上传成功",200);
+        return R.success(headAddress.getImgurl(),"头像上传成功",200);
     }
 }

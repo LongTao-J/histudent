@@ -46,7 +46,6 @@ public class ToDoListController {
         Todolist toDoList=new Todolist();
         toDoList.setUserId(userid);
         toDoList.setTitle(title);
-
         toDoListMapper.insert(toDoList);
         return R.success(toDoList,"创建成功",200);
     }
@@ -76,7 +75,7 @@ public class ToDoListController {
     @CrossOrigin
     public R<Todolist> Daka(@PathVariable("id") String id){
         Todolist toDoList = toDoListMapper.selectById(id);
-        toDoList.setCompleted(1);
+        toDoList.setCompleted(true);
         toDoListMapper.updateById(toDoList);
 
         return R.success(toDoList,"打卡成功",200);

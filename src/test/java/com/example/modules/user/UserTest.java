@@ -2,10 +2,15 @@ package com.example.modules.user;
 
 import com.example.modules.user.mapper.ToDoListMapper;
 import com.example.modules.user.pojo.Todolist;
+import com.example.modules.user.pojo.User;
+import com.example.modules.user.service.UserService;
 import com.example.modules.walls.mapper.WallPostFileMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootTest
 public class UserTest {
@@ -59,5 +64,26 @@ public class UserTest {
 //        toDoList.setUserId("12");
 //        toDoList.setTitle("qwert");
 //        toDoListMapper.insert(toDoList);
+    }
+
+    @Autowired
+    UserService userServiceImpl;
+
+    @Test
+    void test04(){
+//        User byId = userServiceImpl.getById("1");
+//        System.out.println(byId);
+    }
+
+//    @Autowired
+//    ToDoListMapper toDoListMapper;
+
+    @Test
+    void test05(){
+//        Todolist todolist=new Todolist();
+//        todolist.setUserId("111111");
+//        todolist.setTitle("1231");
+//       toDoListMapper.insert(todolist);
+//        System.out.println(todolist.isCompleted());
     }
 }

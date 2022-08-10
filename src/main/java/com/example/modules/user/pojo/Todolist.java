@@ -16,5 +16,5 @@ public class Todolist {
 
     private String userId;
     private String title;
-    private int completed;
+    private boolean completed;
 }
