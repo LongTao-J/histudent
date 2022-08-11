@@ -14,11 +14,6 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 import java.util.ArrayList;
 
-/**
- * @author mushan
- * @date 7/25/2022
- * @apiNote
- */
 public class Generate {
     public static void main(String[] args) {
         // 代码生成器
@@ -49,9 +44,9 @@ public class Generate {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName("walls");
+        pc.setModuleName("wall");
         pc.setParent("com.example.modules");
-        pc.setEntity("model");
+        pc.setEntity("entity");
         pc.setMapper("mapper");
         pc.setService("service");
         pc.setController("controller");
@@ -63,7 +58,7 @@ public class Generate {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
-        strategy.setInclude("wall_post_file");
+        strategy.setInclude("post_comment");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
 
