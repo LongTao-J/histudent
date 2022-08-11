@@ -5,7 +5,6 @@ import com.example.modules.user.mapper.ToDoListMapper;
 import com.example.modules.user.pojo.Todolist;
 import com.example.modules.user.pojo.User;
 import com.example.modules.user.service.UserService;
-import com.example.modules.walls.mapper.WallPostFileMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +16,7 @@ import java.util.List;
 public class UserTest {
 
     @Autowired
-    WallPostFileMapper wallPostFileMapper;
+    //WallPostFileMapper wallPostFileMapper;
 
     @Test
     void test01(){
