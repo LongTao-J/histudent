@@ -5,7 +5,7 @@ import com.example.modules.bbs.entity.dto.PostLikedCountDTO;
 import com.example.modules.bbs.entity.po.PostLike;
 import com.example.modules.bbs.enums.LikedStatusEnum;
 import com.example.modules.bbs.service.RedisService;
-import com.example.modules.bbs.utils.WallRedisKeyUtils;
+import com.example.modules.bbs.utils.BBSRedisKeyUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.Cursor;
@@ -25,53 +25,53 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public void savelikeFromRedis(String userId, String postId) {
-        String key = WallRedisKeyUtils.getLikeKey(userId, postId);
-        redisTemplate.opsForHash().put(WallRedisKeyUtils.HASH_KEY_USER_LIKE, key, LikedStatusEnum.LIKE.getCode());
+        String key = BBSRedisKeyUtils.getLikeKey(userId, postId);
+        redisTemplate.opsForHash().put(BBSRedisKeyUtils.HASH_KEY_USER_LIKE, key, LikedStatusEnum.LIKE.getCode());
     }
 
     @Override
     public void unlikeFromRedis(String userId, String postId) {
-        String key = WallRedisKeyUtils.getLikeKey(userId, postId);
-        redisTemplate.opsForHash().put(WallRedisKeyUtils.HASH_KEY_USER_LIKE, key, LikedStatusEnum.UNLIKE.getCode());
+        String key = BBSRedisKeyUtils.getLikeKey(userId, postId);
+        redisTemplate.opsForHash().put(BBSRedisKeyUtils.HASH_KEY_USER_LIKE, key, LikedStatusEnum.UNLIKE.getCode());
     }
 
     @Override
     public void deleteLikedFromRedis(String userId, String postId) {
-        String key = WallRedisKeyUtils.getLikeKey(userId, postId);
-        redisTemplate.opsForHash().delete(WallRedisKeyUtils.HASH_KEY_USER_LIKE, key);
+        String key = BBSRedisKeyUtils.getLikeKey(userId, postId);
+        redisTemplate.opsForHash().delete(BBSRedisKeyUtils.HASH_KEY_USER_LIKE, key);
     }
 
     @Override
     public void incrementLikedCount(String postId) {
-        redisTemplate.opsForHash().increment(WallRedisKeyUtils.HASH_KEY_POST_LIKED_COUNT, postId, 1);
+        redisTemplate.opsForHash().increment(BBSRedisKeyUtils.HASH_KEY_POST_LIKED_COUNT, postId, 1);
     }
 
     @Override
     public void decrementLikedCount(String postId) {
-        redisTemplate.opsForHash().increment(WallRedisKeyUtils.HASH_KEY_POST_LIKED_COUNT, postId, -1);
+        redisTemplate.opsForHash().increment(BBSRedisKeyUtils.HASH_KEY_POST_LIKED_COUNT, postId, -1);
     }
 
     @Override
     public void setLikeCountFromRedis(String postId, Integer value) {
-        redisTemplate.opsForHash().put(WallRedisKeyUtils.HASH_KEY_POST_LIKED_COUNT, postId, value);
+        redisTemplate.opsForHash().put(BBSRedisKeyUtils.HASH_KEY_POST_LIKED_COUNT, postId, value);
     }
 
     @Override
     public Integer getIsLikeFromRedis(String userId, String postId) {
-        String key = WallRedisKeyUtils.getLikeKey(userId, postId);
-        Object o = redisTemplate.opsForHash().get(WallRedisKeyUtils.HASH_KEY_USER_LIKE, key);
+        String key = BBSRedisKeyUtils.getLikeKey(userId, postId);
+        Object o = redisTemplate.opsForHash().get(BBSRedisKeyUtils.HASH_KEY_USER_LIKE, key);
         if(o == null) return null;
         else return (Integer) o;
     }
 
     @Override
     public Integer getLikedCountFromRedisByPostId(String postId) {
-        return (Integer) redisTemplate.opsForHash().get(WallRedisKeyUtils.HASH_KEY_POST_LIKED_COUNT, postId);
+        return (Integer) redisTemplate.opsForHash().get(BBSRedisKeyUtils.HASH_KEY_POST_LIKED_COUNT, postId);
     }
 
     @Override
     public List<PostLike> getLikedDataWithRemoveFromRedis() {
-        Cursor<Map.Entry<Object, Object>> cursor = redisTemplate.opsForHash().scan(WallRedisKeyUtils.HASH_KEY_USER_LIKE, ScanOptions.NONE);
+        Cursor<Map.Entry<Object, Object>> cursor = redisTemplate.opsForHash().scan(BBSRedisKeyUtils.HASH_KEY_USER_LIKE, ScanOptions.NONE);
         List<PostLike> list = new ArrayList<>();
         while(cursor.hasNext()){
             Map.Entry<Object, Object> entry = cursor.next();
@@ -86,14 +86,14 @@ public class RedisServiceImpl implements RedisService {
             list.add(postLike);
 
             // 存到List后从Redis中删除
-            redisTemplate.opsForHash().delete(WallRedisKeyUtils.HASH_KEY_USER_LIKE, key);
+            redisTemplate.opsForHash().delete(BBSRedisKeyUtils.HASH_KEY_USER_LIKE, key);
         }
         return list;
     }
 
     @Override
     public List<PostLikedCountDTO> getLikedCountWithRemoveFromRedis() {
-        Cursor<Map.Entry<Object, Object>> cursor = redisTemplate.opsForHash().scan(WallRedisKeyUtils.HASH_KEY_POST_LIKED_COUNT, ScanOptions.NONE);
+        Cursor<Map.Entry<Object, Object>> cursor = redisTemplate.opsForHash().scan(BBSRedisKeyUtils.HASH_KEY_POST_LIKED_COUNT, ScanOptions.NONE);
         List<PostLikedCountDTO> list = new ArrayList<>();
         while (cursor.hasNext()){
             Map.Entry<Object, Object> map = cursor.next();
@@ -102,94 +102,94 @@ public class RedisServiceImpl implements RedisService {
             PostLikedCountDTO dto = new PostLikedCountDTO(key, (Integer) map.getValue());
             list.add(dto);
             // 从Redis中删除记录
-            redisTemplate.opsForHash().delete(WallRedisKeyUtils.HASH_KEY_POST_LIKED_COUNT, key);
+            redisTemplate.opsForHash().delete(BBSRedisKeyUtils.HASH_KEY_POST_LIKED_COUNT, key);
         }
         return list;
     }
 
     @Override
     public void lpushPostFileCache(String postId, String url) {
-        String key = WallRedisKeyUtils.getPostFileListKey(postId);
+        String key = BBSRedisKeyUtils.getPostFileListKey(postId);
         redisTemplate.opsForList().leftPush(key, url);
     }
 
     @Override
     public void rpushPostFileCache(String postId, String url) {
-        String key = WallRedisKeyUtils.getPostFileListKey(postId);
+        String key = BBSRedisKeyUtils.getPostFileListKey(postId);
         redisTemplate.opsForList().rightPush(key, url);
     }
 
     @Override
     public void lpopPostFileCache(String postId) {
-        String key = WallRedisKeyUtils.getPostFileListKey(postId);
+        String key = BBSRedisKeyUtils.getPostFileListKey(postId);
         redisTemplate.opsForList().leftPop(key);
     }
 
     @Override
     public void rpopPostFileCache(String postId) {
-        String key = WallRedisKeyUtils.getPostFileListKey(postId);
+        String key = BBSRedisKeyUtils.getPostFileListKey(postId);
         redisTemplate.opsForList().rightPop(key);
     }
 
     @Override
     public Long getPostFileCacheSize(String postId) {
-        String key = WallRedisKeyUtils.getPostFileListKey(postId);
+        String key = BBSRedisKeyUtils.getPostFileListKey(postId);
         return redisTemplate.opsForList().size(key);
     }
 
     @Override
     public String getPostFileCacheByIndex(String postId, Long index) {
-        String key = WallRedisKeyUtils.getPostFileListKey(postId);
+        String key = BBSRedisKeyUtils.getPostFileListKey(postId);
         return (String) redisTemplate.opsForList().index(key, index);
     }
 
     @Override
     public List<String> getPostFileCacheListByRange(String postId, Long start, Long end) {
-        String key = WallRedisKeyUtils.getPostFileListKey(postId);
+        String key = BBSRedisKeyUtils.getPostFileListKey(postId);
         List<String> list = redisTemplate.opsForList().range(key, start, end);
         return list;
     }
 
     @Override
     public List<String> getPostAllFileCache(String postId) {
-        String key = WallRedisKeyUtils.getPostFileListKey(postId);
+        String key = BBSRedisKeyUtils.getPostFileListKey(postId);
         List<String> list = redisTemplate.opsForList().range(key, 0, -1);
         return list;
     }
 
     @Override
     public void clearPostFileCache(String postId) {
-        String key = WallRedisKeyUtils.getPostFileListKey(postId);
+        String key = BBSRedisKeyUtils.getPostFileListKey(postId);
         redisTemplate.delete(key);
     }
 
     @Override
     public void addReleasePostFileFromRedis(String userId, String url) {
-        String key = WallRedisKeyUtils.getReleasePostFileListKey(userId);
+        String key = BBSRedisKeyUtils.getReleasePostFileListKey(userId);
         redisTemplate.opsForList().rightPush(key, url);
     }
 
     @Override
     public List<String> getReleasePostFileAllFromRedis(String userId) {
-        String key = WallRedisKeyUtils.getReleasePostFileListKey(userId);
+        String key = BBSRedisKeyUtils.getReleasePostFileListKey(userId);
         return redisTemplate.opsForList().range(key, 0, -1);
     }
 
     @Override
     public String getReleasePostFileByIndexFromRedis(String userId, Long index) {
-        String key = WallRedisKeyUtils.getReleasePostFileListKey(userId);
+        String key = BBSRedisKeyUtils.getReleasePostFileListKey(userId);
         return (String) redisTemplate.opsForList().index(key, index);
     }
 
     @Override
     public Long getReleasePostFileListSizeFromRedis(String userId) {
-        String key = WallRedisKeyUtils.getReleasePostFileListKey(userId);
+        String key = BBSRedisKeyUtils.getReleasePostFileListKey(userId);
         return redisTemplate.opsForList().size(key);
     }
 
     @Override
     public void clearReleasePostFileFromRedis(String userId) {
-        String key = WallRedisKeyUtils.getReleasePostFileListKey(userId);
+        String key = BBSRedisKeyUtils.getReleasePostFileListKey(userId);
         System.out.println(key);
         redisTemplate.delete(key);
     }
