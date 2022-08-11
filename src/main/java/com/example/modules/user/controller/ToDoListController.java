@@ -1,5 +1,6 @@
 package com.example.modules.user.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.modules.user.mapper.ToDoListMapper;
 import com.example.modules.user.pojo.Todolist;
@@ -30,11 +31,9 @@ public class ToDoListController {
     public R<List<Todolist>> getAll(){
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String userid = redis.get(Consts.REDIS_USER);
-        QueryWrapper<Todolist> wrapper = new QueryWrapper<>();
-        wrapper.eq("user_id",userid);
-        List<Todolist> toDoListList = toDoListMapper.selectList(wrapper);
+        List<Todolist> toDo = toDoListMapper.getToDo(userid);
 
-        return R.success(toDoListList,"查询所有成功",200);
+        return R.success(toDo,"查询所有成功",200);
     }
 
     //新增todo
@@ -58,11 +57,9 @@ public class ToDoListController {
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String userid = redis.get(Consts.REDIS_USER);
 
-        QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("user_id",userid);
-        List<Todolist> todolists = toDoListMapper.selectList(queryWrapper);
+        List<Todolist> toDo = toDoListMapper.getToDo(userid);
 
-        String todoID=todolists.get(index).getId();
+        String todoID=toDo.get(index).getId();
 
         Todolist toDoList = toDoListMapper.selectById(todoID);
         toDoList.setTitle(title);
@@ -78,10 +75,8 @@ public class ToDoListController {
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String userid = redis.get(Consts.REDIS_USER);
 
-        QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("user_id",userid);
-        List<Todolist> todolists = toDoListMapper.selectList(queryWrapper);
-        String todoID=todolists.get(index).getId();
+        List<Todolist> toDo = toDoListMapper.getToDo(userid);
+        String todoID=toDo.get(index).getId();
         //
         Todolist todolist = toDoListMapper.selectById(todoID);
         toDoListMapper.deleteById(todoID);
@@ -100,10 +95,8 @@ public class ToDoListController {
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String userid = redis.get(Consts.REDIS_USER);
 
-        QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("user_id",userid);
-        List<Todolist> todolists = toDoListMapper.selectList(queryWrapper);
-        String todoID=todolists.get(index).getId();
+        List<Todolist> toDo = toDoListMapper.getToDo(userid);
+        String todoID=toDo.get(index).getId();
 
         Todolist toDoList = toDoListMapper.selectById(todoID);
         toDoList.setCompleted(true);
@@ -115,7 +108,11 @@ public class ToDoListController {
     @DeleteMapping("/deleteAll")
     @CrossOrigin
     public R<String> DeleteAll(){
-        toDoListMapper.delete(null);
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userid = redis.get(Consts.REDIS_USER);
+        QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("user_id",userid);
+        toDoListMapper.delete(queryWrapper);
         return R.success(null,"清空全部完成",200);
     }
 
@@ -126,7 +123,10 @@ public class ToDoListController {
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String userid = redis.get(Consts.REDIS_USER);
         QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("completed",true).eq("user_id",userid);
+        queryWrapper.eq("completed","1").eq("user_id",userid);
+//        LambdaQueryWrapper<Todolist> queryWrapper=new LambdaQueryWrapper<>();
+//        queryWrapper.eq(Todolist::setCompleted,true);
+        toDoListMapper.delete(queryWrapper);
 
         return R.success(null,"清空已完成完成",200);
     }
@@ -138,10 +138,9 @@ public class ToDoListController {
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String userid = redis.get(Consts.REDIS_USER);
 
-        QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("user_id",userid);
-        List<Todolist> todolists = toDoListMapper.selectList(queryWrapper);
-        String todoID=todolists.get(index).getId();
+        List<Todolist> toDo = toDoListMapper.getToDo(userid);
+        String todoID=toDo.get(index).getId();
+
         Todolist todolist = toDoListMapper.selectById(todoID);
         todolist.setCompleted(false);
         toDoListMapper.updateById(todolist);

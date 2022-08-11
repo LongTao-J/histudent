@@ -84,14 +84,18 @@ public class UserTest {
 
     @Test
     void test05(){
-        for (int i=0;i<10;i++){
-            String x= String.valueOf(i*99);
-            Todolist todolist=new Todolist();
-            todolist.setUserId("1552570983563436034");
-            todolist.setTitle(x);
-            toDoListMapper.insert(todolist);
-        }
+//        for (int i=1;i<10;i++){
+//            String x= String.valueOf(i);
+//            Todolist todolist=new Todolist();
+//            todolist.setUserId("2");
+//            todolist.setTitle(x);
+//            toDoListMapper.insert(todolist);
+//        }
 
+//        List<Todolist> todolists = toDoListMapper.getToDo("1552570983563436034");
+//        for (Todolist todolist:todolists){
+//            System.out.println(todolist.getTitle());
+//        }
     }
 
     @Test
