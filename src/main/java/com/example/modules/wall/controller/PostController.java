@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.modules.user.pojo.User;
 import com.example.modules.user.service.UserService;
+import com.example.modules.wall.entity.dto.ImagDto;
 import com.example.modules.wall.entity.dto.IssuePostDTO;
 import com.example.modules.wall.entity.dto.PostDTO;
 import com.example.modules.wall.entity.po.Post;
@@ -27,11 +28,12 @@ public class PostController {
 
     @PutMapping("/put/upload-file")
     @CrossOrigin
-    public R<Object> uploadImg(@RequestBody String url){
+    public R<Object> uploadImg(@RequestBody ImagDto imagDto){
         try{
             // 通过Redis获取UserId;
-            String userId = "1";    // 暂用此替代
-            postRepositoryImpl.uploadReleasePostFile(userId, url);
+            String userId = "1552570983563436034";    // 暂用此替代
+//            postRepositoryImpl.uploadReleasePostFile(userId, url);
+            postRepositoryImpl.uploadReleasePostFile(userId, imagDto.getImageUrl());
             return R.success(null);
         }catch (Exception e){
             return R.error();
@@ -43,7 +45,7 @@ public class PostController {
     public R<Object> issuePost(@RequestBody IssuePostDTO issuePostDTO){
         try{
             // 通过Redis获取UserId;
-            String userId = "1";    // 暂用此替代
+            String userId = "1552570983563436034";    // 暂用此替代
             Post post = new Post();
             post.setTitle(issuePostDTO.getTitle());
             post.setContent(issuePostDTO.getContent());
@@ -64,7 +66,7 @@ public class PostController {
     public R<Object> unissuePost(){
         try{
             // 通过Redis获取UserId;
-            String userId = "1";    // 暂用此替代
+            String userId = "1552570983563436034";    // 暂用此替代
             postRepositoryImpl.unissuePost(userId);
             return R.success(null);
         }catch (Exception e){
@@ -77,7 +79,7 @@ public class PostController {
     public R<Object> getListRec(){
         try{
             // 通过Redis获取UserId;
-            String userId = "1";    // 暂用此替代
+            String userId = "1552570983563436034";    // 暂用此替代
             // 获取推荐Post列表
             List<Post> posts = postRepositoryImpl.getRecPostList();
             // 生成推荐VO视图模型
@@ -166,7 +168,7 @@ public class PostController {
     public R<Object> getOneSelfIssuedPostList(){
         try{
             // 通过Redis获取UserId;
-            String userId = "1";    // 暂用此替代
+            String userId = "1552570983563436034";    // 暂用此替代
             return getUserIssuedPostList(userId);
         }catch (Exception e){
             return R.error();

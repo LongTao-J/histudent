@@ -124,8 +124,6 @@ public class ToDoListController {
         String userid = redis.get(Consts.REDIS_USER);
         QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("completed","1").eq("user_id",userid);
-//        LambdaQueryWrapper<Todolist> queryWrapper=new LambdaQueryWrapper<>();
-//        queryWrapper.eq(Todolist::setCompleted,true);
         toDoListMapper.delete(queryWrapper);
 
         return R.success(null,"清空已完成完成",200);
@@ -146,5 +144,18 @@ public class ToDoListController {
         toDoListMapper.updateById(todolist);
 
         return R.success(null,"取消成功",200);
+    }
+
+    //删除已完成
+    @DeleteMapping("/deleteTrue2")
+    @CrossOrigin
+    public R<String> DeleteTrue2(@RequestBody List<Integer> integers){
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userid = redis.get(Consts.REDIS_USER);
+        QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
+        queryWrapper.eq("completed","1").eq("user_id",userid);
+        toDoListMapper.delete(queryWrapper);
+
+        return R.success(null,"清空已完成完成",200);
     }
 }

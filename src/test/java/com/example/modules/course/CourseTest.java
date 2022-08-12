@@ -19,13 +19,13 @@ public class CourseTest {
     @Autowired
     private CourseMapper courseMapper;
 
-    @Test
+//    @Test
     void serviceTest() {
         List<Course> courses = courseMapper.selectList();
         System.out.println(courses);
     }
 
-    @Test
+//    @Test
     void empty() {
         QueryWrapper<Course> condition = new QueryWrapper<>();
         condition.eq("user_id", 2331).last("limit 1");
@@ -33,13 +33,13 @@ public class CourseTest {
         System.out.println(integer + "------------------");
     }
 
-    @Test
+//    @Test
     void delete() {
         Integer integer =  courseMapper.deleteByUserId("2331");
         System.out.println(integer + "------------------");
     }
 
-
+    //    @Test
     void autoInsert(){
         String userId = "2332";
         String cnt = "1";

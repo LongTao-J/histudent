@@ -31,7 +31,7 @@ public class CollTest {
     public String dep = "dep2";
     public String pro = "pro3";
 
-    @Test
+//    @Test
     void add(){
         School school = new School("name3");
         QueryWrapper<School> queryWrapper = new QueryWrapper<>();
@@ -49,7 +49,7 @@ public class CollTest {
 //        schoolMapper.selectList();
     }
 
-    @Test
+//    @Test
     void addAll() {
         Profession profession = new Profession(pro);
 
@@ -75,7 +75,7 @@ public class CollTest {
         professionMapper.insert(profession);
     }
 
-    @Test
+//    @Test
     void delete(){
         String id = "834edabcaad229cea96a58e79c5b53ab";
         QueryWrapper<Departments> queryWrapper = new QueryWrapper<>();
@@ -93,7 +93,7 @@ public class CollTest {
         schoolMapper.deleteById(id);
     }
 
-    @Test
+//    @Test
     void idAndName(){
         Profession profession =  professionMapper.queryByIdAndName("f6375062255ca63b47e0cefb8c4913ef", "pro1");
         System.out.println("==================");
@@ -101,7 +101,7 @@ public class CollTest {
         System.out.println("==================");
     }
 
-    @Test
+//    @Test
     void runPython() {
         Process proc;
         try {

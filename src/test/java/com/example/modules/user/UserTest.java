@@ -16,7 +16,11 @@ import java.util.List;
 public class UserTest {
 
     @Autowired
-    //WallPostFileMapper wallPostFileMapper;
+    UserService userServiceImpl;
+
+    @Autowired
+    ToDoListMapper toDoListMapper;
+
 
     @Test
     void test01(){
@@ -55,8 +59,6 @@ public class UserTest {
 
     }
 
-    @Autowired
-    ToDoListMapper toDoListMapper;
 
     @Test
     void test03(){
@@ -66,8 +68,7 @@ public class UserTest {
 //        toDoListMapper.insert(toDoList);
     }
 
-    @Autowired
-    UserService userServiceImpl;
+
 
     @Test
     void test04(){
@@ -83,13 +84,13 @@ public class UserTest {
 
     @Test
     void test05(){
-//        for (int i=1;i<10;i++){
-//            String x= String.valueOf(i);
-//            Todolist todolist=new Todolist();
-//            todolist.setUserId("2");
-//            todolist.setTitle(x);
-//            toDoListMapper.insert(todolist);
-//        }
+        for (int i=1;i<10;i++){
+            String x= String.valueOf(i);
+            Todolist todolist=new Todolist();
+            todolist.setUserId("2");
+            todolist.setTitle(x);
+            toDoListMapper.insert(todolist);
+        }
 
 //        List<Todolist> todolists = toDoListMapper.getToDo("1552570983563436034");
 //        for (Todolist todolist:todolists){
