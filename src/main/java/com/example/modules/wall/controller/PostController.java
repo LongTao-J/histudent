@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.example.modules.user.pojo.User;
 import com.example.modules.user.service.UserService;
-import com.example.modules.wall.entity.dto.ImagDto;
+import com.example.modules.wall.entity.dto.PostFileFromViewDTO;
 import com.example.modules.wall.entity.dto.IssuePostDTO;
 import com.example.modules.wall.entity.dto.PostDTO;
 import com.example.modules.wall.entity.po.Post;
@@ -28,12 +28,15 @@ public class PostController {
 
     @PutMapping("/put/upload-file")
     @CrossOrigin
-    public R<Object> uploadImg(@RequestBody ImagDto imagDto){
+    public R<Object> uploadImg(@RequestBody PostFileFromViewDTO postFileFromViewDTO){
         try{
             // 通过Redis获取UserId;
             String userId = "1552570983563436034";    // 暂用此替代
-//            postRepositoryImpl.uploadReleasePostFile(userId, url);
-            postRepositoryImpl.uploadReleasePostFile(userId, imagDto.getImageUrl());
+            String url = postFileFromViewDTO.getUrl();
+            if(url == null || url.equals("")) {
+                throw new Exception();
+            }
+            postRepositoryImpl.uploadReleasePostFile(userId, postFileFromViewDTO.getUrl());
             return R.success(null);
         }catch (Exception e){
             return R.error();
