@@ -28,7 +28,6 @@ public class PostController {
     UserService userServiceImpl;
     @Autowired
     PostCollectService postCollectServiceImpl;
-
     @PutMapping("/put/upload-file")
     @CrossOrigin
     public R<Object> uploadImg(@RequestBody PostFileFromViewDTO postFileFromViewDTO){
@@ -91,6 +90,8 @@ public class PostController {
             // 生成推荐VO视图模型
             List<PostVO> list = new ArrayList<>();
             for(Post post : posts){
+                // 更新点赞数量
+                post.setLikeCount(postLikeRepositoryImpl.getLikeCount(post.getId()));
                 // 获取发行人
                 User issuer = userServiceImpl.getById(post.getUserId());
                 // 数据注入Post
@@ -145,6 +146,8 @@ public class PostController {
             // 生成推荐VO视图模型
             List<PostVO> list = new ArrayList<>();
             for(Post post : posts){
+                // 更新点赞数量
+                post.setLikeCount(postLikeRepositoryImpl.getLikeCount(post.getId()));
                 // 获取发行人
                 User issuer = userServiceImpl.getById(post.getUserId());
                 // 数据注入Post
@@ -191,6 +194,8 @@ public class PostController {
             List<Post> posts = postRepositoryImpl.getUserCollectPostList(userId);
             List<PostVO> list = new ArrayList<>();
             for(Post post : posts){
+                // 更新点赞数量
+                post.setLikeCount(postLikeRepositoryImpl.getLikeCount(post.getId()));
                 // 获取发行人
                 User issuer = userServiceImpl.getById(post.getUserId());
                 // 数据注入Post

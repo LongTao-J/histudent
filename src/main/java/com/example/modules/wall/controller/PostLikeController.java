@@ -53,7 +53,7 @@ public class PostLikeController {
 
     @GetMapping("/get/like-count/{post-id}")
     @CrossOrigin
-    public R<Object> getIsLike(@PathVariable("post-id") String postId){
+    public R<Object> getLikeCount(@PathVariable("post-id") String postId){
         try{
             Integer count = postLikeRepositoryImpl.getLikeCount(postId);
             return R.success(count);
