@@ -11,10 +11,12 @@ public class PostLikeController {
     @Autowired
     private PostLikeRepository postLikeRepositoryImpl;
 
-    @PutMapping("/put/like/{post-id}/{user-id}")
+    @PutMapping("/put/like/{post-id}")
     @CrossOrigin
-    public R<Object> like(@PathVariable("post-id") String postId, @PathVariable("user-id") String userId){
+    public R<Object> like(@PathVariable("post-id") String postId){
         try{
+            // 暂定为1
+            String userId = "1";
             postLikeRepositoryImpl.savelike(userId, postId);
             return R.success(null);
         }catch (Exception e){
@@ -23,10 +25,12 @@ public class PostLikeController {
         }
     }
 
-    @PutMapping("/put/unlike/{post-id}/{user-id}")
+    @PutMapping("/put/unlike/{post-id}")
     @CrossOrigin
-    public R<Object> unlike(@PathVariable("post-id") String postId, @PathVariable("user-id") String userId){
+    public R<Object> unlike(@PathVariable("post-id") String postId){
         try{
+            // 暂定为1
+            String userId = "1";
             postLikeRepositoryImpl.unlike(userId, postId);
             return R.success(null);
         }catch (Exception e){
