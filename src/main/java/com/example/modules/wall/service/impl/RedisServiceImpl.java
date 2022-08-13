@@ -88,6 +88,7 @@ public class RedisServiceImpl implements RedisService {
             // 存到List后从Redis中删除
             redisTemplate.opsForHash().delete(BBSRedisKeyUtils.HASH_KEY_USER_LIKE, key);
         }
+        cursor.close();
         return list;
     }
 
@@ -104,6 +105,7 @@ public class RedisServiceImpl implements RedisService {
             // 从Redis中删除记录
             redisTemplate.opsForHash().delete(BBSRedisKeyUtils.HASH_KEY_POST_LIKED_COUNT, key);
         }
+        cursor.close();
         return list;
     }
 
