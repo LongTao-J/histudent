@@ -3,13 +3,16 @@ package com.example.modules.wall.repository.impl;
 import com.example.modules.wall.entity.dto.PostDTO;
 import com.example.modules.wall.entity.dto.PostFileDTO;
 import com.example.modules.wall.entity.po.Post;
+import com.example.modules.wall.entity.po.PostCollect;
 import com.example.modules.wall.repository.PostRepository;
+import com.example.modules.wall.service.PostCollectService;
 import com.example.modules.wall.service.PostFileService;
 import com.example.modules.wall.service.PostService;
 import com.example.modules.wall.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -20,6 +23,8 @@ public class PostRepositoryImpl implements PostRepository {
     PostFileService postFileServiceImpl;
     @Autowired
     RedisService redisServiceImpl;
+    @Autowired
+    PostCollectService postCollectServiceImpl;
 
     @Override
     public List<String> getFileListByPostId(String postId) {
@@ -90,4 +95,15 @@ public class PostRepositoryImpl implements PostRepository {
         return redisServiceImpl.getReleasePostFileAllFromRedis(userId);
     }
 
+    @Override
+    public List<Post> getUserCollectPostList(String userId) {
+        List<Post> posts = new ArrayList<>();
+        List<PostCollect> postCollects = postCollectServiceImpl.getUserCollectPostList(userId);
+        for(PostCollect collect : postCollects){
+            String postId = collect.getPostId();
+            Post post = postServiceImpl.getPostById(postId);
+            posts.add(post);
+        }
+        return posts;
+    }
 }

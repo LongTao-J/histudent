@@ -73,4 +73,10 @@ public interface PostRepository {
     List<String> getReleasePostFileListCache(String userId);
 
 
+    /**
+     * 获取用户收藏帖子列表
+     * @param userId
+     * @return
+     */
+    List<Post> getUserCollectPostList(String userId);
 }

@@ -12,6 +12,7 @@ import com.example.modules.wall.entity.po.Post;
 import com.example.modules.wall.entity.vo.PostVO;
 import com.example.modules.wall.repository.PostLikeRepository;
 import com.example.modules.wall.repository.PostRepository;
+import com.example.modules.wall.service.PostCollectService;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,8 @@ public class PostController {
     PostLikeRepository postLikeRepositoryImpl;
     @Autowired
     UserService userServiceImpl;
+    @Autowired
+    PostCollectService postCollectServiceImpl;
 
     @PutMapping("/put/upload-file")
     @CrossOrigin
@@ -173,6 +176,40 @@ public class PostController {
             // 通过Redis获取UserId;
             String userId = "1552570983563436034";    // 暂用此替代
             return getUserIssuedPostList(userId);
+        }catch (Exception e){
+            return R.error();
+        }
+    }
+
+
+    @GetMapping("/get/post-list/user-collect")
+    @CrossOrigin
+    public R<Object> getUserAllCollect(){
+        try{
+            // redis获取当前用户id
+            String userId = "1";    // 暂定为1
+            List<Post> posts = postRepositoryImpl.getUserCollectPostList(userId);
+            List<PostVO> list = new ArrayList<>();
+            for(Post post : posts){
+                // 获取发行人
+                User issuer = userServiceImpl.getById(post.getUserId());
+                // 数据注入Post
+                PostVO vo = new PostVO();
+                vo.setPost(post);
+                vo.setUserHead(issuer.getHeadaddress());
+                vo.setUserNickname(issuer.getNickname());
+                // 判断当前登录用户是否点赞帖子
+                Integer like = postLikeRepositoryImpl.isLike(userId, post.getId());
+                // null: 从未点赞过, 1: 点赞状态, 0: 点赞过又取消状态
+                if(like == null || like == 0) vo.setUserIsLike(false);
+                else vo.setUserIsLike(true);
+                // 数据注入图片列表
+                List<String> images = postRepositoryImpl.getFileListByPostId(post.getId());
+                vo.setImages(images);
+                // 将结果插入到返回列表中
+                list.add(vo);
+            }
+            return R.success(list);
         }catch (Exception e){
             return R.error();
         }
