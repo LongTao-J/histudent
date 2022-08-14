@@ -1,6 +1,8 @@
 package com.example.modules.wall.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.modules.wall.entity.dto.PostFileDTO;
+import com.example.modules.wall.entity.po.PostComment;
 import com.example.modules.wall.entity.po.PostFile;
 import com.example.modules.wall.mapper.PostFileMapper;
 import com.example.modules.wall.service.PostFileService;
@@ -28,5 +30,12 @@ public class PostFileServiceImpl implements PostFileService {
         postFile.setPostId(postId);
         postFile.setUrl(url);
         postFileMapper.insert(postFile);
+    }
+
+    @Override
+    public void deleteFileDate(String postId) {
+        QueryWrapper<PostFile> wrapper = new QueryWrapper<>();
+        wrapper.eq("post_id", postId);
+        postFileMapper.delete(wrapper);
     }
 }

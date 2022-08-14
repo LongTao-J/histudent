@@ -53,4 +53,10 @@ public interface PostLikeService {
      * 将Redis中的点赞数量数据存入数据库
      */
     void transLikedCountFromRedis0DB();
+
+    /**
+     * 删除帖子所以喜欢数据
+     * @param postId
+     */
+    void deleteLikeDate(String postId);
 }

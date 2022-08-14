@@ -39,4 +39,10 @@ public interface PostService {
      * @return
      */
     List<Post> getPostListUserIssued(String userId);
+
+    /**
+     * 连表删除帖子
+     * @param postId
+     */
+    void deletePost(String postId);
 }

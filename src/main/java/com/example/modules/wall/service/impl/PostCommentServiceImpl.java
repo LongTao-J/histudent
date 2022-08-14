@@ -47,4 +47,11 @@ public class PostCommentServiceImpl extends ServiceImpl<PostCommentMapper, PostC
     public void deleteComment(String commentId) {
         postCommentMapper.deleteById(commentId);
     }
+
+    @Override
+    public void deleteCommentDate(String postId) {
+        QueryWrapper<PostComment> wrapper = new QueryWrapper<>();
+        wrapper.eq("post_id", postId);
+        postCommentMapper.delete(wrapper);
+    }
 }

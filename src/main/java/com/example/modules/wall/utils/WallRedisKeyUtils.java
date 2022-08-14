@@ -1,6 +1,6 @@
 package com.example.modules.wall.utils;
 
-public class BBSRedisKeyUtils {
+public class WallRedisKeyUtils {
     //保存用户点赞数据的key
     public static final String HASH_KEY_USER_LIKE = "HASH_USER_LIKE";
     //保存帖子被点赞数量的key

@@ -107,4 +107,11 @@ public class PostLikeServiceImpl implements PostLikeService {
             postServiceImpl.updatePostById(post);
         }
     }
+
+    @Override
+    public void deleteLikeDate(String postId) {
+        QueryWrapper<PostLike> wrapper = new QueryWrapper<>();
+        wrapper.eq("post_id", postId);
+        postLikeMapper.delete(wrapper);
+    }
 }

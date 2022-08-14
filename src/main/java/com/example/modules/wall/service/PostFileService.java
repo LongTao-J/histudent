@@ -6,4 +6,6 @@ public interface PostFileService {
     PostFileDTO getPostFile(String postId);
 
     void insert(String postId, String url);
+
+    void deleteFileDate(String postId);
 }

@@ -79,4 +79,10 @@ public interface PostRepository {
      * @return
      */
     List<Post> getUserCollectPostList(String userId);
+
+    /**
+     * 删除帖子
+     * @param postId
+     */
+    void deletePost(String postId);
 }

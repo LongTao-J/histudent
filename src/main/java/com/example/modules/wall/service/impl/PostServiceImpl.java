@@ -3,6 +3,7 @@ package com.example.modules.wall.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.modules.wall.entity.po.Post;
+import com.example.modules.wall.entity.po.PostComment;
 import com.example.modules.wall.mapper.PostMapper;
 import com.example.modules.wall.service.PostService;
 import lombok.extern.slf4j.Slf4j;
@@ -43,6 +44,13 @@ public class PostServiceImpl implements PostService {
         QueryWrapper<Post> wrapper = new QueryWrapper<>();
         wrapper.eq("user_id", userId);
         return postMapper.selectList(wrapper);
+    }
+
+    @Override
+    public void deletePost(String postId) {
+        QueryWrapper<Post> wrapper = new QueryWrapper<>();
+        wrapper.eq("post_id", postId);
+        postMapper.delete(wrapper);
     }
 
     @Override

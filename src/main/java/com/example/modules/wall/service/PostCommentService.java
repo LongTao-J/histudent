@@ -16,4 +16,6 @@ public interface PostCommentService extends IService<PostComment> {
     PostComment getComment(String commentId);
 
     void deleteComment(String commentId);
+
+    void deleteCommentDate(String postId);
 }

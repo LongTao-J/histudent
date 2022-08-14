@@ -5,12 +5,10 @@ import com.example.modules.wall.entity.dto.PostFileDTO;
 import com.example.modules.wall.entity.po.Post;
 import com.example.modules.wall.entity.po.PostCollect;
 import com.example.modules.wall.repository.PostRepository;
-import com.example.modules.wall.service.PostCollectService;
-import com.example.modules.wall.service.PostFileService;
-import com.example.modules.wall.service.PostService;
-import com.example.modules.wall.service.RedisService;
+import com.example.modules.wall.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +23,10 @@ public class PostRepositoryImpl implements PostRepository {
     RedisService redisServiceImpl;
     @Autowired
     PostCollectService postCollectServiceImpl;
+    @Autowired
+    PostLikeService postLikeServiceImpl;
+    @Autowired
+    PostCommentService postCommentServiceImpl;
 
     @Override
     public List<String> getFileListByPostId(String postId) {
@@ -105,5 +107,19 @@ public class PostRepositoryImpl implements PostRepository {
             posts.add(post);
         }
         return posts;
+    }
+
+    @Override
+    @Transactional
+    public void deletePost(String postId) {
+        try{
+            postLikeServiceImpl.deleteLikeDate(postId);
+            postCommentServiceImpl.deleteCommentDate(postId);
+            postFileServiceImpl.deleteFileDate(postId);
+            redisServiceImpl.deleteRedisPostDate(postId);
+            postServiceImpl.deletePost(postId);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

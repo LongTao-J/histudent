@@ -234,4 +234,23 @@ public class PostController {
             return R.error();
         }
     }
+
+    @DeleteMapping("/delete/post/{post-id}")
+    @CrossOrigin
+    public R<Object> deletePost(@PathVariable("post-id")String postId){
+        try{
+            // redis获取当前用户id
+            ValueOperations<String,String> redis = redisTemplate.opsForValue();
+            String userId = redis.get(Consts.REDIS_USER);
+            Post post = postRepositoryImpl.getPost(postId);
+            if(!post.getUserId().equals(userId)){
+                return R.error("没有权限删除", 403);
+            }else{
+                postRepositoryImpl.deletePost(postId);
+                return R.success(null);
+            }
+        }catch (Exception e){
+            return R.error();
+        }
+    }
 }

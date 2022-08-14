@@ -79,6 +79,18 @@ public interface RedisService {
      */
     List<PostLikedCountDTO> getLikedCountWithRemoveFromRedis();
 
+    /**
+     * 清空点赞数量缓存
+     * @param postId
+     */
+    void clearPostLikeCountCache(String postId);
+
+    /**
+     * 情况帖子喜欢缓存
+     * @param postId
+     */
+    void clearPostLikeCache(String postId);
+
     /****************************************
      *************** 帖子文件缓存 ****************
      *****************************************/
@@ -183,4 +195,9 @@ public interface RedisService {
      */
     void clearReleasePostFileFromRedis(String userId);
 
+    /**
+     * 删除帖子所以Redis数据
+     * @param postId
+     */
+    void deleteRedisPostDate(String postId);
 }
