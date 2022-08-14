@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.modules.user.pojo.User;
 import com.example.modules.user.service.UserService;
+import com.example.modules.user.utils.Consts;
 import com.example.modules.wall.entity.dto.PostFileFromViewDTO;
 import com.example.modules.wall.entity.dto.IssuePostDTO;
 import com.example.modules.wall.entity.dto.PostDTO;
@@ -16,6 +17,8 @@ import com.example.modules.wall.service.PostCollectService;
 import com.example.modules.wall.service.PostCommentService;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -31,12 +34,16 @@ public class PostController {
     PostCollectService postCollectServiceImpl;
     @Autowired
     PostCommentService postCommentServiceImpl;
+    @Autowired
+    RedisTemplate redisTemplate;
+
     @PutMapping("/put/upload-file")
     @CrossOrigin
     public R<Object> uploadImg(@RequestBody PostFileFromViewDTO postFileFromViewDTO){
         try{
             // 通过Redis获取UserId;
-            String userId = "1552570983563436034";    // 暂用此替代
+            ValueOperations<String,String> redis = redisTemplate.opsForValue();
+            String userId = redis.get(Consts.REDIS_USER);
             String url = postFileFromViewDTO.getUrl();
             if(url == null || url.equals("")) {
                 throw new Exception();
@@ -53,7 +60,8 @@ public class PostController {
     public R<Object> issuePost(@RequestBody IssuePostDTO issuePostDTO){
         try{
             // 通过Redis获取UserId;
-            String userId = "1552570983563436034";    // 暂用此替代
+            ValueOperations<String,String> redis = redisTemplate.opsForValue();
+            String userId = redis.get(Consts.REDIS_USER);
             Post post = new Post();
             post.setTitle(issuePostDTO.getTitle());
             post.setContent(issuePostDTO.getContent());
@@ -74,7 +82,8 @@ public class PostController {
     public R<Object> unissuePost(){
         try{
             // 通过Redis获取UserId;
-            String userId = "1552570983563436034";    // 暂用此替代
+            ValueOperations<String,String> redis = redisTemplate.opsForValue();
+            String userId = redis.get(Consts.REDIS_USER);
             postRepositoryImpl.unissuePost(userId);
             return R.success(null);
         }catch (Exception e){
@@ -87,7 +96,8 @@ public class PostController {
     public R<Object> getListRec(){
         try{
             // 通过Redis获取UserId;
-            String userId = "1552570983563436034";    // 暂用此替代
+            ValueOperations<String,String> redis = redisTemplate.opsForValue();
+            String userId = redis.get(Consts.REDIS_USER);
             // 获取推荐Post列表
             List<Post> posts = postRepositoryImpl.getRecPostList();
             // 生成推荐VO视图模型
@@ -180,7 +190,8 @@ public class PostController {
     public R<Object> getOneSelfIssuedPostList(){
         try{
             // 通过Redis获取UserId;
-            String userId = "1552570983563436034";    // 暂用此替代
+            ValueOperations<String,String> redis = redisTemplate.opsForValue();
+            String userId = redis.get(Consts.REDIS_USER);
             return getUserIssuedPostList(userId);
         }catch (Exception e){
             return R.error();
@@ -193,7 +204,8 @@ public class PostController {
     public R<Object> getUserAllCollect(){
         try{
             // redis获取当前用户id
-            String userId = "1";    // 暂定为1
+            ValueOperations<String,String> redis = redisTemplate.opsForValue();
+            String userId = redis.get(Consts.REDIS_USER);
             List<Post> posts = postRepositoryImpl.getUserCollectPostList(userId);
             List<PostVO> list = new ArrayList<>();
             for(Post post : posts){

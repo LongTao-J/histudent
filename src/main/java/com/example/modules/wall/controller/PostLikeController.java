@@ -1,8 +1,11 @@
 package com.example.modules.wall.controller;
 
+import com.example.modules.user.utils.Consts;
 import com.example.modules.wall.repository.PostLikeRepository;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -10,13 +13,16 @@ import org.springframework.web.bind.annotation.*;
 public class PostLikeController {
     @Autowired
     private PostLikeRepository postLikeRepositoryImpl;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @PutMapping("/put/like/{post-id}")
     @CrossOrigin
     public R<Object> like(@PathVariable("post-id") String postId){
         try{
             // 暂定为1
-            String userId = "1";
+            ValueOperations<String,String> redis = redisTemplate.opsForValue();
+            String userId = redis.get(Consts.REDIS_USER);
             postLikeRepositoryImpl.savelike(userId, postId);
             return R.success(null);
         }catch (Exception e){
@@ -30,7 +36,8 @@ public class PostLikeController {
     public R<Object> unlike(@PathVariable("post-id") String postId){
         try{
             // 暂定为1
-            String userId = "1";
+            ValueOperations<String,String> redis = redisTemplate.opsForValue();
+            String userId = redis.get(Consts.REDIS_USER);
             postLikeRepositoryImpl.unlike(userId, postId);
             return R.success(null);
         }catch (Exception e){

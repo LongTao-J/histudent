@@ -1,6 +1,7 @@
 package com.example.modules.wall.controller;
 
 
+import com.example.modules.user.utils.Consts;
 import com.example.modules.wall.entity.po.Post;
 import com.example.modules.wall.entity.po.PostComment;
 import java.util.List;
@@ -10,6 +11,8 @@ import com.example.modules.wall.service.PostService;
 import com.example.modules.wall.service.impl.PostServiceImpl;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,6 +22,8 @@ public class PostCommentController {
     PostCommentService postCommentServiceImpl;
     @Autowired
     PostService postServiceImpl;
+    @Autowired
+    RedisTemplate redisTemplate;
 
     @GetMapping("/get/all/post-comments/{post-id}")
     @CrossOrigin
@@ -36,7 +41,8 @@ public class PostCommentController {
     public R<Object> issueComment(@PathVariable("post-id")String postId, @RequestBody String content){
         try{
             // redis获取当前用户id
-            String userId = "1";    // 暂定为1
+            ValueOperations<String,String> redis = redisTemplate.opsForValue();
+            String userId = redis.get(Consts.REDIS_USER);
             postCommentServiceImpl.addComment(userId, postId, content);
             Post post = postServiceImpl.getPostById(postId);
             post.setCommentsCount(post.getCommentsCount() + 1);
@@ -53,7 +59,8 @@ public class PostCommentController {
     public R<Object> deleteComment(@PathVariable("comment-id") String commentId){
         try{
             // redis获取当前用户id
-            String userId = "1";    // 暂定为1
+            ValueOperations<String,String> redis = redisTemplate.opsForValue();
+            String userId = redis.get(Consts.REDIS_USER);
             PostComment comment = postCommentServiceImpl.getComment(commentId);
             postCommentServiceImpl.deleteComment(commentId);
             String postId = comment.getPostId();
