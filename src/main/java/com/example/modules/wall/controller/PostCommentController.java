@@ -8,7 +8,6 @@ import java.util.List;
 
 import com.example.modules.wall.service.PostCommentService;
 import com.example.modules.wall.service.PostService;
-import com.example.modules.wall.service.impl.PostServiceImpl;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -45,7 +44,7 @@ public class PostCommentController {
             String userId = redis.get(Consts.REDIS_USER);
             postCommentServiceImpl.addComment(userId, postId, content);
             Post post = postServiceImpl.getPostById(postId);
-            post.setCommentsCount(post.getCommentsCount() + 1);
+            post.setCommentCount(post.getCommentCount() + 1);
             // 更新评论数量
             postServiceImpl.updatePostById(post);
             return R.success(null);
@@ -65,7 +64,7 @@ public class PostCommentController {
             postCommentServiceImpl.deleteComment(commentId);
             String postId = comment.getPostId();
             Post post = postServiceImpl.getPostById(postId);
-            post.setCommentsCount(post.getCommentsCount() - 1);
+            post.setCommentCount(post.getCommentCount() - 1);
             // 更新评论数量
             postServiceImpl.updatePostById(post);
             return R.success(null);

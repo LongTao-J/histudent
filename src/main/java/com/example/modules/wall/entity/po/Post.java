@@ -22,7 +22,9 @@ public class Post {
     // 点赞数量
     private Integer likeCount;
     // 评论数量
-    private Integer commentsCount;
+    private Integer commentCount;
+    // 收藏数量
+    private Integer collectCount;
     // 是否推荐
     private Boolean isRec;
     @TableField(fill = FieldFill.INSERT)
