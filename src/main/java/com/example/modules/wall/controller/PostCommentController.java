@@ -2,6 +2,7 @@ package com.example.modules.wall.controller;
 
 
 import com.example.modules.user.utils.Consts;
+import com.example.modules.wall.entity.dto.PostCommentFromViewDTO;
 import com.example.modules.wall.entity.po.Post;
 import com.example.modules.wall.entity.po.PostComment;
 import java.util.List;
@@ -37,12 +38,12 @@ public class PostCommentController {
 
     @PutMapping("/put/issue-comment/{post-id}")
     @CrossOrigin
-    public R<Object> issueComment(@PathVariable("post-id")String postId, @RequestBody String content){
+    public R<Object> issueComment(@PathVariable("post-id")String postId, @RequestBody PostCommentFromViewDTO comment){
         try{
             // redis获取当前用户id
             ValueOperations<String,String> redis = redisTemplate.opsForValue();
             String userId = redis.get(Consts.REDIS_USER);
-            postCommentServiceImpl.addComment(userId, postId, content);
+            postCommentServiceImpl.addComment(userId, postId, comment.getContent());
             Post post = postServiceImpl.getPostById(postId);
             post.setCommentCount(post.getCommentCount() + 1);
             // 更新评论数量
