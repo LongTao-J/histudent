@@ -1,16 +1,21 @@
 package com.example.modules.user;
 
+import org.apache.http.HttpResponse;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.modules.user.mapper.ToDoListMapper;
 import com.example.modules.user.pojo.Todolist;
 import com.example.modules.user.pojo.User;
 import com.example.modules.user.service.UserService;
+import com.example.modules.user.utils.HttpUtils;
+import org.apache.http.util.EntityUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 public class UserTest {
@@ -84,13 +89,13 @@ public class UserTest {
 
     @Test
     void test05(){
-        for (int i=1;i<10;i++){
-            String x= String.valueOf(i);
-            Todolist todolist=new Todolist();
-            todolist.setUserId("2");
-            todolist.setTitle(x);
-            toDoListMapper.insert(todolist);
-        }
+//        for (int i=1;i<10;i++){
+//            String x= String.valueOf(i);
+//            Todolist todolist=new Todolist();
+//            todolist.setUserId("2");
+//            todolist.setTitle(x);
+//            toDoListMapper.insert(todolist);
+//        }
 
 //        List<Todolist> todolists = toDoListMapper.getToDo("1552570983563436034");
 //        for (Todolist todolist:todolists){
@@ -113,4 +118,25 @@ public class UserTest {
 //        int len=todolists.size()-1;
 //        System.out.println(todolists.get(len-0));
     }
+
+    @Test
+    void test08(){
+//            String host = "https://ncovdata.market.alicloudapi.com";
+//            String path = "/ncov/cityDiseaseInfoWithTrend";
+//            String method = "GET";
+//            String appcode = "fd5b73274a1c41688212175e967af0ca";
+//            Map<String, String> headers = new HashMap<String, String>();
+//            headers.put("Authorization", "APPCODE " + appcode);
+//            Map<String, String> querys = new HashMap<String, String>();
+//
+//            try {
+//                HttpResponse response =  HttpUtils.doGet(host, path, method, headers, querys);
+//                System.out.println(response.toString());
+////                获取response的body
+//                System.out.println(EntityUtils.toString(response.getEntity()));
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+        }
+
 }
