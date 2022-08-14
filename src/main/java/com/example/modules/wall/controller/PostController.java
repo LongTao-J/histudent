@@ -13,6 +13,7 @@ import com.example.modules.wall.entity.vo.PostVO;
 import com.example.modules.wall.repository.PostLikeRepository;
 import com.example.modules.wall.repository.PostRepository;
 import com.example.modules.wall.service.PostCollectService;
+import com.example.modules.wall.service.PostCommentService;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,8 @@ public class PostController {
     UserService userServiceImpl;
     @Autowired
     PostCollectService postCollectServiceImpl;
+    @Autowired
+    PostCommentService postCommentServiceImpl;
     @PutMapping("/put/upload-file")
     @CrossOrigin
     public R<Object> uploadImg(@RequestBody PostFileFromViewDTO postFileFromViewDTO){

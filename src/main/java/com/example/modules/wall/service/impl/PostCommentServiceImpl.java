@@ -30,4 +30,21 @@ public class PostCommentServiceImpl extends ServiceImpl<PostCommentMapper, PostC
         postComment.setContent(content);
         postCommentMapper.insert(postComment);
     }
+
+    @Override
+    public Integer getCommentCount(String postId) {
+        QueryWrapper<PostComment> wrapper = new QueryWrapper<>();
+        wrapper.eq("post_id", postId);
+        return postCommentMapper.selectCount(wrapper);
+    }
+
+    @Override
+    public PostComment getComment(String commentId) {
+        return postCommentMapper.selectById(commentId);
+    }
+
+    @Override
+    public void deleteComment(String commentId) {
+        postCommentMapper.deleteById(commentId);
+    }
 }

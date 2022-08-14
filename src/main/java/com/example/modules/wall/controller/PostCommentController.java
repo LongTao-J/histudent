@@ -1,10 +1,13 @@
 package com.example.modules.wall.controller;
 
 
+import com.example.modules.wall.entity.po.Post;
 import com.example.modules.wall.entity.po.PostComment;
 import java.util.List;
 
 import com.example.modules.wall.service.PostCommentService;
+import com.example.modules.wall.service.PostService;
+import com.example.modules.wall.service.impl.PostServiceImpl;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 public class PostCommentController {
     @Autowired
     PostCommentService postCommentServiceImpl;
+    @Autowired
+    PostService postServiceImpl;
 
     @GetMapping("/get/all/post-comments/{post-id}")
     @CrossOrigin
@@ -33,8 +38,43 @@ public class PostCommentController {
             // redis获取当前用户id
             String userId = "1";    // 暂定为1
             postCommentServiceImpl.addComment(userId, postId, content);
+            Post post = postServiceImpl.getPostById(postId);
+            post.setCommentsCount(post.getCommentsCount() + 1);
+            // 更新评论数量
+            postServiceImpl.updatePostById(post);
             return R.success(null);
         }catch (Exception e){
+            return R.error();
+        }
+    }
+
+    @PutMapping("/put/delete-comment/{comment-id}")
+    @CrossOrigin
+    public R<Object> deleteComment(@PathVariable("comment-id") String commentId){
+        try{
+            // redis获取当前用户id
+            String userId = "1";    // 暂定为1
+            PostComment comment = postCommentServiceImpl.getComment(commentId);
+            postCommentServiceImpl.deleteComment(commentId);
+            String postId = comment.getPostId();
+            Post post = postServiceImpl.getPostById(postId);
+            post.setCommentsCount(post.getCommentsCount() - 1);
+            // 更新评论数量
+            postServiceImpl.updatePostById(post);
+            return R.success(null);
+        }catch (Exception e){
+            return R.error();
+        }
+    }
+
+    @GetMapping("/get/comment-count/{post-id}")
+    @CrossOrigin
+    public R<Object> getCommentCount(@PathVariable("post-id") String postId){
+        try{
+            Integer count = postCommentServiceImpl.getCommentCount(postId);
+            return R.success(count);
+        }catch (Exception e){
+            e.printStackTrace();
             return R.error();
         }
     }

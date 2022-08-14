@@ -10,4 +10,10 @@ public interface PostCommentService extends IService<PostComment> {
     List<PostComment> getListByPostId(String postId);
 
     void addComment(String userId, String postId, String content);
+
+    Integer getCommentCount(String postId);
+
+    PostComment getComment(String commentId);
+
+    void deleteComment(String commentId);
 }
