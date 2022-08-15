@@ -1,12 +1,17 @@
 package com.example.modules.wall.controller;
 
 
+import com.example.modules.user.pojo.User;
+import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
 import com.example.modules.wall.entity.dto.PostCommentFromViewDTO;
 import com.example.modules.wall.entity.po.Post;
 import com.example.modules.wall.entity.po.PostComment;
+
+import java.util.ArrayList;
 import java.util.List;
 
+import com.example.modules.wall.entity.vo.PostCommentVO;
 import com.example.modules.wall.service.PostCommentService;
 import com.example.modules.wall.service.PostService;
 import com.example.utils.R;
@@ -23,6 +28,8 @@ public class PostCommentController {
     @Autowired
     PostService postServiceImpl;
     @Autowired
+    UserService userServiceImpl;
+    @Autowired
     RedisTemplate redisTemplate;
 
     @GetMapping("/get/all/post-comments/{post-id}")
@@ -30,7 +37,15 @@ public class PostCommentController {
     public R<Object> getPostCommentAll(@PathVariable("post-id")String postId){
         try{
             List<PostComment> postComments = postCommentServiceImpl.getListByPostId(postId);
-            return R.success(postComments);
+            List<PostCommentVO> listVO = new ArrayList<>();
+            for(PostComment comment : postComments){
+                PostCommentVO vo = new PostCommentVO();
+                User issuer = userServiceImpl.getById(comment.getUserId());
+                vo.setComment(comment);
+                vo.setUserNickname(issuer.getNickname());
+                vo.setUserHead(issuer.getHeadaddress());
+            }
+            return R.success(listVO);
         }catch (Exception e){
             return R.error();
         }
