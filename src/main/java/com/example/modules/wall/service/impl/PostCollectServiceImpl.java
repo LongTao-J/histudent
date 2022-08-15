@@ -40,4 +40,13 @@ public class PostCollectServiceImpl extends ServiceImpl<PostCollectMapper, PostC
         return postCollectMapper.selectList(wrapper);
     }
 
+    @Override
+    public Boolean isCollect(String userId, String postId) {
+        QueryWrapper<PostCollect> wrapper = new QueryWrapper<>();
+        wrapper.eq("user_id", userId);
+        wrapper.eq("post_id", postId);
+        Integer integer = postCollectMapper.selectCount(wrapper);
+        if(integer == 1) return true;
+        else return false;
+    }
 }

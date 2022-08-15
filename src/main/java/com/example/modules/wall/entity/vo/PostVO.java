@@ -13,6 +13,7 @@ public class PostVO {
     Post post;
     List<String> images;
     Boolean userIsLike;
+    Boolean userIsCollect;
     String userHead;
     String userNickname;
 }
