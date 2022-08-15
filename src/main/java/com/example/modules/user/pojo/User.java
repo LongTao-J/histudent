@@ -23,6 +23,7 @@ public class User {
     private String headaddress;//头像
     private String introduction;
     private String schoolTime;
+    private String backimg;
     @Version
     private Integer version;//乐观锁
 
