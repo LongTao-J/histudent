@@ -44,6 +44,7 @@ public class PostCommentController {
                 vo.setComment(comment);
                 vo.setUserNickname(issuer.getNickname());
                 vo.setUserHead(issuer.getHeadaddress());
+                listVO.add(vo);
             }
             return R.success(listVO);
         }catch (Exception e){
