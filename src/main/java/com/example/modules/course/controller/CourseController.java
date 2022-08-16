@@ -1,5 +1,6 @@
 package com.example.modules.course.controller;
 
+import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.modules.collegeInformation.pojo.Departments;
 import com.example.modules.course.mapper.CourseMapper;
@@ -28,24 +29,39 @@ public class CourseController {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    public String toStringJson(List<Course> courses) {
+        String json = "[";
+        for (Course course : courses){
+            json = json + "[" + JSON.toJSONString(course) + "],";
+        }
+        json = json.substring(0,json.length() -1);
+        json = json + "]";
+        return json;
+    }
+
     // 查找课表
     @GetMapping("/get")
     @CrossOrigin
-    public R<List<Course>> autoAddCourse() {
+    public String autoAddCourse() {
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String userId = redis.get(Consts.REDIS_USER);
         List<Course> courses = mapper.selectByUserIdList(userId);
-        if(courses != null)
-            return R.success(courses);
-        else
-            return R.error();
+        return toStringJson(courses);
+    }
+
+    // 静态直接获取
+    @GetMapping("/staticGet")
+    @CrossOrigin
+    public String staticGetCourse() {
+        List<Course> courses = mapper.selectByUserIdList("1552570983563436034");
+        return toStringJson(courses);
     }
 
 
     // 自动导入课表
     @PostMapping("/autoadd/{year}/{cnt}/{username}/{password}")
     @CrossOrigin
-    public R<List<Course>> autoAddCourse(
+    public String autoAddCourse(
                                    @PathVariable("year") String year,
                                    @PathVariable("cnt") String cnt,
                                    @PathVariable("username") String username,
@@ -73,10 +89,11 @@ public class CourseController {
         }
 
         List<Course> courses = mapper.selectByUserIdList(userId);
-        if(courses != null)
-            return R.success(courses);
-        else
-            return R.error();
+//        if(courses != null)
+//            return R.success(courses);
+//        else
+//            return R.error();
+        return toStringJson(courses);
     }
 
     // 手动导入课表
