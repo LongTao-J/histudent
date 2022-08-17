@@ -2,7 +2,6 @@ package com.example.modules.course.controller;
 
 import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.modules.collegeInformation.pojo.Departments;
 import com.example.modules.course.mapper.CourseMapper;
 import com.example.modules.course.pojo.Course;
 import com.example.modules.user.utils.Consts;
@@ -16,10 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Slf4j
 @RestController
@@ -58,6 +54,7 @@ public class CourseController {
     public String staticGetCourse() {
         List<Course> courses = mapper.selectByUserIdList("1552570983563436034");
         Map<String, List<Course>> tmp = new HashMap<>();
+        // 处理数据
         for (Course course : courses){
             List<Course> courseList;
             if(!tmp.containsKey(course.getPeriod())) {
@@ -68,7 +65,24 @@ public class CourseController {
             courseList.add(course);
             tmp.put(course.getPeriod(),courseList);
         }
-        return JSON.toJSONString(tmp);
+        // 对值排序
+        for(Map.Entry<String, List<Course>> map: tmp.entrySet()){
+            List<Course> courseList = map.getValue();
+            courseList.sort(Comparator.comparingInt((Course s) -> Integer.parseInt(s.getWeekNum())).thenComparing(Course::getName));
+        }
+        // 对键排序
+        Collection<String> keys = tmp.keySet();
+        List<String> list = new ArrayList<>(keys);
+        Collections.sort(list);
+        StringBuilder json = new StringBuilder("{");
+        for(String s:  list){
+            json.append("\"").append(s).append("\":").append(JSON.toJSONString(tmp.get(s))).append(",");
+        }
+
+        json = new StringBuilder(json.substring(0, json.length() - 1) + "}");
+
+//        return JSON.toJSONString(tmp);
+        return json.toString();
     }
 
 
