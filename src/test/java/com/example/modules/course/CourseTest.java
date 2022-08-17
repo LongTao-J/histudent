@@ -10,7 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 @SpringBootTest
@@ -62,6 +64,65 @@ public class CourseTest {
             pr.waitFor();
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Test
+    void filterString() {
+        String str = "1-6周,7-10周(双),12-13周";
+        Integer num = 8;
+
+        int i = 0,tag = 0;
+        List<Integer> list = new ArrayList<>();
+        while(i < str.length()) {
+            char t = str.charAt(i);
+            int tmp_num = 0;
+            if (Character.isDigit(t)) {
+                if (Character.isDigit(str.charAt(i+1))) {
+                    tmp_num = (t - '0')*10 + (str.charAt(++i) - '0');
+                }else {
+                    tmp_num = t - '0';
+                }
+                if (tag == 1) {
+                    int index = list.get(list.size() - 1);
+                    boolean one = false, two = false;
+                    if(i+3 < str.length()){
+                        one = str.charAt(i+3) == '单';
+                        two = str.charAt(i+3) == '双';
+                    }
+                    if(one && index%2 == 0)list.remove(list.size() - 1);
+                    else if(two && index%2 != 0)list.remove(list.size() - 1);
+                    for (int j = index+1; j <= tmp_num; j++) {
+                        if(one && j%2 == 0) continue;
+                        else if(two && j%2 != 0) continue;
+                        list.add(j);
+                    }
+                    tag = 0;
+                }else {
+                    list.add(tmp_num);
+                }
+            } else if (t == '-') {
+                tag = 1;
+            }
+            i++;
+        }
+//        if(one || two) {
+//            Iterator<Integer> iterator = list.iterator();
+//            while (iterator.hasNext()){
+//                int tmp = iterator.next();
+//                if(one && tmp%2 == 0){
+//                    iterator.remove();
+//                }else if(two && tmp%2 != 0){
+//                    iterator.remove();
+//                }
+//            }
+//        }
+
+        for (int j: list){
+//            if (num == j){
+//                return;
+//            }
+            System.out.println(j + "----");
         }
     }
 }
