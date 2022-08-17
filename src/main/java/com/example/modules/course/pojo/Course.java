@@ -46,6 +46,10 @@ public class Course {
     @TableField("week_num")
     private String weekNum;
 
+    @JsonProperty(value = "teacher")
+    @TableField("teacher")
+    private String teacher;
+
     public Course(String userId, String name, String courseType, String isExam, String classroom, String weekly, String period, String weekNum) {
         this.userId = userId;
         this.name = name;

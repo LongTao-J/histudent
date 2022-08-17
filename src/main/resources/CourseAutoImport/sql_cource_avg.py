@@ -77,7 +77,7 @@ class TimeTable():
         for each in table_info["kbList"]:
             tmp = "\'" + str(each["kch_id"] + str(user_id)) + str(each["khfsmc"]) + str(each["jcs"]) + str(each["xqj"]) + "\'" + "," + "\'" + str(user_id) + "\'" +  "," + "\'" +  str(each["kcmc"]) + "\'" +  "," + "\'" +  \
                   str(each["kclb"]) + "\'" +  "," + "\'" +  str(each["khfsmc"]) + "\'" +  "," + "\'" +  str(each["cdmc"]) + "\'" +  "," + "\'" +  \
-                  str(each["zcd"]) + "\'" +  "," + "\'" +  str(each["jcs"]) + "\'" +  "," + "\'" +  str(each["xqj"])+ "\'" 
+                  str(each["zcd"]) + "\'" +  "," + "\'" +  str(each["jcs"]) + "\'" +  "," + "\'" +  str(each["xqj"])+ "\'" + "," + "\'" +  str(each["xm"])+ "\'" 
             try:
                 insert_sqli = "insert into user_course_scheduling values("+ tmp +");"
                 cur.execute(insert_sqli)

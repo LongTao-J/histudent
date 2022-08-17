@@ -54,7 +54,7 @@ public class CourseController {
     public String staticGetCourse() {
         List<Course> courses = mapper.selectByUserIdList("1552570983563436034");
         Map<String, List<Course>> tmp = new HashMap<>();
-        // 处理数据
+        // 数据排版
         for (Course course : courses){
             List<Course> courseList;
             if(!tmp.containsKey(course.getPeriod())) {
@@ -78,10 +78,8 @@ public class CourseController {
         for(String s:  list){
             json.append("\"").append(s).append("\":").append(JSON.toJSONString(tmp.get(s))).append(",");
         }
-
         json = new StringBuilder(json.substring(0, json.length() - 1) + "}");
 
-//        return JSON.toJSONString(tmp);
         return json.toString();
     }
 
@@ -103,9 +101,10 @@ public class CourseController {
         if(integer > 0) mapper.deleteByUserId(userId);
 
         if( cnt.equals("2") ) cnt = "4";
-//        String pyTextPath = "/root/CourseAutoImport/sql_cource_avg.py";
-        String pyTextPath = "C:\\python-project\\pyhont-hi\\CourseAutoImport\\sql_cource_avg.py";
-        String evn = "C:\\envroment\\python";
+        String pyTextPath = "D:\\bin\\CourseAutoImport\\sql_cource_avg.py";
+        String evn = "D:\\install\\conda_data\\envs\\py36\\python";
+//        String pyTextPath = "C:\\python-project\\pyhont-hi\\CourseAutoImport\\sql_cource_avg.py";
+//        String evn = "C:\\envroment\\python";
         try {
             String[] args1=new String[]{evn, pyTextPath, userId, year, cnt, username, password};
             Process pr=Runtime.getRuntime().exec(args1);
