@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @RestController
@@ -54,7 +57,18 @@ public class CourseController {
     @CrossOrigin
     public String staticGetCourse() {
         List<Course> courses = mapper.selectByUserIdList("1552570983563436034");
-        return toStringJson(courses);
+        Map<String, List<Course>> tmp = new HashMap<>();
+        for (Course course : courses){
+            List<Course> courseList;
+            if(!tmp.containsKey(course.getPeriod())) {
+                courseList = new ArrayList<>();
+            }else {
+                courseList = tmp.get(course.getPeriod());
+            }
+            courseList.add(course);
+            tmp.put(course.getPeriod(),courseList);
+        }
+        return JSON.toJSONString(tmp);
     }
 
 
