@@ -123,7 +123,7 @@ public class CourseController {
             json.append("\"").append(s).append("\":").append(JSON.toJSONString(tmp.get(s))).append(",");
         }
         json = new StringBuilder(json.substring(0, json.length() - 1) + "}");
-
+        if(json.length() == 1)return "{}";
         return json.toString();
     }
 
