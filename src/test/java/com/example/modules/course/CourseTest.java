@@ -67,7 +67,7 @@ public class CourseTest {
         }
     }
 
-    @Test
+//    @Test
     void filterString() {
         String str = "1-6周,7-10周(双),12-13周";
         Integer num = 8;
