@@ -2,6 +2,7 @@ package com.example.modules.user.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.modules.user.pojo.StuInfo;
 import com.example.modules.user.pojo.User;
 import com.example.modules.user.pojo.UserInfoLt;
 import org.apache.ibatis.annotations.Mapper;
@@ -16,4 +17,7 @@ public interface UserMapper extends BaseMapper<User> {
             "\t\tLEFT JOIN profession p ON p.id = c.prof_id\n" +
             "    WHERE s.id= #{userid}")
     UserInfoLt userinfo(String userid);
+
+    @Select("SELECT * FROM stu_info LEFT JOIN `user` ON stu_info.stu_num=`user`.stu_info_id WHERE `user`.id=#{userid}")
+    StuInfo getStuInFoMapper(String userid);
 }

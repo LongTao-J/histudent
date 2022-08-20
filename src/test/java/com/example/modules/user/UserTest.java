@@ -1,5 +1,6 @@
 package com.example.modules.user;
 
+import com.example.modules.user.pojo.StuInfo;
 import org.apache.http.HttpResponse;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.modules.user.mapper.ToDoListMapper;
@@ -137,6 +138,11 @@ public class UserTest {
 //            } catch (Exception e) {
 //                e.printStackTrace();
 //            }
+        }
+
+        @Test
+        void test090(){
+//            StuInfo stuInfo = userServiceImpl.getStuInfo("2");
         }
 
 }
