@@ -18,6 +18,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public StuInfo getStuInfo(String userid) {
         StuInfo stuInfo=userMapperImpl.getStuInFoMapper(userid);
         System.out.println(stuInfo);
-        return null;
+        return stuInfo;
     }
 }

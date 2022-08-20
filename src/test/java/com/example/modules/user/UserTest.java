@@ -142,7 +142,8 @@ public class UserTest {
 
         @Test
         void test090(){
-//            StuInfo stuInfo = userServiceImpl.getStuInfo("2");
+            StuInfo stuInfo = userServiceImpl.getStuInfo("2");
+            System.out.println(stuInfo);
         }
 
 }
