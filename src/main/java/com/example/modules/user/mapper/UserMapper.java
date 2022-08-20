@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
-    @Select("SELECT s.backimg,s.headaddress,s.nickname,s.sex,s.age,s.introduction,x.name AS schoolname,p.name AS professionname\n" +
+    @Select("SELECT s.class_backimg AS classBackimg,s.backimg,s.headaddress,s.nickname,s.sex,s.age,s.introduction,x.name AS schoolname,p.name AS professionname\n" +
             "    from stu_info c LEFT JOIN `user` s ON s.stu_info_id = c.stu_num\n" +
             "    LEFT JOIN school x ON x.id = c.sch_id\n" +
             "\t\tLEFT JOIN profession p ON p.id = c.prof_id\n" +

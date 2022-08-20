@@ -16,4 +16,5 @@ public class UserInfoLt {
     private String schoolname;
     private String professionname;
     private String backimg;
+    private String classBackimg;
 }

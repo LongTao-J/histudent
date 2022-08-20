@@ -24,6 +24,7 @@ public class User {
     private String introduction;
     private String schoolTime;
     private String backimg;
+    private String classBackimg;
     @Version
     private Integer version;//乐观锁
 

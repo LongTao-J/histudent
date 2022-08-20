@@ -334,6 +334,18 @@ public class UserController {
         User user = userMapper.selectById(userId);
         user.setBackimg(backImg.getBackimage());
         userMapper.updateById(user);
-        return R.success(backImg.getBackimage(),"头像上传成功",200);
+        return R.success(backImg.getBackimage(),"背景图片上传成功",200);
+    }
+
+    //上传课表背景图片
+    @PostMapping("/upClassBackImg")
+    @CrossOrigin
+    public R<String> upClassBackImg(@RequestBody ClassBackImage classBackImage){
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userId=redis.get(Consts.REDIS_USER);
+        User user = userMapper.selectById(userId);
+        user.setClassBackimg(classBackImage.getClassImg());
+        userMapper.updateById(user);
+        return R.success(classBackImage.getClassImg(),"课表背景图片上传成功",200);
     }
 }
