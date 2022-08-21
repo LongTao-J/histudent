@@ -5,7 +5,6 @@ import com.example.modules.user.utils.Consts;
 import com.example.modules.wall.entity.po.Post;
 import com.example.modules.wall.service.PostCollectService;
 import com.example.modules.wall.service.PostService;
-import com.example.modules.wall.service.impl.PostServiceImpl;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

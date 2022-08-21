@@ -16,8 +16,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public StuInfo getStuInfo(String userid) {
-        StuInfo stuInfo=userMapperImpl.getStuInFoMapper(userid);
-        System.out.println(stuInfo);
+        StuInfo stuInfo = userMapperImpl.getStuInFoMapper(userid);
         return stuInfo;
     }
 }
