@@ -44,9 +44,9 @@ public class Generate {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName("epidemic");
+        pc.setModuleName("wall");
         pc.setParent("com.example.modules");
-        pc.setEntity("entity");
+        pc.setEntity("entity.po");
         pc.setMapper("mapper");
         pc.setService("service");
         pc.setController("controller");
@@ -58,7 +58,7 @@ public class Generate {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
-        strategy.setInclude("nucleic");
+        strategy.setInclude("focus_state");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
 
