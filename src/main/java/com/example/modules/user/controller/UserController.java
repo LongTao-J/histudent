@@ -205,7 +205,7 @@ public class UserController {
         return R.success(null,"修改性别成功",200);
     }
 
-    //修改性别
+    //修改年龄
     @PutMapping("/upage/{age}")
     @CrossOrigin
     public R<String> upAge(@PathVariable("age") int age){
@@ -215,6 +215,18 @@ public class UserController {
         user.setAge(age);
         userMapper.updateById(user);
         return R.success(null,"修改年龄成功",200);
+    }
+
+    //修改昵称
+    @PutMapping("/upnickname/{name}")
+    @CrossOrigin
+    public R<String> upNickeName(@PathVariable("name") String name){
+        ValueOperations<String,String> redis=redisTemplate.opsForValue();
+        String userid=redis.get(Consts.REDIS_USER);
+        User user=userMapper.selectById(userid);
+        user.setNickname(name);
+        userMapper.updateById(user);
+        return R.success(null,"修改昵称成功",200);
     }
 
     //修改自我介绍
