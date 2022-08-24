@@ -42,6 +42,11 @@ public class Nucleic implements Serializable {
     private Boolean state;
 
     /**
+     * 核酸单位
+     */
+    private String unit;
+
+    /**
      * 创建时间
      */
     @TableField(fill = FieldFill.INSERT)

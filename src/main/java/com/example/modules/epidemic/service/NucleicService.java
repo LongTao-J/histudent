@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface NucleicService extends IService<Nucleic> {
 
-    void addNucleic(String schId, String stuNum, Boolean state);
+    void addNucleic(String schId, String stuNum, Boolean state, String unit);
 
     List<Nucleic> getNucleicList(String schId, String stuNum);
 }
