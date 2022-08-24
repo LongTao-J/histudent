@@ -1,8 +1,6 @@
 package com.example.modules.market.task;
 
 import com.example.modules.market.service.CommodityWantService;
-import com.example.modules.wall.config.QuartzConfig;
-import com.example.modules.wall.service.PostLikeService;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -25,7 +23,7 @@ public class WantTask extends QuartzJobBean {
     }
 }
 
-//
+
 //public class WantTask  {
 //
 //}

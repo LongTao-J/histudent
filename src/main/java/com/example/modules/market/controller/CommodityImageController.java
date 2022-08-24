@@ -1,8 +1,8 @@
 package com.example.modules.market.controller;
 
 import com.example.modules.market.entity.dto.ImageDTO;
-import com.example.modules.market.repository.CommodityImgRepository;
 import com.example.modules.market.service.CommodityImageService;
+import com.example.modules.market.service.RedisLtService;
 import com.example.modules.user.utils.Consts;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class CommodityImageController {
 
     @Autowired
-    CommodityImageService commodityImageServiceImpl;
-
-    @Autowired
-    CommodityImgRepository commodityImgRepositoryImpl;
-
-    @Autowired
     RedisTemplate redisTemplate;
+
+    @Autowired
+    RedisLtService redisLtServiceImpl;
 
     //上传商品的照片
     @PostMapping("/addImg")
@@ -35,7 +32,7 @@ public class CommodityImageController {
             if (imageDTO.getImgurl()==null || imageDTO.getImgurl()==""){
                 return R.error();
             }
-            commodityImgRepositoryImpl.uploadReleasePostFile(userId,imageDTO.getImgurl());
+            redisLtServiceImpl.addCommodityImagetoRedis(userId, imageDTO.getImgurl());
             return R.success("上传成功");
         }catch (Exception e){
             return R.error();

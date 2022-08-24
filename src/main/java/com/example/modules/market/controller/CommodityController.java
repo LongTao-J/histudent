@@ -1,16 +1,12 @@
 package com.example.modules.market.controller;
 
 import com.example.modules.market.entity.dto.CommodityDTO;
-import com.example.modules.market.entity.po.Commodity;
 import com.example.modules.market.entity.vo.CommodityVO;
-import com.example.modules.market.repository.CommodityImgRepository;
 import com.example.modules.market.service.CommodityImageService;
 import com.example.modules.market.service.CommodityService;
-import com.example.modules.user.utils.Consts;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,13 +17,8 @@ public class CommodityController {
 
     @Autowired
     CommodityService commodityServiceImpl;
-
     @Autowired
     RedisTemplate redisTemplate;
-
-    @Autowired
-    CommodityImgRepository commodityImgRepositoryImpl;
-
     @Autowired
     CommodityImageService commodityImageServiceImpl;
 
@@ -36,18 +27,7 @@ public class CommodityController {
     @CrossOrigin
     public R<String> addCommodity(@RequestBody CommodityDTO commodityDTO){
         try {
-
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
-
-            Commodity commodity=new Commodity();
-            commodity.setCount(commodityDTO.getCount());
-            commodity.setTitle(commodityDTO.getTitle());
-            commodity.setPrice(commodityDTO.getPrice());
-            commodity.setIntroduce(commodityDTO.getIntroduce());
-            commodity.setUserId(userId);
-
-            commodityImgRepositoryImpl.issuePost(commodity);
+            commodityServiceImpl.issueCommodity(commodityDTO);
             return R.success("发布商品成功");
         }catch (Exception e){
             return R.error();
@@ -58,9 +38,7 @@ public class CommodityController {
     @PutMapping("/cancle")
     @CrossOrigin
     public R<String> cancleCommodity(){
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId = redis.get(Consts.REDIS_USER);
-        commodityImgRepositoryImpl.unissuePost(userId);
+        commodityServiceImpl.cancleImg();
         return R.success("取消成功");
     }
 

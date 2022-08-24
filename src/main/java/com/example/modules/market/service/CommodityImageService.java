@@ -7,7 +7,10 @@ import java.util.List;
 
 public interface CommodityImageService extends IService<CommodityImage> {
 
+    //插入图片
     void insertImg(String commodityId,String imgurl);
 
+    //根据id查图片
     List<String> getAllImgService(String commodityId);
+
 }

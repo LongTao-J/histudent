@@ -1,16 +1,11 @@
 package com.example.modules.market.controller;
 
-import com.example.modules.market.entity.dto.WantLikeCountDTO;
 import com.example.modules.market.entity.dto.WritCommentDTO;
-import com.example.modules.market.entity.po.CommodityComment;
 import com.example.modules.market.entity.vo.CommentVo;
 import com.example.modules.market.service.CommodityCommentService;
-import com.example.modules.user.utils.Consts;
 import com.example.utils.R;
-import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

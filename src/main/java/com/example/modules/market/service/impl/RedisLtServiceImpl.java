@@ -1,12 +1,10 @@
 package com.example.modules.market.service.impl;
 
-import com.example.modules.market.entity.dto.CommodityDTO;
 import com.example.modules.market.entity.dto.WantLikeCountDTO;
 import com.example.modules.market.entity.po.CommodityWant;
-import com.example.modules.market.service.RedisLtService;
 import com.example.modules.market.enums.WantStatusEnum;
+import com.example.modules.market.service.RedisLtService;
 import com.example.modules.market.utils.CommodityRedisKeyUtil;
-import com.example.modules.wall.entity.dto.PostLikedCountDTO;
 import com.example.modules.wall.utils.WallRedisKeyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.Cursor;
@@ -28,13 +26,13 @@ public class RedisLtServiceImpl implements RedisLtService {
     @Override
     public void saveLikedRedis(String UserId, String commodityId) {
         String key = CommodityRedisKeyUtil.getLikedKey(UserId, commodityId);
-        redisTemplate.opsForHash().put(CommodityRedisKeyUtil.MAP_KEY_USER_LIKED, key, WantStatusEnum.LIKE.getCode());
+        redisTemplate.opsForHash().put(CommodityRedisKeyUtil.MAP_KEY_USER_LIKED, key, WantStatusEnum.ISLIKE.getCode());
     }
 
     @Override
     public void unlikeFromRedis(String UserId, String commodityId) {
         String key = CommodityRedisKeyUtil.getLikedKey(UserId, commodityId);
-        redisTemplate.opsForHash().put(CommodityRedisKeyUtil.MAP_KEY_USER_LIKED, key, WantStatusEnum.UNLIKE.getCode());
+        redisTemplate.opsForHash().put(CommodityRedisKeyUtil.MAP_KEY_USER_LIKED, key, WantStatusEnum.ISUNLIKE.getCode());
     }
 
     @Override

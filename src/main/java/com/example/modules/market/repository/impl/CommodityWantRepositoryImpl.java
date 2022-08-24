@@ -6,9 +6,6 @@ import com.example.modules.market.repository.CommodityWantRepository;
 import com.example.modules.market.service.CommodityService;
 import com.example.modules.market.service.CommodityWantService;
 import com.example.modules.market.service.RedisLtService;
-import com.example.modules.wall.entity.po.Post;
-import com.example.modules.wall.entity.po.PostLike;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

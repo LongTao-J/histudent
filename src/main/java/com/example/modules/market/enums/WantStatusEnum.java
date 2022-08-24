@@ -6,8 +6,8 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum WantStatusEnum {
-    LIKE(1, "点赞"),
-    UNLIKE(0, "取消点赞/未点赞"),
+    ISLIKE(1, "点赞"),
+    ISUNLIKE(0, "取消点赞/未点赞"),
     ;
 
     private Integer code;

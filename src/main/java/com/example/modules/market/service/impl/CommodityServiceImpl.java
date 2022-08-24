@@ -5,17 +5,13 @@ import com.example.modules.market.entity.dto.CommodityDTO;
 import com.example.modules.market.entity.po.Commodity;
 import com.example.modules.market.entity.vo.CommodityVO;
 import com.example.modules.market.mapper.CommodityMapper;
-import com.example.modules.market.repository.CommodityImgRepository;
 import com.example.modules.market.service.CommodityImageService;
 import com.example.modules.market.service.CommodityService;
 import com.example.modules.user.utils.Consts;
-import com.example.modules.wall.entity.po.Post;
-import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,29 +23,31 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
     CommodityMapper commodityMapper;
 
     @Autowired
-    RedisTemplate redisTemplate;
-
-    @Autowired
-    CommodityImgRepository commodityImgRepositoryImpl;
-
-    @Autowired
     CommodityImageService commodityImageServiceImpl;
 
     @Autowired
-    RedisLtServiceImpl redisLtService;
+    RedisLtServiceImpl redisLtServiceImpl;
+
+    @Autowired
+    RedisTemplate redisTemplate;
 
     @Override
-    public boolean issueCommodity(Commodity commodity) {
+    public boolean issueCommodity(CommodityDTO commodityDTO) {
         try {
+            ValueOperations<String,String> redis = redisTemplate.opsForValue();
+            String userId = redis.get(Consts.REDIS_USER);
 
-            List<String> imgs = commodityImgRepositoryImpl.getReleasePostFileListCache(commodity.getUserId());
-
+            Commodity commodity=new Commodity();
+            commodity.setCount(commodityDTO.getCount());
+            commodity.setTitle(commodityDTO.getTitle());
+            commodity.setPrice(commodityDTO.getPrice());
+            commodity.setIntroduce(commodityDTO.getIntroduce());
+            commodity.setUserId(userId);
+            List<String> imgs = redisLtServiceImpl.getCommodityAllImgFromRedis(commodity.getUserId());
             for (String img:imgs){
                 commodityImageServiceImpl.insertImg(commodity.getId(),img);
             }
-
-            redisLtService.clearCommodityImage(commodity.getUserId());
-
+            redisLtServiceImpl.clearCommodityImage(commodity.getUserId());
             commodityMapper.insert(commodity);
             return true;
         }catch (Exception e){
@@ -62,6 +60,15 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
         List<CommodityVO> commodityVOList=new ArrayList<>();
         commodityVOList=commodityMapper.getAllCommodityVo();
         return commodityVOList;
+    }
+
+    @Override
+    public boolean cancleImg() {
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userId = redis.get(Consts.REDIS_USER);
+
+        redisLtServiceImpl.clearCommodityImage(userId);
+        return true;
     }
 
     @Override

@@ -1,10 +1,7 @@
 package com.example.modules.market.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.modules.market.entity.po.Commodity;
 import com.example.modules.market.entity.po.CommodityWant;
-import com.example.modules.wall.entity.po.PostLike;
 
 import java.util.List;
 

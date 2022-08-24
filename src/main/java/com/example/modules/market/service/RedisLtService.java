@@ -1,9 +1,7 @@
 package com.example.modules.market.service;
 
-import com.example.modules.market.entity.dto.CommodityDTO;
 import com.example.modules.market.entity.dto.WantLikeCountDTO;
 import com.example.modules.market.entity.po.CommodityWant;
-import com.example.modules.wall.entity.dto.PostLikedCountDTO;
 
 import java.util.List;
 

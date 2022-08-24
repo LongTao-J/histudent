@@ -2,19 +2,14 @@ package com.example.modules.market.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-
 import com.example.modules.market.entity.dto.WantLikeCountDTO;
 import com.example.modules.market.entity.po.Commodity;
 import com.example.modules.market.entity.po.CommodityWant;
 import com.example.modules.market.mapper.CommodityWantMapper;
-
 import com.example.modules.market.service.CommodityService;
 import com.example.modules.market.service.CommodityWantService;
-
 import com.example.modules.market.service.RedisLtService;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
 
 import java.util.List;

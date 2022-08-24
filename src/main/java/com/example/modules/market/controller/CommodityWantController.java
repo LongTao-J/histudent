@@ -3,7 +3,6 @@ package com.example.modules.market.controller;
 import com.example.modules.market.repository.CommodityWantRepository;
 import com.example.modules.user.utils.Consts;
 import com.example.utils.R;
-import org.checkerframework.checker.units.qual.C;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
