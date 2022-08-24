@@ -51,28 +51,4 @@ public class CommodityController {
         }
     }
 
-    //点击我想要
-    @PutMapping("/addWant")
-    @CrossOrigin
-    public R<String> addWantCommodity(){
-        try {
-
-            return R.success(null,"点击我想要成功",200);
-        }catch (Exception e){
-            return R.error();
-        }
-    }
-
-    //取消我想要
-    @PutMapping("/cancelWant")
-    @CrossOrigin
-    public R<String> cancelWantCommodity(){
-        try {
-
-            return R.success(null,"取消我想要成功",200);
-        }catch (Exception e){
-            return R.error();
-        }
-    }
-
 }
