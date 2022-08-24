@@ -19,6 +19,7 @@ import java.net.UnknownHostException;
 
 @Configuration
 @EnableCaching
+@SuppressWarnings("all")
 public class RedisConfig {
 
 

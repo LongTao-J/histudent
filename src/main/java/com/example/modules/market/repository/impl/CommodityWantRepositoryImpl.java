@@ -1,0 +1,92 @@
+package com.example.modules.market.repository.impl;
+
+import com.example.modules.market.entity.po.Commodity;
+import com.example.modules.market.entity.po.CommodityWant;
+import com.example.modules.market.repository.CommodityWantRepository;
+import com.example.modules.market.service.CommodityService;
+import com.example.modules.market.service.CommodityWantService;
+import com.example.modules.market.service.RedisLtService;
+import com.example.modules.wall.entity.po.Post;
+import com.example.modules.wall.entity.po.PostLike;
+import org.checkerframework.checker.units.qual.A;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class CommodityWantRepositoryImpl implements CommodityWantRepository {
+
+    @Autowired
+    CommodityWantService commodityWantServiceImpl;
+    @Autowired
+    RedisLtService redisLtServiceImpl;
+    @Autowired
+    CommodityService commodityServiceImpl;
+
+    @Override
+    public void savelike(String userId, String commodityId) {
+        Integer like = isLike(userId, commodityId);
+        if(like == null || like == 0){
+            redisLtServiceImpl.saveLikedRedis(userId, commodityId);
+            // 搜索redis有没有存数量, 存了直接加一, 没存在数据库获取后加一
+            Integer count = redisLtServiceImpl.getLikedCountFromRedisByPostId(commodityId);
+            if(count == null){
+                Commodity commodity = commodityServiceImpl.getCommodityById(commodityId);
+                Integer likeCount = commodity.getWant();
+                redisLtServiceImpl.setLikeCountFromRedis(commodityId, likeCount);
+            }
+            redisLtServiceImpl.incrementLikedCount(commodityId);
+        }
+    }
+
+    @Override
+    public void unlike(String userId, String commodityId) {
+        Integer like = isLike(userId, commodityId);
+        if(like != null && like == 1){
+            redisLtServiceImpl.unlikeFromRedis(userId, commodityId);
+            // 搜索redis有没有存数量, 存了直接减一, 没存在数据库获取后减一
+            Integer count = redisLtServiceImpl.getLikedCountFromRedisByPostId(commodityId);
+            if(count == null){
+                Commodity commodity = commodityServiceImpl.getCommodityById(commodityId);
+                Integer likeCount = commodity.getWant();
+                redisLtServiceImpl.setLikeCountFromRedis(commodityId, likeCount);
+            }
+            redisLtServiceImpl.decrementLikedCount(commodityId);
+        }
+    }
+
+    @Override
+    public Integer isLike(String userId, String commodityId) {
+        // 从redis中查找数据
+        Integer isLikeFromRedis = redisLtServiceImpl.getIsLikeFromRedis(userId, commodityId);
+        // 如果redis中存在直接获取
+        if(isLikeFromRedis != null){
+            return isLikeFromRedis;
+        }else{
+            // redis中不存在从mysql中获取并存储在redis中
+            CommodityWant likeDataFromMySql=commodityWantServiceImpl.getWantByUserIdAndCommodityId(userId,commodityId);
+            if(likeDataFromMySql == null) return null;
+            else {
+                if (likeDataFromMySql.getStatus() == 1) {
+                    redisLtServiceImpl.saveLikedRedis(userId, commodityId);
+                    return 1;
+                }
+                else {
+                    redisLtServiceImpl.unlikeFromRedis(userId, commodityId);
+                    return 0;
+                }
+            }
+        }
+    }
+
+    @Override
+    public Integer getLikeCount(String commodityId) {
+        Integer countFromRedis = redisLtServiceImpl.getLikedCountFromRedisByPostId(commodityId);
+        if(countFromRedis == null){
+            Commodity commodity = commodityServiceImpl.getCommodityById(commodityId);
+            if(commodity == null) return null;
+            // 更新redis
+            redisLtServiceImpl.setLikeCountFromRedis(commodityId, commodity.getWant());
+            return commodity.getWant();
+        }else return countFromRedis;
+    }
+}

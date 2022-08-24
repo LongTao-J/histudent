@@ -7,11 +7,13 @@ import com.example.modules.market.entity.vo.CommodityVO;
 import com.example.modules.market.mapper.CommodityMapper;
 import com.example.modules.market.service.CommodityService;
 import com.example.modules.user.utils.Consts;
+import com.example.modules.wall.entity.po.Post;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,15 +53,19 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
     }
 
     @Override
-    public boolean addWantCommodityService(String cid) {
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId = redis.get(Consts.REDIS_USER);
-
-        return false;
+    public Commodity getCommodityById(String id) {
+        return commodityMapper.selectById(id);
     }
 
+
     @Override
-    public boolean cancelWantCommodity(String cid) {
-        return false;
+    public Boolean updateCommodityById(Commodity commodity) {
+        try{
+            commodityMapper.updateById(commodity);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 }

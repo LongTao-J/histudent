@@ -15,9 +15,8 @@ public interface CommodityService extends IService<Commodity> {
      //查询所有商品
      List<CommodityVO> getAllCommodityService();
 
-     //想要商品
-     boolean addWantCommodityService(String cid);
+     public Commodity getCommodityById(String id);
 
-     //取消想要商品
-     boolean cancelWantCommodity(String cid);
+     public Boolean updateCommodityById(Commodity commodity);
+
 }
