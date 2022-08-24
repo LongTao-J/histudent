@@ -1,5 +1,6 @@
 package com.example.modules.market.service;
 
+import com.example.modules.market.entity.dto.CommodityDTO;
 import com.example.modules.market.entity.dto.WantLikeCountDTO;
 import com.example.modules.market.entity.po.CommodityWant;
 import com.example.modules.wall.entity.dto.PostLikedCountDTO;
@@ -85,4 +86,18 @@ public interface RedisLtService {
      * @param postId
      */
     void clearPostLikeCache(String postId);
+
+    //图片================================
+
+    //将图片存到redis
+    void addCommodityImagetoRedis(String userId, String url);
+
+    //清除redis图片缓存
+    void clearCommodityImage(String userid);
+
+    //获取所有图片
+    List<String> getCommodityAllImgFromRedis(String userId);
+
+    //发布商品
+//    void issueCommodity(CommodityDTO commodityDTO);
 }

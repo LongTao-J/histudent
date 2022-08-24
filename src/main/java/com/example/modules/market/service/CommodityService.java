@@ -10,7 +10,7 @@ import java.util.List;
 public interface CommodityService extends IService<Commodity> {
 
      //上架商品
-     boolean issueCommodity(CommodityDTO commodityDTO);
+     boolean issueCommodity(Commodity commodity);
 
      //查询所有商品
      List<CommodityVO> getAllCommodityService();

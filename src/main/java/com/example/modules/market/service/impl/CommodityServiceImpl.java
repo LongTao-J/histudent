@@ -5,6 +5,8 @@ import com.example.modules.market.entity.dto.CommodityDTO;
 import com.example.modules.market.entity.po.Commodity;
 import com.example.modules.market.entity.vo.CommodityVO;
 import com.example.modules.market.mapper.CommodityMapper;
+import com.example.modules.market.repository.CommodityImgRepository;
+import com.example.modules.market.service.CommodityImageService;
 import com.example.modules.market.service.CommodityService;
 import com.example.modules.user.utils.Consts;
 import com.example.modules.wall.entity.po.Post;
@@ -27,17 +29,27 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
     @Autowired
     RedisTemplate redisTemplate;
 
+    @Autowired
+    CommodityImgRepository commodityImgRepositoryImpl;
+
+    @Autowired
+    CommodityImageService commodityImageServiceImpl;
+
+    @Autowired
+    RedisLtServiceImpl redisLtService;
+
     @Override
-    public boolean issueCommodity(CommodityDTO commodityDTO) {
+    public boolean issueCommodity(Commodity commodity) {
         try {
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
-            Commodity commodity=new Commodity();
-            commodity.setCount(commodityDTO.getCount());
-            commodity.setTitle(commodityDTO.getTitle());
-            commodity.setPrice(commodityDTO.getPrice());
-            commodity.setIntroduce(commodityDTO.getIntroduce());
-            commodity.setUserId(userId);
+
+            List<String> imgs = commodityImgRepositoryImpl.getReleasePostFileListCache(commodity.getUserId());
+
+            for (String img:imgs){
+                commodityImageServiceImpl.insertImg(commodity.getId(),img);
+            }
+
+            redisLtService.clearCommodityImage(commodity.getUserId());
+
             commodityMapper.insert(commodity);
             return true;
         }catch (Exception e){

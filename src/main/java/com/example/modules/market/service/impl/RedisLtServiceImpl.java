@@ -1,5 +1,6 @@
 package com.example.modules.market.service.impl;
 
+import com.example.modules.market.entity.dto.CommodityDTO;
 import com.example.modules.market.entity.dto.WantLikeCountDTO;
 import com.example.modules.market.entity.po.CommodityWant;
 import com.example.modules.market.service.RedisLtService;
@@ -132,6 +133,26 @@ public class RedisLtServiceImpl implements RedisLtService {
         }
         cursor.close();
     }
+
+    @Override
+    public void addCommodityImagetoRedis(String userId, String url) {
+        redisTemplate.opsForList().rightPush(userId, url);
+    }
+
+    @Override
+    public void clearCommodityImage(String userid) {
+        redisTemplate.delete(userid);
+    }
+
+    @Override
+    public List<String> getCommodityAllImgFromRedis(String userId) {
+        return redisTemplate.opsForList().range(userId, 0, -1);
+    }
+
+//    @Override
+//    public void issueCommodity(CommodityDTO commodityDTO) {
+//
+//    }
 
 }
 

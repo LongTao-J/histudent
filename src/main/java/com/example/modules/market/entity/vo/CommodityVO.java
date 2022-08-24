@@ -14,6 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 public class CommodityVO {
 
+    private String id;
+
     private String nickname;
 
     private String headaddress;
