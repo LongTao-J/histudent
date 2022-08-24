@@ -21,11 +21,12 @@ public class NucleicServiceImpl extends ServiceImpl<NucleicMapper, Nucleic> impl
     NucleicMapper nucleicMapper;
 
     @Override
-    public void addNucleic(String schoolId, String stuNum, Boolean state) {
+    public void addNucleic(String schoolId, String stuNum, Boolean state, String unit) {
         Nucleic nucleic = new Nucleic();
         nucleic.setSchId(schoolId);
         nucleic.setStuNum(stuNum);
         nucleic.setState(state);
+        nucleic.setUnit(unit);
         nucleicMapper.insert(nucleic);
     }
 

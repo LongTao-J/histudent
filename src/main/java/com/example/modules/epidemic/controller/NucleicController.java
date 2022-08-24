@@ -34,7 +34,7 @@ public class NucleicController {
     @CrossOrigin
     public R<Object> addNucleic(@RequestBody AddNucleicFromViewDTO dto){
         try{
-            nucleicServiceImpl.addNucleic(dto.getSchId(), dto.getStuNum(), dto.getState());
+            nucleicServiceImpl.addNucleic(dto.getSchId(), dto.getStuNum(), dto.getState(), dto.getUnit());
             return R.success(null);
         }catch (Exception e){
             return R.error();

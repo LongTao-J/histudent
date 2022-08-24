@@ -16,4 +16,5 @@ public class AddNucleicFromViewDTO {
     String schId;
     String stuNum;
     Boolean state;
+    String unit;
 }
