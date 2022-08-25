@@ -11,6 +11,6 @@ import java.util.List;
 @Mapper
 public interface CommodityCommentMapper extends BaseMapper<CommodityComment> {
 
-    @Select("SELECT u.id AS userId,u.nickname AS userName,u.headaddress AS headImg,c.id AS commentId,c.comment from `user` u LEFT JOIN `commodity-comment` c ON c.user_id=u.id WHERE c.commodity_id= #{commodityId}")
+    @Select("SELECT u.id AS userId,u.nickname AS userName,u.headaddress AS headImg,c.id AS commentId,c.comment from `user` u LEFT JOIN `commodity_comment` c ON c.user_id=u.id WHERE c.commodity_id= #{commodityId}")
     List<CommentVo> getAllCommentByCid(String commodityId);
 }

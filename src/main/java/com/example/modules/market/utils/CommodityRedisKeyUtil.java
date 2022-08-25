@@ -2,7 +2,6 @@ package com.example.modules.market.utils;
 
 public class CommodityRedisKeyUtil {
     //保存用户点赞数据的key
-
     public static final String MAP_KEY_USER_LIKED = "MAP_LT_USER_LIKED";
     //保存用户被点赞数量的key
     public static final String MAP_KEY_USER_LIKED_COUNT = "MAP_LT_USER_LIKED_COUNT";

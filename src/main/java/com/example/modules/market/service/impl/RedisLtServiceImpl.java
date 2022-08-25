@@ -72,7 +72,7 @@ public class RedisLtServiceImpl implements RedisLtService {
 
     @Override
     public List<CommodityWant> getLikedDataWithRemoveFromRedis() {
-        Cursor<Map.Entry<Object, Object>> cursor = redisTemplate.opsForHash().scan(WallRedisKeyUtils.HASH_KEY_USER_LIKE, ScanOptions.NONE);
+        Cursor<Map.Entry<Object, Object>> cursor = redisTemplate.opsForHash().scan(CommodityRedisKeyUtil.MAP_KEY_USER_LIKED, ScanOptions.NONE);
         List<CommodityWant> list = new ArrayList<>();
         while(cursor.hasNext()){
             Map.Entry<Object, Object> entry = cursor.next();

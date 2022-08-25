@@ -43,12 +43,12 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             commodity.setPrice(commodityDTO.getPrice());
             commodity.setIntroduce(commodityDTO.getIntroduce());
             commodity.setUserId(userId);
-            List<String> imgs = redisLtServiceImpl.getCommodityAllImgFromRedis(commodity.getUserId());
+            commodityMapper.insert(commodity);
+            List<String> imgs = redisLtServiceImpl.getCommodityAllImgFromRedis(userId);
             for (String img:imgs){
                 commodityImageServiceImpl.insertImg(commodity.getId(),img);
             }
             redisLtServiceImpl.clearCommodityImage(commodity.getUserId());
-            commodityMapper.insert(commodity);
             return true;
         }catch (Exception e){
             return false;
@@ -59,6 +59,13 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
     public List<CommodityVO> getAllCommodityService() {
         List<CommodityVO> commodityVOList=new ArrayList<>();
         commodityVOList=commodityMapper.getAllCommodityVo();
+        for (int i=0;i<commodityVOList.size();i++){
+            List<String> allImg= commodityImageServiceImpl.getAllImgService(commodityVOList.get(i).getId());
+            commodityVOList.get(i).setAllImg(allImg);
+            commodityVOList.get(i).setTotalImage(allImg.get(0));
+            System.out.println(allImg.get(0));
+        }
+
         return commodityVOList;
     }
 

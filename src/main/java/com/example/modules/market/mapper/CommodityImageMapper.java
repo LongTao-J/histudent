@@ -11,6 +11,9 @@ import java.util.List;
 public interface CommodityImageMapper extends BaseMapper<CommodityImage> {
 
     //根据商品id查图片
-    @Select("select commodity_img from `commodity-image` WHERE commodity_id= #{commodityId}")
+    @Select("select commodity_img FROM commodity_image WHERE commodity_id = #{commodityId}")
     List<String> getAllCommodityImg(String commodityId);
+
+    //插入图片
+
 }

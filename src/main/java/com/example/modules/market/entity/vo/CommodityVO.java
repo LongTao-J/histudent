@@ -29,8 +29,6 @@ public class CommodityVO {
 
     private Integer want;
 
-    private Date gmtModified;
-
     //上传的第一张照片
     private String TotalImage;
 

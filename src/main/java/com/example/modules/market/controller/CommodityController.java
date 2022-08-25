@@ -48,11 +48,6 @@ public class CommodityController {
     public R<List<CommodityVO>> getAllCommodity(){
         try {
             List<CommodityVO> voList=commodityServiceImpl.getAllCommodityService();
-            for (int i=0;i<voList.size();i++){
-                List<String> allImg= commodityImageServiceImpl.getAllImgService(voList.get(i).getId());
-                voList.get(i).setAllImg(allImg);
-                voList.get(i).setTotalImage(allImg.get(0));
-            }
             return R.success(voList,"查询所有商品成功",200);
         }catch (Exception e){
             return R.error();
