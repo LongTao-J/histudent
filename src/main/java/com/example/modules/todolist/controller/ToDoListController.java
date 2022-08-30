@@ -1,9 +1,8 @@
-package com.example.modules.user.controller;
+package com.example.modules.todolist.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.modules.user.mapper.ToDoListMapper;
-import com.example.modules.user.pojo.Todolist;
+import com.example.modules.todolist.mapper.ToDoListMapper;
+import com.example.modules.todolist.entity.Todolist;
 import com.example.modules.user.utils.Consts;
 import com.example.utils.R;
 import lombok.extern.slf4j.Slf4j;
