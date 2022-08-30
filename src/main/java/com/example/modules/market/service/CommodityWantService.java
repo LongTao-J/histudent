@@ -2,6 +2,7 @@ package com.example.modules.market.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.modules.market.entity.po.CommodityWant;
+import com.example.modules.market.entity.vo.CommodityVO;
 
 import java.util.List;
 
@@ -59,4 +60,10 @@ public interface CommodityWantService {
      * @param commodityId
      */
     void deleteLikeDate(String commodityId);
+
+    //根据userid查询所有want
+    List<String> getAllWant(String userid);
+
+    //查询想要的个数
+    Integer getWantCountById(String commodityId);
 }

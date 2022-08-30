@@ -83,9 +83,11 @@ public class RedisLtServiceImpl implements RedisLtService {
             String commodityId = split[1];
             Integer status = (Integer) entry.getValue();
             // 封装对象
-            CommodityWant commodityWant=new CommodityWant(userId, commodityId, status);
+            CommodityWant commodityWant=new CommodityWant();
+            commodityWant.setUserId(userId);
+            commodityWant.setCommodityId(commodityId);
+            commodityWant.setStatus(status);
             list.add(commodityWant);
-
             // 存到List后从Redis中删除
             redisTemplate.opsForHash().delete(CommodityRedisKeyUtil.MAP_KEY_USER_LIKED, key);
         }
@@ -130,6 +132,31 @@ public class RedisLtServiceImpl implements RedisLtService {
             }
         }
         cursor.close();
+    }
+
+    //获取所有点赞数据
+    @Override
+    public List<CommodityWant> getAllWantFromRedis() {
+        Cursor<Map.Entry<Object, Object>> cursor = redisTemplate.opsForHash().scan(CommodityRedisKeyUtil.MAP_KEY_USER_LIKED, ScanOptions.NONE);
+        List<CommodityWant> list = new ArrayList<>();
+        while(cursor.hasNext()){
+            Map.Entry<Object, Object> entry = cursor.next();
+            String key = (String) entry.getKey();
+            //分离出 userId，postId
+            String[] split = key.split("::");
+            String userId = split[0];
+            String commodityId = split[1];
+            Integer status = (Integer) entry.getValue();
+                // 封装对象
+                CommodityWant commodityWant=new CommodityWant();
+                    commodityWant.setUserId(userId);
+                    commodityWant.setCommodityId(commodityId);
+                    commodityWant.setStatus(status);
+                list.add(commodityWant);
+
+        }
+        cursor.close();
+        return list;
     }
 
     @Override

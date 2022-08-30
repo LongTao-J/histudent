@@ -1,5 +1,9 @@
 package com.example.modules.market.repository;
 
+import com.example.modules.market.entity.vo.CommodityVO;
+
+import java.util.List;
+
 public interface CommodityWantRepository {
     /**
      * 点赞
@@ -29,4 +33,7 @@ public interface CommodityWantRepository {
      * @return
      */
     Integer getLikeCount(String commodityId);
+
+    //查询我想要的商品
+    List<CommodityVO> getMyWantCommodity(String userId);
 }

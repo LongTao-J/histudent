@@ -54,4 +54,16 @@ public class CommodityController {
         }
     }
 
+    //查询我发布的商品
+    @GetMapping("/getMyCommodity")
+    @CrossOrigin
+    public R<List<CommodityVO>> getCommodityByUser(){
+        try {
+            List<CommodityVO> myCommodityService = commodityServiceImpl.getMyCommodityService();
+            return R.success(myCommodityService);
+        }catch (Exception e){
+            return R.error();
+        }
+    }
+
 }

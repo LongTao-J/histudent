@@ -10,11 +10,8 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CommodityDTO {
-    private String title;
 
     private BigDecimal price;
-
-    private Integer count;
 
     private String introduce;
 

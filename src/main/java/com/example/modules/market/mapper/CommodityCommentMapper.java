@@ -13,4 +13,12 @@ public interface CommodityCommentMapper extends BaseMapper<CommodityComment> {
 
     @Select("SELECT u.id AS userId,u.nickname AS userName,u.headaddress AS headImg,c.id AS commentId,c.comment from `user` u LEFT JOIN `commodity_comment` c ON c.user_id=u.id WHERE c.commodity_id= #{commodityId}")
     List<CommentVo> getAllCommentByCid(String commodityId);
+
+    //根据商品id查评论个数
+    @Select("SELECT count(*)\n" +
+            "from `user` u LEFT JOIN `commodity_comment` c ON c.user_id=u.id WHERE c.commodity_id= #{commodityId}")
+    Integer getCommentCountByCid(String commodityId);
+
+    //
+
 }

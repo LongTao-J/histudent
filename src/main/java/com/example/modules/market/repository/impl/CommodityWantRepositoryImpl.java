@@ -2,12 +2,18 @@ package com.example.modules.market.repository.impl;
 
 import com.example.modules.market.entity.po.Commodity;
 import com.example.modules.market.entity.po.CommodityWant;
+import com.example.modules.market.entity.vo.CommodityVO;
+import com.example.modules.market.enums.WantStatusEnum;
 import com.example.modules.market.repository.CommodityWantRepository;
 import com.example.modules.market.service.CommodityService;
 import com.example.modules.market.service.CommodityWantService;
 import com.example.modules.market.service.RedisLtService;
+import com.example.modules.market.utils.CommodityRedisKeyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class CommodityWantRepositoryImpl implements CommodityWantRepository {
@@ -75,6 +81,7 @@ public class CommodityWantRepositoryImpl implements CommodityWantRepository {
         }
     }
 
+
     @Override
     public Integer getLikeCount(String commodityId) {
         Integer countFromRedis = redisLtServiceImpl.getLikedCountFromRedisByPostId(commodityId);
@@ -85,5 +92,34 @@ public class CommodityWantRepositoryImpl implements CommodityWantRepository {
             redisLtServiceImpl.setLikeCountFromRedis(commodityId, commodity.getWant());
             return commodity.getWant();
         }else return countFromRedis;
+    }
+
+    //查询我想要的商品
+    @Override
+    public List<CommodityVO> getMyWantCommodity(String userId) {
+        List<CommodityVO> commodityVOList=new ArrayList<>();
+        //从数据库中找
+        List<String> allWant = commodityWantServiceImpl.getAllWant(userId);
+        if (allWant.size()!=0){
+            for (int i=0;i<allWant.size();i++){
+                //数据库查
+                CommodityVO myCommodityByCidSerlt = commodityServiceImpl.getMyWantCommodityByCidSer(allWant.get(0));
+                commodityVOList.add(myCommodityByCidSerlt);
+            }
+        }
+
+        //先在redis中找
+        List<CommodityWant> commodityWants=redisLtServiceImpl.getAllWantFromRedis();
+        if (commodityWants.size()!=0){
+            for (int i=0;i<commodityWants.size();i++){
+                if (commodityWants.get(i).getUserId()==userId){
+                    //数据库查
+                    CommodityVO myCommodityByCidSer = commodityServiceImpl.getMyWantCommodityByCidSer(commodityWants.get(i).getCommodityId());
+                    commodityVOList.add(myCommodityByCidSer);
+                }
+            }
+        }
+
+        return commodityVOList;
     }
 }
