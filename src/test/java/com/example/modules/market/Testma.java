@@ -149,4 +149,9 @@ public class Testma {
 //        wrapper.eq("user_id","1552570983563436034");
     }
 
+    @Test
+    void test90(){
+//        List<CommodityVO> recCommodityService = commodityServiceImpl.getRecCommodityService();
+//        System.out.println(recCommodityService);
+    }
 }

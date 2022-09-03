@@ -358,11 +358,15 @@ public class UserController {
     @PostMapping("/upClassBackImg")
     @CrossOrigin
     public R<String> upClassBackImg(@RequestBody ClassBackImage classBackImage){
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId=redis.get(Consts.REDIS_USER);
-        User user = userMapper.selectById(userId);
-        user.setClassBackimg(classBackImage.getClassImg());
-        userMapper.updateById(user);
-        return R.success(classBackImage.getClassImg(),"课表背景图片上传成功",200);
+        try {
+            ValueOperations<String,String> redis = redisTemplate.opsForValue();
+            String userId=redis.get(Consts.REDIS_USER);
+            User user = userMapper.selectById(userId);
+            user.setClassBackimg(classBackImage.getClassImg());
+            userMapper.updateById(user);
+            return R.success(classBackImage.getClassImg(),"课表背景图片上传成功",200);
+        }catch (Exception e){
+            return R.error(classBackImage.getClassImg(),400);
+        }
     }
 }

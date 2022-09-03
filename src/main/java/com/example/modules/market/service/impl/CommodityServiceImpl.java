@@ -160,4 +160,30 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
         return commodityMapper.getMyWantCommodityVoByCId(commodityId);
     }
 
+    @Override
+    public List<CommodityVO> getRecCommodityService() {
+        List<CommodityVO> commodityVOList=new ArrayList<>();
+        commodityVOList=commodityMapper.getRecCommodityVo();
+        for (int i=0;i<commodityVOList.size();i++){
+            List<String> allImg= commodityImageServiceImpl.getAllImgService(commodityVOList.get(i).getId());
+            commodityVOList.get(i).setAllImg(allImg);
+            commodityVOList.get(i).setTotalImage(allImg.get(0));
+            Integer commentCount = commodityCommentServiceImpl.getCommentCount(commodityVOList.get(i).getId());
+            commodityVOList.get(i).setCommentCount(commentCount);
+            Integer likedCountFromRedisByPostId = redisLtServiceImpl.getLikedCountFromRedisByPostId(commodityVOList.get(i).getId());
+            if (likedCountFromRedisByPostId==null || likedCountFromRedisByPostId==0){
+
+            }else {
+                commodityVOList.get(i).setWant(likedCountFromRedisByPostId);
+            }
+
+            //收藏数量
+            Integer commodityCollectionCount = commodityCollectionServiceImpl.getCommodityCollectionCount(commodityVOList.get(i).getId());
+            commodityVOList.get(i).setCollectionCount(commodityCollectionCount);
+
+        }
+
+        return commodityVOList;
+    }
+
 }

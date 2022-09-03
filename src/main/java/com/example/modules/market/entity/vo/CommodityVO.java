@@ -44,4 +44,7 @@ public class CommodityVO {
     //收藏的个数
     private Integer collectionCount;
 
+
+    private String comrfrom="二手市场";
+
 }

@@ -33,6 +33,7 @@ public interface CommodityService extends IService<Commodity> {
      //根据想要商品id查商品
      CommodityVO getMyWantCommodityByCidSer(String commodityId);
 
-
+     //查询推荐商品
+     List<CommodityVO> getRecCommodityService();
 
 }

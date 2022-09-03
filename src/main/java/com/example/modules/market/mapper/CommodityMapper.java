@@ -27,4 +27,9 @@ public interface CommodityMapper extends BaseMapper<Commodity> {
     //查询我想要的商品byUserid
     @Select("")
     List<CommodityVO> getMyWantCommodity(String userid);
+
+    //根据推荐查商品
+    @Select("SELECT c.is_rec,c.id,u.nickname,u.headaddress,c.price,c.introduce,c.gmt_create,c.want\n" +
+            "            FROM commodity c LEFT JOIN `user` u ON u.id=c.user_id WHERE c.is_rec=1")
+    List<CommodityVO> getRecCommodityVo();
 }
