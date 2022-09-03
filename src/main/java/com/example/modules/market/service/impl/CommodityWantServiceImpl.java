@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.modules.market.entity.dto.WantLikeCountDTO;
 import com.example.modules.market.entity.po.Commodity;
 import com.example.modules.market.entity.po.CommodityWant;
+import com.example.modules.market.entity.vo.CommodityVO;
 import com.example.modules.market.mapper.CommodityWantMapper;
 import com.example.modules.market.service.CommodityService;
 import com.example.modules.market.service.CommodityWantService;
@@ -107,5 +108,17 @@ public class CommodityWantServiceImpl implements CommodityWantService {
         QueryWrapper<CommodityWant> wrapper = new QueryWrapper<>();
         wrapper.eq("post_id", commodityId);
         commodityWantMapper.delete(wrapper);
+    }
+
+    @Override
+    public List<String> getAllWant(String userid) {
+        return commodityWantMapper.getAllwantByUId(userid);
+
+    }
+
+    @Override
+    public Integer getWantCountById(String commodityId) {
+        Integer wantCountMapper = commodityWantMapper.getWantCountMapper(commodityId);
+        return wantCountMapper;
     }
 }

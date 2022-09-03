@@ -85,6 +85,9 @@ public interface RedisLtService {
      */
     void clearPostLikeCache(String postId);
 
+    //获取所有点赞数据
+    List<CommodityWant> getAllWantFromRedis();
+
     //图片================================
 
     //将图片存到redis
@@ -96,6 +99,4 @@ public interface RedisLtService {
     //获取所有图片
     List<String> getCommodityAllImgFromRedis(String userId);
 
-    //发布商品
-//    void issueCommodity(CommodityDTO commodityDTO);
 }

@@ -15,6 +15,9 @@ public interface CommodityService extends IService<Commodity> {
      //查询所有商品
      List<CommodityVO> getAllCommodityService();
 
+     //查询我发布的商品
+     List<CommodityVO> getMyCommodityService();
+
      //取消发布商品
      boolean cancleImg();
 
@@ -23,5 +26,14 @@ public interface CommodityService extends IService<Commodity> {
 
      //更新商品
      public Boolean updateCommodityById(Commodity commodity);
+
+     //查询我想要的商品
+     List<CommodityVO> getMyWantCommodityServie(String userid);
+
+     //根据想要商品id查商品
+     CommodityVO getMyWantCommodityByCidSer(String commodityId);
+
+     //查询推荐商品
+     List<CommodityVO> getRecCommodityService();
 
 }

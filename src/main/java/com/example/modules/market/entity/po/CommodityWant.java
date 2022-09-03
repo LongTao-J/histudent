@@ -37,9 +37,4 @@ public class CommodityWant  {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date gmtModified;
 
-    public CommodityWant(String userId,String commodityId,Integer status){
-        this.commodityId=commodityId;
-        this.status=status;
-        this.userId=userId;
-    }
 }

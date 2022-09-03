@@ -8,10 +8,7 @@ import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/market/image")
@@ -25,6 +22,7 @@ public class CommodityImageController {
 
     //上传商品的照片
     @PostMapping("/addImg")
+    @CrossOrigin
     public R<String> addImage(@RequestBody ImageDTO imageDTO){
         try {
             ValueOperations<String,String> redis = redisTemplate.opsForValue();
@@ -33,7 +31,7 @@ public class CommodityImageController {
                 return R.error();
             }
             redisLtServiceImpl.addCommodityImagetoRedis(userId, imageDTO.getImgurl());
-            return R.success("上传成功");
+            return R.success(imageDTO.getImgurl(),"上传成功",200);
         }catch (Exception e){
             return R.error();
         }

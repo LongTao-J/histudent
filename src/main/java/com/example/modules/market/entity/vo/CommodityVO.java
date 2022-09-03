@@ -19,14 +19,12 @@ public class CommodityVO {
 
     private String headaddress;
 
-    private String title;
-
     private BigDecimal price;
 
-    private Integer count;
 
     private String introduce;
 
+    //想要的个数
     private Integer want;
 
     //上传的第一张照片
@@ -34,5 +32,19 @@ public class CommodityVO {
 
     //所有照片
     private List<String> allImg;
+
+    private Date gmtCreate;
+
+    //评论的个数
+    private Integer CommentCount;
+
+    // 是否推荐
+    private Boolean isRec;
+
+    //收藏的个数
+    private Integer collectionCount;
+
+
+    private String comrfrom="二手市场";
 
 }

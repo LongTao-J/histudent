@@ -2,6 +2,7 @@ package com.example.modules.user.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.modules.user.pojo.Longtt;
 import com.example.modules.user.pojo.StuInfo;
 import com.example.modules.user.pojo.User;
 import com.example.modules.user.pojo.UserInfoLt;
@@ -20,4 +21,11 @@ public interface UserMapper extends BaseMapper<User> {
 
     @Select("SELECT * FROM stu_info LEFT JOIN `user` ON stu_info.stu_num=`user`.stu_info_id WHERE `user`.id=#{userid}")
     StuInfo getStuInFoMapper(String userid);
+
+    //根据学号查学校和专业
+    @Select("SELECT s.name AS schoolname,p.name AS professionname\n" +
+            "FROM stu_info t LEFT JOIN profession p ON p.id=t.prof_id\n" +
+            "left JOIN school s ON s.id=t.sch_id\n" +
+            "WHERE t.stu_num= #{id}")
+    Longtt getSchoolProfessiom(String id);
 }

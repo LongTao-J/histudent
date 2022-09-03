@@ -1,4 +1,4 @@
-package com.example.modules.user.pojo;
+package com.example.modules.todolist.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

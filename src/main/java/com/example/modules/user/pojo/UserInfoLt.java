@@ -8,13 +8,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserInfoLt {
-    private String headaddress;
-    private String nickname;
-    private int sex;
-    private int age;
-    private String introduction;
-    private String schoolname;
-    private String professionname;
-    private String backimg;
-    private String classBackimg;
+    private String headaddress;//头像 u
+    private String nickname;//昵称 u
+    private int sex;//性别 u
+    private int age;//年龄 u
+    private String introduction;//自我介绍 u
+    private String schoolname;//学校名字
+    private String professionname;//专业名字
+    private String backimg;//主页背景 u
+    private String classBackimg;//课表背景 u
 }

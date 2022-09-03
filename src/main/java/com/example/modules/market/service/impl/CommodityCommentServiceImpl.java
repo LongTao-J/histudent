@@ -39,4 +39,14 @@ public class CommodityCommentServiceImpl extends ServiceImpl<CommodityCommentMap
         commodityComment.setUserId(userId);
         commodityCommentMapper.insert(commodityComment);
     }
+
+    @Override
+    public Integer getCommentCount(String commodityId) {
+        try {
+            Integer commentCountByCid = commodityCommentMapper.getCommentCountByCid(commodityId);
+            return commentCountByCid;
+        }catch (Exception e){
+            return null;
+        }
+    }
 }

@@ -1,7 +1,7 @@
-package com.example.modules.user.mapper;
+package com.example.modules.todolist.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.modules.user.pojo.Todolist;
+import com.example.modules.todolist.entity.Todolist;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

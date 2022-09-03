@@ -13,9 +13,11 @@ import com.example.modules.collegeInformation.mapper.ProfessionMapper;
 import com.example.modules.collegeInformation.mapper.SchoolMapper;
 import com.example.modules.collegeInformation.pojo.Profession;
 import com.example.modules.collegeInformation.pojo.School;
+import com.example.modules.todolist.entity.TokenPj;
 import com.example.modules.user.mapper.StuInfoMapper;
 import com.example.modules.user.mapper.UserMapper;
 import com.example.modules.user.pojo.*;
+import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
 import com.example.modules.user.utils.TokenUtil;
 import com.example.utils.R;
@@ -53,6 +55,9 @@ public class UserController {
 
     @Autowired
     private ProfessionMapper professionMapper;
+
+    @Autowired
+    private UserService userServiceImpl;
 
     @PostMapping("/login")
     @CrossOrigin
@@ -155,7 +160,7 @@ public class UserController {
         if(userid.equals("dont")){
             return R.error("请先登录",200);
         }
-        UserInfoLt userInfoLt = userMapper.userinfo(userid);
+        UserInfoLt userInfoLt = userServiceImpl.getUserInfolt(userid);
 
         return R.success(userInfoLt,"获取成功",200);
     }
@@ -353,11 +358,15 @@ public class UserController {
     @PostMapping("/upClassBackImg")
     @CrossOrigin
     public R<String> upClassBackImg(@RequestBody ClassBackImage classBackImage){
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId=redis.get(Consts.REDIS_USER);
-        User user = userMapper.selectById(userId);
-        user.setClassBackimg(classBackImage.getClassImg());
-        userMapper.updateById(user);
-        return R.success(classBackImage.getClassImg(),"课表背景图片上传成功",200);
+        try {
+            ValueOperations<String,String> redis = redisTemplate.opsForValue();
+            String userId=redis.get(Consts.REDIS_USER);
+            User user = userMapper.selectById(userId);
+            user.setClassBackimg(classBackImage.getClassImg());
+            userMapper.updateById(user);
+            return R.success(classBackImage.getClassImg(),"课表背景图片上传成功",200);
+        }catch (Exception e){
+            return R.error(classBackImage.getClassImg(),400);
+        }
     }
 }

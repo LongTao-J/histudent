@@ -1,41 +1,33 @@
 package com.example.modules.market.entity.po;
 
-import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.example.modules.wall.enums.LikedStatusEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Commodity {
-
-//    private static final long serialVersionUID = 1L;
+public class CommodityCollection {
 
     @TableId(value = "id", type = IdType.ASSIGN_UUID)
     private String id;
 
     private String userId;
 
-    private BigDecimal price;
+    private String commodityId;
 
-    private String introduce;
-
-    private Integer want;
-
-    // 是否推荐
-    private Boolean isRec;
-
-    @Version
-    private Integer version;
-
+    // 创建时间
     @TableField(fill = FieldFill.INSERT)
     private Date gmtCreate;
+
+    // 修改时间
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date gmtModified;
-
 }

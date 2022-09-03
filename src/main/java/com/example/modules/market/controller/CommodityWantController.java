@@ -1,5 +1,6 @@
 package com.example.modules.market.controller;
 
+import com.example.modules.market.entity.vo.CommodityVO;
 import com.example.modules.market.repository.CommodityWantRepository;
 import com.example.modules.user.utils.Consts;
 import com.example.utils.R;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/market/want")
@@ -71,5 +74,16 @@ public class CommodityWantController {
             e.printStackTrace();
             return R.error();
         }
+    }
+
+    //查看我想要的商品
+    @GetMapping("/myWant")
+    @CrossOrigin
+    public R<List<CommodityVO>> getMyWant(){
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String userId = redis.get(Consts.REDIS_USER);
+        List<CommodityVO> myWantCommodity = commodityWantRepositoryImpl.getMyWantCommodity(userId);
+
+        return R.success(myWantCommodity);
     }
 }

@@ -14,4 +14,7 @@ public interface CommodityCommentService extends IService<CommodityComment> {
 
     //写评论
     void WriteCommentServiec(WritCommentDTO writCommentDTO);
+
+    //查询评论的个数
+    Integer getCommentCount(String commodityId);
 }
