@@ -1,30 +1,22 @@
 package com.example.modules.market;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.modules.countDown.entity.po.CountDown;
 import com.example.modules.countDown.mapper.CountDownMapper;
-import com.example.modules.market.entity.po.CommodityImage;
-import com.example.modules.market.entity.po.CommodityWant;
-import com.example.modules.market.entity.vo.CommentVo;
-import com.example.modules.market.entity.vo.CommodityVO;
 import com.example.modules.market.mapper.CommodityCollectionMapper;
 import com.example.modules.market.mapper.CommodityImageMapper;
 import com.example.modules.market.mapper.CommodityMapper;
 import com.example.modules.market.repository.CommodityWantRepository;
 import com.example.modules.market.service.*;
-import com.example.modules.market.utils.CommodityRedisKeyUtil;
-import com.example.modules.user.utils.Consts;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 
-import javax.management.Query;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+
+import java.text.ParseException;
 
 @SpringBootTest
 public class Testma {
@@ -154,4 +146,59 @@ public class Testma {
 //        List<CommodityVO> recCommodityService = commodityServiceImpl.getRecCommodityService();
 //        System.out.println(recCommodityService);
     }
+
+    @Test
+    void test99(){
+//        String Ctime="2022/10/30/00:00:00";
+//        String nian=Ctime.substring(0,4);
+//        String yue=Ctime.substring(5,7);
+//        String ri=Ctime.substring(8,10);
+//        tys9(nian+"-"+yue+"-"+ri);
+    }
+
+
+    String tys9(String xsy){
+        DateFormat dft = new SimpleDateFormat("yyyy-MM-dd");
+        LocalDate today = LocalDate.now();
+        String ris=today.toString();//获取当天时间
+        try {
+            Date star = dft.parse(ris);//开始时间
+            Date endDay=dft.parse(xsy);//结束时间
+            Long starTime=star.getTime();
+            Long endTime=endDay.getTime();
+            Long num=endTime-starTime;//时间戳相差的毫秒数
+            num=num/24/60/60/1000;
+            return num.toString();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "0";
+    }
+
+//    public String testt(String ni,String yu,String ri){
+//        int year= Integer.parseInt(ni),month= Integer.parseInt(yu),day= Integer.parseInt(ri);
+//        boolean leap=(year%400==0||(year%4==0&&year%100!=0));
+//        int total=(year-1980)+(year-1980+3)/4;
+//        for(int i=month-1;i>0;i--){
+//            switch (i){
+//                case 1: case 3: case 5: case 7: case 8: case 10: case 12: total+=31;break;
+//                case 4: case 6: case 9: case 11: total+=30;break;
+//                case 2:total+=leap?29:28;break;
+//            }
+//        }
+//        total+=day;
+//        int week=1;
+//        week=(week+total)%7;
+//        String sp="";
+//        switch (week){
+//            case 1:sp="周一";break;
+//            case 2:sp="周二";break;
+//            case 3:sp="周三";break;
+//            case 4:sp="周四";break;
+//            case 5:sp="周五";break;
+//            case 6:sp="周六";break;
+//            case 0:sp="周日";break;
+//        }
+//        return sp;
+//    }
 }

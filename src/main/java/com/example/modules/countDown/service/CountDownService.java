@@ -13,8 +13,8 @@ public interface CountDownService extends IService<CountDown> {
     boolean addCdSer(CountDownDTO countDownDTO,String userid);
 
     //修改倒计时
-    boolean upCdSer(CountDownIdVO countDownIdVO);
+    boolean upCdSer(CountDown countDownIdVO);
 
     //查询我的倒计时
-    List<CountDown> getmyCd(String userid);
+    List<CountDownIdVO> getmyCd(String userid);
 }

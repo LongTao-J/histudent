@@ -20,7 +20,9 @@ public class CountDown {
 
     private String address;
 
-    private Date remindtime;
+    private String remindtime;
 
     private String userId;
+
+    private String subjectTime;
 }

@@ -57,7 +57,7 @@ public class CountDownController {
     //修改我的倒计时
     @PutMapping("/update")
     @CrossOrigin
-    public R<CountDownIdVO> updateCountDownId(@RequestBody CountDownIdVO countDownIdVO){
+    public R<CountDown> updateCountDownId(@RequestBody CountDown countDownIdVO){
         try {
             boolean b = countDownServiceImpl.upCdSer(countDownIdVO);
             if (b==true){
@@ -73,11 +73,11 @@ public class CountDownController {
     //查询我的倒计时
     @GetMapping("/getMyCountDownId")
     @CrossOrigin
-    public R<List<CountDown>> getMyCD(){
+    public R<List<CountDownIdVO>> getMyCD(){
         try {
             ValueOperations<String,String> redis = redisTemplate.opsForValue();
             String userid=redis.get(Consts.REDIS_USER);
-            List<CountDown> countDowns = countDownServiceImpl.getmyCd(userid);
+            List<CountDownIdVO> countDowns = countDownServiceImpl.getmyCd(userid);
             return R.success(countDowns,"成功",200);
         }catch (Exception e){
             return R.error();

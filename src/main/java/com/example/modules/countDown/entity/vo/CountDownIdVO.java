@@ -17,5 +17,11 @@ public class CountDownIdVO {
 
     private String address;
 
-    private Date remindtime;
+    private String remindtime1;//某一天
+
+    private String remindtime2;//周几 + 几点
+
+    private String remindtime3;//剩几天
+
+    private String subjectTime;
 }
