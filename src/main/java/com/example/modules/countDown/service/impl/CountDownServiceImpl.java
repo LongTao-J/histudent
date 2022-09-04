@@ -85,7 +85,7 @@ public class CountDownServiceImpl extends ServiceImpl<CountDownMapper, CountDown
                 String zj=testt(nian,yue,ri);
                 //几点
                 String st3=Ctime.substring(11,13);
-                String st4=Ctime.substring(11,17);
+                String st4=Ctime.substring(11,16);
                 String sx="";
                 int x= Integer.parseInt(st3);
                 if(x>=0&&x<=12){
