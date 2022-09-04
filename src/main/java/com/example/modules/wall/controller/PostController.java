@@ -205,13 +205,19 @@ public class PostController {
         // 判断当前登录用户是否点赞帖子
         Integer like = postLikeRepositoryImpl.isLike(userId, post.getId());
         // null: 从未点赞过, 1: 点赞状态, 0: 点赞过又取消状态
-        if(like == null || like == 0) vo.setUserIsLike(false);
-        else vo.setUserIsLike(true);
+        if(like == null || like == 0) {
+            vo.setUserIsLike(false);
+        } else {
+            vo.setUserIsLike(true);
+        }
         // 判断当前登录用户是否收藏帖子
         Boolean isCollect = postCollectServiceImpl.isCollect(userId, post.getId());
         // 1: 收藏, 0: 未收藏
-        if(isCollect) vo.setUserIsCollect(true);
-        else vo.setUserIsCollect(false);
+        if(isCollect) {
+            vo.setUserIsCollect(true);
+        } else {
+            vo.setUserIsCollect(false);
+        }
 
         // 数据注入图片列表
         List<String> images = postRepositoryImpl.getFileListByPostId(post.getId());
@@ -237,8 +243,11 @@ public class PostController {
             // 判断当前登录用户是否点赞帖子
             Integer like = postLikeRepositoryImpl.isLike(userId, post.getId());
             // null: 从未点赞过, 1: 点赞状态, 0: 点赞过又取消状态
-            if(like == null || like == 0) vo.setUserIsLike(false);
-            else vo.setUserIsLike(true);
+            if(like == null || like == 0) {
+                vo.setUserIsLike(false);
+            } else {
+                vo.setUserIsLike(true);
+            }
             // 数据注入图片列表
             List<String> images = postRepositoryImpl.getFileListByPostId(post.getId());
             vo.setImages(images);
