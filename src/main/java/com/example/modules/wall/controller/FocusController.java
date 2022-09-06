@@ -1,6 +1,6 @@
 package com.example.modules.wall.controller;
 
-import com.example.modules.user.pojo.User;
+import com.example.modules.user.pojo.po.User;
 import com.example.modules.user.utils.Consts;
 import com.example.modules.wall.entity.vo.FocusVO;
 import com.example.modules.wall.repository.FocusRepository;

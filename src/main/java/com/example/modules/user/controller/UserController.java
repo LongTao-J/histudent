@@ -13,13 +13,16 @@ import com.example.modules.collegeInformation.mapper.ProfessionMapper;
 import com.example.modules.collegeInformation.mapper.SchoolMapper;
 import com.example.modules.collegeInformation.pojo.Profession;
 import com.example.modules.collegeInformation.pojo.School;
-import com.example.modules.todolist.entity.TokenPj;
 import com.example.modules.user.mapper.StuInfoMapper;
 import com.example.modules.user.mapper.UserMapper;
-import com.example.modules.user.pojo.*;
+
+import com.example.modules.user.pojo.dto.*;
+import com.example.modules.user.pojo.po.StuInfo;
+import com.example.modules.user.pojo.po.User;
 import com.example.modules.user.service.UserService;
+
+import com.example.modules.user.utils.Anquan.ResponseResult;
 import com.example.modules.user.utils.Consts;
-import com.example.modules.user.utils.TokenUtil;
 import com.example.utils.R;
 import com.google.gson.Gson;
 import lombok.extern.slf4j.Slf4j;
@@ -29,17 +32,12 @@ import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Random;
 
 @Slf4j
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
-
-//    @Autowired
-//    private UserService userService;
 
     @Autowired
     private RedisTemplate redisTemplate;
@@ -59,34 +57,13 @@ public class UserController {
     @Autowired
     private UserService userServiceImpl;
 
+
     @PostMapping("/login")
     @CrossOrigin
-    public R<TokenPj> login(HttpServletRequest request, @RequestBody User user){
-
-        LambdaQueryWrapper<User> queryWrapper=new LambdaQueryWrapper<>();
-        queryWrapper.eq(User::getPhone,user.getPhone());
-         User user1=userMapper.selectOne(queryWrapper);
-        if (user1==null){
-            return R.error("用户不存在",400);
-        }
-
-        if (!user1.getPassword().equals(user.getPassword())){
-            return R.error("密码错误",400);
-        }
-
-        ValueOperations<String,String> redis=redisTemplate.opsForValue();
-        redis.set(Consts.REDIS_USER,user1.getId());
-//        request.getSession().setAttribute(Consts.SESSION_USER,user1.getId());
-        System.out.println("登陆成功");
-
-        //token
-        Map<String,Object> m = new HashMap<String,Object>();
-        m.put("userid",user1.getId());
-        String token= TokenUtil.createJavaWebToken(m);
-        TokenPj tokenPj=new TokenPj();
-        tokenPj.setToken(token);
-        return R.success(tokenPj,"登陆成功",200);
+    public ResponseResult login(@RequestBody User user){
+        return userServiceImpl.login(user);
     }
+
 
     @PostMapping("/register")//注册
     @CrossOrigin
@@ -109,7 +86,7 @@ public class UserController {
     //短信发送
     @GetMapping("/sendCode/{phone}")
     @CrossOrigin
-    public R<Smss> duanxin(HttpServletRequest requests,@PathVariable String phone){
+    public R<Smss> duanxin(HttpServletRequest requests, @PathVariable String phone){
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI5tSKh58f7gFHg2qpfw7k", "FgCcfuYtsoTAEgrzg2LfJhbP1ReDy0");
         IAcsClient client = new DefaultAcsClient(profile);
         Random random=new Random();

@@ -1,6 +1,6 @@
 package com.example.modules.wall.mapper;
 
-import com.example.modules.user.pojo.User;
+import com.example.modules.user.pojo.po.User;
 import com.example.modules.wall.entity.po.Focus;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Select;

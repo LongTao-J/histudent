@@ -1,12 +1,11 @@
 package com.example.modules.wall.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.modules.user.pojo.User;
+import com.example.modules.user.pojo.po.User;
 import com.example.modules.wall.entity.po.Focus;
 import com.example.modules.wall.mapper.FocusMapper;
 import com.example.modules.wall.service.FocusService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.hibernate.sql.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

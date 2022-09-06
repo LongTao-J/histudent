@@ -98,7 +98,13 @@ public class CountDownServiceImpl extends ServiceImpl<CountDownMapper, CountDown
                 countDownIdVO.setRemindtime2(zj);
 
                 //remindtime3;//剩几天
-                countDownIdVO.setRemindtime3("剩"+tys9(nian+"-"+yue+"-"+ri)+"天");
+                String ltsjt=tys9(nian+"-"+yue+"-"+ri);
+                int ltsjtkk= Integer.parseInt(ltsjt);
+                if(ltsjtkk<=0){
+                    countDownIdVO.setRemindtime3("已结束");
+                }else {
+                    countDownIdVO.setRemindtime3("剩"+ltsjt+"天");
+                }
 
                 countDownIdVO.setContent(countDowns.get(i).getContent());
                 countDownIdVO.setAddress(countDowns.get(i).getAddress());

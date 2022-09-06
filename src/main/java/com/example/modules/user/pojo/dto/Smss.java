@@ -1,12 +1,12 @@
-package com.example.modules.user.pojo;
+package com.example.modules.user.pojo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class HeadImage {
-    private String imgurl;
+@AllArgsConstructor
+public class Smss {
+    private String sms;
 }

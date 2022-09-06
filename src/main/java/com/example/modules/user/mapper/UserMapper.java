@@ -2,10 +2,10 @@ package com.example.modules.user.mapper;
 
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.modules.user.pojo.Longtt;
-import com.example.modules.user.pojo.StuInfo;
-import com.example.modules.user.pojo.User;
-import com.example.modules.user.pojo.UserInfoLt;
+import com.example.modules.user.pojo.dto.Longtt;
+import com.example.modules.user.pojo.po.StuInfo;
+import com.example.modules.user.pojo.po.User;
+import com.example.modules.user.pojo.dto.UserInfoLt;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

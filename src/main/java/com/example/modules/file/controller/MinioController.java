@@ -1,9 +1,7 @@
 package com.example.modules.file.controller;
 
 import com.example.modules.user.mapper.UserMapper;
-import com.example.modules.user.pojo.FileUploadResponse;
-import com.example.modules.user.pojo.User;
-import com.example.modules.user.utils.Consts;
+import com.example.modules.user.pojo.dto.FileUploadResponse;
 import com.example.utils.R;
 import com.example.utils.minioUtils.MinioUtil;
 import io.minio.errors.MinioException;
@@ -11,7 +9,6 @@ import io.minio.messages.Bucket;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

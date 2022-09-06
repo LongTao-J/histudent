@@ -4,7 +4,7 @@ package com.example.modules.epidemic.controller;
 import com.example.modules.epidemic.entity.dto.AddNucleicFromViewDTO;
 import com.example.modules.epidemic.entity.po.Nucleic;
 import com.example.modules.epidemic.service.NucleicService;
-import com.example.modules.user.pojo.StuInfo;
+import com.example.modules.user.pojo.po.StuInfo;
 import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
 import com.example.utils.R;

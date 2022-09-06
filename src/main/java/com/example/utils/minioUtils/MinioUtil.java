@@ -2,7 +2,7 @@ package com.example.utils.minioUtils;
 
 
 import com.example.config.minio.MinioProp;
-import com.example.modules.user.pojo.FileUploadResponse;
+import com.example.modules.user.pojo.dto.FileUploadResponse;
 import io.minio.*;
 import io.minio.errors.*;
 import io.minio.messages.Bucket;

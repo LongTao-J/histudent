@@ -1,4 +1,4 @@
-package com.example.modules.user.pojo;
+package com.example.modules.user.pojo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
