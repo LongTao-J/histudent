@@ -6,6 +6,7 @@ import com.example.modules.user.pojo.po.User;
 import com.example.modules.user.pojo.dto.UserInfoLt;
 import com.example.modules.user.pojo.dto.UserSms;
 import com.example.modules.user.utils.Anquan.ResponseResult;
+import com.example.utils.R;
 
 
 public interface UserService extends IService<User> {
@@ -18,5 +19,9 @@ public interface UserService extends IService<User> {
 
     ResponseResult logout();
 
-    boolean RegisterSer(UserSms userSms);
+    R<User> RegisterSer(UserSms userSms);
+
+    User getTokenUser();
+
+    R<Object> upUserAge(int age);
 }

@@ -12,7 +12,10 @@ import com.example.modules.user.utils.Anquan.JwtUtil;
 import com.example.modules.user.utils.Anquan.LoginUser;
 import com.example.modules.user.utils.Anquan.RedisCache;
 import com.example.modules.user.utils.Anquan.ResponseResult;
+import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,6 +23,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -28,14 +32,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Autowired
     UserMapper userMapperImpl;
-
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
     private RedisCache redisCache;
-
     @Autowired
     PasswordEncoder passwordEncoder;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @Override
     public StuInfo getStuInfo(String userid) {
@@ -72,6 +76,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     }
 
+    //登录
     @Override
     public ResponseResult login(User user) {
         try {
@@ -95,17 +100,43 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
     }
 
+    //退出
     @Override
     public ResponseResult logout() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
-        String userid = loginUser.getUser().getId();
+        String userid = getTokenUser().getId();
         redisCache.deleteObject("login:"+userid);
         return new ResponseResult(200,"退出成功");
     }
 
+    //注册
     @Override
-    public boolean RegisterSer(UserSms userSms) {
-        return false;
+    public R<User> RegisterSer(UserSms userSms) {
+        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+        String smslocal=redis.get(userSms.getPhone());
+        if (!smslocal.equals(userSms.getSms()) || smslocal==null){
+            return R.error("验证码错误",400);
+        }
+        User user=new User();
+        user.setPhone(userSms.getPhone());
+        user.setPassword(userSms.getPassword());
+        userMapperImpl.insert(user);
+        return R.success(user);
+    }
+
+    //token查询用户
+    @Override
+    public User getTokenUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+        return loginUser.getUser();
+    }
+
+    @Override
+    public R<Object> upUserAge(int age) {
+        String userid=getTokenUser().getId();
+        User user=userMapperImpl.selectById(userid);
+        user.setAge(age);
+        userMapperImpl.updateById(user);
+        return R.success(null,"修改年龄成功",200);
     }
 }

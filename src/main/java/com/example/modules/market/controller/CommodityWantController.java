@@ -2,6 +2,7 @@ package com.example.modules.market.controller;
 
 import com.example.modules.market.entity.vo.CommodityVO;
 import com.example.modules.market.repository.CommodityWantRepository;
+import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import java.util.List;
 public class CommodityWantController {
 
     @Autowired
-    RedisTemplate redisTemplate;
+    UserService userServiceImpl;
     @Autowired
     CommodityWantRepository commodityWantRepositoryImpl;
 
@@ -25,8 +26,7 @@ public class CommodityWantController {
     @CrossOrigin
     public R<String> addWantCommodity(@PathVariable("commodityId") String commodityId){
         try {
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             commodityWantRepositoryImpl.savelike(userId,commodityId);
             return R.success(null,"点击我想要成功",200);
         }catch (Exception e){
@@ -39,8 +39,7 @@ public class CommodityWantController {
     @CrossOrigin
     public R<String> cancelWantCommodity(@PathVariable("commodityId") String commodityId){
         try {
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             commodityWantRepositoryImpl.unlike(userId,commodityId);
             return R.success(null,"取消我想要成功",200);
         }catch (Exception e){
@@ -53,8 +52,7 @@ public class CommodityWantController {
     @CrossOrigin
     public R<Integer> getWantStuLt(@PathVariable("commodityId") String commodityId){
         try{
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             Integer want=commodityWantRepositoryImpl.isLike(userId,commodityId);
             return R.success(want);
         }catch (Exception e){
@@ -80,8 +78,7 @@ public class CommodityWantController {
     @GetMapping("/myWant")
     @CrossOrigin
     public R<List<CommodityVO>> getMyWant(){
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId = redis.get(Consts.REDIS_USER);
+        String userId = userServiceImpl.getTokenUser().getId();
         List<CommodityVO> myWantCommodity = commodityWantRepositoryImpl.getMyWantCommodity(userId);
 
         return R.success(myWantCommodity);

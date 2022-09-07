@@ -8,6 +8,7 @@ import com.example.modules.market.service.CommodityCollectionService;
 import com.example.modules.market.service.CommodityCommentService;
 import com.example.modules.market.service.CommodityImageService;
 import com.example.modules.market.service.RedisLtService;
+import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -20,8 +21,6 @@ import java.util.List;
 @Service
 public class CommodityCollectionServiceImpl extends ServiceImpl<CommodityCollectionMapper, CommodityCollection> implements CommodityCollectionService {
 
-    @Autowired
-    RedisTemplate redisTemplate;
 
     @Autowired
     CommodityCollectionMapper commodityCollectionMapperImpl;
@@ -35,12 +34,14 @@ public class CommodityCollectionServiceImpl extends ServiceImpl<CommodityCollect
     @Autowired
     RedisLtService redisLtServiceImpl;
 
+    @Autowired
+    UserService userServiceImpl;
+
     //点击收藏
     @Override
     public boolean addCollectionSer(String commodityId) {
         try {
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             CommodityCollection commodityCollection=new CommodityCollection();
             commodityCollection.setCommodityId(commodityId);
             commodityCollection.setUserId(userId);
@@ -65,8 +66,7 @@ public class CommodityCollectionServiceImpl extends ServiceImpl<CommodityCollect
     //查看我的收藏
     @Override
     public List<CommodityVO> getAllSer() {
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId = redis.get(Consts.REDIS_USER);
+        String userId = userServiceImpl.getTokenUser().getId();
 
         List<CommodityVO> commodityVOList=new ArrayList<>();
         commodityVOList=commodityCollectionMapperImpl.getMyCollection(userId);

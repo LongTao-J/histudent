@@ -17,9 +17,6 @@ public class CommodityCommentController {
     @Autowired
     CommodityCommentService commodityCommentServiceImpl;
 
-    @Autowired
-    RedisTemplate redisTemplate;
-
     //查看商品所有评论
     @GetMapping("/getAllComment/{commodityId}")
     @CrossOrigin

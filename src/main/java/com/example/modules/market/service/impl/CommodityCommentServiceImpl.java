@@ -6,6 +6,7 @@ import com.example.modules.market.entity.po.CommodityComment;
 import com.example.modules.market.entity.vo.CommentVo;
 import com.example.modules.market.mapper.CommodityCommentMapper;
 import com.example.modules.market.service.CommodityCommentService;
+import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -21,7 +22,7 @@ public class CommodityCommentServiceImpl extends ServiceImpl<CommodityCommentMap
     CommodityCommentMapper commodityCommentMapper;
 
     @Autowired
-    RedisTemplate redisTemplate;
+    UserService userServiceImpl;
 
     @Override
     public List<CommentVo> getAllCommBycIdSer(String commodity) {
@@ -31,8 +32,7 @@ public class CommodityCommentServiceImpl extends ServiceImpl<CommodityCommentMap
 
     @Override
     public void WriteCommentServiec(WritCommentDTO writCommentDTO) {
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId = redis.get(Consts.REDIS_USER);
+        String userId = userServiceImpl.getTokenUser().getId();
         CommodityComment commodityComment=new CommodityComment();
         commodityComment.setComment(writCommentDTO.getComment());
         commodityComment.setCommodityId(writCommentDTO.getCommodityId());

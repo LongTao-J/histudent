@@ -58,35 +58,31 @@ public class UserController {
     private UserService userServiceImpl;
 
 
+    //登录
     @PostMapping("/login")
     @CrossOrigin
     public ResponseResult login(@RequestBody User user){
         return userServiceImpl.login(user);
     }
 
+    //退出
+    @PostMapping("/logout")
+    @CrossOrigin
+    public R<String> logout(){
+        userServiceImpl.logout();
+        return R.success(null,"退出成功",200);
+    }
 
     @PostMapping("/register")//注册
     @CrossOrigin
-    public R<String> register(HttpServletRequest requests, @RequestBody UserSms userSms){
-//        String sms1= (String) requests.getSession().getAttribute(Consts.SESSION_SMS);
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String sms1=redis.get(userSms.getPhone());
-        System.out.println("========session："+sms1+"  my"+userSms.getSms());
-        if (!userSms.getSms().equals(sms1)){
-            return R.error("验证码错误",400);
-        }
-        User user=new User();
-        user.setPhone(userSms.getPhone());
-        user.setPassword(userSms.getPassword());
-//        userService.save(user);
-        userMapper.updateById(user);
-        return R.success(null,"注册成功",400);
+    public R<User> register(@RequestBody UserSms userSms){
+        return userServiceImpl.RegisterSer(userSms);
     }
 
     //短信发送
     @GetMapping("/sendCode/{phone}")
     @CrossOrigin
-    public R<Smss> duanxin(HttpServletRequest requests, @PathVariable String phone){
+    public R<Smss> duanxin(@PathVariable String phone){
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI5tSKh58f7gFHg2qpfw7k", "FgCcfuYtsoTAEgrzg2LfJhbP1ReDy0");
         IAcsClient client = new DefaultAcsClient(profile);
         Random random=new Random();
@@ -110,30 +106,16 @@ public class UserController {
             System.out.println("ErrMsg:" + e.getErrMsg());
             System.out.println("RequestId:" + e.getRequestId());
         }
-//        requests.getSession().setAttribute(Consts.SESSION_SMS,smss.getSms());
         ValueOperations<String,String> redis=redisTemplate.opsForValue();
         redis.set(phone,smss.getSms());
         return R.success(smss,"短信发送成功",200);
     }
 
-    //退出
-    @PostMapping("/logout")
-    @CrossOrigin
-    public R<String> logout(HttpServletRequest request){
-        //清理Session中保存的当前登录员工的id
-//        request.getSession().removeAttribute(Consts.SESSION_USER);
-        ValueOperations<String,String> redis=redisTemplate.opsForValue();
-        redis.set(Consts.REDIS_USER,"dont");
-        return R.success(null,"退出成功",200);
-    }
 
     @GetMapping("/getUserInfo")//获取用户信息
     @CrossOrigin
-    public R<UserInfoLt> UserInfo(HttpServletRequest request){
-//        Long userid= (Long) request.getSession().getAttribute(Consts.SESSION_USER);
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userid=redis.get(Consts.REDIS_USER);
-        System.out.println("==========="+userid);
+    public R<UserInfoLt> UserInfo(){
+        String userid=userServiceImpl.getTokenUser().getId();
         if(userid.equals("dont")){
             return R.error("请先登录",200);
         }
@@ -142,7 +124,7 @@ public class UserController {
         return R.success(userInfoLt,"获取成功",200);
     }
 
-    //根据id差用户
+    //根据id查用户
     @GetMapping("/getUserById/{userId}")
     @CrossOrigin
     public R<User> getUserById(@PathVariable("userid") String userid){
@@ -162,8 +144,6 @@ public class UserController {
         }
 
         LambdaUpdateWrapper<User> wrapper=new LambdaUpdateWrapper();
-//        wrapper.eq(User::getPhone,userSms.getPhone()).set(User::getPassword,userSms.getPassword());
-//        userService.update(wrapper);
         wrapper.eq(User::getPhone,userSms.getPhone());
         User user = userMapper.selectOne(wrapper);
         user.setPassword(userSms.getPassword());
@@ -177,10 +157,8 @@ public class UserController {
     @PutMapping("/upsex/{sex}")
     @CrossOrigin
     public R<String> upSex(@PathVariable("sex") int sex){
-        ValueOperations<String,String> redis=redisTemplate.opsForValue();
-        String userid=redis.get(Consts.REDIS_USER);
+        String userid=userServiceImpl.getTokenUser().getId();
         User user=userMapper.selectById(userid);
-        System.out.println("++++++++++++++++++++++");
         System.out.println(user);
         user.setSex(sex);
         userMapper.updateById(user);
@@ -190,21 +168,15 @@ public class UserController {
     //修改年龄
     @PutMapping("/upage/{age}")
     @CrossOrigin
-    public R<String> upAge(@PathVariable("age") int age){
-        ValueOperations<String,String> redis=redisTemplate.opsForValue();
-        String userid=redis.get(Consts.REDIS_USER);
-        User user=userMapper.selectById(userid);
-        user.setAge(age);
-        userMapper.updateById(user);
-        return R.success(null,"修改年龄成功",200);
+    public R<Object> upAge(@PathVariable("age") int age){
+        return userServiceImpl.upUserAge(age);
     }
 
     //修改昵称
     @PutMapping("/upnickname/{name}")
     @CrossOrigin
     public R<String> upNickeName(@PathVariable("name") String name){
-        ValueOperations<String,String> redis=redisTemplate.opsForValue();
-        String userid=redis.get(Consts.REDIS_USER);
+        String userid=userServiceImpl.getTokenUser().getId();
         User user=userMapper.selectById(userid);
         user.setNickname(name);
         userMapper.updateById(user);
@@ -215,10 +187,8 @@ public class UserController {
     @PutMapping("/upintroduction/{introduction}")
     @CrossOrigin
     public R<String> upintroduction(@PathVariable("introduction") String introduction){
-        ValueOperations<String,String> redis=redisTemplate.opsForValue();
-        String userid=redis.get(Consts.REDIS_USER);
+        String userid=userServiceImpl.getTokenUser().getId();
         User user=userMapper.selectById(userid);
-        System.out.println("++++++++++++++++++++++");
         System.out.println(user);
         user.setIntroduction(introduction);
         userMapper.updateById(user);
@@ -229,8 +199,7 @@ public class UserController {
     @PutMapping("/upschool/{schoolname}")
     @CrossOrigin
     public R<String> upAge(@PathVariable("schoolname") String schoolname){
-        ValueOperations<String,String> redis=redisTemplate.opsForValue();
-        String userid=redis.get(Consts.REDIS_USER);
+        String userid=userServiceImpl.getTokenUser().getId();
 
         User user = userMapper.selectById(userid);
 
@@ -252,8 +221,7 @@ public class UserController {
     @PutMapping("/upprofession/{professionname}")
     @CrossOrigin
     public R<String> upProfession(@PathVariable("professionname") String professionname){
-        ValueOperations<String,String> redis=redisTemplate.opsForValue();
-        String userid=redis.get(Consts.REDIS_USER);
+        String userid=userServiceImpl.getTokenUser().getId();
 
         User user = userMapper.selectById(userid);
 
@@ -275,8 +243,7 @@ public class UserController {
     @PutMapping("/upTime/{scTime}")
     @CrossOrigin
     public R<String> upTime(@PathVariable("scTime") String scTime){
-        ValueOperations<String,String> redis=redisTemplate.opsForValue();
-        String userid=redis.get(Consts.REDIS_USER);
+        String userid=userServiceImpl.getTokenUser().getId();
 
         User user = userMapper.selectById(userid);
         user.setSchoolTime(scTime);
@@ -289,8 +256,8 @@ public class UserController {
     @DeleteMapping("/deletSchoolTime")
     @CrossOrigin
     public R<String> deletSchoolTime(){
-        ValueOperations<String,String> redis=redisTemplate.opsForValue();
-        String userid=redis.get(Consts.REDIS_USER);
+
+        String userid=userServiceImpl.getTokenUser().getId();
 
         User user = userMapper.selectById(userid);
         String stuId=user.getStuInfoId();
@@ -311,8 +278,7 @@ public class UserController {
     @PostMapping("/upHeadAddress")
     @CrossOrigin
     public R<String> upHeadAddress(@RequestBody HeadImage headAddress){
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId=redis.get(Consts.REDIS_USER);
+        String userId=userServiceImpl.getTokenUser().getId();
         User user = userMapper.selectById(userId);
         user.setHeadaddress(headAddress.getImgurl());
         userMapper.updateById(user);
@@ -323,8 +289,7 @@ public class UserController {
     @PostMapping("/upBackImg")
     @CrossOrigin
     public R<String> upBackImg(@RequestBody BackImg backImg){
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId=redis.get(Consts.REDIS_USER);
+        String userId=userServiceImpl.getTokenUser().getId();
         User user = userMapper.selectById(userId);
         user.setBackimg(backImg.getBackimage());
         userMapper.updateById(user);
@@ -336,8 +301,7 @@ public class UserController {
     @CrossOrigin
     public R<String> upClassBackImg(@RequestBody ClassBackImage classBackImage){
         try {
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId=redis.get(Consts.REDIS_USER);
+            String userId=userServiceImpl.getTokenUser().getId();
             User user = userMapper.selectById(userId);
             user.setClassBackimg(classBackImage.getClassImg());
             userMapper.updateById(user);

@@ -9,6 +9,7 @@ import com.example.modules.market.service.CommodityCollectionService;
 import com.example.modules.market.service.CommodityCommentService;
 import com.example.modules.market.service.CommodityImageService;
 import com.example.modules.market.service.CommodityService;
+import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -31,7 +32,7 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
     RedisLtServiceImpl redisLtServiceImpl;
 
     @Autowired
-    RedisTemplate redisTemplate;
+    UserService userServiceImpl;
 
     @Autowired
     CommodityCommentService commodityCommentServiceImpl;
@@ -42,8 +43,7 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
     @Override
     public boolean issueCommodity(CommodityDTO commodityDTO) {
         try {
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
 
             Commodity commodity=new Commodity();
             commodity.setPrice(commodityDTO.getPrice());
@@ -91,8 +91,7 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
     //查询我发布的商品
     @Override
     public List<CommodityVO> getMyCommodityService() {
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId = redis.get(Consts.REDIS_USER);
+        String userId = userServiceImpl.getTokenUser().getId();
 
         List<CommodityVO> commodityVOList=new ArrayList<>();
         commodityVOList=commodityMapper.getMyCommodityVo(userId);
@@ -126,8 +125,7 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
 
     @Override
     public boolean cancleImg() {
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId = redis.get(Consts.REDIS_USER);
+        String userId = userServiceImpl.getTokenUser().getId();
 
         redisLtServiceImpl.clearCommodityImage(userId);
         return true;

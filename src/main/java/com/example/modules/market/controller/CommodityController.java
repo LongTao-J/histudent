@@ -18,8 +18,6 @@ public class CommodityController {
     @Autowired
     CommodityService commodityServiceImpl;
     @Autowired
-    RedisTemplate redisTemplate;
-    @Autowired
     CommodityImageService commodityImageServiceImpl;
 
     //发布商品
