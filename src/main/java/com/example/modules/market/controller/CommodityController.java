@@ -5,6 +5,7 @@ import com.example.modules.market.entity.vo.CommodityVO;
 import com.example.modules.market.service.CommodityImageService;
 import com.example.modules.market.service.CommodityService;
 import com.example.utils.R;
+import org.apache.ibatis.annotations.Options;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,7 @@ public class CommodityController {
     CommodityService commodityServiceImpl;
     @Autowired
     CommodityImageService commodityImageServiceImpl;
+
 
     //发布商品
     @PostMapping("/issue")
@@ -66,7 +68,7 @@ public class CommodityController {
 
     //查看推荐的商品
     @GetMapping("/getRecCommodity")
-    @CrossOrigin
+    @CrossOrigin(origins = "http://localhost:8081")
     public R<List<CommodityVO>> getRecCommodity(){
         try {
             List<CommodityVO> recCommodityService = commodityServiceImpl.getRecCommodityService();

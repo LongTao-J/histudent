@@ -3,20 +3,30 @@ package com.example.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import com.example.filter.CommonInterceptor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.Arrays;
 
-
+@Slf4j
 @Configuration
 public class MyDataSourceConfig implements WebMvcConfigurer {
+
+    @Autowired
+    CommonInterceptor commonInterceptor;
+
     /**
      * 当向容器中添加了 Druid 数据源
      * 使用 @ConfigurationProperties 将配置文件中 spring.datasource 开头的配置与数据源中的属性进行绑定
@@ -55,4 +65,11 @@ public class MyDataSourceConfig implements WebMvcConfigurer {
         filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
         return filterRegistrationBean;
     }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        log.info("=======addInterceptors=======================");
+        registry.addInterceptor(commonInterceptor).addPathPatterns("/**").order(1);
+    }
+
 }
