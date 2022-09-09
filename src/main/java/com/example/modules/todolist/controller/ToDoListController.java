@@ -3,6 +3,8 @@ package com.example.modules.todolist.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.modules.todolist.mapper.ToDoListMapper;
 import com.example.modules.todolist.entity.Todolist;
+import com.example.modules.user.pojo.po.User;
+import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
 import com.example.utils.R;
 import lombok.extern.slf4j.Slf4j;
@@ -21,16 +23,17 @@ public class ToDoListController {
     @Autowired
     private ToDoListMapper toDoListMapper;
 
+
+
     @Autowired
-    private RedisTemplate redisTemplate;
+    UserService userServiceImpl;
 
     //获取所有todo
     @GetMapping("/getall")
     @CrossOrigin
     public R<List<Todolist>> getAll(){
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userid = redis.get(Consts.REDIS_USER);
-        List<Todolist> toDo = toDoListMapper.getToDo(userid);
+        String userId = userServiceImpl.getTokenUser().getId();
+        List<Todolist> toDo = toDoListMapper.getToDo(userId);
 
         return R.success(toDo,"查询所有成功",200);
     }
@@ -39,10 +42,9 @@ public class ToDoListController {
     @PostMapping("/add/{title}")
     @CrossOrigin
     public R<Todolist> addTodO(@PathVariable("title") String title){
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userid = redis.get(Consts.REDIS_USER);
+        String userId = userServiceImpl.getTokenUser().getId();
         Todolist toDoList=new Todolist();
-        toDoList.setUserId(userid);
+        toDoList.setUserId(userId);
         toDoList.setTitle(title);
         toDoListMapper.insert(toDoList);
         return R.success(toDoList,"创建成功",200);
@@ -53,8 +55,7 @@ public class ToDoListController {
     @CrossOrigin
     public R<Todolist> upToDa(@PathVariable("index") int index, @PathVariable("title") String title){
 
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userid = redis.get(Consts.REDIS_USER);
+        String userid = userServiceImpl.getTokenUser().getId();
 
         List<Todolist> toDo = toDoListMapper.getToDo(userid);
 
@@ -71,8 +72,7 @@ public class ToDoListController {
     @DeleteMapping("/delete/{index}")
     @CrossOrigin
     public R<Todolist> deleteTodo(@PathVariable("index") int index){
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userid = redis.get(Consts.REDIS_USER);
+        String userid = userServiceImpl.getTokenUser().getId();
 
         List<Todolist> toDo = toDoListMapper.getToDo(userid);
         String todoID=toDo.get(index).getId();
@@ -91,8 +91,7 @@ public class ToDoListController {
     @CrossOrigin
     public R<Todolist> Daka(@PathVariable("index") int index){
 
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userid = redis.get(Consts.REDIS_USER);
+        String userid = userServiceImpl.getTokenUser().getId();
 
         List<Todolist> toDo = toDoListMapper.getToDo(userid);
         String todoID=toDo.get(index).getId();
@@ -107,8 +106,7 @@ public class ToDoListController {
     @DeleteMapping("/deleteAll")
     @CrossOrigin
     public R<String> DeleteAll(){
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userid = redis.get(Consts.REDIS_USER);
+        String userid = userServiceImpl.getTokenUser().getId();
         QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("user_id",userid);
         toDoListMapper.delete(queryWrapper);
@@ -119,8 +117,7 @@ public class ToDoListController {
     @DeleteMapping("/deleteTrue")
     @CrossOrigin
     public R<String> DeleteTrue(){
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userid = redis.get(Consts.REDIS_USER);
+        String userid = userServiceImpl.getTokenUser().getId();
         QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("completed","1").eq("user_id",userid);
         toDoListMapper.delete(queryWrapper);
@@ -132,8 +129,7 @@ public class ToDoListController {
     @PutMapping("/cancelTd/{index}")
     @CrossOrigin
     public R<String> CancelTode(@PathVariable("index") int index){
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userid = redis.get(Consts.REDIS_USER);
+        String userid = userServiceImpl.getTokenUser().getId();
 
         List<Todolist> toDo = toDoListMapper.getToDo(userid);
         String todoID=toDo.get(index).getId();
@@ -149,8 +145,7 @@ public class ToDoListController {
     @DeleteMapping("/deleteTrue2")
     @CrossOrigin
     public R<String> DeleteTrue2(@RequestBody List<Integer> integers){
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userid = redis.get(Consts.REDIS_USER);
+        String userid = userServiceImpl.getTokenUser().getId();
         QueryWrapper<Todolist> queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("completed","1").eq("user_id",userid);
         toDoListMapper.delete(queryWrapper);

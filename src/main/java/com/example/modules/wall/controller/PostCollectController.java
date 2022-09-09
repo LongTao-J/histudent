@@ -1,6 +1,7 @@
 package com.example.modules.wall.controller;
 
 
+import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
 import com.example.modules.wall.entity.po.Post;
 import com.example.modules.wall.service.PostCollectService;
@@ -19,15 +20,14 @@ public class PostCollectController {
     @Autowired
     PostCollectService postCollectServiceImpl;
     @Autowired
-    RedisTemplate redisTemplate;
+    UserService userServiceImpl;
 
     @PutMapping("/put/collect/{post-id}")
     @CrossOrigin
     public R<Object> collect(@PathVariable("post-id")String postId){
         try{
             // redis获取当前用户id
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             postCollectServiceImpl.addCollect(userId, postId);
             Post post = postServiceImpl.getPostById(postId);
             post.setCollectCount(post.getCollectCount() + 1);
@@ -43,8 +43,7 @@ public class PostCollectController {
     public R<Object> uncollect(@PathVariable("post-id")String postId){
         try{
             // redis获取当前用户id
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             postCollectServiceImpl.deleteCollect(userId, postId);
             Post post = postServiceImpl.getPostById(postId);
             post.setCollectCount(post.getCollectCount() - 1);

@@ -30,11 +30,6 @@ public class MinioController {
     @Autowired
     private MinioUtil minioUtil;
 
-    @Autowired
-    private UserMapper userMapper;
-
-    @Autowired
-    private RedisTemplate redisTemplate;
 
     /**
      * 上传文件

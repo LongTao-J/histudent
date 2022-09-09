@@ -4,6 +4,7 @@ import com.example.modules.countDown.entity.dto.CountDownDTO;
 import com.example.modules.countDown.entity.po.CountDown;
 import com.example.modules.countDown.entity.vo.CountDownIdVO;
 import com.example.modules.countDown.service.CountDownService;
+import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
 import com.example.utils.R;
 import org.checkerframework.checker.units.qual.A;
@@ -19,7 +20,7 @@ import java.util.List;
 public class CountDownController {
 
     @Autowired
-    RedisTemplate redisTemplate;
+    UserService userServiceImpl;
 
     @Autowired
     CountDownService countDownServiceImpl;
@@ -29,8 +30,7 @@ public class CountDownController {
     @CrossOrigin
     public R<CountDownDTO> addCountDown(@RequestBody CountDownDTO countDownDTO){
         try {
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userid=redis.get(Consts.REDIS_USER);
+            String userid = userServiceImpl.getTokenUser().getId();
             boolean b = countDownServiceImpl.addCdSer(countDownDTO,userid);
             if (b==true){
                 return R.success(countDownDTO,"成功",200);
@@ -75,8 +75,7 @@ public class CountDownController {
     @CrossOrigin
     public R<List<CountDownIdVO>> getMyCD(){
         try {
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userid=redis.get(Consts.REDIS_USER);
+            String userid = userServiceImpl.getTokenUser().getId();
             List<CountDownIdVO> countDowns = countDownServiceImpl.getmyCd(userid);
             return R.success(countDowns,"成功",200);
         }catch (Exception e){

@@ -4,6 +4,7 @@ import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.modules.course.mapper.CourseMapper;
 import com.example.modules.course.pojo.Course;
+import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
 import com.example.utils.R;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +27,7 @@ public class CourseController {
     CourseMapper mapper;
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    UserService userServiceImpl;
 
     public String toStringJson(List<Course> courses) {
         String json = "[";
@@ -131,8 +132,7 @@ public class CourseController {
     @GetMapping("/get/{num}")
     @CrossOrigin
     public String getCourse(@PathVariable("num") Integer num) {
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId = redis.get(Consts.REDIS_USER);
+        String userId = userServiceImpl.getTokenUser().getId();
 //         String userId = "1552570983563436034";
         List<Course> courses = mapper.selectByUserIdList(userId);
         return arrangement(filterCourse(courses, num));
@@ -183,8 +183,7 @@ public class CourseController {
             @PathVariable("username") String username,
             @PathVariable("password") String password) {
 
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId = redis.get(Consts.REDIS_USER);
+        String userId = userServiceImpl.getTokenUser().getId();
         QueryWrapper<Course> condition = new QueryWrapper<>();
         condition.eq("user_id", userId).last("limit 1");
         Integer integer = mapper.selectCount(condition);
@@ -217,8 +216,7 @@ public class CourseController {
     @PostMapping("/add")
     @CrossOrigin
     public R<Course> addCourse(@RequestBody Course course) {
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId=redis.get(Consts.REDIS_USER);
+        String userId = userServiceImpl.getTokenUser().getId();
         course.setUserId(userId);
         int code = mapper.insert(course);
         if(code == 1)
@@ -242,8 +240,7 @@ public class CourseController {
     @DeleteMapping("/deleteList")
     @CrossOrigin
     public R<String> deleteListCourse() {
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId=redis.get(Consts.REDIS_USER);
+        String userId = userServiceImpl.getTokenUser().getId();
         mapper.deleteByUserId(userId);
         return R.success(userId);
     }

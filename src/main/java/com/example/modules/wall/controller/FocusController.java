@@ -1,6 +1,7 @@
 package com.example.modules.wall.controller;
 
 import com.example.modules.user.pojo.po.User;
+import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
 import com.example.modules.wall.entity.vo.FocusVO;
 import com.example.modules.wall.repository.FocusRepository;
@@ -24,7 +25,7 @@ import java.util.List;
 @RequestMapping("/api/wall/focus")
 public class FocusController {
     @Autowired
-    RedisTemplate redisTemplate;
+    UserService userServiceImpl;
     @Autowired
     FocusService focusServiceImpl;
     @Autowired
@@ -37,8 +38,7 @@ public class FocusController {
     public R<Object> focus(@PathVariable("user-id-to")String userIdTo){
         try{
             // redis获取当前用户id
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userIdFrom = redis.get(Consts.REDIS_USER);
+            String userIdFrom = userServiceImpl.getTokenUser().getId();
             focusRepositoryImpl.focus(userIdFrom, userIdTo);
             return R.success(null);
         }catch (Exception e){
@@ -51,8 +51,7 @@ public class FocusController {
     public R<Object> unfocus(@PathVariable("user-id-to")String userIdTo){
         try{
             // redis获取当前用户id
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userIdFrom = redis.get(Consts.REDIS_USER);
+            String userIdFrom = userServiceImpl.getTokenUser().getId();
             focusRepositoryImpl.unfocus(userIdFrom, userIdTo);
             return R.success(null);
         }catch (Exception e){
@@ -109,8 +108,7 @@ public class FocusController {
     public R<Object> getFansListBySelf(){
         try{
             // redis获取当前用户id
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             return getFansList(userId);
         }catch (Exception e){
             return R.error();
@@ -122,8 +120,7 @@ public class FocusController {
     public R<Object> getFocusListBySelf(){
         try{
             // redis获取当前用户id
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             return getFocusList(userId);
         }catch (Exception e){
             return R.error();

@@ -34,16 +34,14 @@ public class PostController {
     PostCollectService postCollectServiceImpl;
     @Autowired
     PostCommentService postCommentServiceImpl;
-    @Autowired
-    RedisTemplate redisTemplate;
+
 
     @PutMapping("/put/upload-file")
     @CrossOrigin
     public R<Object> uploadImg(@RequestBody PostFileFromViewDTO postFileFromViewDTO){
         try{
             // 通过Redis获取UserId;
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             String url = postFileFromViewDTO.getUrl();
             if(url == null || url.equals("")) {
                 throw new Exception();
@@ -60,8 +58,7 @@ public class PostController {
     public R<Object> issuePost(@RequestBody IssuePostDTO issuePostDTO){
         try{
             // 通过Redis获取UserId;
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             Post post = new Post();
             post.setTitle(issuePostDTO.getTitle());
             post.setContent(issuePostDTO.getContent());
@@ -82,8 +79,7 @@ public class PostController {
     public R<Object> unissuePost(){
         try{
             // 通过Redis获取UserId;
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             postRepositoryImpl.unissuePost(userId);
             return R.success(null);
         }catch (Exception e){
@@ -96,8 +92,7 @@ public class PostController {
     public R<Object> getListRec(){
         try{
             // 通过Redis获取UserId;
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             // 获取推荐Post列表
             List<Post> posts = postRepositoryImpl.getRecPostList();
             List<PostVO> postVOList = getPostVOList(posts);
@@ -146,8 +141,7 @@ public class PostController {
     public R<Object> getOneSelfIssuedPostList(){
         try{
             // 通过Redis获取UserId;
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             return getUserIssuedPostList(userId);
         }catch (Exception e){
             return R.error();
@@ -160,8 +154,7 @@ public class PostController {
     public R<Object> getUserAllCollect(){
         try{
             // redis获取当前用户id
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             List<Post> posts = postRepositoryImpl.getUserCollectPostList(userId);
             List<PostVO> postVOList = getPostVOList(posts);
             return R.success(postVOList);
@@ -175,8 +168,7 @@ public class PostController {
     public R<Object> deletePost(@PathVariable("post-id")String postId){
         try{
             // redis获取当前用户id
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             Post post = postRepositoryImpl.getPost(postId);
             if(!post.getUserId().equals(userId)){
                 return R.error("没有权限删除", 403);
@@ -191,8 +183,7 @@ public class PostController {
 
     private PostVO getPostVO(Post post){
         // redis获取当前用户id
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId = redis.get(Consts.REDIS_USER);
+        String userId = userServiceImpl.getTokenUser().getId();
         // 更新点赞数量
         post.setLikeCount(postLikeRepositoryImpl.getLikeCount(post.getId()));
         // 获取发行人
@@ -227,8 +218,7 @@ public class PostController {
 
     private List<PostVO> getPostVOList(List<Post> posts){
         // redis获取当前用户id
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId = redis.get(Consts.REDIS_USER);
+        String userId = userServiceImpl.getTokenUser().getId();
         List<PostVO> listVO = new ArrayList<>();
         for(Post post : posts){
             // 更新点赞数量

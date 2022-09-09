@@ -23,8 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/epidemic/nucleic")
 public class NucleicController {
-    @Autowired
-    RedisTemplate redisTemplate;
+
     @Autowired
     UserService userServiceImpl;
     @Autowired
@@ -45,8 +44,7 @@ public class NucleicController {
     @CrossOrigin
     public R<Object> getSevenDayNucleicList(){
         // redis获取当前用户id
-        ValueOperations<String,String> redis = redisTemplate.opsForValue();
-        String userId = redis.get(Consts.REDIS_USER);
+        String userId = userServiceImpl.getTokenUser().getId();
         StuInfo stuInfo = userServiceImpl.getStuInfo(userId);
         String schId = stuInfo.getSchId();
         String stuNum = stuInfo.getStuNum();

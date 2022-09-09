@@ -41,7 +41,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             return;
         }
-        
+
         //获取token
         if (!StringUtils.hasText(token)) {
             //放行

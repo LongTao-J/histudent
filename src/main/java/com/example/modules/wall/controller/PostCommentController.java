@@ -29,8 +29,7 @@ public class PostCommentController {
     PostService postServiceImpl;
     @Autowired
     UserService userServiceImpl;
-    @Autowired
-    RedisTemplate redisTemplate;
+
 
     @GetMapping("/get/all/post-comments/{post-id}")
     @CrossOrigin
@@ -57,8 +56,7 @@ public class PostCommentController {
     public R<Object> issueComment(@PathVariable("post-id")String postId, @RequestBody PostCommentFromViewDTO comment){
         try{
             // redis获取当前用户id
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             postCommentServiceImpl.addComment(userId, postId, comment.getContent());
             Post post = postServiceImpl.getPostById(postId);
             post.setCommentCount(post.getCommentCount() + 1);
@@ -75,8 +73,7 @@ public class PostCommentController {
     public R<Object> deleteComment(@PathVariable("comment-id") String commentId){
         try{
             // redis获取当前用户id
-            ValueOperations<String,String> redis = redisTemplate.opsForValue();
-            String userId = redis.get(Consts.REDIS_USER);
+            String userId = userServiceImpl.getTokenUser().getId();
             PostComment comment = postCommentServiceImpl.getComment(commentId);
             postCommentServiceImpl.deleteComment(commentId);
             String postId = comment.getPostId();
