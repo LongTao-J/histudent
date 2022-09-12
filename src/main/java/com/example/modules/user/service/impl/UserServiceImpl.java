@@ -113,7 +113,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public R<User> RegisterSer(UserSms userSms) {
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String smslocal=redis.get(userSms.getPhone());
-        if (!smslocal.equals(userSms.getSms()) || smslocal==null){
+        if (smslocal==null || !smslocal.equals(userSms.getSms())){
             return R.error("验证码错误",400);
         }
         User user=new User();

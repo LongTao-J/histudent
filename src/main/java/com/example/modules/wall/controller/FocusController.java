@@ -2,15 +2,12 @@ package com.example.modules.wall.controller;
 
 import com.example.modules.user.pojo.po.User;
 import com.example.modules.user.service.UserService;
-import com.example.modules.user.utils.Consts;
 import com.example.modules.wall.entity.vo.FocusVO;
 import com.example.modules.wall.repository.FocusRepository;
 import com.example.modules.wall.service.FocusService;
 import com.example.modules.wall.service.FocusStateService;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
