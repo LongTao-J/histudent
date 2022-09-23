@@ -21,7 +21,6 @@ public class CommodityVO {
 
     private BigDecimal price;
 
-
     private String introduce;
 
     //想要的个数
