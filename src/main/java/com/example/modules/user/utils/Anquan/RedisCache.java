@@ -83,7 +83,7 @@ public class RedisCache
      *
      * @param key
      */
-    public boolean deleteObject(final String key)
+    public boolean  deleteObject(final String key)
     {
         return redisTemplate.delete(key);
     }

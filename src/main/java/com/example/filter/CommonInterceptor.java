@@ -2,6 +2,7 @@ package com.example.filter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -23,7 +24,7 @@ public class CommonInterceptor implements HandlerInterceptor  {
             return false;
         }
         return true;
- 
     }
+
  
 }

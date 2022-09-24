@@ -35,6 +35,9 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
         String token = request.getHeader("token");
+        log.info("+++++++++++++++++++++++++++");
+        log.info(String.valueOf(request.getRequestURL())+"  token为："+token);
+        log.info("+++++++++++++++++++++++++++");
         //如果请求为 OPTIONS 请求，则返回 true,否则需要通过jwt验证
         if (HttpMethod.OPTIONS.toString().equals(request.getMethod())){
 
@@ -56,7 +59,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             userid = claims.getSubject();
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("token非法");
+            throw new RuntimeException("token非法 url路径为："+String.valueOf(request.getRequestURL()));
         }
         //从redis中获取用户信息
         ObjectMapper objectMapper=new ObjectMapper();
