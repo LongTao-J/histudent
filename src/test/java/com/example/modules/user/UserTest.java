@@ -76,13 +76,11 @@ public class UserTest {
 //        }
 //        System.out.println(megUserList);
 //    }
-    @Test
-    void sda74ry(){
-//        redisTemplate.opsForHash().delete("huccct","xiaoyus");
-//        List<String> o = (List<String>) redisTemplate.opsForHash().get("huccct", "xiaoyus");
+//    @Test
+//    void sda74ry(){
 //        redisTemplate.opsForHash().delete("xiaoyus","huccct");
-//        List<String> o = (List<String>) redisTemplate.opsForHash().get("xiaoyus", "huccct");
-//        System.out.println(o);
-    }
+//        Set huccct = redisTemplate.opsForHash().keys("xiaoyus");
+//        System.out.println(huccct);
+//    }
 
 }

@@ -1,7 +1,7 @@
-package com.example.modules.materials.mapper;
+package com.example.modules.market.materials.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.modules.materials.pojo.Materials;
+import com.example.modules.market.materials.pojo.Materials;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

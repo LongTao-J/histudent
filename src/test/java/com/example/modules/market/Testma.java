@@ -1,6 +1,7 @@
 package com.example.modules.market;
 
 import com.example.modules.countDown.mapper.CountDownMapper;
+import com.example.modules.market.entity.vo.CommodityVO;
 import com.example.modules.market.mapper.CommodityCollectionMapper;
 import com.example.modules.market.mapper.CommodityImageMapper;
 import com.example.modules.market.mapper.CommodityMapper;
@@ -20,36 +21,35 @@ import java.util.Date;
 import java.text.ParseException;
 import java.util.List;
 
-//@SpringBootTest
+@SpringBootTest
 public class Testma {
-//
-//    @Autowired
-//    CommodityService commodityServiceImpl;
-//
-//    @Autowired
-//    RedisLtService redisLtServiceImpl;
-//
-//    @Autowired
-//    CommodityImageService commodityImageServiceImpl;
-//
-//    @Autowired
-//    CommodityImageMapper commodityImageMapper;
-//
-//    @Autowired
-//    CommodityMapper commodityMapper;
-//
-//    @Autowired
-//    CommodityCommentService commodityCommentServiceImpl;
-//
-//    @Autowired
-//    RedisTemplate redisTemplate;
-//
+
+    @Autowired
+    CommodityService commodityServiceImpl;
+
+    @Autowired
+    RedisLtService redisLtServiceImpl;
+
+    @Autowired
+    CommodityImageService commodityImageServiceImpl;
+
+    @Autowired
+    CommodityImageMapper commodityImageMapper;
+
+    @Autowired
+    CommodityMapper commodityMapper;
+
+    @Autowired
+    CommodityCommentService commodityCommentServiceImpl;
+
+    @Autowired
+    RedisTemplate redisTemplate;
+
 //    @Test
 //    void aaa(){
-////        List<CommodityVO> allCommodityService = commodityServiceImpl.getAllCommodityService();
-////        for (CommodityVO commodityVO:allCommodityService){
-////            System.out.println(commodityVO);
-////        }
+//        List<CommodityVO> commodityOne = commodityServiceImpl.getCommodityOne("t");
+//        System.out.println(commodityOne);
+//
 //    }
 //
 //    @Test

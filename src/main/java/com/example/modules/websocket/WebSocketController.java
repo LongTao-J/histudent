@@ -63,8 +63,8 @@ public class WebSocketController {
             MesssageWs messsageWs=new MesssageWs();
             JSONObject obj = JSONUtil.parseObj(list.get(i));
             messsageWs.setUsername(obj.getStr("from"));
-            messsageWs.setTousername(obj.getStr("text"));
-            messsageWs.setText(obj.getStr("to"));
+            messsageWs.setTousername(obj.getStr("to"));
+            messsageWs.setText(obj.getStr("text"));
             wsList.add(messsageWs);
         }
         return wsList;
@@ -99,6 +99,20 @@ public class WebSocketController {
             }catch (Exception e){
                 return R.error("保存消息失败",400);
             }
+    }
+
+    //删除与某人的聊天
+    @DeleteMapping("/deleteMsg/{tousername}")
+    @CrossOrigin
+    public R<Object> deleteUsername(@PathVariable("tousername") String tousername){
+        try {
+            String username=userServiceImpl.getTokenUser().getNickname();
+            redisTemplate.opsForHash().delete(username,tousername);
+            redisTemplate.opsForHash().delete(tousername,username);
+            return R.success("删除成功");
+        }catch (Exception e){
+            return R.error();
+        }
     }
 
 }

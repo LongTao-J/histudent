@@ -1,10 +1,9 @@
-package com.example.modules.materials.controller;
+package com.example.modules.market.materials.controller;
 
-import com.example.modules.materials.mapper.MaterialsMapper;
-import com.example.modules.materials.pojo.Materials;
+import com.example.modules.market.materials.mapper.MaterialsMapper;
+import com.example.modules.market.materials.pojo.Materials;
 import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
-import com.example.modules.wall.utils.WallRedisKeyUtils;
 import com.example.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

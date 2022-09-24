@@ -247,22 +247,6 @@ public class WebSocketServer {
             this.sendMessage(jsonObject.toString(), toSession);
             log.info("发送给用户username={}，消息：{}", toUsername, jsonObject.toString());
 
-//            聊天消息保存到redis
-//            jsonObject.set("to", toUsername);
-//            List<String> listX= (List<String>) redisTemplate.opsForHash().get(username,toUsername);
-//            if (listX==null){
-//                listX=new ArrayList<>();
-//            }
-//            listX.add(jsonObject.toString());
-//            redisTemplate.opsForHash().put(username,toUsername,listX);
-//
-//            List<String> listY= (List<String>) redisTemplate.opsForHash().get(toUsername,username);
-//            if (listY==null){
-//                listY=new ArrayList<>();
-//            }
-//            listY.add(jsonObject.toString());
-//            redisTemplate.opsForHash().put(toUsername,username,listY);
-
         } else {
             log.info("发送失败，未找到用户username={}的session", toUsername);
         }

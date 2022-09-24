@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -54,6 +55,19 @@ public class CommodityController {
         }
     }
 
+    //根据介绍（introduce）查询某个商品
+    @GetMapping("/getCommodityOne/{text}")
+    @CrossOrigin
+    public R<List<CommodityVO>> getCommodityOne(@PathVariable("text") String text){
+        try{
+            List<CommodityVO> list=new ArrayList<>();
+            list=commodityServiceImpl.getCommodityOne(text);
+            return R.success(list);
+        }catch (Exception e){
+            return R.error();
+        }
+    }
+
     //查询我发布的商品
     @GetMapping("/getMyCommodity")
     @CrossOrigin
@@ -78,4 +92,14 @@ public class CommodityController {
         }
     }
 
+    //随机推荐商品
+    @GetMapping("/getRandonCommodity")
+    public R<List<CommodityVO>> getRandonCommodity(){
+        try {
+            List<CommodityVO> recCommodityService = commodityServiceImpl.getRandonCommodity();
+            return R.success(recCommodityService);
+        }catch (Exception e){
+            return R.error();
+        }
+    }
 }
