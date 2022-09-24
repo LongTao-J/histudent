@@ -1,9 +1,14 @@
 package com.example.modules.wall.controller;
 
 
+import com.example.modules.user.pojo.dto.UserInfoLt;
+import com.example.modules.user.pojo.po.User;
 import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
 import com.example.modules.wall.entity.po.Post;
+import com.example.modules.wall.entity.po.PostCollect;
+import com.example.modules.wall.entity.vo.PostCollectVO;
+import com.example.modules.wall.repository.PostRepository;
 import com.example.modules.wall.service.PostCollectService;
 import com.example.modules.wall.service.PostService;
 import com.example.utils.R;
@@ -12,11 +17,16 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/wall/post-collect")
 public class PostCollectController {
     @Autowired
     PostService postServiceImpl;
+    @Autowired
+    PostRepository postRepositoryImpl;
     @Autowired
     PostCollectService postCollectServiceImpl;
     @Autowired
@@ -26,7 +36,6 @@ public class PostCollectController {
     @CrossOrigin
     public R<Object> collect(@PathVariable("post-id")String postId){
         try{
-            // redis获取当前用户id
             String userId = userServiceImpl.getTokenUser().getId();
             postCollectServiceImpl.addCollect(userId, postId);
             Post post = postServiceImpl.getPostById(postId);
@@ -42,7 +51,6 @@ public class PostCollectController {
     @CrossOrigin
     public R<Object> uncollect(@PathVariable("post-id")String postId){
         try{
-            // redis获取当前用户id
             String userId = userServiceImpl.getTokenUser().getId();
             postCollectServiceImpl.deleteCollect(userId, postId);
             Post post = postServiceImpl.getPostById(postId);
@@ -52,6 +60,27 @@ public class PostCollectController {
         }catch (Exception e){
             return R.error();
         }
+    }
+
+    @GetMapping("/get/collect-list")
+    @CrossOrigin
+    public R<List<PostCollectVO>> getCollectList(){
+        String userId = userServiceImpl.getTokenUser().getId();
+        List<PostCollectVO> postCollectVOList = new ArrayList<>();
+        List<PostCollect> userCollectPostList = postCollectServiceImpl.getUserCollectPostList(userId);
+        for(PostCollect postCollect : userCollectPostList){
+            String postId = postCollect.getPostId();
+            Post post = postServiceImpl.getPostById(postId);
+            UserInfoLt user = userServiceImpl.getUserInfolt(post.getUserId());
+            PostCollectVO postCollectVO = new PostCollectVO();
+            postCollectVO.setNickname(user.getNickname());
+            postCollectVO.setTitle(post.getTitle());
+            postCollectVO.setContent(post.getContent());
+            List<String> images = postRepositoryImpl.getFileListByPostId(post.getId());
+            postCollectVO.setImage(images.get(0));
+            postCollectVOList.add(postCollectVO);
+        }
+        return R.success(postCollectVOList);
     }
 }
 
