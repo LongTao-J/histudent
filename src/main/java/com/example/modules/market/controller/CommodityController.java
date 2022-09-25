@@ -94,6 +94,7 @@ public class CommodityController {
 
     //随机推荐商品
     @GetMapping("/getRandonCommodity")
+    @CrossOrigin
     public R<List<CommodityVO>> getRandonCommodity(){
         try {
             List<CommodityVO> recCommodityService = commodityServiceImpl.getRandonCommodity();

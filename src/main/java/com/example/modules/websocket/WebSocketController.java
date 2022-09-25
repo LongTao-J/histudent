@@ -62,9 +62,14 @@ public class WebSocketController {
         for (int i=0;i<list.size();i++){
             MesssageWs messsageWs=new MesssageWs();
             JSONObject obj = JSONUtil.parseObj(list.get(i));
-            messsageWs.setUsername(obj.getStr("from"));
-            messsageWs.setTousername(obj.getStr("to"));
+            messsageWs.setUsernameHeader(userServiceImpl.getImgByUserName(obj.getStr("from")));
+            messsageWs.setTousernameHeader(userServiceImpl.getImgByUserName(obj.getStr("to")));
             messsageWs.setText(obj.getStr("text"));
+            if (obj.getStr("from").equals(username)){
+                messsageWs.setFlage(1);
+            }else {
+                messsageWs.setFlage(0);
+            }
             wsList.add(messsageWs);
         }
         return wsList;
@@ -108,7 +113,6 @@ public class WebSocketController {
         try {
             String username=userServiceImpl.getTokenUser().getNickname();
             redisTemplate.opsForHash().delete(username,tousername);
-            redisTemplate.opsForHash().delete(tousername,username);
             return R.success("删除成功");
         }catch (Exception e){
             return R.error();

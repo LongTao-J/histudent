@@ -9,7 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MesssageWs {
 
-    private String username;
-    private String tousername;
+    private String usernameHeader;
+    private String tousernameHeader;
     private String text;
+    private int flage;// 1为右边，0为左边
 }

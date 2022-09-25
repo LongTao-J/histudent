@@ -57,6 +57,12 @@ public class UserTest {
 
     @Autowired
     UserService userServiceImpl;
+
+//    @Test
+//    void ao98s(){
+//        List<String> o = (List<String>) redisTemplate.opsForHash().get("xiaoyus", "huccct");
+//        System.out.println(o);
+//    }
 //    @Test
 //    void ppp(){
 //
