@@ -1,4 +1,4 @@
-package com.example.modules.materials.pojo;
+package com.example.modules.market.materials.pojo;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;

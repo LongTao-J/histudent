@@ -139,4 +139,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         userMapperImpl.updateById(user);
         return R.success(null,"修改年龄成功",200);
     }
+
+    @Override
+    public String getImgByUserName(String username) {
+        String imgByNickeName = userMapperImpl.getImgByNickeName(username);
+        return imgByNickeName;
+    }
 }

@@ -11,7 +11,4 @@ import java.sql.SQLException;
 @SpringBootTest
 class HistudentApplicationTests {
 
-	@Test
-	void contextLoads() throws SQLException {
-	}
 }

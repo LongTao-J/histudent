@@ -36,4 +36,9 @@ public interface CommodityService extends IService<Commodity> {
      //查询推荐商品
      List<CommodityVO> getRecCommodityService();
 
+     //根据介绍（introduce）查询某个商品
+     List<CommodityVO> getCommodityOne(String text);
+
+     //随机推荐商品
+     List<CommodityVO> getRandonCommodity();
 }

@@ -90,8 +90,8 @@ public class UserController {
         smss.setSms(String.valueOf(random.nextInt(9999-1000+1)+1000));//验证码
 
         SendSmsRequest request = new SendSmsRequest();
-        request.setSignName("Hi龙涛");
-        request.setTemplateCode("SMS_244670258");
+        request.setSignName("Hi同学科技");
+        request.setTemplateCode("SMS_252635072");
         System.out.println("电话号码为："+phone);
         request.setPhoneNumbers(phone);
         request.setTemplateParam("{\"code\":\""+smss.getSms()+"\"}");

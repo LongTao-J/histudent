@@ -24,4 +24,6 @@ public interface UserService extends IService<User> {
     User getTokenUser();
 
     R<Object> upUserAge(int age);
+
+    String getImgByUserName(String username);
 }

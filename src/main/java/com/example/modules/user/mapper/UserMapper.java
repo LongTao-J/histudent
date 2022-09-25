@@ -28,4 +28,7 @@ public interface UserMapper extends BaseMapper<User> {
             "left JOIN school s ON s.id=t.sch_id\n" +
             "WHERE t.stu_num= #{id}")
     Longtt getSchoolProfessiom(String id);
+
+    @Select("SELECT headaddress FROM `user` WHERE nickname=#{username}")
+    String getImgByNickeName(String username);
 }

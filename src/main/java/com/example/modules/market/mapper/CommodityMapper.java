@@ -32,4 +32,9 @@ public interface CommodityMapper extends BaseMapper<Commodity> {
     @Select("SELECT c.is_rec,c.id,u.nickname,u.headaddress,c.price,c.introduce,c.gmt_create,c.want\n" +
             "            FROM commodity c LEFT JOIN `user` u ON u.id=c.user_id WHERE c.is_rec=1")
     List<CommodityVO> getRecCommodityVo();
+
+    //根据介绍（introduce）查询某个商品
+    @Select("SELECT c.is_rec,c.id,u.nickname,u.headaddress,c.price,c.introduce,c.gmt_create,c.want\n" +
+            "            FROM commodity c LEFT JOIN `user` u ON u.id=c.user_id WHERE c.introduce LIKE #{text}")
+    List<CommodityVO> getCommodityOne(String text);
 }
