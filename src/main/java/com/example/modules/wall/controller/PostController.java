@@ -230,6 +230,7 @@ public class PostController {
             vo.setPost(post);
             vo.setUserHead(issuer.getHeadaddress());
             vo.setUserNickname(issuer.getNickname());
+            vo.setUserIsCollect(postCollectServiceImpl.isCollect(userId, post.getId()));
             // 判断当前登录用户是否点赞帖子
             Integer like = postLikeRepositoryImpl.isLike(userId, post.getId());
             // null: 从未点赞过, 1: 点赞状态, 0: 点赞过又取消状态
