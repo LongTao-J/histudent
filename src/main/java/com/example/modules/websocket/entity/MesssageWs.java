@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MesssageWs {
 
-    private String usernameHeader;
-    private String tousernameHeader;
+    private String Header;//from的header
     private String text;
     private int flage;// 1为右边，0为左边
 }

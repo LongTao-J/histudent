@@ -62,8 +62,7 @@ public class WebSocketController {
         for (int i=0;i<list.size();i++){
             MesssageWs messsageWs=new MesssageWs();
             JSONObject obj = JSONUtil.parseObj(list.get(i));
-            messsageWs.setUsernameHeader(userServiceImpl.getImgByUserName(obj.getStr("from")));
-            messsageWs.setTousernameHeader(userServiceImpl.getImgByUserName(obj.getStr("to")));
+            messsageWs.setHeader(userServiceImpl.getImgByUserName(obj.getStr("from")));
             messsageWs.setText(obj.getStr("text"));
             if (obj.getStr("from").equals(username)){
                 messsageWs.setFlage(1);
