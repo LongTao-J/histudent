@@ -36,6 +36,7 @@ public class PostCommentController {
     public R<Object> getPostCommentAll(@PathVariable("post-id")String postId){
         try{
             List<PostComment> postComments = postCommentServiceImpl.getListByPostId(postId);
+            postComments.sort((t1, t2) -> t2.getGmtCreate().compareTo(t1.getGmtCreate()));
             List<PostCommentVO> listVO = new ArrayList<>();
             for(PostComment comment : postComments){
                 PostCommentVO vo = new PostCommentVO();
