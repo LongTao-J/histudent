@@ -1,11 +1,14 @@
 package com.example.modules.market.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.modules.market.entity.dto.WritCommentDTO;
 import com.example.modules.market.entity.po.CommodityComment;
 import com.example.modules.market.entity.vo.CommentVo;
+import com.example.modules.market.entity.vo.CommodityCommentVVo;
 import com.example.modules.market.mapper.CommodityCommentMapper;
 import com.example.modules.market.service.CommodityCommentService;
+import com.example.modules.user.pojo.po.User;
 import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,9 +29,25 @@ public class CommodityCommentServiceImpl extends ServiceImpl<CommodityCommentMap
     UserService userServiceImpl;
 
     @Override
-    public List<CommentVo> getAllCommBycIdSer(String commodity) {
-        List<CommentVo> allCommentByCid = commodityCommentMapper.getAllCommentByCid(commodity);
-        return allCommentByCid;
+    public List<CommentVo> getAllCommBycIdSer(String commodityId) {
+        try {
+            List<CommentVo> allCommentByCid = new ArrayList<>();
+
+            List<CommodityCommentVVo> commodityComments = commodityCommentMapper.getCommodityCommentVVo(commodityId);
+
+            for (int i=0;i<commodityComments.size();i++){
+                CommentVo commentVo=new CommentVo();
+                commentVo.setComment(commodityComments.get(i));
+                User user=new User();
+                user= userServiceImpl.getById(commodityComments.get(i).getUserId());
+                commentVo.setUserHead(user.getHeadaddress());
+                commentVo.setUserNickname(user.getNickname());
+                allCommentByCid.add(commentVo);
+            }
+            return allCommentByCid;
+        }catch (Exception e){
+            return null;
+        }
     }
 
     @Override

@@ -33,6 +33,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @RestController
@@ -82,7 +83,16 @@ public class UserController {
     //短信发送
     @GetMapping("/sendCode/{phone}")
     @CrossOrigin
-    public R<Smss> duanxin(@PathVariable String phone){
+    public R<Object> duanxin(@PathVariable String phone){
+
+        //查看手机号是否已经注册
+        LambdaQueryWrapper<User> queryWrapper=new LambdaQueryWrapper<>();
+        queryWrapper.eq(User::getPhone,"18876521895");
+        User user = userMapper.selectOne(queryWrapper);
+        if (user!=null){
+            return R.success("手机号已被注册");
+        }
+
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI5tSKh58f7gFHg2qpfw7k", "FgCcfuYtsoTAEgrzg2LfJhbP1ReDy0");
         IAcsClient client = new DefaultAcsClient(profile);
         Random random=new Random();
@@ -107,7 +117,7 @@ public class UserController {
             System.out.println("RequestId:" + e.getRequestId());
         }
         ValueOperations<String,String> redis=redisTemplate.opsForValue();
-        redis.set(phone,smss.getSms());
+        redis.set(phone,smss.getSms(),5, TimeUnit.MINUTES);
         return R.success(smss,"短信发送成功",200);
     }
 

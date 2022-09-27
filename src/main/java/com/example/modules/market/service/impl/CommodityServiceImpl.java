@@ -1,5 +1,6 @@
 package com.example.modules.market.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.modules.market.entity.dto.CommodityDTO;
 import com.example.modules.market.entity.po.Commodity;
@@ -67,6 +68,7 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
         List<CommodityVO> commodityVOList=new ArrayList<>();
         commodityVOList=commodityMapper.getAllCommodityVo();
         for (int i=0;i<commodityVOList.size();i++){
+            commodityVOList.get(i).setIsCollection(commodityCollectionServiceImpl.getIsCollectionByCommodidtyId(commodityVOList.get(i).getId())  );
             List<String> allImg=new ArrayList<>();
             allImg= commodityImageServiceImpl.getAllImgService(commodityVOList.get(i).getId());
             commodityVOList.get(i).setAllImg(allImg);
@@ -99,6 +101,7 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
 
         try {
             for (int i=0;i<commodityVOList.size();i++){
+                commodityVOList.get(i).setIsCollection(commodityCollectionServiceImpl.getIsCollectionByCommodidtyId(commodityVOList.get(i).getId())  );
                 List<String> allImg= commodityImageServiceImpl.getAllImgService(commodityVOList.get(i).getId());
                 commodityVOList.get(i).setAllImg(allImg);
                 commodityVOList.get(i).setTotalImage(allImg.get(0));
@@ -164,6 +167,7 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
         List<CommodityVO> commodityVOList=new ArrayList<>();
         commodityVOList=commodityMapper.getRecCommodityVo();
         for (int i=0;i<commodityVOList.size();i++){
+            commodityVOList.get(i).setIsCollection(commodityCollectionServiceImpl.getIsCollectionByCommodidtyId(commodityVOList.get(i).getId())  );
             List<String> allImg= commodityImageServiceImpl.getAllImgService(commodityVOList.get(i).getId());
             commodityVOList.get(i).setAllImg(allImg);
             commodityVOList.get(i).setTotalImage(allImg.get(0));
@@ -192,6 +196,7 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
         //introduce查
         commodityVOList=commodityMapper.getCommodityOne("%"+text+"%");
         for (int i=0;i<commodityVOList.size();i++){
+            commodityVOList.get(i).setIsCollection(commodityCollectionServiceImpl.getIsCollectionByCommodidtyId(commodityVOList.get(i).getId())  );
             List<String> allImg= commodityImageServiceImpl.getAllImgService(commodityVOList.get(i).getId());
             commodityVOList.get(i).setAllImg(allImg);
             commodityVOList.get(i).setTotalImage(allImg.get(0));
@@ -224,6 +229,7 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             i++;
         }
         for (int i=0;i<commodityVOList.size();i++){
+            commodityVOList.get(i).setIsCollection(commodityCollectionServiceImpl.getIsCollectionByCommodidtyId(commodityVOList.get(i).getId())  );
             List<String> allImg=new ArrayList<>();
             allImg= commodityImageServiceImpl.getAllImgService(commodityVOList.get(i).getId());
             commodityVOList.get(i).setAllImg(allImg);
@@ -244,6 +250,12 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
         }
 
         return commodityVOList;
+    }
+
+    @Override
+    public String getUserIdByCommodityId(String commodityId) {
+        Commodity commodity = commodityMapper.selectById(commodityId);
+        return commodity.getUserId();
     }
 
 }

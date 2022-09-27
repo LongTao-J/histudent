@@ -16,9 +16,14 @@ public interface CommodityCollectionMapper extends BaseMapper<CommodityCollectio
     Integer getCommodityCountMapper(String commodityId);
 
     //查询我的收藏
-    @Select("SELECT c.is_rec,c.id,u.nickname,u.headaddress,c.price,c.introduce,c.gmt_create,c.want\n" +
+    @Select("SELECT c.is_rec,c.id,u.nickname,u.headaddress,c.price,c.introduce,p.gmt_create,c.want\n" +
             "            FROM commodity c LEFT JOIN commodity_collection p ON p.commodity_id=c.id\n" +
             "\t\t\t\t\t\tLEFT JOIN `user` u ON u.id=p.user_id\n" +
             "\t\t\t\t\t\tWHERE u.id= #{userid}")
     List<CommodityVO> getMyCollection(String userid);
+
+    //根据商品id查发布者的名字
+    @Select("SELECT u.nickname FROM `user` u,commodity c\n" +
+            "WHERE u.id=c.user_id AND c.id=#{id}")
+    String getUserNickName(String id);
 }

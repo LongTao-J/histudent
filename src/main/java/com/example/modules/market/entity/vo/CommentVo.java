@@ -1,5 +1,6 @@
 package com.example.modules.market.entity.vo;
 
+import com.example.modules.market.entity.po.CommodityComment;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,13 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CommentVo {
 
-    private String commentId;
+    private CommodityCommentVVo comment;
 
-    private String comment;
+    private String userHead;
 
-    private String userId;
+    private String userNickname;
 
-    private String userName;
-
-    private String headImg;
 }

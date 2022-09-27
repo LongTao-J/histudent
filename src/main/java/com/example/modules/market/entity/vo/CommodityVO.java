@@ -46,4 +46,7 @@ public class CommodityVO {
 
     private String comrfrom="二手市场";
 
+    //当前用户是否收藏
+    private Boolean isCollection;// 1 为收藏，0 为没有收藏
+
 }

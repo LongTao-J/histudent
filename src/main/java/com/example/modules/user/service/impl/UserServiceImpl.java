@@ -12,6 +12,7 @@ import com.example.modules.user.utils.Anquan.JwtUtil;
 import com.example.modules.user.utils.Anquan.LoginUser;
 import com.example.modules.user.utils.Anquan.RedisCache;
 import com.example.modules.user.utils.Anquan.ResponseResult;
+import com.example.modules.user.utils.Consts;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -22,8 +23,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -80,6 +79,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public ResponseResult login(User user) {
         try {
+            String loginStatus= (String) redisTemplate.opsForHash().get(Consts.LOGIN_USERS,user.getPhone());
+            if(loginStatus!=null && loginStatus.equals("yes")){
+                return new ResponseResult(200,"用户已经在其他地方登录",null);
+            }
+
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getPhone(),user.getPassword());
             Authentication authenticate = authenticationManager.authenticate(authenticationToken);
             if(Objects.isNull(authenticate)){
@@ -94,17 +98,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             //把token响应给前端
             HashMap<String,String> map = new HashMap<>();
             map.put("token",jwt);
+            //登录的用户存到redis
+            redisTemplate.opsForHash().put(Consts.LOGIN_USERS,user.getPhone(),"yes");
             return new ResponseResult(200,"登陆成功",map);
         }catch (Exception e){
-            return new ResponseResult(200,"用户名或密码错误",null);
+            return new ResponseResult(200,"程序报错或用户名或密码错误",null);
         }
     }
 
     //退出
     @Override
     public ResponseResult logout() {
-        String userid = getTokenUser().getId();
-        redisCache.deleteObject("login:"+userid);
+        User user= getTokenUser();
+        redisCache.deleteObject("login:"+user.getId());
+        redisTemplate.opsForHash().delete(Consts.LOGIN_USERS,user.getPhone());
         return new ResponseResult(200,"退出成功");
     }
 
@@ -114,7 +121,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String smslocal=redis.get(userSms.getPhone());
         if (smslocal==null || !smslocal.equals(userSms.getSms())){
-            return R.error("验证码错误",400);
+            return R.error("验证码错误或失效",400);
         }
         User user=new User();
         user.setPhone(userSms.getPhone());
@@ -144,5 +151,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public String getImgByUserName(String username) {
         String imgByNickeName = userMapperImpl.getImgByNickeName(username);
         return imgByNickeName;
+    }
+
+    @Override
+    public String getUSerNickName(String userId) {
+        User user = userMapperImpl.selectById(userId);
+        return user.getNickname();
     }
 }

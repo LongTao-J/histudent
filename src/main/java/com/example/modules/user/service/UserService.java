@@ -26,4 +26,7 @@ public interface UserService extends IService<User> {
     R<Object> upUserAge(int age);
 
     String getImgByUserName(String username);
+
+    //查询用户的名字
+    String getUSerNickName(String userId);
 }
