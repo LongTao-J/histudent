@@ -2,9 +2,7 @@ package com.example.modules.wall.controller;
 
 
 import com.example.modules.user.pojo.dto.UserInfoLt;
-import com.example.modules.user.pojo.po.User;
 import com.example.modules.user.service.UserService;
-import com.example.modules.user.utils.Consts;
 import com.example.modules.wall.entity.po.Post;
 import com.example.modules.wall.entity.po.PostCollect;
 import com.example.modules.wall.entity.vo.PostCollectVO;
@@ -13,8 +11,6 @@ import com.example.modules.wall.service.PostCollectService;
 import com.example.modules.wall.service.PostService;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -78,6 +74,7 @@ public class PostCollectController {
             postCollectVO.setContent(post.getContent());
             List<String> images = postRepositoryImpl.getFileListByPostId(post.getId());
             postCollectVO.setImage(images.get(0));
+            postCollectVO.setGmtCreate(postCollect.getGmtCreate());
             postCollectVOList.add(postCollectVO);
         }
         return R.success(postCollectVOList);
