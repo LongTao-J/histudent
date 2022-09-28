@@ -1,10 +1,14 @@
 package com.example.modules.user.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.modules.collegeInformation.mapper.ProfessionMapper;
+import com.example.modules.collegeInformation.mapper.SchoolMapper;
+import com.example.modules.collegeInformation.pojo.Profession;
+import com.example.modules.collegeInformation.pojo.School;
+import com.example.modules.user.mapper.StuInfoMapper;
 import com.example.modules.user.mapper.UserMapper;
-import com.example.modules.user.pojo.dto.Longtt;
-import com.example.modules.user.pojo.dto.UserInfoLt;
-import com.example.modules.user.pojo.dto.UserSms;
+import com.example.modules.user.pojo.dto.*;
 import com.example.modules.user.pojo.po.StuInfo;
 import com.example.modules.user.pojo.po.User;
 import com.example.modules.user.service.UserService;
@@ -39,6 +43,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     PasswordEncoder passwordEncoder;
     @Autowired
     private RedisTemplate redisTemplate;
+    @Autowired
+    private StuInfoMapper stuInfoMapperImpl;
+    @Autowired
+    private SchoolMapper schoolMapperImpl;
+    @Autowired
+    private ProfessionMapper professionMapperImpl;
 
     @Override
     public StuInfo getStuInfo(String userid) {
@@ -157,5 +167,189 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public String getUSerNickName(String userId) {
         User user = userMapperImpl.selectById(userId);
         return user.getNickname();
+    }
+
+    @Override
+    public Boolean PhoneIf(String phone) {
+        try {
+            LambdaQueryWrapper<User> queryWrapper=new LambdaQueryWrapper<>();
+            queryWrapper.eq(User::getPhone,phone);
+            User user = userMapperImpl.selectOne(queryWrapper);
+            if (user!=null){
+                return false;
+            }
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public User getUserById(String userId) {
+        try {
+            User user = userMapperImpl.selectById(userId);
+            return user;
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+    @Override
+    public Boolean updateUserPasswordSer(String password) {
+        try {
+            User user=this.getTokenUser();
+            user.setPassword(password);
+            userMapperImpl.updateById(user);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean upSexSer(Integer sex) {
+        try {
+            User user=this.getTokenUser();
+            user.setSex(sex);
+            userMapperImpl.updateById(user);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean upNickeNameSer(String name) {
+        try {
+            User user=this.getTokenUser();
+            user.setNickname(name);
+            userMapperImpl.updateById(user);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean upintroductionSer(String introduction) {
+        try {
+            User user=this.getTokenUser();
+            user.setIntroduction(introduction);
+            userMapperImpl.updateById(user);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean upSchoolSer(String schoolname) {
+
+        try {
+            User user =this.getTokenUser();
+
+            LambdaQueryWrapper<School> wrapper=new LambdaQueryWrapper<>();
+            wrapper.eq(School::getName,schoolname);
+            School school = schoolMapperImpl.selectOne(wrapper);
+            String scId=school.getId();
+
+            LambdaQueryWrapper<StuInfo> swrapper=new LambdaQueryWrapper<>();
+            swrapper.eq(StuInfo::getStuNum,user.getStuInfoId());
+            StuInfo stuInfo=stuInfoMapperImpl.selectOne(swrapper);
+            stuInfo.setSchId(scId);
+            stuInfoMapperImpl.updateById(stuInfo);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean upProfessionSer(String professionname) {
+        try {
+            User user=this.getTokenUser();
+
+            LambdaQueryWrapper<Profession> wrapper=new LambdaQueryWrapper<>();
+            wrapper.eq(Profession::getName,professionname);
+            Profession profession = professionMapperImpl.selectOne(wrapper);
+            String prId=profession.getId();
+
+            LambdaQueryWrapper<StuInfo> swrapper=new LambdaQueryWrapper<>();
+            swrapper.eq(StuInfo::getStuNum,user.getStuInfoId());
+            StuInfo stuInfo=stuInfoMapperImpl.selectOne(swrapper);
+            stuInfo.setProfId(prId);
+            stuInfoMapperImpl.updateById(stuInfo);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean upTimeSer(String scTime) {
+        try {
+            User user = this.getTokenUser();
+            user.setSchoolTime(scTime);
+            userMapperImpl.updateById(user);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean deletSchoolTimeSer() {
+        try {
+            User user=this.getTokenUser();
+            String stuId=user.getStuInfoId();
+
+            user.setSchoolTime("");
+            userMapperImpl.updateById(user);
+
+            LambdaQueryWrapper<StuInfo> wrapper=new LambdaQueryWrapper<>();
+            wrapper.eq(StuInfo::getStuNum,stuId);
+            StuInfo stuInfo = stuInfoMapperImpl.selectOne(wrapper);
+            stuInfo.setSchId("100");
+            stuInfoMapperImpl.updateById(stuInfo);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean upHeadAddressSer(HeadImage headAddress) {
+        try {
+            User user=this.getTokenUser();
+            user.setHeadaddress(headAddress.getImgurl());
+            userMapperImpl.updateById(user);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean upBackImgSer(BackImg backImg) {
+        try {
+            User user=this.getTokenUser();
+            user.setBackimg(backImg.getBackimage());
+            userMapperImpl.updateById(user);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean upClassBackImgSer(ClassBackImage classBackImage) {
+        try {
+            User user=this.getTokenUser();
+            user.setClassBackimg(classBackImage.getClassImg());
+            userMapperImpl.updateById(user);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 }

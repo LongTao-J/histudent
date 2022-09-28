@@ -6,11 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class CommodityCommentVVo {
-    @TableId(value = "id", type = IdType.ASSIGN_UUID)
+
     private String id;
 
     private String content;
@@ -18,4 +20,8 @@ public class CommodityCommentVVo {
     private String commodityId;
 
     private String userId;
+
+    private Date gmtCreate;
+
+    private Date gmtModified;
 }

@@ -44,20 +44,7 @@ public class UserController {
     private RedisTemplate redisTemplate;
 
     @Autowired
-    private UserMapper userMapper;
-
-    @Autowired
-    private StuInfoMapper stuInfoMapper;
-
-    @Autowired
-    private SchoolMapper schoolMapper;
-
-    @Autowired
-    private ProfessionMapper professionMapper;
-
-    @Autowired
     private UserService userServiceImpl;
-
 
     //登录
     @PostMapping("/login")
@@ -80,16 +67,13 @@ public class UserController {
         return userServiceImpl.RegisterSer(userSms);
     }
 
-    //短信发送
-    @GetMapping("/sendCode/{phone}")
+    //短信发送,判断是注册(0)，还是修改密码(1)
+    @GetMapping("/sendCode/{phone}/{flage}")
     @CrossOrigin
-    public R<Object> duanxin(@PathVariable String phone){
+    public R<Object> duanxin(@PathVariable("phone") String phone,@PathVariable("flage") String flage){
 
         //查看手机号是否已经注册
-        LambdaQueryWrapper<User> queryWrapper=new LambdaQueryWrapper<>();
-        queryWrapper.eq(User::getPhone,"18876521895");
-        User user = userMapper.selectOne(queryWrapper);
-        if (user!=null){
+        if (!userServiceImpl.PhoneIf(phone)&&flage.equals("0")){
             return R.success("手机号已被注册");
         }
 
@@ -138,7 +122,7 @@ public class UserController {
     @GetMapping("/getUserById/{userId}")
     @CrossOrigin
     public R<User> getUserById(@PathVariable("userid") String userid){
-        User user = userMapper.selectById(userid);
+        User user = userServiceImpl.getUserById(userid);
         return R.success(user,"获取信息成功",200);
     }
 
@@ -153,13 +137,12 @@ public class UserController {
             return R.error("验证码错误",400);
         }
 
-        LambdaUpdateWrapper<User> wrapper=new LambdaUpdateWrapper();
-        wrapper.eq(User::getPhone,userSms.getPhone());
-        User user = userMapper.selectOne(wrapper);
-        user.setPassword(userSms.getPassword());
-        userMapper.updateById(user);
-
-        return R.success(null,"修改密码成功",200);
+        Boolean aBoolean = userServiceImpl.updateUserPasswordSer(userSms.getPassword());
+        if (aBoolean){
+            return R.success(null,"修改密码成功",200);
+        }else {
+            return R.error("修改密码失败",400);
+        }
     }
 
 
@@ -167,12 +150,12 @@ public class UserController {
     @PutMapping("/upsex/{sex}")
     @CrossOrigin
     public R<String> upSex(@PathVariable("sex") int sex){
-        String userid=userServiceImpl.getTokenUser().getId();
-        User user=userMapper.selectById(userid);
-        System.out.println(user);
-        user.setSex(sex);
-        userMapper.updateById(user);
-        return R.success(null,"修改性别成功",200);
+        Boolean aBoolean = userServiceImpl.upSexSer(sex);
+        if (aBoolean){
+            return R.success(null,"修改性别成功",200);
+        }else {
+            return R.error("修改性别失败",400);
+        }
     }
 
     //修改年龄
@@ -186,138 +169,110 @@ public class UserController {
     @PutMapping("/upnickname/{name}")
     @CrossOrigin
     public R<String> upNickeName(@PathVariable("name") String name){
-        String userid=userServiceImpl.getTokenUser().getId();
-        User user=userMapper.selectById(userid);
-        user.setNickname(name);
-        userMapper.updateById(user);
-        return R.success(null,"修改昵称成功",200);
+        Boolean aBoolean = userServiceImpl.upNickeNameSer(name);
+        if (aBoolean){
+            return R.success(null,"修改昵称成功",200);
+        }else {
+            return R.error("修改昵称失败",400);
+        }
     }
 
     //修改自我介绍
     @PutMapping("/upintroduction/{introduction}")
     @CrossOrigin
     public R<String> upintroduction(@PathVariable("introduction") String introduction){
-        String userid=userServiceImpl.getTokenUser().getId();
-        User user=userMapper.selectById(userid);
-        System.out.println(user);
-        user.setIntroduction(introduction);
-        userMapper.updateById(user);
-        return R.success(null,"修改自我介绍成功",200);
+        Boolean aBoolean = userServiceImpl.upintroductionSer(introduction);
+        if (aBoolean){
+            return R.success(null,"修改自我介绍成功",200);
+        }else {
+            return R.error("修改自我介绍失败",400);
+        }
     }
 
     //修改我的学校
     @PutMapping("/upschool/{schoolname}")
     @CrossOrigin
-    public R<String> upAge(@PathVariable("schoolname") String schoolname){
-        String userid=userServiceImpl.getTokenUser().getId();
+    public R<String> upSchool(@PathVariable("schoolname") String schoolname){
+        Boolean aBoolean = userServiceImpl.upSchoolSer(schoolname);
+        if (aBoolean){
+            return R.success(null,"修改学校成功",200);
+        }else {
+            return R.error("修改学校失败",400);
+        }
 
-        User user = userMapper.selectById(userid);
-
-        LambdaQueryWrapper<School> wrapper=new LambdaQueryWrapper<>();
-        wrapper.eq(School::getName,schoolname);
-        School school = schoolMapper.selectOne(wrapper);
-        String scId=school.getId();
-
-        LambdaQueryWrapper<StuInfo> swrapper=new LambdaQueryWrapper<>();
-        swrapper.eq(StuInfo::getStuNum,user.getStuInfoId());
-        StuInfo stuInfo=stuInfoMapper.selectOne(swrapper);
-        stuInfo.setSchId(scId);
-        stuInfoMapper.updateById(stuInfo);
-
-        return R.success(null,"修改学校成功",200);
     }
 
     //修改专业
     @PutMapping("/upprofession/{professionname}")
     @CrossOrigin
     public R<String> upProfession(@PathVariable("professionname") String professionname){
-        String userid=userServiceImpl.getTokenUser().getId();
-
-        User user = userMapper.selectById(userid);
-
-        LambdaQueryWrapper<Profession> wrapper=new LambdaQueryWrapper<>();
-        wrapper.eq(Profession::getName,professionname);
-        Profession profession = professionMapper.selectOne(wrapper);
-        String prId=profession.getId();
-
-        LambdaQueryWrapper<StuInfo> swrapper=new LambdaQueryWrapper<>();
-        swrapper.eq(StuInfo::getStuNum,user.getStuInfoId());
-        StuInfo stuInfo=stuInfoMapper.selectOne(swrapper);
-        stuInfo.setProfId(prId);
-        stuInfoMapper.updateById(stuInfo);
-
-        return R.success(null,"修改专业成功",200);
+        Boolean aBoolean = userServiceImpl.upProfessionSer(professionname);
+        if (aBoolean){
+            return R.success(null,"修改专业成功",200);
+        }else {
+            return R.error("修改专业失败",400);
+        }
     }
 
     //修改入学日期
     @PutMapping("/upTime/{scTime}")
     @CrossOrigin
     public R<String> upTime(@PathVariable("scTime") String scTime){
-        String userid=userServiceImpl.getTokenUser().getId();
+        Boolean aBoolean = userServiceImpl.upTimeSer(scTime);
+        if (aBoolean){
+            return R.success(null,"更新时间成功",200);
+        }else {
+            return R.error("更新时间失败",400);
+        }
 
-        User user = userMapper.selectById(userid);
-        user.setSchoolTime(scTime);
-        userMapper.updateById(user);
-
-        return R.success(null,"更新时间成功",200);
     }
 
     //删除学校，和入学时间
     @DeleteMapping("/deletSchoolTime")
     @CrossOrigin
     public R<String> deletSchoolTime(){
+        Boolean aBoolean = userServiceImpl.deletSchoolTimeSer();
+        if (aBoolean){
+            return R.success(null,"删除学校信息成功",200);
+        }else {
+            return R.error("删除学校信息失败",400);
+        }
 
-        String userid=userServiceImpl.getTokenUser().getId();
-
-        User user = userMapper.selectById(userid);
-        String stuId=user.getStuInfoId();
-
-        user.setSchoolTime("");
-        userMapper.updateById(user);
-
-        LambdaQueryWrapper<StuInfo> wrapper=new LambdaQueryWrapper<>();
-        wrapper.eq(StuInfo::getStuNum,stuId);
-        StuInfo stuInfo = stuInfoMapper.selectOne(wrapper);
-        stuInfo.setSchId("100");
-        stuInfoMapper.updateById(stuInfo);
-
-        return R.success(null,"删除学校信息成功",200);
     }
 
     //上传头像
     @PostMapping("/upHeadAddress")
     @CrossOrigin
     public R<String> upHeadAddress(@RequestBody HeadImage headAddress){
-        String userId=userServiceImpl.getTokenUser().getId();
-        User user = userMapper.selectById(userId);
-        user.setHeadaddress(headAddress.getImgurl());
-        userMapper.updateById(user);
-        return R.success(headAddress.getImgurl(),"头像上传成功",200);
+        Boolean aBoolean = userServiceImpl.upHeadAddressSer(headAddress);
+        if (aBoolean){
+            return R.success(headAddress.getImgurl(),"头像上传成功",200);
+        }else {
+            return R.error("头像上传失败",400);
+        }
     }
 
     //上传背景图片
     @PostMapping("/upBackImg")
     @CrossOrigin
     public R<String> upBackImg(@RequestBody BackImg backImg){
-        String userId=userServiceImpl.getTokenUser().getId();
-        User user = userMapper.selectById(userId);
-        user.setBackimg(backImg.getBackimage());
-        userMapper.updateById(user);
-        return R.success(backImg.getBackimage(),"背景图片上传成功",200);
+        Boolean aBoolean = userServiceImpl.upBackImgSer(backImg);
+        if (aBoolean){
+            return R.success(backImg.getBackimage(),"背景图片上传成功",200);
+        }else {
+            return R.error("背景图片上传失败",400);
+        }
     }
 
     //上传课表背景图片
     @PostMapping("/upClassBackImg")
     @CrossOrigin
     public R<String> upClassBackImg(@RequestBody ClassBackImage classBackImage){
-        try {
-            String userId=userServiceImpl.getTokenUser().getId();
-            User user = userMapper.selectById(userId);
-            user.setClassBackimg(classBackImage.getClassImg());
-            userMapper.updateById(user);
+        Boolean aBoolean = userServiceImpl.upClassBackImgSer(classBackImage);
+        if (aBoolean){
             return R.success(classBackImage.getClassImg(),"课表背景图片上传成功",200);
-        }catch (Exception e){
-            return R.error(classBackImage.getClassImg(),400);
+        }else {
+            return R.error("背景图片上传失败",400);
         }
     }
 }

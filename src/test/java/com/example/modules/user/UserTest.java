@@ -13,6 +13,8 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.modules.market.service.CommodityService;
 import com.example.modules.user.mapper.UserMapper;
 import com.example.modules.user.pojo.dto.Smss;
+import com.example.modules.user.pojo.dto.UserInfoLt;
+import com.example.modules.user.pojo.po.StuInfo;
 import com.example.modules.user.pojo.po.User;
 import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
@@ -61,10 +63,20 @@ public class UserTest {
     @Autowired
     UserService userServiceImpl;
 
+//    @Test
+//    void ashjkbm(){
+//        redisTemplate.opsForHash().delete(Consts.LOGIN_USERS,"18110359126");
+//    }
+
+//    @Test
+//    void as90(){
+//        StuInfo stuInfo = userServiceImpl.getStuInfo("1552570983563436034");
+//        System.out.println(stuInfo);
+//    }
 
 //    @Test
 //    public void ASasa(){
-//        redisTemplate.opsForHash().delete(Consts.LOGIN_USERS,"18110359126");
+//        redisTemplate.opsForHash().delete(Consts.LOGIN_USERS,"lt");
 //    }
 //    @Test
 //    public void sada(){
