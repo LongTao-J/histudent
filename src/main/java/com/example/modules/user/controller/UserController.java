@@ -76,6 +76,9 @@ public class UserController {
         if (!userServiceImpl.PhoneIf(phone)&&flage.equals("0")){
             return R.success("手机号已被注册");
         }
+        if (userServiceImpl.PhoneIf(phone)&&flage.equals("1")){
+            return R.success("手机号未注册");
+        }
 
         DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI5tSKh58f7gFHg2qpfw7k", "FgCcfuYtsoTAEgrzg2LfJhbP1ReDy0");
         IAcsClient client = new DefaultAcsClient(profile);

@@ -60,7 +60,7 @@ public class RedisLtServiceImpl implements RedisLtService {
     public Integer getIsLikeFromRedis(String userId, String commodityId) {
         String key = CommodityRedisKeyUtil.getLikedKey(userId, commodityId);
         Object o = redisTemplate.opsForHash().get(CommodityRedisKeyUtil.MAP_KEY_USER_LIKED, key);
-        if(o == null) return null;
+        if(o == null) return 0;
         else return (Integer) o;
     }
 

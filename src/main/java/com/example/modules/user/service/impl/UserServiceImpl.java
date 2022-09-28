@@ -181,6 +181,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return user.getNickname();
     }
 
+    //注册了返回false，未注册返回true
     @Override
     public Boolean PhoneIf(String phone) {
         try {
