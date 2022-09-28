@@ -30,10 +30,11 @@ public class CommodityCommentController {
     }
 
     //写评论
-    @PostMapping("/addComment")
+    @PostMapping("/addComment/{commodityId}")
     @CrossOrigin
-    public R<String> addCommentCont(@RequestBody WritCommentDTO writCommentDTO){
+    public R<String> addCommentCont(@PathVariable("commodityId") String commodityId,@RequestBody WritCommentDTO writCommentDTO){
         try {
+            writCommentDTO.setCommodityId(commodityId);
             commodityCommentServiceImpl.WriteCommentServiec(writCommentDTO);
             return R.success("写评论成功");
         }catch (Exception e){

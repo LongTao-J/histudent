@@ -41,4 +41,7 @@ public interface CommodityService extends IService<Commodity> {
 
      //随机推荐商品
      List<CommodityVO> getRandonCommodity();
+
+     //根据商品id查用户id
+     String getUserIdByCommodityId(String commodityId);
 }

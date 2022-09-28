@@ -19,4 +19,7 @@ public interface CommodityCollectionService extends IService<CommodityCollection
     //查询商品收藏的个数
     Integer getCommodityCollectionCount(String commodityId);
 
+    //根据商品id查询当前用户是否收藏
+    Boolean getIsCollectionByCommodidtyId(String commodityId);
+
 }

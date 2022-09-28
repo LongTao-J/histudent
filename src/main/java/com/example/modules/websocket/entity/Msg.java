@@ -13,4 +13,6 @@ public class Msg {
     private String from;
 
     private String text;
+
+    private String to;
 }

@@ -43,7 +43,11 @@ public class WebSocketController {
             megUser.setHeadImg(userServiceImpl.getImgByUserName(x));
 
             List<String> list= (List<String>) redisTemplate.opsForHash().get(username,x);
-            JSONObject jsonObject=JSONUtil.parseObj(list.get(0));
+            int dext=list.size()-1;
+            if (dext<0){
+                dext=0;
+            }
+            JSONObject jsonObject=JSONUtil.parseObj(list.get(dext));
             megUser.setText(jsonObject.getStr("text"));
 
             megUserList.add(megUser);
@@ -62,8 +66,7 @@ public class WebSocketController {
         for (int i=0;i<list.size();i++){
             MesssageWs messsageWs=new MesssageWs();
             JSONObject obj = JSONUtil.parseObj(list.get(i));
-            messsageWs.setUsernameHeader(userServiceImpl.getImgByUserName(obj.getStr("from")));
-            messsageWs.setTousernameHeader(userServiceImpl.getImgByUserName(obj.getStr("to")));
+            messsageWs.setHeader(userServiceImpl.getImgByUserName(obj.getStr("from")));
             messsageWs.setText(obj.getStr("text"));
             if (obj.getStr("from").equals(username)){
                 messsageWs.setFlage(1);
@@ -79,7 +82,7 @@ public class WebSocketController {
     @PostMapping("/saveMessage")
     @CrossOrigin
     public R<Object> saveMessage(@RequestBody Msg msg){
-        String toUsername=userServiceImpl.getTokenUser().getNickname();
+        String toUsername= msg.getTo();
         String username=msg.getFrom();
         String text=msg.getText();
         log.info("Controller收到用户username={}的消息:{}",username, text);

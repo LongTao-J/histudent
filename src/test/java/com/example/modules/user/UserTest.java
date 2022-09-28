@@ -9,11 +9,13 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.profile.DefaultProfile;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.modules.market.service.CommodityService;
 import com.example.modules.user.mapper.UserMapper;
 import com.example.modules.user.pojo.dto.Smss;
 import com.example.modules.user.pojo.po.User;
 import com.example.modules.user.service.UserService;
+import com.example.modules.user.utils.Consts;
 import com.example.modules.websocket.entity.MegUser;
 import com.example.modules.websocket.entity.MesssageWs;
 import com.example.utils.R;
@@ -29,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
 public class UserTest {
@@ -36,8 +39,8 @@ public class UserTest {
 //    @Autowired
 //    UserService userServiceImpl;
 //
-//    @Autowired
-//    UserMapper userMapper;
+    @Autowired
+    UserMapper userMapperImpl;
 //
 //    @Autowired
 //    CommodityService commodityServiceImpl;
@@ -57,6 +60,29 @@ public class UserTest {
 
     @Autowired
     UserService userServiceImpl;
+
+
+//    @Test
+//    public void ASasa(){
+//        redisTemplate.opsForHash().delete(Consts.LOGIN_USERS,"18110359126");
+//    }
+//    @Test
+//    public void sada(){
+//        ValueOperations<String,String> redis = redisTemplate.opsForValue();
+//        String smslocal=redis.get("18876521895");
+//        System.out.println(smslocal);
+//    }
+//    @Test
+//    void dsa09ann(){
+//
+//    }
+
+//    @Test
+//    public void as9jd(){
+//        redisTemplate.opsForValue().set("lt","66666666666",100,TimeUnit.SECONDS);
+//        String o = (String) redisTemplate.opsForValue().get("lt");
+//        System.out.println(o);
+//    }
 
 //    @Test
 //    void ao98s(){

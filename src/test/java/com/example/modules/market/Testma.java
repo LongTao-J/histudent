@@ -1,12 +1,16 @@
 package com.example.modules.market;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.modules.countDown.mapper.CountDownMapper;
+import com.example.modules.market.entity.po.CommodityCollection;
 import com.example.modules.market.entity.vo.CommodityVO;
 import com.example.modules.market.mapper.CommodityCollectionMapper;
 import com.example.modules.market.mapper.CommodityImageMapper;
 import com.example.modules.market.mapper.CommodityMapper;
 import com.example.modules.market.repository.CommodityWantRepository;
 import com.example.modules.market.service.*;
+import net.minidev.json.writer.CollectionMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +20,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
 
 import java.text.ParseException;
@@ -44,6 +49,17 @@ public class Testma {
 
     @Autowired
     RedisTemplate redisTemplate;
+
+    @Autowired
+    CommodityCollectionMapper commodityCollectionMapperImpl;
+
+//    @Test
+//    void sdancu(){
+//        LambdaQueryWrapper<CommodityCollection> queryWrapper=new LambdaQueryWrapper<>();
+//        queryWrapper.eq(CommodityCollection::getCommodityId,"as").eq(CommodityCollection::getUserId,"1552570983563436034");
+//        CommodityCollection commodityCollection = commodityCollectionMapperImpl.selectOne(queryWrapper);
+//        System.out.println(commodityCollection);
+//    }
 
 //    @Test
 //    void aaa(){

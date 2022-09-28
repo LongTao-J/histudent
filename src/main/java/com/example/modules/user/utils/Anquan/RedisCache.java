@@ -1,5 +1,6 @@
 package com.example.modules.user.utils.Anquan;
 
+import com.example.modules.user.utils.Consts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundSetOperations;
 import org.springframework.data.redis.core.HashOperations;

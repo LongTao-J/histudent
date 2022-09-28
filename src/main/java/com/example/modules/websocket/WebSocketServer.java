@@ -246,8 +246,11 @@ public class WebSocketServer {
             jsonObject.set("text", text);  // text 同上面的text
             this.sendMessage(jsonObject.toString(), toSession);
             log.info("发送给用户username={}，消息：{}", toUsername, jsonObject.toString());
-
         } else {
+            //存redis
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.set("from", username);  // from 是 zhang
+            jsonObject.set("text", text);  // text 同上面的text
             log.info("发送失败，未找到用户username={}的session", toUsername);
         }
     }

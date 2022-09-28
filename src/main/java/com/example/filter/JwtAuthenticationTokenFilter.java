@@ -40,7 +40,6 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         log.info("+++++++++++++++++++++++++++");
         //如果请求为 OPTIONS 请求，则返回 true,否则需要通过jwt验证
         if (HttpMethod.OPTIONS.toString().equals(request.getMethod())){
-
             filterChain.doFilter(request, response);
             return;
         }
