@@ -59,25 +59,29 @@ public class CommodityWantRepositoryImpl implements CommodityWantRepository {
 
     @Override
     public Integer isLike(String userId, String commodityId) {
-        // 从redis中查找数据
-        Integer isLikeFromRedis = redisLtServiceImpl.getIsLikeFromRedis(userId, commodityId);
-        // 如果redis中存在直接获取
-        if(isLikeFromRedis != null){
-            return isLikeFromRedis;
-        }else{
-            // redis中不存在从mysql中获取并存储在redis中
-            CommodityWant likeDataFromMySql=commodityWantServiceImpl.getWantByUserIdAndCommodityId(userId,commodityId);
-            if(likeDataFromMySql == null) return null;
-            else {
-                if (likeDataFromMySql.getStatus() == 1) {
-                    redisLtServiceImpl.saveLikedRedis(userId, commodityId);
-                    return 1;
-                }
+        try {
+            // 从redis中查找数据
+            Integer isLikeFromRedis = redisLtServiceImpl.getIsLikeFromRedis(userId, commodityId);
+            // 如果redis中存在直接获取
+            if(isLikeFromRedis != null){
+                return isLikeFromRedis;
+            }else{
+                // redis中不存在从mysql中获取并存储在redis中
+                CommodityWant likeDataFromMySql=commodityWantServiceImpl.getWantByUserIdAndCommodityId(userId,commodityId);
+                if(likeDataFromMySql == null) return null;
                 else {
-                    redisLtServiceImpl.unlikeFromRedis(userId, commodityId);
-                    return 0;
+                    if (likeDataFromMySql.getStatus() == 1) {
+                        redisLtServiceImpl.saveLikedRedis(userId, commodityId);
+                        return 1;
+                    }
+                    else {
+                        redisLtServiceImpl.unlikeFromRedis(userId, commodityId);
+                        return 0;
+                    }
                 }
             }
+        }catch (Exception e){
+            return 0;
         }
     }
 
