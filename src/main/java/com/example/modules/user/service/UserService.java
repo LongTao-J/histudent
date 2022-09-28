@@ -17,7 +17,7 @@ public interface UserService extends IService<User> {
 
     ResponseResult logout();
 
-    R<User> RegisterSer(UserSms userSms);
+    R<String> RegisterSer(UserSms userSms);
 
     User getTokenUser();
 

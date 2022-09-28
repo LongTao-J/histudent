@@ -1,6 +1,7 @@
 package com.example.modules.user.pojo.po;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.Version;
 import lombok.AllArgsConstructor;
@@ -28,12 +29,4 @@ public class User {
     @Version
     private Integer version;//乐观锁
 
-//    private String sms;
-
-//    private int uid;
-//    private String username;
-//    private String password;
-//    private String phone;
-//    private String sms;//验证码
-//    private int status;
 }

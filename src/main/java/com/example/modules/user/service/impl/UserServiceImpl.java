@@ -29,6 +29,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
@@ -49,6 +50,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private SchoolMapper schoolMapperImpl;
     @Autowired
     private ProfessionMapper professionMapperImpl;
+
 
     @Override
     public StuInfo getStuInfo(String userid) {
@@ -89,7 +91,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public ResponseResult login(User user) {
         try {
-            String loginStatus= (String) redisTemplate.opsForHash().get(Consts.LOGIN_USERS,user.getPhone());
+            ValueOperations operations=redisTemplate.opsForValue();
+            String userKey=Consts.LOGIN_USERS+user.getPhone();
+            String loginStatus= (String) operations.get(userKey);
             if(loginStatus!=null && loginStatus.equals("yes")){
                 return new ResponseResult(200,"用户已经在其他地方登录",null);
             }
@@ -109,10 +113,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             HashMap<String,String> map = new HashMap<>();
             map.put("token",jwt);
             //登录的用户存到redis
-            redisTemplate.opsForHash().put(Consts.LOGIN_USERS,user.getPhone(),"yes");
+            operations.set(userKey,"yes",1, TimeUnit.DAYS);
             return new ResponseResult(200,"登陆成功",map);
         }catch (Exception e){
-            return new ResponseResult(200,"程序报错或用户名或密码错误",null);
+            return new ResponseResult(200,"用户名或密码错误了",null);
         }
     }
 
@@ -121,23 +125,31 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public ResponseResult logout() {
         User user= getTokenUser();
         redisCache.deleteObject("login:"+user.getId());
-        redisTemplate.opsForHash().delete(Consts.LOGIN_USERS,user.getPhone());
+        String userKey=Consts.LOGIN_USERS+user.getPhone();
+        redisTemplate.delete(userKey);
         return new ResponseResult(200,"退出成功");
     }
 
     //注册
     @Override
-    public R<User> RegisterSer(UserSms userSms) {
+    public R<String> RegisterSer(UserSms userSms) {
         ValueOperations<String,String> redis = redisTemplate.opsForValue();
         String smslocal=redis.get(userSms.getPhone());
         if (smslocal==null || !smslocal.equals(userSms.getSms())){
-            return R.error("验证码错误或失效",400);
+            return R.error("验证码错误或失效",200);
         }
+        String stuId="20"+userSms.getPhone().substring(userSms.getPhone().length()-4,userSms.getPhone().length());
+        String encodePassword=passwordEncoder.encode(userSms.getPassword());
         User user=new User();
         user.setPhone(userSms.getPhone());
-        user.setPassword(userSms.getPassword());
+        user.setPassword(encodePassword);
+        user.setStuInfoId(stuId);
         userMapperImpl.insert(user);
-        return R.success(user);
+
+        StuInfo stuInfo=new StuInfo();
+        stuInfo.setStuNum(stuId);
+        stuInfoMapperImpl.insert(stuInfo);
+        return R.success("注册成功");
     }
 
     //token查询用户

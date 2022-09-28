@@ -102,6 +102,8 @@ public class CountDownServiceImpl extends ServiceImpl<CountDownMapper, CountDown
                 int ltsjtkk= Integer.parseInt(ltsjt);
                 if(ltsjtkk<=0){
                     countDownIdVO.setRemindtime3("已结束");
+                    this.deleteCDser(countDowns.get(i).getId());
+                    continue;
                 }else {
                     countDownIdVO.setRemindtime3("剩"+ltsjt+"天");
                 }
@@ -117,6 +119,13 @@ public class CountDownServiceImpl extends ServiceImpl<CountDownMapper, CountDown
         }catch (Exception e){
             return null;
         }
+    }
+
+    //删除我的倒计时
+    @Override
+    public boolean deleteCDser(String countDownId) {
+        countDownMapper.deleteById(countDownId);
+        return false;
     }
 
     //求周几

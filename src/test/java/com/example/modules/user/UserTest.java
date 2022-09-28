@@ -2,6 +2,8 @@ package com.example.modules.user;
 
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson2.JSON;
+import com.alibaba.fastjson2.TypeReference;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
@@ -17,6 +19,8 @@ import com.example.modules.user.pojo.dto.UserInfoLt;
 import com.example.modules.user.pojo.po.StuInfo;
 import com.example.modules.user.pojo.po.User;
 import com.example.modules.user.service.UserService;
+import com.example.modules.user.utils.Anquan.LoginUser;
+import com.example.modules.user.utils.Anquan.RedisCache;
 import com.example.modules.user.utils.Consts;
 import com.example.modules.websocket.entity.MegUser;
 import com.example.modules.websocket.entity.MesssageWs;
@@ -62,6 +66,33 @@ public class UserTest {
 
     @Autowired
     UserService userServiceImpl;
+    @Autowired
+    RedisCache redisCache;
+
+
+//    @Test
+//    void SADas(){
+//        ValueOperations operations=redisTemplate.opsForValue();
+//        operations.set("qwq","444444444",9,TimeUnit.MINUTES);
+//        Object o = operations.get("qwq");
+//        System.out.println(o.toString());
+
+//        redisTemplate.delete(Consts.LOGIN_USERS+"18876521895");
+//        Object o = operations.get("qwq");
+//        if (o==null){
+//            System.out.println("saaaaasa");
+//        }
+//    }
+
+
+
+//    @Test
+//    void asdm9(){
+//        String redisKey="login:299e9d153c3c3a4e8d8f7286d3d7db55";
+//        Object s = redisCache.getCacheObject(redisKey);
+//        LoginUser loginUser= JSON.parseObject(JSON.toJSONString(s),new TypeReference<LoginUser>() {});
+//        System.out.println(loginUser);
+//    }
 
 //    @Test
 //    void ashjkbm(){

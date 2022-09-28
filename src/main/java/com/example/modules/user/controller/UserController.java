@@ -63,7 +63,7 @@ public class UserController {
 
     @PostMapping("/register")//注册
     @CrossOrigin
-    public R<User> register(@RequestBody UserSms userSms){
+    public R<String> register(@RequestBody UserSms userSms){
         return userServiceImpl.RegisterSer(userSms);
     }
 

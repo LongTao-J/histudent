@@ -17,4 +17,7 @@ public interface CountDownService extends IService<CountDown> {
 
     //查询我的倒计时
     List<CountDownIdVO> getmyCd(String userid);
+
+    //删除我的倒计时
+    boolean deleteCDser(String countDownId);
 }
