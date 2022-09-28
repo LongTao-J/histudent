@@ -1,8 +1,11 @@
 package com.example.modules.wall.entity.vo;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,4 +20,5 @@ public class PostCollectVO {
     private String title;
     private String content;
     private String image;
+    private Date gmtCreate;
 }

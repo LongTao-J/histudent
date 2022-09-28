@@ -1,9 +1,10 @@
 package com.example.modules.wall.entity.po;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.Version;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
+import java.util.Date;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -23,5 +24,6 @@ public class PostCollect implements Serializable {
     //用户编号
     private String userId;
 
-
+    @TableField(fill = FieldFill.INSERT)
+    private Date gmtCreate;
 }
