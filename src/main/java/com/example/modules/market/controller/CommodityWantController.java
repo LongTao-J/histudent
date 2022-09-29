@@ -21,6 +21,7 @@ public class CommodityWantController {
     @Autowired
     CommodityWantRepository commodityWantRepositoryImpl;
 
+
     //点击我想要
     @PutMapping("/addWant/{commodityId}")
     @CrossOrigin

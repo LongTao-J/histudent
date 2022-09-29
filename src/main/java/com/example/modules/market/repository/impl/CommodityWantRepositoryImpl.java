@@ -63,7 +63,7 @@ public class CommodityWantRepositoryImpl implements CommodityWantRepository {
             // 从redis中查找数据
             Integer isLikeFromRedis = redisLtServiceImpl.getIsLikeFromRedis(userId, commodityId);
             // 如果redis中存在直接获取
-            if(isLikeFromRedis != null){
+            if(isLikeFromRedis != null&& isLikeFromRedis==1){
                 return isLikeFromRedis;
             }else{
                 // redis中不存在从mysql中获取并存储在redis中

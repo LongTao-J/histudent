@@ -27,4 +27,13 @@ public class NoticeServiceImpl extends ServiceImpl<NoticeMapper, Notice> impleme
             return null;
         }
     }
+
+    @Override
+    public void insertNotice() {
+        Notice notice=new Notice();
+        notice.setContent("13486");
+        notice.setImg("http://121.41.227.139:9000/test/test_1663936090709_2022-09-23_497.jpg");
+        notice.setTitle("敲代码");
+        noticeMapperImpl.insert(notice);
+    }
 }

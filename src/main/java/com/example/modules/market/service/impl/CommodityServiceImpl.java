@@ -6,6 +6,7 @@ import com.example.modules.market.entity.dto.CommodityDTO;
 import com.example.modules.market.entity.po.Commodity;
 import com.example.modules.market.entity.vo.CommodityVO;
 import com.example.modules.market.mapper.CommodityMapper;
+import com.example.modules.market.repository.CommodityWantRepository;
 import com.example.modules.market.service.CommodityCollectionService;
 import com.example.modules.market.service.CommodityCommentService;
 import com.example.modules.market.service.CommodityImageService;
@@ -40,6 +41,7 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
 
     @Autowired
     CommodityCollectionService commodityCollectionServiceImpl;
+
 
     @Override
     public boolean issueCommodity(CommodityDTO commodityDTO) {
@@ -86,6 +88,11 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             Integer commodityCollectionCount = commodityCollectionServiceImpl.getCommodityCollectionCount(commodityVOList.get(i).getId());
             commodityVOList.get(i).setCollectionCount(commodityCollectionCount);
 
+            //是否想要
+//            String wantuserId = userServiceImpl.getTokenUser().getId();
+//            Integer want=commodityWantRepositoryImpl.isLike(wantuserId,commodityVOList.get(i).getId());
+//            commodityVOList.get(i).setIsWant(want);
+
         }
 
         return commodityVOList;
@@ -117,6 +124,11 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
                 //收藏数量
                 Integer commodityCollectionCount = commodityCollectionServiceImpl.getCommodityCollectionCount(commodityVOList.get(i).getId());
                 commodityVOList.get(i).setCollectionCount(commodityCollectionCount);
+
+                //是否想要
+//                String wantuserId = userServiceImpl.getTokenUser().getId();
+//                Integer want=commodityWantRepositoryImpl.isLike(wantuserId,commodityVOList.get(i).getId());
+//                commodityVOList.get(i).setIsWant(want);
             }
             return commodityVOList;
         }catch (Exception e){
@@ -184,6 +196,10 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             Integer commodityCollectionCount = commodityCollectionServiceImpl.getCommodityCollectionCount(commodityVOList.get(i).getId());
             commodityVOList.get(i).setCollectionCount(commodityCollectionCount);
 
+            //是否想要
+//            String wantuserId = userServiceImpl.getTokenUser().getId();
+//            Integer want=commodityWantRepositoryImpl.isLike(wantuserId,commodityVOList.get(i).getId());
+//            commodityVOList.get(i).setIsWant(want);
         }
 
         return commodityVOList;
@@ -212,6 +228,11 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             //收藏数量
             Integer commodityCollectionCount = commodityCollectionServiceImpl.getCommodityCollectionCount(commodityVOList.get(i).getId());
             commodityVOList.get(i).setCollectionCount(commodityCollectionCount);
+
+            //是否想要
+//            String wantuserId = userServiceImpl.getTokenUser().getId();
+//            Integer want=commodityWantRepositoryImpl.isLike(wantuserId,commodityVOList.get(i).getId());
+//            commodityVOList.get(i).setIsWant(want);
 
         }
 
@@ -247,6 +268,10 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             Integer commodityCollectionCount = commodityCollectionServiceImpl.getCommodityCollectionCount(commodityVOList.get(i).getId());
             commodityVOList.get(i).setCollectionCount(commodityCollectionCount);
 
+            //是否想要
+//            String wantuserId = userServiceImpl.getTokenUser().getId();
+//            Integer want=commodityWantRepositoryImpl.isLike(wantuserId,commodityVOList.get(i).getId());
+//            commodityVOList.get(i).setIsWant(want);
         }
 
         return commodityVOList;

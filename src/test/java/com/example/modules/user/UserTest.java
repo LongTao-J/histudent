@@ -12,9 +12,14 @@ import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.modules.market.entity.po.CommodityWant;
+import com.example.modules.market.mapper.CommodityWantMapper;
 import com.example.modules.market.service.CommodityService;
+import com.example.modules.market.service.CommodityWantService;
 import com.example.modules.notice.entity.po.Notice;
 import com.example.modules.notice.mapper.NoticeMapper;
+import com.example.modules.notice.service.NoticeService;
 import com.example.modules.user.mapper.UserMapper;
 import com.example.modules.user.pojo.dto.Smss;
 import com.example.modules.user.pojo.dto.UserInfoLt;
@@ -71,11 +76,39 @@ public class UserTest {
     UserService userServiceImpl;
     @Autowired
     RedisCache redisCache;
+    @Autowired
+    NoticeService noticeServiceImpl;
+    @Autowired
+    CommodityWantMapper commodityWantMapperImpl;
+    @Autowired
+    CommodityWantService commodityWantServiceImpl;
 
-//        @Test
+//    @Test
 //    void asdm9(){
-//        String userKey=Consts.LOGIN_USERS+"18876521895";
+////        String userKey=Consts.LOGIN_USERS+"18110359126";
+//        String userKey=Consts.LOGIN_USERS+"lt";
 //        redisTemplate.delete(userKey);
+//    }
+
+//    @Test
+//    void asopop(){
+//        CommodityWant likeDataFromMySql=commodityWantServiceImpl.getWantByUserIdAndCommodityId("132313","7996511584ea9ba22493871b86870b6b");
+//        System.out.println(likeDataFromMySql);
+//    }
+
+//    @Test
+//    void asdpo0(){
+//        QueryWrapper<CommodityWant> wrapper = new QueryWrapper<>();
+//        wrapper.eq("user_id", "132313");
+//        wrapper.eq("commodity_id", "7996511584ea9ba22493871b86870b6b");
+//        CommodityWant commodityWant = commodityWantMapperImpl.selectOne(wrapper);
+//        System.out.println(commodityWant);
+//    }
+
+//    @Test
+//    void asd5a5sd5(){
+//        List<Notice> all = noticeServiceImpl.getAll();
+//        System.out.println(all);
 //    }
 
 

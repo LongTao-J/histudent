@@ -1,10 +1,14 @@
 package com.example.modules.notice.entity.po;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -23,4 +27,9 @@ public class Notice {
     private String headimg;
 
     private String img;
+
+    @TableField(fill = FieldFill.INSERT)
+    private Date gmtCreate;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private Date gmtModified;
 }

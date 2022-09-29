@@ -8,4 +8,6 @@ import java.util.List;
 public interface NoticeService extends IService<Notice> {
 
     List<Notice> getAll();
+
+    void insertNotice();
 }
