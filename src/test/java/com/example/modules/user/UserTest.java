@@ -13,6 +13,8 @@ import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.example.modules.market.service.CommodityService;
+import com.example.modules.notice.entity.po.Notice;
+import com.example.modules.notice.mapper.NoticeMapper;
 import com.example.modules.user.mapper.UserMapper;
 import com.example.modules.user.pojo.dto.Smss;
 import com.example.modules.user.pojo.dto.UserInfoLt;
@@ -63,12 +65,26 @@ public class UserTest {
 //    }
     @Autowired
     RedisTemplate redisTemplate;
-
+    @Autowired
+    NoticeMapper noticeMapperImpl;
     @Autowired
     UserService userServiceImpl;
     @Autowired
     RedisCache redisCache;
 
+//        @Test
+//    void asdm9(){
+//        String userKey=Consts.LOGIN_USERS+"18876521895";
+//        redisTemplate.delete(userKey);
+//    }
+
+
+//    @Test
+//    void asd78(){
+//        LambdaQueryWrapper<Notice> queryWrapper=new LambdaQueryWrapper<>();
+//        queryWrapper.eq(Notice::getName,"Hi!同学");
+//        List<Notice> notices = noticeMapperImpl.selectList(queryWrapper);
+//    }
 
 //    @Test
 //    void SADas(){
@@ -86,13 +102,7 @@ public class UserTest {
 
 
 
-//    @Test
-//    void asdm9(){
-//        String redisKey="login:299e9d153c3c3a4e8d8f7286d3d7db55";
-//        Object s = redisCache.getCacheObject(redisKey);
-//        LoginUser loginUser= JSON.parseObject(JSON.toJSONString(s),new TypeReference<LoginUser>() {});
-//        System.out.println(loginUser);
-//    }
+
 
 //    @Test
 //    void ashjkbm(){
