@@ -37,8 +37,6 @@ public class CommodityCollectionServiceImpl extends ServiceImpl<CommodityCollect
     @Autowired
     UserService userServiceImpl;
 
-//    @Autowired
-//    CommodityWantRepository commodityWantRepositoryImpl;
 
     //点击收藏
     @Override
@@ -59,7 +57,11 @@ public class CommodityCollectionServiceImpl extends ServiceImpl<CommodityCollect
     @Override
     public boolean cancleCollectionSer(String collectionId) {
         try {
-            commodityCollectionMapperImpl.deleteById(collectionId);
+            String userId=userServiceImpl.getTokenUser().getId();
+            LambdaQueryWrapper<CommodityCollection> queryWrapper=new LambdaQueryWrapper<>();
+            queryWrapper.eq(CommodityCollection::getCommodityId,collectionId);
+            queryWrapper.eq(CommodityCollection::getUserId,userId);
+            commodityCollectionMapperImpl.delete(queryWrapper);
             return true;
         }catch (Exception e){
             return false;
