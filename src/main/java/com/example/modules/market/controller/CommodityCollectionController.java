@@ -66,7 +66,12 @@ public class CommodityCollectionController {
             //是否想要
             String wantuserId = userServiceImpl.getTokenUser().getId();
             Integer want=commodityWantRepositoryImpl.isLike(wantuserId,allSer.get(i).getId());
-            allSer.get(i).setIsWant(want);
+            if (want==null || want==0){
+                allSer.get(i).setIsWant(false);
+            }else {
+                allSer.get(i).setIsWant(true);
+            }
+
             }
             return R.success(allSer,"成功",200);
         }catch (Exception e){

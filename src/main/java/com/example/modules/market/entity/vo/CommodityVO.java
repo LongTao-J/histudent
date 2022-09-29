@@ -27,7 +27,7 @@ public class CommodityVO {
     private Integer want;
 
     //是否想要
-    private Integer isWant;// 0 不想要 ， 1想要
+    private Boolean isWant;// 0 不想要 ， 1想要
 
     //上传的第一张照片
     private String TotalImage;

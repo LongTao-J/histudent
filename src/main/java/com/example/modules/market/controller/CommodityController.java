@@ -58,7 +58,11 @@ public class CommodityController {
                 //是否想要
                 String wantuserId = userServiceImpl.getTokenUser().getId();
                 Integer want=commodityWantRepositoryImpl.isLike(wantuserId,voList.get(i).getId());
-                voList.get(i).setIsWant(want);
+                if (want==null || want==0){
+                    voList.get(i).setIsWant(false);
+                }else {
+                    voList.get(i).setIsWant(true);
+                }
             }
             return R.success(voList,"查询所有商品成功",200);
         }catch (Exception e){
@@ -77,7 +81,11 @@ public class CommodityController {
                 //是否想要
                 String wantuserId = userServiceImpl.getTokenUser().getId();
                 Integer want=commodityWantRepositoryImpl.isLike(wantuserId,list.get(i).getId());
-                list.get(i).setIsWant(want);
+                if (want==null || want==0){
+                    list.get(i).setIsWant(false);
+                }else {
+                    list.get(i).setIsWant(true);
+                }
             }
             return R.success(list);
         }catch (Exception e){
@@ -95,7 +103,11 @@ public class CommodityController {
                 //是否想要
                 String wantuserId = userServiceImpl.getTokenUser().getId();
                 Integer want=commodityWantRepositoryImpl.isLike(wantuserId,myCommodityService.get(i).getId());
-                myCommodityService.get(i).setIsWant(want);
+                if (want==null || want==0){
+                    myCommodityService.get(i).setIsWant(false);
+                }else {
+                    myCommodityService.get(i).setIsWant(true);
+                }
             }
             return R.success(myCommodityService);
         }catch (Exception e){
@@ -113,7 +125,11 @@ public class CommodityController {
                 //是否想要
                 String wantuserId = userServiceImpl.getTokenUser().getId();
                 Integer want=commodityWantRepositoryImpl.isLike(wantuserId,recCommodityService.get(i).getId());
-                recCommodityService.get(i).setIsWant(want);
+                if (want==null || want==0){
+                    recCommodityService.get(i).setIsWant(false);
+                }else {
+                    recCommodityService.get(i).setIsWant(true);
+                }
             }
             return R.success(recCommodityService);
         }catch (Exception e){
@@ -131,7 +147,11 @@ public class CommodityController {
                 //是否想要
                 String wantuserId = userServiceImpl.getTokenUser().getId();
                 Integer want=commodityWantRepositoryImpl.isLike(wantuserId,recCommodityService.get(i).getId());
-                recCommodityService.get(i).setIsWant(want);
+                if (want==null || want==0){
+                    recCommodityService.get(i).setIsWant(false);
+                }else {
+                    recCommodityService.get(i).setIsWant(true);
+                }
             }
             return R.success(recCommodityService);
         }catch (Exception e){

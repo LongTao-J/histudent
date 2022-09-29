@@ -85,11 +85,17 @@ public class UserTest {
 
 //    @Test
 //    void asdm9(){
-////        String userKey=Consts.LOGIN_USERS+"18110359126";
-//        String userKey=Consts.LOGIN_USERS+"lt";
+//        String userKey1=Consts.LOGIN_USERS+"18110359126";
+//        String userKey=Consts.LOGIN_USERS+"18876521899";
 //        redisTemplate.delete(userKey);
+////        redisTemplate.delete(userKey1);
 //    }
-
+//
+//    @Test
+//    void ASDskdsfjo(){
+//        List<String> listX= (List<String>) redisTemplate.opsForHash().get("龙涛","huccct");
+//        System.out.println(listX);
+    }
 //    @Test
 //    void asopop(){
 //        CommodityWant likeDataFromMySql=commodityWantServiceImpl.getWantByUserIdAndCommodityId("132313","7996511584ea9ba22493871b86870b6b");
