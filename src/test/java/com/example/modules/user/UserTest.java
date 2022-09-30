@@ -13,7 +13,9 @@ import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.modules.market.entity.po.Commodity;
 import com.example.modules.market.entity.po.CommodityWant;
+import com.example.modules.market.entity.vo.CommodityVO;
 import com.example.modules.market.mapper.CommodityWantMapper;
 import com.example.modules.market.service.CommodityService;
 import com.example.modules.market.service.CommodityWantService;
@@ -82,13 +84,28 @@ public class UserTest {
     CommodityWantMapper commodityWantMapperImpl;
     @Autowired
     CommodityWantService commodityWantServiceImpl;
+    @Autowired
+    CommodityService commodityServiceImpl;
+
+//    @Test
+//    void asda787asd8(){
+//        List<CommodityVO> voList=commodityServiceImpl.getAllCommodityService();
+//        System.out.println(voList);
+//    }
+
+//    @Test
+//    void asd5asd4a(){
+////        List<String> list= (List<String>) redisTemplate.opsForHash().get("huccctttt","Hi!同学");
+//        List<String> list= (List<String>) redisTemplate.opsForHash().get("Hi!同学","huccctttt");
+//        System.out.println(list);
+//    }
 
 //    @Test
 //    void asdm9(){
-//        String userKey1=Consts.LOGIN_USERS+"18110359126";
-//        String userKey=Consts.LOGIN_USERS+"18876521899";
-//        redisTemplate.delete(userKey);
+//        String userKey=Consts.LOGIN_USERS+"17516050906";
+////        String userKey=Consts.LOGIN_USERS+"lt";
 ////        redisTemplate.delete(userKey1);
+//        redisTemplate.delete(userKey);
 //    }
 //
 //    @Test
@@ -207,4 +224,4 @@ public class UserTest {
 //        System.out.println(huccct);
 //    }
 
-}
+

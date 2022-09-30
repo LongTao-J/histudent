@@ -117,7 +117,7 @@ public class UserController {
             return R.error("请先登录",200);
         }
         UserInfoLt userInfoLt = userServiceImpl.getUserInfolt(userid);
-
+        userInfoLt.setUserId(userid);
         return R.success(userInfoLt,"获取成功",200);
     }
 

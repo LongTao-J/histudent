@@ -12,7 +12,11 @@ public class Msg {
 
     private String from;
 
+    private String fromId;
+
     private String text;
 
     private String to;
+
+    private String toId;
 }

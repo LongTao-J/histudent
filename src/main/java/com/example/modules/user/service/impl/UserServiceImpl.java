@@ -91,12 +91,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public ResponseResult login(User user) {
         try {
-            ValueOperations operations=redisTemplate.opsForValue();
-            String userKey=Consts.LOGIN_USERS+user.getPhone();
-            String loginStatus= (String) operations.get(userKey);
-            if(loginStatus!=null && loginStatus.equals("yes")){
-                return new ResponseResult(200,"用户已经在其他地方登录",null);
-            }
+//            ValueOperations operations=redisTemplate.opsForValue();
+//            String userKey=Consts.LOGIN_USERS+user.getPhone();
+//            String loginStatus= (String) operations.get(userKey);
+//            if(loginStatus!=null && loginStatus.equals("yes")){
+//                return new ResponseResult(200,"用户已经在其他地方登录",null);
+//            }
 
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user.getPhone(),user.getPassword());
             Authentication authenticate = authenticationManager.authenticate(authenticationToken);
@@ -113,7 +113,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             HashMap<String,String> map = new HashMap<>();
             map.put("token",jwt);
             //登录的用户存到redis
-            operations.set(userKey,"yes",1, TimeUnit.DAYS);
+//            operations.set(userKey,"yes",1, TimeUnit.DAYS);
             return new ResponseResult(200,"登陆成功",map);
         }catch (Exception e){
             return new ResponseResult(200,"用户名或密码错误了",null);
@@ -125,8 +125,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public ResponseResult logout() {
         User user= getTokenUser();
         redisCache.deleteObject("login:"+user.getId());
-        String userKey=Consts.LOGIN_USERS+user.getPhone();
-        redisTemplate.delete(userKey);
+//        String userKey=Consts.LOGIN_USERS+user.getPhone();
+//        redisTemplate.delete(userKey);
         return new ResponseResult(200,"退出成功");
     }
 
@@ -170,9 +170,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public String getImgByUserName(String username) {
-        String imgByNickeName = userMapperImpl.getImgByNickeName(username);
-        return imgByNickeName;
+    public String getImgByUserId(String userid) {
+        LambdaQueryWrapper<User> queryWrapper=new LambdaQueryWrapper<>();
+        queryWrapper.eq(User::getId,userid);
+        User user = userMapperImpl.selectOne(queryWrapper);
+        return user.getHeadaddress();
     }
 
     @Override
@@ -364,5 +366,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }catch (Exception e){
             return false;
         }
+    }
+
+    @Override
+    public String selectNameById(String userid) {
+        LambdaQueryWrapper<User> queryWrapper=new LambdaQueryWrapper<>();
+        queryWrapper.eq(User::getId,userid);
+        User user = userMapperImpl.selectOne(queryWrapper);
+        return user.getNickname();
     }
 }

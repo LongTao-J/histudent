@@ -15,6 +15,8 @@ public class CommodityVO {
 
     private String id;
 
+    private String userId;
+
     private String nickname;
 
     private String headaddress;

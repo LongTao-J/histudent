@@ -66,6 +66,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         LoginUser loginUser= JSON.parseObject(JSON.toJSONString(s),new TypeReference<LoginUser>() {});
 
         if(Objects.isNull(loginUser)){
+//            filterChain.doFilter(request, response);
             throw new RuntimeException("用户未登录");
         }
         //存入SecurityContextHolder

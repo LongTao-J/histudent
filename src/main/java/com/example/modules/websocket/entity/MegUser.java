@@ -11,6 +11,8 @@ public class MegUser {
 
     private String username;
 
+    private String userId;
+
     private String headImg;
 
     private String text;//第一句话

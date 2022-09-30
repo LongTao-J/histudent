@@ -33,16 +33,16 @@ public class WebSocketController {
     @GetMapping("/getMyMessage")
     @CrossOrigin
     public List<MegUser> stringList(){
-        String username=userServiceImpl.getTokenUser().getNickname();
-        Set keys = redisTemplate.opsForHash().keys(username);
+        String userId=userServiceImpl.getTokenUser().getId();
+        Set keys = redisTemplate.opsForHash().keys(userId);
         List<MegUser> megUserList=new ArrayList<>();
         for (Object s:keys){
-            String x= (String) s;
+            String x= (String) s;//id
             MegUser megUser=new MegUser();
-            megUser.setUsername(x);
-            megUser.setHeadImg(userServiceImpl.getImgByUserName(x));
-
-            List<String> list= (List<String>) redisTemplate.opsForHash().get(username,x);
+            megUser.setUsername(userServiceImpl.selectNameById(x));
+            megUser.setHeadImg(userServiceImpl.getImgByUserId(x));
+            megUser.setUserId(x);
+            List<String> list= (List<String>) redisTemplate.opsForHash().get(userId,x);
             int dext=list.size()-1;
             if (dext<0){
                 dext=0;
@@ -57,18 +57,18 @@ public class WebSocketController {
 
 
     //查询某个的聊天室
-    @GetMapping("/getMessage/{tousername}")
+    @GetMapping("/getMessage/{touserId}")
     @CrossOrigin
-    public List<MesssageWs> messsageWs(@PathVariable("tousername") String tousername){
-        String username=userServiceImpl.getTokenUser().getNickname();
-        List<String> list= (List<String>) redisTemplate.opsForHash().get(username,tousername);
+    public List<MesssageWs> messsageWs(@PathVariable("touserId") String touserId){
+        String userid=userServiceImpl.getTokenUser().getId();//当前用户
+        List<String> list= (List<String>) redisTemplate.opsForHash().get(userid,touserId);
         List<MesssageWs> wsList=new ArrayList<>();
         for (int i=0;i<list.size();i++){
             MesssageWs messsageWs=new MesssageWs();
             JSONObject obj = JSONUtil.parseObj(list.get(i));
-            messsageWs.setHeader(userServiceImpl.getImgByUserName(obj.getStr("from")));
+            messsageWs.setHeader(userServiceImpl.getImgByUserId(obj.getStr("fromId")));
             messsageWs.setText(obj.getStr("text"));
-            if (obj.getStr("from").equals(username)){
+            if (obj.getStr("fromId").equals(userid)){
                 messsageWs.setFlage(1);
             }else {
                 messsageWs.setFlage(0);
@@ -84,20 +84,22 @@ public class WebSocketController {
     public R<Object> saveMessage(@RequestBody Msg msg){
         String toUsername= msg.getTo();
         String username=msg.getFrom();
+        String toId=msg.getToId();
+        String fromId=msg.getFromId();
         String text=msg.getText();
         log.info("Controller收到用户username={}的消息:{}",username, text);
         JSONObject obj = JSONUtil.parseObj(msg);
             try {
                 //聊天消息保存到redis
                 obj.set("to", toUsername);
-                List<String> listX= (List<String>) redisTemplate.opsForHash().get(username,toUsername);
+                List<String> listX= (List<String>) redisTemplate.opsForHash().get(toId,fromId);
                 if (listX==null){
                     listX=new ArrayList<>();
                 }
                 listX.add(obj.toString());
                 redisTemplate.opsForHash().put(username,toUsername,listX);
 
-                List<String> listY= (List<String>) redisTemplate.opsForHash().get(toUsername,username);
+                List<String> listY= (List<String>) redisTemplate.opsForHash().get(fromId,toId);
                 if (listY==null){
                     listY=new ArrayList<>();
                 }
@@ -110,12 +112,12 @@ public class WebSocketController {
     }
 
     //删除与某人的聊天
-    @DeleteMapping("/deleteMsg/{tousername}")
+    @DeleteMapping("/deleteMsg/{touserid}")
     @CrossOrigin
-    public R<Object> deleteUsername(@PathVariable("tousername") String tousername){
+    public R<Object> deleteUsername(@PathVariable("touserid") String touserid){
         try {
-            String username=userServiceImpl.getTokenUser().getNickname();
-            redisTemplate.opsForHash().delete(username,tousername);
+            String userId=userServiceImpl.getTokenUser().getId();
+            redisTemplate.opsForHash().delete(userId,touserid);
             return R.success("删除成功");
         }catch (Exception e){
             return R.error();
