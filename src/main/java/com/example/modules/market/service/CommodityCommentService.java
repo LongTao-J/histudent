@@ -17,4 +17,7 @@ public interface CommodityCommentService extends IService<CommodityComment> {
 
     //查询评论的个数
     Integer getCommentCount(String commodityId);
+
+    //删评论
+    Integer deleteComment(String commentId);
 }
