@@ -96,8 +96,10 @@ public class UserTest {
 //    @Test
 //    void asd5asd4a(){
 ////        List<String> list= (List<String>) redisTemplate.opsForHash().get("huccctttt","Hi!同学");
-//        List<String> list= (List<String>) redisTemplate.opsForHash().get("Hi!同学","huccctttt");
-//        System.out.println(list);
+////        List<String> list= (List<String>) redisTemplate.opsForHash().get("1552570983563436034","132313");
+//        Set keys = redisTemplate.opsForHash().keys("1552570983563436034");
+//        System.out.println(keys);
+//
 //    }
 
 //    @Test

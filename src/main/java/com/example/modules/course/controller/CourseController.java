@@ -193,10 +193,10 @@ public class CourseController {
         if(integer > 0) mapper.deleteByUserId(userId);
 
         if( cnt.equals("2") ) cnt = "4";
-//        String pyTextPath = "D:\\bin\\CourseAutoImport\\sql_cource_avg.py";
-//        String evn = "D:\\install\\conda_data\\envs\\py36\\python";
         String pyTextPath = "/root/CourseAutoImport/sql_cource_avg.py";
         String evn = "python3";
+//        String pyTextPath = "C:\\python-project\\pyhont-hi\\CourseAutoImport\\sql_cource_avg.py";
+//        String evn = "C:\\envroment\\python";
         String result = "";
         try {
             String[] args1=new String[]{evn, pyTextPath, userId, year, cnt, username, password};

@@ -3,6 +3,8 @@ package com.example.modules.market.controller;
 import com.example.modules.market.entity.dto.WritCommentDTO;
 import com.example.modules.market.entity.vo.CommentVo;
 import com.example.modules.market.service.CommodityCommentService;
+import com.example.modules.user.pojo.po.User;
+import com.example.modules.user.service.UserService;
 import com.example.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -16,6 +18,7 @@ public class CommodityCommentController {
 
     @Autowired
     CommodityCommentService commodityCommentServiceImpl;
+
 
     //查看商品所有评论
     @GetMapping("/getAllComment/{commodityId}")
@@ -42,13 +45,19 @@ public class CommodityCommentController {
         }
     }
 
-    //删除评论
+    //删除评论// 1成功 0没有权限 2报错
     @DeleteMapping("/deleteComment/{commentId}")
     @CrossOrigin
     public R<String> deleteCommentCont(@PathVariable("commentId") String commentId){
         try {
-            commodityCommentServiceImpl.removeById(commentId);
-            return R.success("成功");
+            Integer integer = commodityCommentServiceImpl.deleteComment(commentId);
+            if (integer==1){
+                return R.success("删除成功");
+            }else if (integer==0){
+                return R.success("没有权限");
+            }else {
+                return R.error();
+            }
         }catch (Exception e){
             return R.error();
         }

@@ -3,11 +3,14 @@ package com.example.modules.market.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.modules.market.entity.dto.WritCommentDTO;
+import com.example.modules.market.entity.po.Commodity;
 import com.example.modules.market.entity.po.CommodityComment;
 import com.example.modules.market.entity.vo.CommentVo;
 import com.example.modules.market.entity.vo.CommodityCommentVVo;
 import com.example.modules.market.mapper.CommodityCommentMapper;
+import com.example.modules.market.mapper.CommodityMapper;
 import com.example.modules.market.service.CommodityCommentService;
+import com.example.modules.market.service.CommodityService;
 import com.example.modules.user.pojo.po.User;
 import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
@@ -27,6 +30,9 @@ public class CommodityCommentServiceImpl extends ServiceImpl<CommodityCommentMap
 
     @Autowired
     UserService userServiceImpl;
+
+    @Autowired
+    CommodityMapper commodityMapperImpl;
 
     @Override
     public List<CommentVo> getAllCommBycIdSer(String commodityId) {
@@ -69,4 +75,21 @@ public class CommodityCommentServiceImpl extends ServiceImpl<CommodityCommentMap
             return null;
         }
     }
+
+    @Override
+    public Integer deleteComment(String commentId) {
+        try {
+            String currenId=userServiceImpl.getTokenUser().getId();
+            CommodityComment comment = this.getById(commentId);
+            Commodity commodity = commodityMapperImpl.selectById(comment.getCommodityId());
+            if (commodity.getUserId().equals(currenId)){
+                return 1;
+            }else {
+                return 0;
+            }
+        }catch (Exception e){
+            return 2;
+        }
+    }
+
 }

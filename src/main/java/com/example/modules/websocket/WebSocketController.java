@@ -97,14 +97,14 @@ public class WebSocketController {
                     listX=new ArrayList<>();
                 }
                 listX.add(obj.toString());
-                redisTemplate.opsForHash().put(username,toUsername,listX);
+                redisTemplate.opsForHash().put(toId,fromId,listX);
 
                 List<String> listY= (List<String>) redisTemplate.opsForHash().get(fromId,toId);
                 if (listY==null){
                     listY=new ArrayList<>();
                 }
                 listY.add(obj.toString());
-                redisTemplate.opsForHash().put(toUsername,username,listY);
+                redisTemplate.opsForHash().put(fromId,toId,listY);
                 return R.success("保存消息成功");
             }catch (Exception e){
                 return R.error("保存消息失败",400);
