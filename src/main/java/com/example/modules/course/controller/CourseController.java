@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 @Slf4j
@@ -183,7 +184,9 @@ public class CourseController {
             @PathVariable("username") String username,
             @PathVariable("password") String password) {
 
-        String userId = userServiceImpl.getTokenUser().getId();
+//        String userId = userServiceImpl.getTokenUser().getId();
+        String userId = "static";
+
         QueryWrapper<Course> condition = new QueryWrapper<>();
         condition.eq("user_id", userId).last("limit 1");
         Integer integer = mapper.selectCount(condition);
@@ -194,10 +197,15 @@ public class CourseController {
         String evn = "python3";
 //        String pyTextPath = "C:\\python-project\\pyhont-hi\\CourseAutoImport\\sql_cource_avg.py";
 //        String evn = "C:\\envroment\\python";
+        String result = "";
         try {
             String[] args1=new String[]{evn, pyTextPath, userId, year, cnt, username, password};
             Process pr=Runtime.getRuntime().exec(args1);
-            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream(), "gbk"));
+            String line;
+            while ((line = in.readLine()) != null) {
+                result = line;
+            }
             in.close();
             pr.waitFor();
         } catch (IOException | InterruptedException e) {
@@ -209,6 +217,10 @@ public class CourseController {
 //            return R.success(courses);
 //        else
 //            return R.error();
+        if(result.equals("用户名或密码不正确，登录失败")){
+            System.out.println("用户名或密码不正确，登录失败");
+            return "{\"msg\":\"用户名或密码不正确，登录失败\"}";
+        }
         return toStringJson(courses);
     }
 
