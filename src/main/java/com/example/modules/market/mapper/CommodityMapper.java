@@ -10,7 +10,7 @@ import java.util.List;
 
 @Mapper
 public interface CommodityMapper extends BaseMapper<Commodity> {
-    @Select("SELECT c.is_rec,c.gmt_create,c.id,u.nickname,u.headaddress,c.price,c.introduce,c.gmt_create,c.want\n" +
+    @Select("SELECT c.user_id AS userId,c.is_rec,c.gmt_create,c.id,u.nickname,u.headaddress,c.price,c.introduce,c.gmt_create,c.want\n" +
             "FROM commodity c LEFT JOIN `user` u ON u.id=c.user_id")
     List<CommodityVO> getAllCommodityVo();
 

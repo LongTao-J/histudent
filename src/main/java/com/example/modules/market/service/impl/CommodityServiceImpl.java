@@ -6,6 +6,7 @@ import com.example.modules.market.entity.dto.CommodityDTO;
 import com.example.modules.market.entity.po.Commodity;
 import com.example.modules.market.entity.vo.CommodityVO;
 import com.example.modules.market.mapper.CommodityMapper;
+import com.example.modules.market.repository.CommodityWantRepository;
 import com.example.modules.market.service.CommodityCollectionService;
 import com.example.modules.market.service.CommodityCommentService;
 import com.example.modules.market.service.CommodityImageService;
@@ -41,6 +42,7 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
     @Autowired
     CommodityCollectionService commodityCollectionServiceImpl;
 
+
     @Override
     public boolean issueCommodity(CommodityDTO commodityDTO) {
         try {
@@ -71,8 +73,13 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             commodityVOList.get(i).setIsCollection(commodityCollectionServiceImpl.getIsCollectionByCommodidtyId(commodityVOList.get(i).getId())  );
             List<String> allImg=new ArrayList<>();
             allImg= commodityImageServiceImpl.getAllImgService(commodityVOList.get(i).getId());
-            commodityVOList.get(i).setAllImg(allImg);
-            commodityVOList.get(i).setTotalImage(allImg.get(0));
+            if (allImg==null){
+                commodityVOList.get(i).setAllImg(null);
+                commodityVOList.get(i).setTotalImage(null);
+            }else {
+                commodityVOList.get(i).setAllImg(allImg);
+                System.out.println("=========== "+allImg);
+            }
             Integer commentCount = commodityCommentServiceImpl.getCommentCount(commodityVOList.get(i).getId());
             commodityVOList.get(i).setCommentCount(commentCount);
             Integer likedCountFromRedisByPostId = redisLtServiceImpl.getLikedCountFromRedisByPostId(commodityVOList.get(i).getId());
@@ -85,6 +92,11 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             //收藏数量
             Integer commodityCollectionCount = commodityCollectionServiceImpl.getCommodityCollectionCount(commodityVOList.get(i).getId());
             commodityVOList.get(i).setCollectionCount(commodityCollectionCount);
+
+            //是否想要
+//            String wantuserId = userServiceImpl.getTokenUser().getId();
+//            Integer want=commodityWantRepositoryImpl.isLike(wantuserId,commodityVOList.get(i).getId());
+//            commodityVOList.get(i).setIsWant(want);
 
         }
 
@@ -117,6 +129,11 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
                 //收藏数量
                 Integer commodityCollectionCount = commodityCollectionServiceImpl.getCommodityCollectionCount(commodityVOList.get(i).getId());
                 commodityVOList.get(i).setCollectionCount(commodityCollectionCount);
+
+                //是否想要
+//                String wantuserId = userServiceImpl.getTokenUser().getId();
+//                Integer want=commodityWantRepositoryImpl.isLike(wantuserId,commodityVOList.get(i).getId());
+//                commodityVOList.get(i).setIsWant(want);
             }
             return commodityVOList;
         }catch (Exception e){
@@ -184,6 +201,10 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             Integer commodityCollectionCount = commodityCollectionServiceImpl.getCommodityCollectionCount(commodityVOList.get(i).getId());
             commodityVOList.get(i).setCollectionCount(commodityCollectionCount);
 
+            //是否想要
+//            String wantuserId = userServiceImpl.getTokenUser().getId();
+//            Integer want=commodityWantRepositoryImpl.isLike(wantuserId,commodityVOList.get(i).getId());
+//            commodityVOList.get(i).setIsWant(want);
         }
 
         return commodityVOList;
@@ -212,6 +233,11 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             //收藏数量
             Integer commodityCollectionCount = commodityCollectionServiceImpl.getCommodityCollectionCount(commodityVOList.get(i).getId());
             commodityVOList.get(i).setCollectionCount(commodityCollectionCount);
+
+            //是否想要
+//            String wantuserId = userServiceImpl.getTokenUser().getId();
+//            Integer want=commodityWantRepositoryImpl.isLike(wantuserId,commodityVOList.get(i).getId());
+//            commodityVOList.get(i).setIsWant(want);
 
         }
 
@@ -247,6 +273,10 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             Integer commodityCollectionCount = commodityCollectionServiceImpl.getCommodityCollectionCount(commodityVOList.get(i).getId());
             commodityVOList.get(i).setCollectionCount(commodityCollectionCount);
 
+            //是否想要
+//            String wantuserId = userServiceImpl.getTokenUser().getId();
+//            Integer want=commodityWantRepositoryImpl.isLike(wantuserId,commodityVOList.get(i).getId());
+//            commodityVOList.get(i).setIsWant(want);
         }
 
         return commodityVOList;

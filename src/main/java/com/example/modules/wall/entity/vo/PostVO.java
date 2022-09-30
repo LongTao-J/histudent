@@ -16,5 +16,5 @@ public class PostVO {
     Boolean userIsCollect;
     String userHead;
     String userNickname;
-    static String from = "wall";
+    String from="wall";
 }

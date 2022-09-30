@@ -12,7 +12,16 @@ import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.modules.market.entity.po.Commodity;
+import com.example.modules.market.entity.po.CommodityWant;
+import com.example.modules.market.entity.vo.CommodityVO;
+import com.example.modules.market.mapper.CommodityWantMapper;
 import com.example.modules.market.service.CommodityService;
+import com.example.modules.market.service.CommodityWantService;
+import com.example.modules.notice.entity.po.Notice;
+import com.example.modules.notice.mapper.NoticeMapper;
+import com.example.modules.notice.service.NoticeService;
 import com.example.modules.user.mapper.UserMapper;
 import com.example.modules.user.pojo.dto.Smss;
 import com.example.modules.user.pojo.dto.UserInfoLt;
@@ -63,12 +72,75 @@ public class UserTest {
 //    }
     @Autowired
     RedisTemplate redisTemplate;
-
+    @Autowired
+    NoticeMapper noticeMapperImpl;
     @Autowired
     UserService userServiceImpl;
     @Autowired
     RedisCache redisCache;
+    @Autowired
+    NoticeService noticeServiceImpl;
+    @Autowired
+    CommodityWantMapper commodityWantMapperImpl;
+    @Autowired
+    CommodityWantService commodityWantServiceImpl;
+    @Autowired
+    CommodityService commodityServiceImpl;
 
+//    @Test
+//    void asda787asd8(){
+//        List<CommodityVO> voList=commodityServiceImpl.getAllCommodityService();
+//        System.out.println(voList);
+//    }
+
+//    @Test
+//    void asd5asd4a(){
+////        List<String> list= (List<String>) redisTemplate.opsForHash().get("huccctttt","Hi!同学");
+//        List<String> list= (List<String>) redisTemplate.opsForHash().get("Hi!同学","huccctttt");
+//        System.out.println(list);
+//    }
+
+//    @Test
+//    void asdm9(){
+//        String userKey=Consts.LOGIN_USERS+"17516050906";
+////        String userKey=Consts.LOGIN_USERS+"lt";
+////        redisTemplate.delete(userKey1);
+//        redisTemplate.delete(userKey);
+//    }
+//
+//    @Test
+//    void ASDskdsfjo(){
+//        List<String> listX= (List<String>) redisTemplate.opsForHash().get("龙涛","huccct");
+//        System.out.println(listX);
+    }
+//    @Test
+//    void asopop(){
+//        CommodityWant likeDataFromMySql=commodityWantServiceImpl.getWantByUserIdAndCommodityId("132313","7996511584ea9ba22493871b86870b6b");
+//        System.out.println(likeDataFromMySql);
+//    }
+
+//    @Test
+//    void asdpo0(){
+//        QueryWrapper<CommodityWant> wrapper = new QueryWrapper<>();
+//        wrapper.eq("user_id", "132313");
+//        wrapper.eq("commodity_id", "7996511584ea9ba22493871b86870b6b");
+//        CommodityWant commodityWant = commodityWantMapperImpl.selectOne(wrapper);
+//        System.out.println(commodityWant);
+//    }
+
+//    @Test
+//    void asd5a5sd5(){
+//        List<Notice> all = noticeServiceImpl.getAll();
+//        System.out.println(all);
+//    }
+
+
+//    @Test
+//    void asd78(){
+//        LambdaQueryWrapper<Notice> queryWrapper=new LambdaQueryWrapper<>();
+//        queryWrapper.eq(Notice::getName,"Hi!同学");
+//        List<Notice> notices = noticeMapperImpl.selectList(queryWrapper);
+//    }
 
 //    @Test
 //    void SADas(){
@@ -86,13 +158,7 @@ public class UserTest {
 
 
 
-//    @Test
-//    void asdm9(){
-//        String redisKey="login:299e9d153c3c3a4e8d8f7286d3d7db55";
-//        Object s = redisCache.getCacheObject(redisKey);
-//        LoginUser loginUser= JSON.parseObject(JSON.toJSONString(s),new TypeReference<LoginUser>() {});
-//        System.out.println(loginUser);
-//    }
+
 
 //    @Test
 //    void ashjkbm(){
@@ -158,4 +224,4 @@ public class UserTest {
 //        System.out.println(huccct);
 //    }
 
-}
+

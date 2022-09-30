@@ -174,10 +174,7 @@ public class RedisLtServiceImpl implements RedisLtService {
         return redisTemplate.opsForList().range(userId, 0, -1);
     }
 
-//    @Override
-//    public void issueCommodity(CommodityDTO commodityDTO) {
-//
-//    }
+
 
 }
 

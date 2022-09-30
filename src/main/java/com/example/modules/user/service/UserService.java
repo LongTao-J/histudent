@@ -23,7 +23,7 @@ public interface UserService extends IService<User> {
 
     R<Object> upUserAge(int age);
 
-    String getImgByUserName(String username);
+    String getImgByUserId(String userId);
 
     //查询用户的名字
     String getUSerNickName(String userId);
@@ -66,4 +66,6 @@ public interface UserService extends IService<User> {
 
     //上传课表背景图片
     Boolean upClassBackImgSer(ClassBackImage classBackImage);
+
+    String selectNameById(String userid);
 }

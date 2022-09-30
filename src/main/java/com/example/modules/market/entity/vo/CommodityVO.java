@@ -15,6 +15,8 @@ public class CommodityVO {
 
     private String id;
 
+    private String userId;
+
     private String nickname;
 
     private String headaddress;
@@ -25,6 +27,9 @@ public class CommodityVO {
 
     //想要的个数
     private Integer want;
+
+    //是否想要
+    private Boolean isWant;// 0 不想要 ， 1想要
 
     //上传的第一张照片
     private String TotalImage;
@@ -43,7 +48,7 @@ public class CommodityVO {
     //收藏的个数
     private Integer collectionCount;
 
-    private String comrfrom="二手市场";
+    private String from="market";
 
     //当前用户是否收藏
     private Boolean isCollection;// 1 为收藏，0 为没有收藏

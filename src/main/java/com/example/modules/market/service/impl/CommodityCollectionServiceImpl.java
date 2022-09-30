@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.modules.market.entity.po.CommodityCollection;
 import com.example.modules.market.entity.vo.CommodityVO;
 import com.example.modules.market.mapper.CommodityCollectionMapper;
+import com.example.modules.market.repository.CommodityWantRepository;
 import com.example.modules.market.service.*;
 import com.example.modules.user.service.UserService;
 import com.example.modules.user.utils.Consts;
@@ -25,9 +26,6 @@ public class CommodityCollectionServiceImpl extends ServiceImpl<CommodityCollect
     CommodityCollectionMapper commodityCollectionMapperImpl;
 
     @Autowired
-    CommodityCollectionService commodityCollectionServiceImpl;
-
-    @Autowired
     CommodityImageService commodityImageServiceImpl;
 
     @Autowired
@@ -38,6 +36,7 @@ public class CommodityCollectionServiceImpl extends ServiceImpl<CommodityCollect
 
     @Autowired
     UserService userServiceImpl;
+
 
     //点击收藏
     @Override
@@ -58,7 +57,11 @@ public class CommodityCollectionServiceImpl extends ServiceImpl<CommodityCollect
     @Override
     public boolean cancleCollectionSer(String collectionId) {
         try {
-            commodityCollectionMapperImpl.deleteById(collectionId);
+            String userId=userServiceImpl.getTokenUser().getId();
+            LambdaQueryWrapper<CommodityCollection> queryWrapper=new LambdaQueryWrapper<>();
+            queryWrapper.eq(CommodityCollection::getCommodityId,collectionId);
+            queryWrapper.eq(CommodityCollection::getUserId,userId);
+            commodityCollectionMapperImpl.delete(queryWrapper);
             return true;
         }catch (Exception e){
             return false;
@@ -92,6 +95,11 @@ public class CommodityCollectionServiceImpl extends ServiceImpl<CommodityCollect
                 //收藏数量
                 Integer commodityCollectionCount =getCommodityCollectionCount(commodityVOList.get(i).getId());
                 commodityVOList.get(i).setCollectionCount(commodityCollectionCount);
+
+                //是否想要
+//                String wantuserId = userServiceImpl.getTokenUser().getId();
+//                Integer want=commodityWantRepositoryImpl.isLike(wantuserId,commodityVOList.get(i).getId());
+//                commodityVOList.get(i).setIsWant(want);
             }
             return commodityVOList;
         }catch (Exception e){

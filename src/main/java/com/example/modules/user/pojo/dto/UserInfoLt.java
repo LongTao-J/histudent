@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class UserInfoLt {
     private String headaddress;//头像 u
     private String nickname;//昵称 u
+    private String userId;
     private int sex;//性别 u
     private int age;//年龄 u
     private String introduction;//自我介绍 u
