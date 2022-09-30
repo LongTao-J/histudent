@@ -81,8 +81,8 @@ public class CommodityCommentServiceImpl extends ServiceImpl<CommodityCommentMap
         try {
             String currenId=userServiceImpl.getTokenUser().getId();
             CommodityComment comment = this.getById(commentId);
-            Commodity commodity = commodityMapperImpl.selectById(comment.getCommodityId());
-            if (commodity.getUserId().equals(currenId)){
+            if (comment.getUserId().equals(currenId)){
+                commodityCommentMapper.deleteById(commentId);
                 return 1;
             }else {
                 return 0;
