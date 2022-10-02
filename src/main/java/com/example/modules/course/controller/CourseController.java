@@ -184,8 +184,8 @@ public class CourseController {
             @PathVariable("username") String username,
             @PathVariable("password") String password) {
 
-//        String userId = userServiceImpl.getTokenUser().getId();
-        String userId = "static";
+        String userId = userServiceImpl.getTokenUser().getId();
+//        String userId = "static";
 
         QueryWrapper<Course> condition = new QueryWrapper<>();
         condition.eq("user_id", userId).last("limit 1");
