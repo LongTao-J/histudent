@@ -7,6 +7,9 @@ import java.util.List;
 
 public interface RedisLtService {
 
+//    清空redis推荐的缓存
+    void deleteRec();
+
     /**
      * 想要。状态为1
      * @param UserId

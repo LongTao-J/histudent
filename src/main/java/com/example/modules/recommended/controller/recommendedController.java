@@ -12,6 +12,7 @@ import com.example.modules.wall.service.PostCollectService;
 import com.example.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,21 +42,39 @@ public class recommendedController {
     PostCollectService postCollectServiceImpl;
     @Autowired
     CommodityService commodityServiceImpl;
+    @Autowired
+    RedisTemplate redisTemplate;
 
     @GetMapping("/get/all-res")
     @CrossOrigin
     public R<Object> getAllRes() {
         try{
-            // 通过Redis获取UserId;
-            String userId = userServiceImpl.getTokenUser().getId();
-            // 获取推荐Post列表
-            List<Post> posts = postRepositoryImpl.getRecPostList();
-            List<PostVO> postVOList = getPostVOList(posts);
-            List<CommodityVO> recCommodityService = commodityServiceImpl.getRecCommodityService();
-            Map<String, Object> map = new HashMap<>();
-            map.put("wall", postVOList);
-            map.put("market", recCommodityService);
-            return R.success(map);
+//            // 通过Redis获取UserId;
+//            String userId = userServiceImpl.getTokenUser().getId();
+//            // 获取推荐Post列表
+//            List<Post> posts = postRepositoryImpl.getRecPostList();
+//            List<PostVO> postVOList = getPostVOList(posts);
+//            List<CommodityVO> recCommodityService = commodityServiceImpl.getRecCommodityService();
+//            Map<String, Object> map = new HashMap<>();
+//            map.put("wall", postVOList);
+//            map.put("market", recCommodityService);
+//            return R.success(map);
+            //redis查找
+            Map<String,Object> rmap= (Map<String, Object>) redisTemplate.opsForValue().get("recommendedwam");
+            if (rmap==null||rmap.size()==0){
+                // 获取推荐Post列表
+                List<Post> posts = postRepositoryImpl.getRecPostList();
+                List<PostVO> postVOList = getPostVOList(posts);
+                List<CommodityVO> recCommodityService = commodityServiceImpl.getRecCommodityService();
+                Map<String, Object> map = new HashMap<>();
+                map.put("wall", postVOList);
+                map.put("market", recCommodityService);
+                //将map存入reidis
+                redisTemplate.opsForValue().set("recommendedwam",map);
+                return R.success(map);
+            }else {
+                return R.success(rmap);
+            }
         }catch (Exception e){
             return R.error();
         }

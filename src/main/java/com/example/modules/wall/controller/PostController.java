@@ -64,6 +64,10 @@ public class PostController {
             post.setContent(issuePostDTO.getContent());
             post.setUserId(userId);
             List<String> list = postRepositoryImpl.getReleasePostFileListCache(userId);
+            if (list.size()==0){
+                list=new ArrayList<>();
+                list.add("http://121.41.227.139:9000/test/mainCommodity.png");
+            }
             PostDTO dto = new PostDTO();
             dto.setPost(post);
             dto.setImages(list);

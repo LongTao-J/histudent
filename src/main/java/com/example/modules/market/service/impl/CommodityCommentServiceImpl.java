@@ -34,6 +34,9 @@ public class CommodityCommentServiceImpl extends ServiceImpl<CommodityCommentMap
     @Autowired
     CommodityMapper commodityMapperImpl;
 
+    @Autowired
+    RedisLtServiceImpl redisLtServiceImpl;
+
     @Override
     public List<CommentVo> getAllCommBycIdSer(String commodityId) {
         try {
@@ -58,6 +61,8 @@ public class CommodityCommentServiceImpl extends ServiceImpl<CommodityCommentMap
 
     @Override
     public void WriteCommentServiec(WritCommentDTO writCommentDTO) {
+        //清除redis推荐评论
+        redisLtServiceImpl.deleteRec();
         String userId = userServiceImpl.getTokenUser().getId();
         CommodityComment commodityComment=new CommodityComment();
         commodityComment.setComment(writCommentDTO.getComment());
@@ -82,6 +87,8 @@ public class CommodityCommentServiceImpl extends ServiceImpl<CommodityCommentMap
             String currenId=userServiceImpl.getTokenUser().getId();
             CommodityComment comment = this.getById(commentId);
             if (comment.getUserId().equals(currenId)){
+                //清除redis推荐评论
+                redisLtServiceImpl.deleteRec();
                 commodityCommentMapper.deleteById(commentId);
                 return 1;
             }else {

@@ -42,22 +42,27 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
     @Autowired
     CommodityCollectionService commodityCollectionServiceImpl;
 
-
     @Override
     public boolean issueCommodity(CommodityDTO commodityDTO) {
         try {
+//            删除redis推荐缓存
+            redisLtServiceImpl.deleteRec();
             String userId = userServiceImpl.getTokenUser().getId();
-
             Commodity commodity=new Commodity();
             commodity.setPrice(commodityDTO.getPrice());
             commodity.setIntroduce(commodityDTO.getIntroduce());
             commodity.setUserId(userId);
             commodityMapper.insert(commodity);
             List<String> imgs = redisLtServiceImpl.getCommodityAllImgFromRedis(userId);
-            for (String img:imgs){
-                commodityImageServiceImpl.insertImg(commodity.getId(),img);
+            if(imgs.size()==0){
+                commodityImageServiceImpl.insertImg(commodity.getId(),"http://121.41.227.139:9000/test/mainCommodity.png");
             }
-            redisLtServiceImpl.clearCommodityImage(commodity.getUserId());
+            else {
+                for (String img:imgs){
+                    commodityImageServiceImpl.insertImg(commodity.getId(),img);
+                }
+                redisLtServiceImpl.clearCommodityImage(commodity.getUserId());
+            }
             return true;
         }catch (Exception e){
             return false;

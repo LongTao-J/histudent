@@ -42,6 +42,8 @@ public class CommodityCollectionServiceImpl extends ServiceImpl<CommodityCollect
     @Override
     public boolean addCollectionSer(String commodityId) {
         try {
+            //    清空redis推荐的缓存
+            redisLtServiceImpl.deleteRec();
             String userId = userServiceImpl.getTokenUser().getId();
             CommodityCollection commodityCollection=new CommodityCollection();
             commodityCollection.setCommodityId(commodityId);
@@ -57,6 +59,8 @@ public class CommodityCollectionServiceImpl extends ServiceImpl<CommodityCollect
     @Override
     public boolean cancleCollectionSer(String collectionId) {
         try {
+            //    清空redis推荐的缓存
+            redisLtServiceImpl.deleteRec();
             String userId=userServiceImpl.getTokenUser().getId();
             LambdaQueryWrapper<CommodityCollection> queryWrapper=new LambdaQueryWrapper<>();
             queryWrapper.eq(CommodityCollection::getCommodityId,collectionId);

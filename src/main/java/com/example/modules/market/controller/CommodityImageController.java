@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.*;
 public class CommodityImageController {
 
     @Autowired
-    RedisTemplate redisTemplate;
-
-    @Autowired
     RedisLtService redisLtServiceImpl;
 
     @Autowired

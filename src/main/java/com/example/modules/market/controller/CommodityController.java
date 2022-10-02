@@ -22,8 +22,6 @@ public class CommodityController {
     @Autowired
     CommodityService commodityServiceImpl;
     @Autowired
-    CommodityImageService commodityImageServiceImpl;
-    @Autowired
     CommodityWantRepository commodityWantRepositoryImpl;
     @Autowired
     UserService userServiceImpl;

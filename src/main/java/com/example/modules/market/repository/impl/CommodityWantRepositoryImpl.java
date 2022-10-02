@@ -27,6 +27,8 @@ public class CommodityWantRepositoryImpl implements CommodityWantRepository {
 
     @Override
     public void savelike(String userId, String commodityId) {
+//                    清空redis推荐的缓存
+        redisLtServiceImpl.deleteRec();
         Integer like = isLike(userId, commodityId);
         if(like == null || like == 0){
             redisLtServiceImpl.saveLikedRedis(userId, commodityId);
@@ -43,6 +45,8 @@ public class CommodityWantRepositoryImpl implements CommodityWantRepository {
 
     @Override
     public void unlike(String userId, String commodityId) {
+        //            清空redis推荐的缓存
+        redisLtServiceImpl.deleteRec();
         Integer like = isLike(userId, commodityId);
         if(like != null && like == 1){
             redisLtServiceImpl.unlikeFromRedis(userId, commodityId);

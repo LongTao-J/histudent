@@ -86,11 +86,12 @@ public class UserTest {
     CommodityWantService commodityWantServiceImpl;
     @Autowired
     CommodityService commodityServiceImpl;
-
+//
 //    @Test
 //    void asda787asd8(){
-//        List<CommodityVO> voList=commodityServiceImpl.getAllCommodityService();
-//        System.out.println(voList);
+//        Object o = redisTemplate.opsForValue().get("recommendedwam");
+//        System.out.println(o.toString());
+////        redisTemplate.delete("recommendedwam");
 //    }
 
 //    @Test

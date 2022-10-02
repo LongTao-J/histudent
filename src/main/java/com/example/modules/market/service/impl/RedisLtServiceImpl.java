@@ -23,6 +23,12 @@ public class RedisLtServiceImpl implements RedisLtService {
     RedisTemplate redisTemplate;
 
 
+    //删除redis推荐缓存
+    @Override
+    public void deleteRec() {
+        redisTemplate.delete("recommendedwam");
+    }
+
     @Override
     public void saveLikedRedis(String UserId, String commodityId) {
         String key = CommodityRedisKeyUtil.getLikedKey(UserId, commodityId);
