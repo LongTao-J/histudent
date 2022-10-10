@@ -35,7 +35,7 @@ public interface UserService extends IService<User> {
     User getUserById(String userId);
 
     //修改密码
-    Boolean updateUserPasswordSer(String password);
+    Boolean updateUserPasswordSer(String phone,String password);
 
     //修改性别
     Boolean upSexSer(Integer sex);

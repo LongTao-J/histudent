@@ -40,9 +40,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/user/login/**").anonymous()
                 .antMatchers("/api/user/register/**").anonymous()
                 .antMatchers("/api/user/sendCode/**").anonymous()
+                .antMatchers("/api/user/setpas/**").anonymous()
                 .antMatchers("/druid/**").anonymous()
                 .antMatchers("/imserver/**").anonymous()
-                .antMatchers("/setpas/**").anonymous()
                 // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated();
 

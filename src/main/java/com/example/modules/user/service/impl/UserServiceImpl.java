@@ -209,11 +209,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
     }
 
+    //修改密码
     @Override
-    public Boolean updateUserPasswordSer(String password) {
+    public Boolean updateUserPasswordSer(String phone,String password) {
         try {
-            User user=this.getTokenUser();
-            user.setPassword(password);
+            String encodePassword=passwordEncoder.encode(password);
+            LambdaQueryWrapper<User> queryWrapper=new LambdaQueryWrapper<>();
+            queryWrapper.eq(User::getPhone,phone);
+            User user = userMapperImpl.selectOne(queryWrapper);
+            user.setPassword(encodePassword);
             userMapperImpl.updateById(user);
             return true;
         }catch (Exception e){

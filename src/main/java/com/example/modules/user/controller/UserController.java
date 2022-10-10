@@ -140,7 +140,7 @@ public class UserController {
             return R.error("验证码错误",400);
         }
 
-        Boolean aBoolean = userServiceImpl.updateUserPasswordSer(userSms.getPassword());
+        Boolean aBoolean = userServiceImpl.updateUserPasswordSer(userSms.getPhone(),userSms.getPassword());
         if (aBoolean){
             return R.success(null,"修改密码成功",200);
         }else {
