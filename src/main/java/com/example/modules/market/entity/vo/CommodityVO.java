@@ -1,5 +1,6 @@
 package com.example.modules.market.entity.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -52,5 +53,7 @@ public class CommodityVO {
 
     //当前用户是否收藏
     private Boolean isCollection;// 1 为收藏，0 为没有收藏
+
+
 
 }

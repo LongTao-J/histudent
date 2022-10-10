@@ -1,6 +1,7 @@
 package com.example.modules.recommended.controller;
 
 import com.example.modules.market.entity.vo.CommodityVO;
+import com.example.modules.market.repository.CommodityWantRepository;
 import com.example.modules.market.service.CommodityService;
 import com.example.modules.user.pojo.po.User;
 import com.example.modules.user.service.UserService;
@@ -44,12 +45,14 @@ public class recommendedController {
     CommodityService commodityServiceImpl;
     @Autowired
     RedisTemplate redisTemplate;
+    @Autowired
+    CommodityWantRepository commodityWantRepositoryImpl;
 
     @GetMapping("/get/all-res")
     @CrossOrigin
     public R<Object> getAllRes() {
         try{
-//            // 通过Redis获取UserId;
+            // 通过Redis获取UserId;
 //            String userId = userServiceImpl.getTokenUser().getId();
 //            // 获取推荐Post列表
 //            List<Post> posts = postRepositoryImpl.getRecPostList();
@@ -58,19 +61,35 @@ public class recommendedController {
 //            Map<String, Object> map = new HashMap<>();
 //            map.put("wall", postVOList);
 //            map.put("market", recCommodityService);
-//            return R.success(map);
-            //redis查找
+//            redis查找
             Map<String,Object> rmap= (Map<String, Object>) redisTemplate.opsForValue().get("recommendedwam");
             if (rmap==null||rmap.size()==0){
                 // 获取推荐Post列表
                 List<Post> posts = postRepositoryImpl.getRecPostList();
                 List<PostVO> postVOList = getPostVOList(posts);
                 List<CommodityVO> recCommodityService = commodityServiceImpl.getRecCommodityService();
+                //
+                String wantuserId = userServiceImpl.getTokenUser().getId();
+                for (int i=0;i<recCommodityService.size();i++){
+                    //是否想要
+                    recCommodityService.get(i).setUserId(wantuserId);
+                    Integer want=commodityWantRepositoryImpl.isLike(wantuserId,recCommodityService.get(i).getId());
+                    if (want==null || want==0){
+                        recCommodityService.get(i).setIsWant(false);
+                    }else {
+                        recCommodityService.get(i).setIsWant(true);
+                    }
+                }
+                for (int i=0;i<postVOList.size();i++){
+                    postVOList.get(i).getPost().setUserId(wantuserId);
+                }
+                //
                 Map<String, Object> map = new HashMap<>();
                 map.put("wall", postVOList);
                 map.put("market", recCommodityService);
                 //将map存入reidis
-                redisTemplate.opsForValue().set("recommendedwam",map);
+//                redisTemplate.opsForValue().set("recwall",postVOList);
+//                redisTemplate.opsForValue().set("recmarket",recCommodityService);
                 return R.success(map);
             }else {
                 return R.success(rmap);

@@ -1,75 +1,28 @@
 package com.example.modules.user;
 
-import cn.hutool.json.JSONObject;
-import cn.hutool.json.JSONUtil;
-import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.TypeReference;
-import com.aliyuncs.DefaultAcsClient;
-import com.aliyuncs.IAcsClient;
-import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
-import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
-import com.aliyuncs.exceptions.ClientException;
-import com.aliyuncs.exceptions.ServerException;
-import com.aliyuncs.profile.DefaultProfile;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.modules.market.entity.po.Commodity;
-import com.example.modules.market.entity.po.CommodityWant;
+
+import com.alibaba.fastjson2.JSONObject;
+
 import com.example.modules.market.entity.vo.CommodityVO;
 import com.example.modules.market.mapper.CommodityWantMapper;
 import com.example.modules.market.service.CommodityService;
 import com.example.modules.market.service.CommodityWantService;
-import com.example.modules.notice.entity.po.Notice;
 import com.example.modules.notice.mapper.NoticeMapper;
 import com.example.modules.notice.service.NoticeService;
 import com.example.modules.user.mapper.UserMapper;
-import com.example.modules.user.pojo.dto.Smss;
-import com.example.modules.user.pojo.dto.UserInfoLt;
-import com.example.modules.user.pojo.po.StuInfo;
-import com.example.modules.user.pojo.po.User;
 import com.example.modules.user.service.UserService;
-import com.example.modules.user.utils.Anquan.LoginUser;
 import com.example.modules.user.utils.Anquan.RedisCache;
-import com.example.modules.user.utils.Consts;
-import com.example.modules.websocket.entity.MegUser;
-import com.example.modules.websocket.entity.MesssageWs;
-import com.example.utils.R;
-import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
-import org.python.modules._json._json;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
 public class UserTest {
-
-//    @Autowired
-//    UserService userServiceImpl;
-//
     @Autowired
     UserMapper userMapperImpl;
-//
-//    @Autowired
-//    CommodityService commodityServiceImpl;
-//
-//    @Test
-//    void tes7(){
-////        UserInfoLt userInfolt = userServiceImpl.getUserInfolt("1");
-////        System.out.println("========= "+userInfolt);
-//    }
-//
-//    @Test
-//    void testas(){
-////        List<CommodityVO> voList=commodityServiceImpl.getAllCommodityService();
-//    }
     @Autowired
     RedisTemplate redisTemplate;
     @Autowired
@@ -86,13 +39,44 @@ public class UserTest {
     CommodityWantService commodityWantServiceImpl;
     @Autowired
     CommodityService commodityServiceImpl;
-//
+
+//    @Test
+//    void lonng(){
+//        List<CommodityVO> list = (List<CommodityVO>) redisTemplate.opsForValue().get("market");
+//    }
+
+//    @Test
+//    void longtao01(){
+//        List<CommodityVO> list = commodityServiceImpl.getRecCommodityService();
+//        System.out.println("commodityServiceImpl :"+list);
+//        redisTemplate.opsForValue().set("market",list);
+//        List<CommodityVO> o = (List<CommodityVO>) redisTemplate.opsForValue().get("market");
+//        System.out.println("redisTemplate :"+o);
+//    }
+
+//    @Test
+//    void lsdmlafj(){
+////        List<CommodityVO> list = commodityServiceImpl.getRecCommodityService();
+////        redisTemplate.opsForValue().set("recmarket",list);
+//        List<CommodityVO> recmarket = (List<CommodityVO>) redisTemplate.opsForValue().get("recmarket");
+//        for (int i=0;i<recmarket.size();i++){
+////            Date gmtCreate = recmarket.get(i).getGmtCreate();
+////            System.out.println(gmtCreate.getTime());
+//            System.out.println(recmarket.get(i).getGmtCreate());
+//        }
+//    }
+
 //    @Test
 //    void asda787asd8(){
-//        Object o = redisTemplate.opsForValue().get("recommendedwam");
-//        System.out.println(o.toString());
-////        redisTemplate.delete("recommendedwam");
+////        List<CommodityVO> recCommodityService = commodityServiceImpl.getRecCommodityService();
+//////        System.out.println(recCommodityService);
+////        redisTemplate.opsForValue().set("recmarket",recCommodityService);
+////        List<CommodityVO> o = (List<CommodityVO>) redisTemplate.opsForValue().get("recmarket");
+////
+////        System.out.println(o);
+//////        redisTemplate.delete("recmarket");
 //    }
+
 
 //    @Test
 //    void asd5asd4a(){

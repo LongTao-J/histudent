@@ -206,10 +206,6 @@ public class CommodityServiceImpl extends ServiceImpl<CommodityMapper, Commodity
             Integer commodityCollectionCount = commodityCollectionServiceImpl.getCommodityCollectionCount(commodityVOList.get(i).getId());
             commodityVOList.get(i).setCollectionCount(commodityCollectionCount);
 
-            //是否想要
-//            String wantuserId = userServiceImpl.getTokenUser().getId();
-//            Integer want=commodityWantRepositoryImpl.isLike(wantuserId,commodityVOList.get(i).getId());
-//            commodityVOList.get(i).setIsWant(want);
         }
 
         return commodityVOList;
