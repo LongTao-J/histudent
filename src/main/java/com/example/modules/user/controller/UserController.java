@@ -88,7 +88,11 @@ public class UserController {
 
         SendSmsRequest request = new SendSmsRequest();
         request.setSignName("Hi同学科技");
-        request.setTemplateCode("SMS_252635072");
+        if(flage.equals("0")){//注册
+            request.setTemplateCode("SMS_252635072");
+        }else if (flage.equals("1")){//修改密码
+            request.setTemplateCode("SMS_254291278");
+        }
         System.out.println("电话号码为："+phone);
         request.setPhoneNumbers(phone);
         request.setTemplateParam("{\"code\":\""+smss.getSms()+"\"}");
